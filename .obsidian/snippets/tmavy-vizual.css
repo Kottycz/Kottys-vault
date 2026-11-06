@@ -1,0 +1,140 @@
+/* Tmavší a tlumenější vzhled Obsidianu (jen tmavý režim).
+   Pozadí skoro černé, barvy jen modrá / zelená / tyrkysová, ale jemné. */
+
+body.theme-dark {
+  --background-primary: #0d0d12 !important;
+  --background-primary-alt: #101016 !important;
+  --background-secondary: #09090d !important;
+  --background-secondary-alt: #0b0b10 !important;
+  --background-modifier-border: #1c1c26 !important;
+  --background-modifier-hover: rgba(255, 255, 255, 0.05) !important;
+  --titlebar-background: #07070a !important;
+  --titlebar-background-focused: #07070a !important;
+  --tab-container-background: #07070a !important;
+  --code-background: #14141b !important;
+}
+
+.theme-dark .workspace,
+.theme-dark .app-container,
+.theme-dark .horizontal-main-container {
+  background-color: #07070a !important;
+}
+.theme-dark .workspace-leaf-content,
+.theme-dark .markdown-source-view,
+.theme-dark .markdown-reading-view {
+  background-color: #0d0d12;
+}
+.theme-dark .nav-files-container,
+.theme-dark .workspace-tab-header-container {
+  background-color: transparent !important;
+}
+.theme-dark .markdown-rendered table,
+.theme-dark .markdown-rendered th,
+.theme-dark .markdown-rendered td {
+  border-color: #23232e !important;
+}
+
+/* ===== Tlumené barvy (žádná růžová, nic nesvítí) ===== */
+body.theme-dark {
+  --ctp-rosewater: #9db4d2 !important;
+  --ctp-flamingo: #86a4cc !important;
+  --ctp-pink: #6b93c4 !important;
+  --ctp-mauve: #7389c4 !important;
+
+  --color-accent: #3f7f8a !important;
+  --color-accent-1: #3f7f8a !important;
+  --color-accent-2: #4f929d !important;
+  --interactive-accent: #3f7f8a !important;
+  --interactive-accent-hover: #4f929d !important;
+  --text-accent: #6fa9b4 !important;
+  --text-accent-hover: #86bcc6 !important;
+
+  --h1-color: #6a9fd4 !important;
+  --h2-color: #5aa6a6 !important;
+  --h3-color: #7fb593 !important;
+  --h4-color: #8da6c9 !important;
+  --h5-color: #7fb5a6 !important;
+  --h6-color: #93a6bd !important;
+  --bold-color: #86aed6 !important;
+  --italic-color: #8cbfb3 !important;
+  --list-marker-color: #6a9fd4 !important;
+  --text-highlight-bg: rgba(106, 159, 212, 0.22) !important;
+}
+.theme-dark h1,
+.theme-dark .HyperMD-header-1,
+.theme-dark .cm-header-1 { color: #6a9fd4 !important; border-bottom-color: #4d7399 !important; }
+.theme-dark h2,
+.theme-dark .HyperMD-header-2,
+.theme-dark .cm-header-2 { color: #5aa6a6 !important; }
+.theme-dark h3,
+.theme-dark .HyperMD-header-3,
+.theme-dark .cm-header-3 { color: #7fb593 !important; }
+.theme-dark strong,
+.theme-dark .cm-strong { color: #86aed6 !important; }
+.theme-dark em,
+.theme-dark .cm-em { color: #8cbfb3 !important; }
+.theme-dark ol > li::marker,
+.theme-dark ul > li::marker,
+.theme-dark .cm-formatting-list-ol,
+.theme-dark .cm-formatting-list-ul { color: #6a9fd4 !important; }
+.theme-dark .list-bullet::after { background-color: #6a9fd4 !important; }
+
+/* ===== Horní lišta a rámec: tmavá, jemná, bez svícení ===== */
+.theme-dark .titlebar,
+.theme-dark .workspace-tabs .workspace-tab-header-container,
+.theme-dark .mod-root .workspace-tab-header-container,
+.theme-dark .workspace-ribbon,
+.theme-dark .workspace-ribbon.mod-left {
+  background-color: #16262b !important;
+  border-color: #1f3840 !important;
+}
+.theme-dark .workspace-tab-header.is-active {
+  background-color: #1d3640 !important;
+}
+
+/* ===== Soubory a složky v panelu ===== */
+.theme-dark .nav-folder-title,
+.theme-dark .nav-file-title {
+  color: #e3eaf3 !important;
+  font-weight: 500;
+}
+.theme-dark .nav-file-title.is-active,
+.theme-dark .nav-file-title:hover,
+.theme-dark .nav-folder-title:hover {
+  background-color: rgba(106, 159, 212, 0.25) !important;
+  color: #ffffff !important;
+}
+.theme-dark .nav-folder-collapse-indicator { color: #e3eaf3 !important; }
+
+/* barvy hlavních složek (tlumené, modrá / zelená / tyrkysová) */
+.theme-dark .nav-folder-title[data-path="Attachments"] { background-color: rgba(98, 120, 150, 0.6) !important; }
+.theme-dark .nav-folder-title[data-path="Computer networking"] { background-color: rgba(70, 120, 170, 0.6) !important; }
+.theme-dark .nav-folder-title[data-path="Cybersecurity"] { background-color: rgba(60, 130, 140, 0.6) !important; }
+.theme-dark .nav-folder-title[data-path="Czech language"] { background-color: rgba(110, 140, 100, 0.6) !important; }
+.theme-dark .nav-folder-title[data-path="English"] { background-color: rgba(80, 140, 110, 0.6) !important; }
+.theme-dark .nav-folder-title[data-path="Operating system"] { background-color: rgba(60, 120, 130, 0.6) !important; }
+.theme-dark .nav-folder-title[data-path="Programming C#"] { background-color: rgba(75, 125, 160, 0.6) !important; }
+.theme-dark .nav-folder-title[data-path="Studium"] { background-color: rgba(80, 105, 150, 0.6) !important; }
+.theme-dark .nav-folder-title[data-path="Z Maps"] { background-color: rgba(85, 100, 140, 0.6) !important; }
+
+/* ikony oken (minimalizovat, maximalizovat, zavřít) a levý panel ikon: viditelné */
+.theme-dark .titlebar-button-container {
+  background-color: #16262b !important;
+}
+.theme-dark .titlebar-button,
+.theme-dark .titlebar-button svg {
+  color: #cfd8e3 !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+.theme-dark .titlebar-button:hover { background-color: rgba(255, 255, 255, 0.12) !important; }
+.theme-dark .titlebar-button.mod-close:hover { background-color: #c0443f !important; }
+.theme-dark .workspace-ribbon .side-dock-ribbon-action,
+.theme-dark .workspace-ribbon .side-dock-ribbon-action svg,
+.theme-dark .workspace-tab-header-inner-icon svg,
+.theme-dark .view-header-nav-buttons svg,
+.theme-dark .view-action svg,
+.theme-dark .sidebar-toggle-button svg {
+  color: #b9c6d8 !important;
+  stroke: #b9c6d8 !important;
+}

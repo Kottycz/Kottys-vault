@@ -1,0 +1,10 @@
+/* Nmap zápis: bílé diagramy se v tmavém režimu přebarví na tmavé.
+   Terminály a Wireshark (už tmavé / světlé okno) se nemění. */
+.theme-dark img[src*="_diagram"],
+.theme-dark img[src*="handshake"],
+.theme-dark img[src*="kroky_skenovani"],
+.theme-dark img[src*="schema_siti"],
+.theme-dark img[src*="osi_tcpip"] {
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: screen;
+}

@@ -1,0 +1,12 @@
+{
+  "theme": "moonstone",
+  "cssTheme": "AnuPpuccin",
+  "enabledCssSnippets": [
+    "nmap-tmave-diagramy",
+    "tmavy-vizual"
+  ],
+  "baseFontSize": 15,
+  "baseFontSizeAction": true,
+  "textFontFamily": "",
+  "interfaceFontFamily": ""
+}

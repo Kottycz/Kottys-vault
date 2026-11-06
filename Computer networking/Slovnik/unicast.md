@@ -1,0 +1,38 @@
+---
+tags: [slovnik]
+---
+
+# unicast
+
+**Komunikace jeden na jednoho** – data se přenášejí jedinému konkrétnímu koncovému zařízení. Nejběžnější typ provozu v síti.
+
+---
+
+## Podrobně
+
+### Jak funguje
+
+Rámec/paket má v cílové adrese konkrétní [[MAC adresa|MAC]] nebo [[IP adresa|IP adresu]] jediného příjemce. [[switch|Switch]] ho pošle jen na port, kde ten příjemce je.
+
+```
+PC1 ──────► PC3       (PC2 a PC4 nic nedostanou)
+```
+
+### Kde se používá
+
+Prakticky všechna běžná komunikace: prohlížení webu ([[HTTP]]), e-mail, stahování souborů, SSH.
+
+### Srovnání typů přenosu
+
+| Typ | Příjemců | Příklad |
+| :-- | :-- | :-- |
+| **unicast** | jeden | web, e-mail |
+| **[[broadcast]]** | všichni v síti | [[ARP]] dotaz, [[DHCP]] Discover |
+| **[[multicast]]** | definovaná skupina | IPTV, směrovací protokoly |
+| **[[anycast]]** | nejbližší z více serverů | [[DNS]] root servery, CDN |
+
+### U IPv6
+
+[[IPv6]] zná unicast, multicast a anycast – **broadcast v něm neexistuje** (nahradil ho cílený multicast).
+
+**Souvisí:** [[broadcast]], [[multicast]], [[anycast]], [[MAC adresa]], [[IP adresa]]
