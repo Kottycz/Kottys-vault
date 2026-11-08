@@ -2,14 +2,3 @@
 .obsidian/workspace-mobile.json
 .trash/
 desktop.ini
-
-# obrázky a PDF jen z Matematiky, ostatní mimo git
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.webp
-*.svg
-*.bmp
-*.pdf
-!Matematika/**
