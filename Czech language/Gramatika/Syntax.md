@@ -4,22 +4,24 @@
 
 ## Věta
 
-- **[[věta]]** – abstraktní model vztahů mezi slovy: podmět – přísudek – předmět
+- **[[věta]]** – abstraktní model vztahů mezi slovy: [[podmět]] – [[přísudek]] – [[předmět]]
 - **[[výpověď]]** – realizace modelu věty v konkrétní komunikační situaci (Babička peče bábovku.)
 - **[[valence]]** – schopnost slov vázat na sebe další slova (míchat – kdo míchá? co míchá? – Petr míchá kávu.)
 
 ## Druhy vět
 
-- **Věta jednočlenná** – má pouze přísudek, podmět (TO, ONO) není
+- **[[věta|Věta jednočlenná]]** – má pouze [[přísudek]], [[podmět]] (TO, ONO) není
   - atmosférické jevy: Prší.
   - tělesné stavy: Píchá mě v boku.
   - duševní stavy: Je mi smutno.
-- **Věta dvojčlenná** – má podmět (vyjádřený, nevyjádřený, všeobecný) i přísudek
+  
+- **[[věta|Věta dvojčlenná]]** – má [[podmět]] (vyjádřený, nevyjádřený, všeobecný) i [[přísudek]]
   - Doktor pacientovi odebral krev.
   - Máme hodně úkolů. (My)
-- **[[větný ekvivalent|Větný ekvivalent]]** – nemá podmět ani přísudek
+  
+- **[[větný ekvivalent|Větný ekvivalent]]** – nemá [[podmět]] ani [[přísudek]]
   - infinitiv: Stát!
-  - podstatné a přídavné jméno: Takové překvapení!
+  - [[substantivum|podstatné]] a [[adjektivum|přídavné jméno]]: Takové překvapení!
   - příslovce: Rychle!
   - částice: Ano! Snad.
   - citoslovce: Pšt!
@@ -44,26 +46,26 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 
 ### Přísudek (Př)
 
-[[přísudek|Přísudek]] podtrháváme **vlnovkou**, ptáme se: **co dělá podmět?**
+[[přísudek|Přísudek]] podtrháváme **vlnovkou**, ptáme se: **co dělá [[podmět]]?**
 
-**Slovesa v přísudku:**
+**[[verbum|Slovesa]] v přísudku:**
 - **sponová** – být, bývat, stát se, stávat se
 - **fázová** – začít, začínat, přestat, přestávat, zůstat, zůstávat (<span style="text-decoration: underline wavy red">Začal posilovat</span>.)
 - **způsobová** – moci, smět, muset, mít, chtít (<span style="text-decoration: underline wavy red">Smím zůstat</span> doma?)
 
 **Druhy přísudku:**
-- **jmenný se sponou** – spona + jméno (podstatné nebo přídavné); spona = být, bývat, stát se, stávat se (<u style="text-decoration-color: blue">Pavel</u> <span style="text-decoration: underline wavy red">se stal učitelem</span>. Stal se z něho dobrý expert.)
+- **jmenný se sponou** – spona + jméno ([[substantivum|podstatné]] nebo [[adjektivum|přídavné]]); spona = být, bývat, stát se, stávat se (<u style="text-decoration-color: blue">Pavel</u> <span style="text-decoration: underline wavy red">se stal učitelem</span>. Stal se z něho dobrý expert.)
 - **jmenný beze spony** – spona je vynechaná, můžeme si ji domyslet (<u style="text-decoration-color: blue">Učení</u> <span style="text-decoration: underline wavy red">mučení</span>. – je)
-- **jmenný se sponou složený** – způsobové nebo fázové sloveso + spona v infinitivu + jméno (<u style="text-decoration-color: blue">Petr</u> <span style="text-decoration: underline wavy red">začínal být nezdvořilý</span>.)
+- **jmenný se sponou složený** –  spona v infinitivu + způsobové nebo fázové sloveso + jméno (<u style="text-decoration-color: blue">Petr</u> <span style="text-decoration: underline wavy red">začal být hluchý</span>.)
 - **citoslovečný** – vyjádřený citoslovcem (<u style="text-decoration-color: blue">Kočka</u> <span style="text-decoration: underline wavy red">hop</span> na strom. <u style="text-decoration-color: blue">Holub</u> <span style="text-decoration: underline wavy red">frnk</span> do nebes.)
-- **slovesný jednoduchý** – vyjádřený slovesem, může se objevit zájmeno se, si (<u style="text-decoration-color: blue">Maminka</u> <span style="text-decoration: underline wavy red">pekla</span> koláčky. <u style="text-decoration-color: blue">Katka</u> <span style="text-decoration: underline wavy red">si češe</span> vlasy.)
+- **slovesný jednoduchý** – vyjádřený slovesem, může se objevit [[pronomen|zájmeno]] se, si (<u style="text-decoration-color: blue">Maminka</u> <span style="text-decoration: underline wavy red">pekla</span> koláčky. <u style="text-decoration-color: blue">Katka</u> <span style="text-decoration: underline wavy red">si češe</span> vlasy.)
 - **slovesný složený** – fázové nebo způsobové sloveso + sloveso v infinitivu (<u style="text-decoration-color: blue">Petr</u> <span style="text-decoration: underline wavy red">přestával dýchat</span>.)
 
 ## Rozvíjející větné členy
 
 ### Přívlastek (Pk)
 
-[[přívlastek|Přívlastek]] rozvíjí podstatné jméno, ptáme se: **jaký? který? čí?**
+[[přívlastek|Přívlastek]] rozvíjí [[substantivum|podstatné jméno]], ptáme se: **jaký? který? čí?**
 
 - **shodný (PkS)** – vyjádřený 2., 3. a 4. slovním druhem (plastové pravítko)
 - **neshodný (PkN)** – vyjádřený 1., 5. a 6. slovním druhem (pravítko z plastu)
@@ -93,7 +95,7 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 ## Přívlastek volný a těsný, přístavek
 
 - **[[přístavek|Přístavek]]** – opakované označení téže skutečnosti, odděluje se čárkami (Karel IV., otec vlasti, založil Karlovu univerzitu.)
-- **Přívlastek volný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; můžeme jej z věty vypustit, aniž by se změnil její smysl; oddělen z obou stran čárkami (Noviny, dodávané i do našich schránek, se tisknou během noci.)
-- **Přívlastek těsný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; nemůžeme ho z věty vypustit, protože by se její smysl změnil (Studenti dosahující vynikajících výsledků bývají na naší škole odměněni.)
+- **[[přívlastek|Přívlastek]] volný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; můžeme jej z věty vypustit, aniž by se změnil její smysl; oddělen z obou stran čárkami (Noviny, dodávané i do našich schránek, se tisknou během noci.)
+- **[[přívlastek|Přívlastek]] těsný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; nemůžeme ho z věty vypustit, protože by se její smysl změnil (Studenti dosahující vynikajících výsledků bývají na naší škole odměněni.)
 
 Cvičení: [[Syntax_cviceni]]
