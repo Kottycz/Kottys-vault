@@ -33,14 +33,14 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 [[podmět|Podmět]] podtrháváme **rovnou čarou**, ptáme se: **Kdo? Co?**
 
 **Druhy podle vyjádření:**
-- **vyjádřený** – Maminka pekla koláčky.
-- **nevyjádřený** – Pekla koláčky. (ona)
-- **všeobecný** (blíže neurčená skupina lidí) – Hlásili to v rozhlase. (oni)
+- **vyjádřený** – <u>Maminka</u> <span style="text-decoration: underline wavy">pekla</span> koláčky.
+- **nevyjádřený** – <span style="text-decoration: underline wavy">Pekla</span> koláčky. (ona)
+- **všeobecný** (blíže neurčená skupina lidí) – <span style="text-decoration: underline wavy">Hlásili</span> to v rozhlase. (oni)
 
 **Druhy podle rozvití:**
-- **holý** – Maminka pekla koláčky.
-- **rozvitý** – Naše maminka pekla koláčky.
-- **několikanásobný** – Maminka a tatínek pekli koláčky.
+- **holý** – <u>Maminka</u> <span style="text-decoration: underline wavy">pekla</span> koláčky.
+- **rozvitý** – Naše <u>maminka</u> <span style="text-decoration: underline wavy">pekla</span> koláčky.
+- **několikanásobný** – <u>Maminka</u> a <u>tatínek</u> <span style="text-decoration: underline wavy">pekli</span> koláčky.
 
 ### Přísudek (Př)
 
@@ -48,16 +48,16 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 
 **Slovesa v přísudku:**
 - **sponová** – být, bývat, stát se, stávat se
-- **fázová** – začít, začínat, přestat, přestávat, zůstat, zůstávat (Začal posilovat.)
-- **způsobová** – moci, smět, muset, mít, chtít (Smím zůstat doma?)
+- **fázová** – začít, začínat, přestat, přestávat, zůstat, zůstávat (<span style="text-decoration: underline wavy">Začal posilovat</span>.)
+- **způsobová** – moci, smět, muset, mít, chtít (<span style="text-decoration: underline wavy">Smím zůstat</span> doma?)
 
 **Druhy přísudku:**
-- **jmenný se sponou** – spona + jméno (podstatné nebo přídavné); spona = být, bývat, stát se, stávat se (Pavel se stal učitelem. Stal se z něj dobrý IT expert.)
-- **jmenný beze spony** – spona je vynechaná, můžeme si ji domyslet (Učení mučení. – je)
-- **jmenný se sponou složený** – způsobové nebo fázové sloveso + spona v infinitivu + jméno (Petr začínal být nezdvořilý.)
-- **citoslovečný** – vyjádřený citoslovcem (Kočka hop na strom. Holub frnk do nebes.)
-- **slovesný jednoduchý** – vyjádřený slovesem, může se objevit zájmeno se, si (Maminka pekla koláčky. Katka si češe vlasy.)
-- **slovesný složený** – fázové nebo způsobové sloveso + sloveso v infinitivu (Petr přestával dýchat.)
+- **jmenný se sponou** – spona + jméno (podstatné nebo přídavné); spona = být, bývat, stát se, stávat se (<u>Pavel</u> <span style="text-decoration: underline wavy">se stal učitelem</span>. Stal se z něho dobrý expert.)
+- **jmenný beze spony** – spona je vynechaná, můžeme si ji domyslet (<u>Učení</u> <span style="text-decoration: underline wavy">mučení</span>. – je)
+- **jmenný se sponou složený** – způsobové nebo fázové sloveso + spona v infinitivu + jméno (<u>Petr</u> <span style="text-decoration: underline wavy">začínal být nezdvořilý</span>.)
+- **citoslovečný** – vyjádřený citoslovcem (<u>Kočka</u> <span style="text-decoration: underline wavy">hop</span> na strom. <u>Holub</u> <span style="text-decoration: underline wavy">frnk</span> do nebes.)
+- **slovesný jednoduchý** – vyjádřený slovesem, může se objevit zájmeno se, si (<u>Maminka</u> <span style="text-decoration: underline wavy">pekla</span> koláčky. <u>Katka</u> <span style="text-decoration: underline wavy">si češe</span> vlasy.)
+- **slovesný složený** – fázové nebo způsobové sloveso + sloveso v infinitivu (<u>Petr</u> <span style="text-decoration: underline wavy">přestával dýchat</span>.)
 
 ## Rozvíjející větné členy
 
