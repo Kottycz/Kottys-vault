@@ -52,7 +52,7 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 - **způsobová** – moci, smět, muset, mít, chtít (Smím zůstat doma?)
 
 **Druhy přísudku:**
-- **jmenný se sponou** – spona + jméno (Pavel se stal učitelem.)
+- **jmenný se sponou** – spona + jméno (podstatné nebo přídavné); spona = být, bývat, stát se, stávat se (Pavel se stal učitelem. Stal se z něj dobrý IT expert.)
 - **jmenný beze spony** – spona je vynechaná, můžeme si ji domyslet (Učení mučení. – je)
 - **jmenný se sponou složený** – způsobové nebo fázové sloveso + spona v infinitivu + jméno (Petr začínal být nezdvořilý.)
 - **citoslovečný** – vyjádřený citoslovcem (Kočka hop na strom. Holub frnk do nebes.)
