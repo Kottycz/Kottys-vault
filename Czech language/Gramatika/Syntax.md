@@ -55,7 +55,7 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 - **jmenný se sponou** – spona + jméno (Pavel se stal učitelem.)
 - **jmenný beze spony** – spona je vynechaná, můžeme si ji domyslet (Učení mučení. – je)
 - **jmenný se sponou složený** – způsobové nebo fázové sloveso + spona v infinitivu + jméno (Petr začínal být nezdvořilý.)
-- **citoslovečný** – vyjádřený citoslovcem (Kočka hop na strom.)
+- **citoslovečný** – vyjádřený citoslovcem (Kočka hop na strom. Holub frnk do nebes.)
 - **slovesný jednoduchý** – vyjádřený slovesem, může se objevit zájmeno se, si (Maminka pekla koláčky. Katka si češe vlasy.)
 - **slovesný složený** – fázové nebo způsobové sloveso + sloveso v infinitivu (Petr přestával dýchat.)
 
