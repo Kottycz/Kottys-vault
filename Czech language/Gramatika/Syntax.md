@@ -1,113 +1,99 @@
 # Syntax (skladba)
 
-**Syntax (skladba)** – lingvistická disciplína, která se zabývá skladbou věty, souvětí.
-
-Cvičení: [[Syntax_cviceni]]
+[[syntax|Syntax (skladba)]] = lingvistická disciplína, která se zabývá skladbou věty, souvětí.
 
 ## Věta
 
 - **[[věta]]** – abstraktní model vztahů mezi slovy: podmět – přísudek – předmět
-- **[[výpověď]]** – realizace modelu věty v konkrétní komunikační situaci
-  - př. Babička peče bábovku.
-- **[[valence]]** – schopnost slov vázat na sebe další slova
-  - př. míchat (kdo míchá? co míchá?) – Petr míchá kávu.
+- **[[výpověď]]** – realizace modelu věty v konkrétní komunikační situaci (Babička peče bábovku.)
+- **[[valence]]** – schopnost slov vázat na sebe další slova (míchat – kdo míchá? co míchá? – Petr míchá kávu.)
 
 ## Druhy vět
 
-**Věta jednočlenná** – má pouze přísudek, podmět (TO, ONO) není
-- atmosférické jevy: Prší.
-- tělesné stavy: Píchá mě v boku.
-- duševní stavy: Je mi smutno.
+- **Věta jednočlenná** – má pouze přísudek, podmět (TO, ONO) není
+  - atmosférické jevy: Prší.
+  - tělesné stavy: Píchá mě v boku.
+  - duševní stavy: Je mi smutno.
+- **Věta dvojčlenná** – má podmět (vyjádřený, nevyjádřený, všeobecný) i přísudek
+  - Doktor pacientovi odebral krev.
+  - Máme hodně úkolů. (My)
+- **[[větný ekvivalent|Větný ekvivalent]]** – nemá podmět ani přísudek
+  - infinitiv: Stát!
+  - podstatné a přídavné jméno: Takové překvapení!
+  - příslovce: Rychle!
+  - částice: Ano! Snad.
+  - citoslovce: Pšt!
 
-**Věta dvojčlenná** – má podmět (může být vyjádřený, nevyjádřený, všeobecný) i přísudek
-- Doktor pacientovi odebral krev.
-- Máme hodně úkolů. (My)
-
-**[[větný ekvivalent]]** – nemá podmět ani přísudek
-- infinitiv: Stát!
-- podstatné a přídavné jméno: Takové překvapení!
-- příslovce: Rychle!
-- částice: Ano! Snad.
-- citoslovce: Pšt!
-
-> [!note]
-> Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větný člen!
+Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větný člen!
 
 ## Základní větné členy
 
-### [[podmět]] (Po)
+### Podmět (Po)
 
-- podtrháváme **rovnou čarou**
-- ptáme se: **Kdo? Co?**
-- druhy:
-  - vyjádřený, nevyjádřený, všeobecný (blíže neurčená skupina lidí)
-  - holý, rozvitý, několikanásobný
+[[podmět|Podmět]] podtrháváme **rovnou čarou**, ptáme se: **Kdo? Co?**
 
-### [[přísudek]] (Př)
+**Druhy podle vyjádření:**
+- **vyjádřený** – Maminka pekla koláčky.
+- **nevyjádřený** – Pekla koláčky. (ona)
+- **všeobecný** (blíže neurčená skupina lidí) – Hlásili to v rozhlase. (oni)
 
-- podtrháváme **vlnovkou**
-- ptáme se: **co dělá podmět?**
-- **sponová slovesa:** být, bývat, stát se, stávat se
-- **fázová slovesa:** začít, začínat, přestat, přestávat, zůstat, zůstávat
-- **způsobová slovesa:** moci, smět, muset, mít, chtít
+**Druhy podle rozvití:**
+- **holý** – Maminka pekla koláčky.
+- **rozvitý** – Naše maminka pekla koláčky.
+- **několikanásobný** – Maminka a tatínek pekli koláčky.
+
+### Přísudek (Př)
+
+[[přísudek|Přísudek]] podtrháváme **vlnovkou**, ptáme se: **co dělá podmět?**
+
+**Slovesa v přísudku:**
+- **sponová** – být, bývat, stát se, stávat se
+- **fázová** – začít, začínat, přestat, přestávat, zůstat, zůstávat
+- **způsobová** – moci, smět, muset, mít, chtít
 
 **Druhy přísudku:**
-
-| Druh | Popis | Příklad |
-| :-- | :-- | :-- |
-| jmenný se sponou | spona + jméno | Pavel se stal učitelem. |
-| jmenný beze spony | spona je vynechaná, můžeme si ji domyslet | Učení mučení. (je) |
-| jmenný se sponou složený | způsobové nebo fázové sloveso + spona v infinitivu + jméno | Petr začínal být nezdvořilý. |
-| citoslovečný | vyjádřený citoslovcem | Kočka hop na strom. |
-| slovesný jednoduchý | vyjádřený slovesem, může se objevit zájmeno se, si | Katka si češe vlasy. |
-| slovesný složený | způsobové nebo fázové sloveso + sloveso v infinitivu | Petr přestával dýchat. |
+- **jmenný se sponou** – spona + jméno (Pavel se stal učitelem.)
+- **jmenný beze spony** – spona je vynechaná, můžeme si ji domyslet (Učení mučení. – je)
+- **jmenný se sponou složený** – způsobové nebo fázové sloveso + spona v infinitivu + jméno (Petr začínal být nezdvořilý.)
+- **citoslovečný** – vyjádřený citoslovcem (Kočka hop na strom.)
+- **slovesný jednoduchý** – vyjádřený slovesem, může se objevit zájmeno se, si (Maminka pekla koláčky. Katka si češe vlasy.)
+- **slovesný složený** – fázové nebo způsobové sloveso + sloveso v infinitivu (Petr přestával dýchat.)
 
 ## Rozvíjející větné členy
 
-### [[přívlastek]] (Pk)
+### Přívlastek (Pk)
 
-- ptáme se: **jaký? který? čí?**
-- rozvíjí podstatné jméno
-- **shodný (PkS)** – vyjádřený 2., 3. a 4. slovním druhem
-  - př. plastové pravítko
-- **neshodný (PkN)** – vyjádřený 1., 5. a 6. slovním druhem
-  - př. pravítko z plastu
-- **postupně rozvíjející** – více přívlastků shodných za sebou
-  - př. nové moderní auto
-- **několikanásobný** – jeho části jsou rovnocenné a oddělené čárkou
-  - př. červené, modré a zelené auto
+[[přívlastek|Přívlastek]] rozvíjí podstatné jméno, ptáme se: **jaký? který? čí?**
 
-### [[předmět]] (Pt)
+- **shodný (PkS)** – vyjádřený 2., 3. a 4. slovním druhem (plastové pravítko)
+- **neshodný (PkN)** – vyjádřený 1., 5. a 6. slovním druhem (pravítko z plastu)
+- **postupně rozvíjející** – více přívlastků shodných za sebou (nové moderní auto)
+- **několikanásobný** – jeho části jsou rovnocenné a oddělené čárkou (červené, modré a zelené auto)
 
-- ptáme se **pouze pádovými otázkami kromě 1. a 5. pádu**
-- př. Babička pekla koláčky. (Pt/4)
+### Předmět (Pt)
 
-### [[příslovečné určení]] (PU)
+[[předmět|Předmět]]: ptáme se **pouze pádovými otázkami kromě 1. a 5. pádu** (Babička pekla koláčky. – Pt/4)
 
-| Druh | Zkratka | Otázka |
-| :-- | :-- | :-- |
-| času | PUČ | kdy? |
-| místa | PUM | kde? |
-| způsobu | PUZ | jak? |
-| míry | PUMÍRY | jak moc? kolik? |
-| příčiny | PUPŘÍČINY | proč? (odpovídáme: protože) |
-| účelu | PUU | proč? (odpovídáme: aby) |
-| podmínky | PUPODMÍNKY | za jaké podmínky? |
-| přípustky | PUPŘÍPUSTKY | přes co? |
+### Příslovečné určení (PU)
 
-### [[doplněk]] (Do)
+[[příslovečné určení|Příslovečné určení]]:
+- **času** (PUČ) – kdy?
+- **místa** (PUM) – kde?
+- **způsobu** (PUZ) – jak?
+- **míry** (PUMÍRY) – jak moc? kolik?
+- **příčiny** (PUPŘÍČINY) – proč? (odpovídáme: protože)
+- **účelu** (PUU) – proč? (odpovídáme: aby)
+- **podmínky** (PUPODMÍNKY) – za jaké podmínky?
+- **přípustky** (PUPŘÍPUSTKY) – přes co?
 
-- ptáme se: **jak (jméno + sloveso)?**
-- závisí na **dvou** větných členech!
-- př. Děvčata tančila bosa. (Jak děvčata tančila?)
+### Doplněk (Do)
+
+[[doplněk|Doplněk]]: ptáme se **jak (jméno + sloveso)?**; závisí na **dvou** větných členech! (Děvčata tančila bosa. – Jak děvčata tančila?)
 
 ## Přívlastek volný a těsný, přístavek
 
-**[[přístavek]]** – opakované označení téže skutečnosti, odděluje se čárkami
-- př. Karel IV., otec vlasti, založil Karlovu univerzitu.
+- **[[přístavek|Přístavek]]** – opakované označení téže skutečnosti, odděluje se čárkami (Karel IV., otec vlasti, založil Karlovu univerzitu.)
+- **Přívlastek volný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; můžeme jej z věty vypustit, aniž by se změnil její smysl; oddělen z obou stran čárkami (Noviny, dodávané i do našich schránek, se tisknou během noci.)
+- **Přívlastek těsný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; nemůžeme ho z věty vypustit, protože by se její smysl změnil (Studenti dosahující vynikajících výsledků bývají na naší škole odměněni.)
 
-**Přívlastek volný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; můžeme jej z věty vypustit, aniž by se změnil její smysl; oddělen z obou stran čárkami
-- př. Noviny, dodávané i do našich schránek, se tisknou během noci.
-
-**Přívlastek těsný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; nemůžeme ho z věty vypustit, protože by se její smysl změnil
-- př. Studenti dosahující vynikajících výsledků bývají na naší škole odměněni.
+Cvičení: [[Syntax_cviceni]]
