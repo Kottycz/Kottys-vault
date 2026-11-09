@@ -5,19 +5,19 @@
 ## Věta
 
 - **[[věta]]** – abstraktní model vztahů mezi slovy: [[podmět]] – [[přísudek]] – [[předmět]]
-- **[[výpověď]]** – realizace modelu věty v konkrétní komunikační situaci (Babička peče bábovku.)
-- **[[valence]]** – schopnost slov vázat na sebe další slova (míchat – kdo míchá? co míchá? – Petr míchá kávu.)
+- **[[výpověď]]** – realizace modelu věty v konkrétní komunikační situaci (<u style="text-decoration-color: blue">Babička</u> <span style="text-decoration: underline wavy red">peče</span> bábovku.)
+- **[[valence]]** – schopnost slov vázat na sebe další slova (míchat – kdo míchá? co míchá? – <u style="text-decoration-color: blue">Petr</u> <span style="text-decoration: underline wavy red">míchá</span> kávu.)
 
 ## Druhy vět
 
 - **[[věta|Věta jednočlenná]]** – má pouze [[přísudek]], [[podmět]] (TO, ONO) není
-  - atmosférické jevy: Prší.
-  - tělesné stavy: Píchá mě v boku.
-  - duševní stavy: Je mi smutno.
+  - atmosférické jevy: <span style="text-decoration: underline wavy red">Prší.</span>
+  - tělesné stavy: <span style="text-decoration: underline wavy red">Píchá</span> mě v boku.
+  - duševní stavy: <span style="text-decoration: underline wavy red">Je</span> mi <span style="text-decoration: underline wavy red">smutno</span>.
   
 - **[[věta|Věta dvojčlenná]]** – má [[podmět]] (vyjádřený, nevyjádřený, všeobecný) i [[přísudek]]
-  - Doktor pacientovi odebral krev.
-  - Máme hodně úkolů. (My)
+  - <u style="text-decoration-color: blue">Doktor</u> pacientovi <span style="text-decoration: underline wavy red">odebral</span> krev.
+  - <span style="text-decoration: underline wavy red">Máme</span> hodně úkolů. (My)
   
 - **[[větný ekvivalent|Větný ekvivalent]]** – nemá [[podmět]] ani [[přísudek]]
   - infinitiv: Stát!
@@ -74,7 +74,7 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 
 ### Předmět (Pt)
 
-[[předmět|Předmět]]: ptáme se **pouze pádovými otázkami kromě 1. a 5. pádu** (Babička pekla koláčky. – Pt/4)
+[[předmět|Předmět]]: ptáme se **pouze pádovými otázkami kromě 1. a 5. pádu** (<u style="text-decoration-color: blue">Babička</u> <span style="text-decoration: underline wavy red">pekla</span> koláčky. – Pt/4)
 
 ### Příslovečné určení (PU)
 
@@ -90,12 +90,12 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 
 ### Doplněk (Do)
 
-[[doplněk|Doplněk]]: ptáme se **jak (jméno + sloveso)?**; závisí na **dvou** větných členech! (Děvčata tančila bosa. – Jak děvčata tančila?)
+[[doplněk|Doplněk]]: ptáme se **jak (jméno + sloveso)?**; závisí na **dvou** větných členech! (<u style="text-decoration-color: blue">Děvčata</u> <span style="text-decoration: underline wavy red">tančila</span> bosa. – Jak <u style="text-decoration-color: blue">děvčata</u> <span style="text-decoration: underline wavy red">tančila</span>?)
 
 ## Přívlastek volný a těsný, přístavek
 
-- **[[přístavek|Přístavek]]** – opakované označení téže skutečnosti, odděluje se čárkami (Karel IV., otec vlasti, založil Karlovu univerzitu.)
-- **[[přívlastek|Přívlastek]] volný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; můžeme jej z věty vypustit, aniž by se změnil její smysl; oddělen z obou stran čárkami (Noviny, dodávané i do našich schránek, se tisknou během noci.)
-- **[[přívlastek|Přívlastek]] těsný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; nemůžeme ho z věty vypustit, protože by se její smysl změnil (Studenti dosahující vynikajících výsledků bývají na naší škole odměněni.)
+- **[[přístavek|Přístavek]]** – opakované označení téže skutečnosti, odděluje se čárkami (<u style="text-decoration-color: blue">Karel IV.</u>, otec vlasti, <span style="text-decoration: underline wavy red">založil</span> Karlovu univerzitu.)
+- **[[přívlastek|Přívlastek]] volný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; můžeme jej z věty vypustit, aniž by se změnil její smysl; oddělen z obou stran čárkami (<u style="text-decoration-color: blue">Noviny</u>, dodávané i do našich schránek, <span style="text-decoration: underline wavy red">se tisknou</span> během noci.)
+- **[[přívlastek|Přívlastek]] těsný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; nemůžeme ho z věty vypustit, protože by se její smysl změnil (<u style="text-decoration-color: blue">Studenti</u> dosahující vynikajících výsledků <span style="text-decoration: underline wavy red">bývají</span> na naší škole <span style="text-decoration: underline wavy red">odměněni</span>.)
 
 Cvičení: [[Syntax_cviceni]]
