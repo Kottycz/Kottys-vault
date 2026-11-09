@@ -48,8 +48,8 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 
 **Slovesa v přísudku:**
 - **sponová** – být, bývat, stát se, stávat se
-- **fázová** – začít, začínat, přestat, přestávat, zůstat, zůstávat
-- **způsobová** – moci, smět, muset, mít, chtít
+- **fázová** – začít, začínat, přestat, přestávat, zůstat, zůstávat (Začal posilovat.)
+- **způsobová** – moci, smět, muset, mít, chtít (Smím zůstat doma?)
 
 **Druhy přísudku:**
 - **jmenný se sponou** – spona + jméno (Pavel se stal učitelem.)
