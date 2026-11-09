@@ -22,7 +22,11 @@
 
 ## Gramatika
 - [[Morfologie]]
+- [[Syntax]]
 - [[Czech language/Gramatika/Lexikologie|Lexikologie]]
+
+## Cvičení
+- [[Syntax_cviceni]]
 
 ## Sloh
 - [[Prehled_funkcnich_stylu]]
@@ -35,4 +39,4 @@
 
 ## Slovníček pojmů
 
-[[Byron]] · [[Jungmann]] · [[adjektivum]] · [[alegorie]] · [[anarchismus]] · [[anafora]] · [[antonyma]] · [[apostrofa]] · [[archaismus]] · [[austroslavismus]] · [[balada]] · [[baroko]] · [[civilismus]] · [[dekadence]] · [[drama]] · [[elegie]] · [[elipsa]] · [[epifora]] · [[epigram]] · [[epika]] · [[epiteton]] · [[epizeuxis]] · [[epos]] · [[fejeton]] · [[frazém]] · [[funkční styl]] · [[historismus]] · [[homonyma]] · [[humanismus]] · [[hyperbola]] · [[impresionismus]] · [[inverze]] · [[ironie]] · [[klasicismus]] · [[Czech language/Slovnik/lexikologie]] · [[lumírovci]] · [[lyrika]] · [[metafora]] · [[máj (skupina)]] · [[naturalismus]] · [[neologismus]] · [[novela]] · [[novoromantismus]] · [[numerale]] · [[národní obrození]] · [[osvícenství]] · [[oxymóron]] · [[panslavismus]] · [[personifikace]] · [[poema]] · [[preromantismus]] · [[prokletí básníci]] · [[pronomen]] · [[přirovnání]] · [[realismus]] · [[Czech language/Slovnik/renesance]] · [[romance]] · [[romaneto]] · [[Czech language/Slovnik/romantismus]] · [[ruchovci]] · [[sarkasmus]] · [[slohový postup]] · [[sonet]] · [[substantivum]] · [[symbolismus]] · [[synekdocha]] · [[synonyma]] · [[verbum]] · [[vitalismus]] · [[vid slovesný]] · [[řečnická otázka]]
+[[Byron]] · [[Jungmann]] · [[syntax]] · [[věta]] · [[výpověď]] · [[valence]] · [[větný ekvivalent]] · [[podmět]] · [[přísudek]] · [[přívlastek]] · [[předmět]] · [[příslovečné určení]] · [[doplněk]] · [[přístavek]] · [[adjektivum]] · [[alegorie]] · [[anarchismus]] · [[anafora]] · [[antonyma]] · [[apostrofa]] · [[archaismus]] · [[austroslavismus]] · [[balada]] · [[baroko]] · [[civilismus]] · [[dekadence]] · [[drama]] · [[elegie]] · [[elipsa]] · [[epifora]] · [[epigram]] · [[epika]] · [[epiteton]] · [[epizeuxis]] · [[epos]] · [[fejeton]] · [[frazém]] · [[funkční styl]] · [[historismus]] · [[homonyma]] · [[humanismus]] · [[hyperbola]] · [[impresionismus]] · [[inverze]] · [[ironie]] · [[klasicismus]] · [[Czech language/Slovnik/lexikologie]] · [[lumírovci]] · [[lyrika]] · [[metafora]] · [[máj (skupina)]] · [[naturalismus]] · [[neologismus]] · [[novela]] · [[novoromantismus]] · [[numerale]] · [[národní obrození]] · [[osvícenství]] · [[oxymóron]] · [[panslavismus]] · [[personifikace]] · [[poema]] · [[preromantismus]] · [[prokletí básníci]] · [[pronomen]] · [[přirovnání]] · [[realismus]] · [[Czech language/Slovnik/renesance]] · [[romance]] · [[romaneto]] · [[Czech language/Slovnik/romantismus]] · [[ruchovci]] · [[sarkasmus]] · [[slohový postup]] · [[sonet]] · [[substantivum]] · [[symbolismus]] · [[synekdocha]] · [[synonyma]] · [[verbum]] · [[vitalismus]] · [[vid slovesný]] · [[řečnická otázka]]
