@@ -2,6 +2,10 @@
 
 TryHackMe: **FGP-Kybernetické hrozby**. Co je **[[hrozba|kybernetická hrozba]]**, jak se hrozby třídí, co je **[[CTI]]** a **[[OSINT]]** a jak se pracuje s nástroji **[[urlscan.io]]**, **[[abuse.ch]]** a **[[PhishTool]]**.
 
+## Největší hrozba současnosti?
+
+Úvodní komiks: lékař říká pacientovi, že je zdravý jako nikdy, ale „podle **umělé inteligence** budete za týden mrtvý". Pointa: slepá důvěra v AI a v data bez ověření je sama o sobě hrozba.
+
 ## Kybernetické hrozby
 
 **Kybernetická hrozba** = potenciální událost nebo akce, která může **zneužít zranitelnost** k útoku na systémy a data. Zdroj: kyberzločinci, malware, vnitřní hrozby, přírodní katastrofy.
@@ -72,6 +76,7 @@ Základní otázky: **Kdo útočí? Proč? Co umí? Na jaké stopy ([[IOC]]) si 
 **[[OSINT]] (Open Source Intelligence)** = sběr informací z **veřejně a legálně** dostupných zdrojů (weby, sociální sítě, registry, fóra, noviny, články).
 
 - žádné hackování ani nelegální získávání dat
+- typické nástroje a zdroje: **Nslookup, WHOIS, IANA, Shodan, Spokeo**, sociální sítě, vyhledávání obrázků, mapy, weby
 - využití: firmy (reputace, konkurence), státy a policie (zločin, terorismus), bezpečáci (zranitelnosti, útočníci)
 - pro CTI je OSINT hlavní zdroj
 
@@ -80,6 +85,11 @@ Základní otázky: **Kdo útočí? Proč? Co umí? Na jaké stopy ([[IOC]]) si 
 ### urlscan.io
 
 **[[urlscan.io]]** – bezplatné skenování a analýza webu. Po zadání URL zaznamená domény, IP adresy, načtené zdroje, snímek stránky a použité technologie.
+
+**Pozor na veřejné skeny** (schéma z místnosti):
+1. oběť dostane e-mailem odkaz s tajným údajem v URL (např. `?token=<secret>`)
+2. bezpečnostní systém (e-mail gateway, proxy) URL automaticky pošle k **veřejnému** skenu na urlscan.io
+3. útočník si ve veřejných výsledcích tajný údaj najde a zneužije
 
 | Záložka | Co ukazuje |
 | :-- | :-- |

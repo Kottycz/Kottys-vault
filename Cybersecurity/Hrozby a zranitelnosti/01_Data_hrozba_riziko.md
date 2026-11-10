@@ -11,7 +11,29 @@ TryHackMe: **FGP-Data,hrozba,riziko**. Základní pojmy: co jsou data a informac
 ## Úniky dat
 
 - **Únik dat (data breach)** – odcizení nebo zveřejnění dat, týká se milionů uživatelů a je čím dál častější
-- jen dva největší úniky 21. století zasáhly zhruba **3,5 miliardy lidí**
+- jen dva největší úniky 21. století zasáhly zhruba **3,5 miliardy lidí**, nejmenší z top 15 „jen" 134 milionů
+
+### Top 15 největších úniků dat 21. století
+
+| # | Firma | Kdy | Dopad | Pozn. |
+| :-- | :-- | :-- | :-- | :-- |
+| 1 | **Yahoo** | 2013–2014 | 3 miliardy účtů | útočníci „state-sponsored"; hodnota firmy při prodeji Verizonu klesla o ~350 mil. USD |
+| 2 | Sina Weibo | březen 2020 | 538 mil. účtů | čínský Twitter, data prodávána na dark webu za ~1 800 Kč |
+| 3 | Marriott | 2014–2018 | 500 mil. zákazníků | útočníci v systému Starwood 4 roky, čísla pasů a karet |
+| 4 | Adult Friend Finder | říjen 2016 | 412,2 mil. účtů | 99 % hesel prolomeno kvůli slabému **SHA-1** |
+| 5 | MySpace | 2013 | 360 mil. účtů | prodáno na dark webu za 6 BTC |
+| 6 | NetEase | říjen 2015 | 235 mil. účtů | e-maily a hesla v plaintextu |
+| 7 | Zynga | září 2019 | 218 mil. účtů | hacker Gnosticplayers, hesla SHA-1 |
+| 8 | LinkedIn | 2012 a 2016 | 165 mil. účtů | hesla SHA-1, prodáno za 5 BTC |
+| 9 | Dubsmash | prosinec 2018 | 162 mil. účtů | prodej na Dream Market |
+| 10 | Adobe | říjen 2013 | 153 mil. záznamů | hesla a údaje o kartách |
+| 11 | MyFitnessPal | únor 2018 | 150 mil. účtů | hesla SHA-1 i bcrypt |
+| 12 | Equifax | 29. 7. 2017 | 147,9 mil. zákazníků | **neopravená zranitelnost** webové aplikace, špatná segmentace sítě |
+| 13 | eBay | květen 2014 | 145 mil. uživatelů | ukradené přihlašovací údaje 3 zaměstnanců |
+| 14 | Canva | květen 2019 | 137 mil. účtů | hesla bcrypt, Gnosticplayers |
+| 15 | Heartland Payment Systems | březen 2008 | 134 mil. karet | **SQL injection**, firma vyřazena z PCI DSS |
+
+**Poučení:** slabé hashování hesel (SHA-1), neopravené zranitelnosti a ukradené účty zaměstnanců jsou nejčastější příčiny.
 
 ## Proč mají data hodnotu
 
@@ -23,6 +45,7 @@ TryHackMe: **FGP-Data,hrozba,riziko**. Základní pojmy: co jsou data a informac
 
 - **Data** – nezpracované prvky (čísla, text, obrázky), samy o sobě nemusí mít význam
 - **Informace** – data zasazená do **kontextu**, nesou srozumitelné a užitečné sdělení
+- informace = data, která nám **řeknou něco nového**; např. `3+2=5` je pro předškoláka informace, pro středoškoláka už ne
 
 ### Klasifikace dat a informací (podle obsahu)
 

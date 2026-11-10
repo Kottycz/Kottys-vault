@@ -2,11 +2,17 @@
 
 TryHackMe: **FGP-Základy zranitelností**. Co je **[[zranitelnost]]**, jaké jsou typy, jak se hodnotí (**[[CVSS]]**, **[[VPR]]**) a kde je hledat (**[[NVD]]**, **[[Exploit-DB]]**).
 
+## Penetrační testy
+
+- **Externí testy** – útok zvenku (přes internet)
+- **Interní testy** – zevnitř sítě: firewall, UTM, Wi-Fi, web, aplikace, mobilní aplikace, pracovní stanice, mobilní zařízení, zaměstnanci, uživatelé, hesla, informační systémy
+
 ## Co je zranitelnost
 
 **Zranitelnost** = slabina nebo chyba v **návrhu, implementaci nebo chování** systému či aplikace. Útočník ji zneužije k přístupu k informacím nebo k neoprávněným akcím.
 
 - **NIST:** „slabost v informačním systému, postupech, vnitřních kontrolách nebo implementaci, kterou může zneužít zdroj hrozby"
+- **NIST Cybersecurity Framework** – cyklus 5 funkcí: **Identifikovat → Chránit → Zjistit → Reagovat → Zotavit se**
 
 ### 5 kategorií zranitelností
 
@@ -28,7 +34,18 @@ TryHackMe: **FGP-Základy zranitelností**. Co je **[[zranitelnost]]**, jaké js
 
 - od roku **2005**, aktuálně **CVSSv3.1** (v4.0 se chystá), **zdarma a otevřený**, doporučuje ho NIST
 - skóre podle: jak snadno se dá zneužít, jestli existuje exploit, jak zasahuje do **CIA**
-- počítá se kalkulačkou
+- počítá se kalkulačkou z těchto metrik:
+
+| Metrika | Možnosti |
+| :-- | :-- |
+| **Vektor útoku** | síťový, sousední, lokální, fyzický |
+| **Složitost útoku** | nízká, vysoká |
+| **Požadovaná oprávnění** | žádná, nízká, vysoká |
+| **Interakce uživatele** | žádná, vyžadovaná |
+| **Rozsah** | změněný, nezměněný |
+| **Důvěrnost / Integrita / Dostupnost** | vysoká, nízká, žádná |
+
+Nejhorší kombinace: síťový útok, nízká složitost, žádná oprávnění, žádná interakce, vysoký dopad na CIA.
 
 | Hodnocení | Skóre |
 | :-- | :-- |
@@ -46,6 +63,7 @@ TryHackMe: **FGP-Základy zranitelností**. Co je **[[zranitelnost]]**, jaké js
 - moderní rámec firmy **Tenable**, **řízený rizikem** – jak velké riziko je to **pro danou organizaci**
 - když organizace zranitelný software nepoužívá, riziko se nepočítá
 - **dynamický** – skóre se mění skoro denně
+- jak vzniká: **1.** načtení dat (threat intel, exploit kity, data Tenable, NVD) → **2.** příprava funkcí → **3.** model hrozeb se **strojovým učením** → **4.** skóre hrozby → **5.** kombinace s CVSS (je-li k dispozici) → **6.** výsledné VPR (např. 9,6)
 - stupnice jako CVSS, ale **bez kategorie None** (Low 0,0–3,9 … Critical 9,0–10,0)
 - ✅ přes 150 faktorů, pomáhá s prioritou oprav
 - ❌ není open source, jen s komerční platformou, CIA řeší méně
