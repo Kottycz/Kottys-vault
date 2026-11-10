@@ -13,15 +13,15 @@ tags: [slovnik]
 
 ### Sedm vrstev
 
-| # | Vrstva | Co dělá | [[PDU]] |
-| :-- | :-- | :-- | :-- |
-| 7 | Aplikační | rozhraní pro aplikace ([[HTTP]], [[DNS]]) | Data |
-| 6 | Prezentační | formát, komprese, šifrování | Data |
-| 5 | Relační | navazuje a udržuje relace | Data |
-| 4 | Transportní | [[TCP]]/[[UDP]], [[port\|porty]] | Segment |
-| 3 | Síťová | [[IP adresa\|IP adresy]], směrování | Paket |
-| 2 | Spojová | [[MAC adresa\|MAC adresy]], rámce | Rámec |
-| 1 | Fyzická | signál na médiu | Bity |
+| #   | Vrstva      | Co dělá                                   | [[PDU]] |
+| :-- | :---------- | :---------------------------------------- | :------ |
+| 7   | Aplikační   | rozhraní pro aplikace ([[HTTP]], [[DNS]]) | Data    |
+| 6   | Prezentační | formát, komprese, šifrování               | Data    |
+| 5   | Relační     | navazuje a udržuje relace                 | Data    |
+| 4   | Transportní | [[TCP]]/[[UDP]], číslo [[port\|porty]]    | Segment |
+| 3   | Síťová      | [[IP adresa\|IP adresy]], směrování       | Paket   |
+| 2   | Spojová     | [[MAC adresa\|MAC adresy]], rámce         | Rámec   |
+| 1   | Fyzická     | signál na médiu                           | Bity    |
 
 ### Mnemotechnika (shora dolů)
 

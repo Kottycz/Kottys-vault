@@ -169,7 +169,7 @@ Základ: [[symbolismus]], [[impresionismus]], [[dekadence]], **volný verš**
 - *Splav* (1916) – vliv [[vitalismus|vitalismu]], **milostná lyrika**, oslava **mládí**, vztah k **přírodě**, protiválečné motivy
 
 
-![[Pasted image 20261105092645.png|487]]
+
 
 ---
 

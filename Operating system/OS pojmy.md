@@ -48,3 +48,10 @@ Přehled pojmů ve Slovníku, roztříděný podle témat.
 - [[pole]], [[spojový seznam]]
 - [[zásobník]], [[fronta]]
 - [[hašovací tabulka]], [[BST]]
+
+## Praxe – Windows Server
+
+- [[AD DS]], [[řadič domény]], [[FSMO]]
+- [[DNS záznam]], [[DHCP scope]]
+- [[OOBE]]
+- moduly: [[00_Priprava_OS]], [[01_AD_DS]], [[02_DHCP]], [[03_DNS]]

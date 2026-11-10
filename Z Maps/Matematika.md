@@ -8,7 +8,7 @@
 - [[05_Exponencialni_rovnice]]
 - [[06_Logaritmicka_funkce]]
 - [[07_Logaritmicke_rovnice]]
-- [[08_Opakovani_na_test]]
+- [[Opakovani_na_test]]
 
 ## Slovníček pojmů
 
