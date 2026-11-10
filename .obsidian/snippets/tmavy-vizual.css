@@ -49,8 +49,8 @@ body.theme-dark {
   --text-accent: #6fa9b4 !important;
   --text-accent-hover: #86bcc6 !important;
 
-  --h1-color: #6a9fd4 !important;
-  --h2-color: #5aa6a6 !important;
+  --h1-color: #2ec4b6 !important;
+  --h2-color: #5fc9bf !important;
   --h3-color: #7fb593 !important;
   --h4-color: #8da6c9 !important;
   --h5-color: #7fb5a6 !important;
@@ -62,10 +62,10 @@ body.theme-dark {
 }
 .theme-dark h1,
 .theme-dark .HyperMD-header-1,
-.theme-dark .cm-header-1 { color: #6a9fd4 !important; border-bottom-color: #4d7399 !important; }
+.theme-dark .cm-header-1 { color: #2ec4b6 !important; border-bottom-color: #1f8a80 !important; }
 .theme-dark h2,
 .theme-dark .HyperMD-header-2,
-.theme-dark .cm-header-2 { color: #5aa6a6 !important; }
+.theme-dark .cm-header-2 { color: #5fc9bf !important; }
 .theme-dark h3,
 .theme-dark .HyperMD-header-3,
 .theme-dark .cm-header-3 { color: #7fb593 !important; }
