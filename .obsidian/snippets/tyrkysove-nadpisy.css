@@ -1,0 +1,19 @@
+/* Tyrkysové hlavní nadpisy – platí pro světlý i tmavý režim a jakýkoli motiv */
+body {
+  --h1-color: #2ec4b6 !important;
+  --h2-color: #5fc9bf !important;
+  --inline-title-color: #2ec4b6 !important;
+}
+body .inline-title,
+body .markdown-rendered h1,
+body .markdown-source-view .HyperMD-header-1,
+body .markdown-source-view .cm-header-1,
+body .markdown-preview-view h1 {
+  color: #2ec4b6 !important;
+}
+body .markdown-rendered h2,
+body .markdown-source-view .HyperMD-header-2,
+body .markdown-source-view .cm-header-2,
+body .markdown-preview-view h2 {
+  color: #5fc9bf !important;
+}

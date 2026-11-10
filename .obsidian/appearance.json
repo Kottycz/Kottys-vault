@@ -3,7 +3,8 @@
   "cssTheme": "Primary",
   "enabledCssSnippets": [
     "nmap-tmave-diagramy",
-    "tmavy-vizual"
+    "tmavy-vizual",
+    "tyrkysove-nadpisy"
   ],
   "baseFontSize": 15,
   "baseFontSizeAction": true,
