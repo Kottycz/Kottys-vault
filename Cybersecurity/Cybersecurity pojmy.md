@@ -58,3 +58,13 @@ Přehled pojmů ve Slovníku, roztříděný podle typu.
 
 - [[tor|TOR]], [[onion routing|Onion routing]]
 - [[dark web|Dark web]], [[fingerprinting|Fingerprinting]]
+
+## Hrozby a zranitelnosti
+
+- Zápisy: [[01_Data_hrozba_riziko|Data, hrozba, riziko]], [[02_Kyberneticke_hrozby_a_CTI|Kybernetické hrozby a CTI]], [[03_Zaklady_zranitelnosti|Základy zranitelností]]
+- Základní pojmy: [[hrozba|Hrozba]], [[zranitelnost|Zranitelnost]], [[riziko|Riziko]], [[APT]]
+- Data: [[klasifikace dat|Klasifikace dat]], [[PII]], [[PHI]], [[SIEM]]
+- Zranitelnosti: [[exploit|Exploit]], [[PoC]], [[CVE]], [[CVSS]], [[VPR]], [[NVD]], [[Exploit-DB]]
+- Threat intelligence: [[CTI]], [[TTP]], [[OSINT]], [[IOC]], [[botnet|Botnet]], [[C2]]
+- Nástroje: [[urlscan.io]], [[abuse.ch]], [[PhishTool]]
+- E-mail: [[phishing|Phishing]], [[SPF]], [[DKIM]], [[DMARC]]
