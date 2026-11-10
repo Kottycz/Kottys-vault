@@ -4,14 +4,16 @@ TryHackMe: **FGP-Základy zranitelností**. Co je **[[zranitelnost]]**, jaké js
 
 ## Penetrační testy
 
+[[penetrační test|Penetrační test]] = řízený útok na vlastní systém se svolením.
+
 - **Externí testy** – útok zvenku (přes internet)
-- **Interní testy** – zevnitř sítě: firewall, UTM, Wi-Fi, web, aplikace, mobilní aplikace, pracovní stanice, mobilní zařízení, zaměstnanci, uživatelé, hesla, informační systémy
+- **Interní testy** – zevnitř sítě: [[firewall]], [[UTM]], Wi-Fi, web, aplikace, mobilní aplikace, pracovní stanice, mobilní zařízení, zaměstnanci, uživatelé, hesla, informační systémy
 
 ## Co je zranitelnost
 
 **Zranitelnost** = slabina nebo chyba v **návrhu, implementaci nebo chování** systému či aplikace. Útočník ji zneužije k přístupu k informacím nebo k neoprávněným akcím.
 
-- **NIST:** „slabost v informačním systému, postupech, vnitřních kontrolách nebo implementaci, kterou může zneužít zdroj hrozby"
+- **[[NIST]]:** „slabost v informačním systému, postupech, vnitřních kontrolách nebo implementaci, kterou může zneužít zdroj hrozby"
 - **NIST Cybersecurity Framework** – cyklus 5 funkcí: **Identifikovat → Chránit → Zjistit → Reagovat → Zotavit se**
 
 ### 5 kategorií zranitelností
@@ -22,7 +24,7 @@ TryHackMe: **FGP-Základy zranitelností**. Co je **[[zranitelnost]]**, jaké js
 | **(Mis)konfigurace** | špatně nastavená aplikace nebo služba | web ukazuje údaje zákazníků |
 | **Slabé / výchozí přihlašovací údaje** | výchozí jméno a heslo | `admin` / `admin` |
 | **Aplikační logika** | špatně navržená aplikace | obejití přihlášení přes cookies |
-| **Lidský faktor** | zneužití lidského chování | phishing |
+| **Lidský faktor** | zneužití lidského chování | [[phishing]] |
 
 ## Hodnocení zranitelností
 
@@ -33,7 +35,7 @@ TryHackMe: **FGP-Základy zranitelností**. Co je **[[zranitelnost]]**, jaké js
 ### CVSS (Common Vulnerability Scoring System)
 
 - od roku **2005**, aktuálně **CVSSv3.1** (v4.0 se chystá), **zdarma a otevřený**, doporučuje ho NIST
-- skóre podle: jak snadno se dá zneužít, jestli existuje exploit, jak zasahuje do **CIA**
+- skóre podle: jak snadno se dá zneužít, jestli existuje exploit, jak zasahuje do **[[cia_triada|CIA]]**
 - počítá se kalkulačkou z těchto metrik:
 
 | Metrika | Možnosti |
@@ -60,7 +62,7 @@ Nejhorší kombinace: síťový útok, nízká složitost, žádná oprávnění
 
 ### VPR (Vulnerability Priority Rating)
 
-- moderní rámec firmy **Tenable**, **řízený rizikem** – jak velké riziko je to **pro danou organizaci**
+- moderní rámec firmy **Tenable**, **řízený rizikem** – jak velké [[riziko]] je to **pro danou organizaci**
 - když organizace zranitelný software nepoužívá, riziko se nepočítá
 - **dynamický** – skóre se mění skoro denně
 - jak vzniká: **1.** načtení dat (threat intel, exploit kity, data Tenable, NVD) → **2.** příprava funkcí → **3.** model hrozeb se **strojovým učením** → **4.** skóre hrozby → **5.** kombinace s CVSS (je-li k dispozici) → **6.** výsledné VPR (např. 9,6)
@@ -91,7 +93,7 @@ Nejhorší kombinace: síťový útok, nízká složitost, žádná oprávnění
 
 ## Postup při hledání zranitelnosti
 
-1. **Version Disclosure** – aplikace prozradí název a verzi (např. **Apache Tomcat 9.0.17**)
+1. **[[Version Disclosure]]** – aplikace prozradí název a verzi (např. **Apache Tomcat 9.0.17**)
 2. hledat verzi v **Exploit-DB** → pro Tomcat 9.0.17 vyšlo **5 exploitů**
 3. vybrat exploit a použít ho
 

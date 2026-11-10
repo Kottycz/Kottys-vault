@@ -8,7 +8,7 @@ TryHackMe: **FGP-Kybernetické hrozby**. Co je **[[hrozba|kybernetická hrozba]]
 
 ## Kybernetické hrozby
 
-**Kybernetická hrozba** = potenciální událost nebo akce, která může **zneužít zranitelnost** k útoku na systémy a data. Zdroj: kyberzločinci, malware, vnitřní hrozby, přírodní katastrofy.
+**Kybernetická hrozba** = potenciální událost nebo akce, která může **zneužít [[zranitelnost]]** k útoku na systémy a data. Zdroj: kyberzločinci, malware, vnitřní hrozby, přírodní katastrofy.
 
 ### Základní rozdělení
 
@@ -31,15 +31,15 @@ TryHackMe: **FGP-Kybernetické hrozby**. Co je **[[hrozba|kybernetická hrozba]]
   - **technické chyby** – selhání HW, chyby SW
 - **Podle působení** – **vnitřní** (zaměstnanci) × **vnější** (hackeři, konkurence, organizovaný zločin)
 - **Podle cíle**
-  - útoky na **[[cia_triada|CIA triádu]]** – důvěrnost (krádež dat), integrita (změna dat), dostupnost (DDoS)
+  - útoky na **[[cia_triada|CIA triádu]]** – důvěrnost (krádež dat), integrita (změna dat), dostupnost ([[DoS-DDoS|DDoS]])
   - útoky na **lidi** (sociální inženýrství, phishing), **technologie** (HW, sítě, SW), **procesy**
 - seznam hrozeb je i v **příloze č. 3 vyhlášky o kybernetické bezpečnosti**
 
 ### 8 hlavních hrozeb podle ENISA
 
-1. **Ransomware** – zašifruje data a chce výkupné
-2. **Malware** – škodlivý software
-3. **Sociální inženýrství** – zneužití lidské chyby
+1. **[[ransomware|Ransomware]]** – zašifruje data a chce výkupné
+2. **[[malware|Malware]]** – škodlivý software
+3. **[[sociální inženýrství|Sociální inženýrství]]** – zneužití lidské chyby
 4. **Hrozby proti datům** – únik a zveřejnění dat
 5. **DoS** – odepření služby
 6. **Internetové hrozby** – narušení dostupnosti internetu jako celku
@@ -67,7 +67,7 @@ Základní otázky: **Kdo útočí? Proč? Co umí? Na jaké stopy ([[IOC]]) si 
 | **Strategická** | vedení – trendy a vzory |
 | **Taktická** | TTP útočníků, posílení bezpečnostních kontrol |
 | **Operační** | konkrétní kampaně, motivace a záměry útočníků |
-| **Technická** | konkrétní indikátory – **IP adresy, URL, hashe** |
+| **Technická** | konkrétní indikátory – **IP adresy, [[URL]], [[hash\|hashe]]** |
 
 **Výhody:** proaktivní bezpečnost, lepší detekce, **rychlá reakce**, ochrana před budoucími hrozbami.
 
@@ -76,7 +76,7 @@ Základní otázky: **Kdo útočí? Proč? Co umí? Na jaké stopy ([[IOC]]) si 
 **[[OSINT]] (Open Source Intelligence)** = sběr informací z **veřejně a legálně** dostupných zdrojů (weby, sociální sítě, registry, fóra, noviny, články).
 
 - žádné hackování ani nelegální získávání dat
-- typické nástroje a zdroje: **Nslookup, WHOIS, IANA, Shodan, Spokeo**, sociální sítě, vyhledávání obrázků, mapy, weby
+- typické nástroje a zdroje: **[[nslookup|Nslookup]], [[WHOIS]], [[IANA]], [[Shodan]], Spokeo**, sociální sítě, vyhledávání obrázků, mapy, weby
 - využití: firmy (reputace, konkurence), státy a policie (zločin, terorismus), bezpečáci (zranitelnosti, útočníci)
 - pro CTI je OSINT hlavní zdroj
 
@@ -94,7 +94,7 @@ Základní otázky: **Kdo útočí? Proč? Co umí? Na jaké stopy ([[IOC]]) si 
 | Záložka | Co ukazuje |
 | :-- | :-- |
 | **Summary** | IP, registrace domény, historie, snímek |
-| **HTTP** | HTTP spojení a stažená data |
+| **[[HTTP]]** | HTTP spojení a stažená data |
 | **Redirects** | přesměrování |
 | **Links** | odkazy z hlavní stránky |
 | **Behaviour** | proměnné a cookies (prozradí framework) |
@@ -106,18 +106,18 @@ Základní otázky: **Kdo útočí? Proč? Co umí? Na jaké stopy ([[IOC]]) si 
 
 | Platforma | K čemu |
 | :-- | :-- |
-| **MalwareBazaar** | databáze vzorků malwaru, upload a lov (YARA, ClamAV, tagy) |
+| **MalwareBazaar** | databáze vzorků malwaru, upload a lov ([[YARA]], ClamAV, tagy) |
 | **FeodoTracker** | **[[C2]] servery** botnetů (Dridex, Emotet, TrickBot, QakBot) |
-| **SSL Blacklist** | škodlivé SSL certifikáty a **JA3 otisky** C2 komunikace |
+| **[[TLS\|SSL]] Blacklist** | škodlivé SSL certifikáty a **[[JA3]] otisky** C2 komunikace |
 | **URLhaus** | URL, které šíří malware |
-| **ThreatFox** | sdílení a export **[[IOC]]** (MISP, Suricata, JSON, CSV) |
+| **ThreatFox** | sdílení a export **[[IOC]]** ([[MISP]], Suricata, JSON, CSV) |
 
 ### PhishTool
 
 **[[PhishTool]]** – analýza **[[phishing|phishingových]]** e-mailů (verze Community a Enterprise).
 
 - **Headers** – odesílatel, příjemce, IP, časy
-- **Received Lines** – cesta e-mailu přes SMTP servery (= počet **skoků**)
+- **Received Lines** – cesta e-mailu přes [[SMTP]] servery (= počet **skoků**)
 - **X-headers** – rozšířené hlavičky
 - **Security** – **[[SPF]]**, **[[DKIM]]**, **[[DMARC]]**
 - **Attachments**, **Message URLs** – přílohy a odkazy k prověření
@@ -144,7 +144,7 @@ grep -ic "^received:" Email1.eml       # počet Received = počet skoků
 | Hlavní IP TryHackMe | **2606:4700:10::ac43:1b0a** |
 | Alias malwaru u IOC 212.192.246.30:5555 (ThreatFox) | **Katana** |
 | Malware s JA3 51c64c77e60f3980eea90869b68c58a8 | **Dridex** |
-| Síť s ASN AS14061 (URLhaus) | **DIGITALOCEAN-ASN** |
+| Síť s [[ASN]] AS14061 (URLhaus) | **DIGITALOCEAN-ASN** |
 | Země IP 178.134.47.166 (FeodoTracker) | **Georgia** |
 | Email1 – za koho se útočník vydává | **LinkedIn** |
 | Email1 – odesílatel | **darkabutla@sc500.whpservers.com** |

@@ -5,12 +5,12 @@ TryHackMe: **FGP-Data,hrozba,riziko**. Základní pojmy: co jsou data a informac
 | # | Místnost | Téma |
 | :-- | :-- | :-- |
 | 1 | Data, hrozba, riziko | data, klasifikace, hrozba × zranitelnost × riziko |
-| 2 | [[02_Kyberneticke_hrozby_a_CTI\|Kybernetické hrozby]] | typy hrozeb, CTI, OSINT nástroje |
-| 3 | [[03_Zaklady_zranitelnosti\|Základy zranitelností]] | typy zranitelností, CVSS/VPR, NVD, Exploit-DB |
+| 2 | [[02_Kyberneticke_hrozby_a_CTI\|Kybernetické hrozby]] | typy hrozeb, [[CTI]], [[OSINT]] nástroje |
+| 3 | [[03_Zaklady_zranitelnosti\|Základy zranitelností]] | typy zranitelností, [[CVSS]]/[[VPR]], [[NVD]], [[Exploit-DB]] |
 
 ## Úniky dat
 
-- **Únik dat (data breach)** – odcizení nebo zveřejnění dat, týká se milionů uživatelů a je čím dál častější
+- **[[únik dat|Únik dat]] (data breach)** – odcizení nebo zveřejnění dat, týká se milionů uživatelů a je čím dál častější
 - jen dva největší úniky 21. století zasáhly zhruba **3,5 miliardy lidí**, nejmenší z top 15 „jen" 134 milionů
 
 ### Top 15 největších úniků dat 21. století
@@ -20,7 +20,7 @@ TryHackMe: **FGP-Data,hrozba,riziko**. Základní pojmy: co jsou data a informac
 | 1 | **Yahoo** | 2013–2014 | 3 miliardy účtů | útočníci „state-sponsored"; hodnota firmy při prodeji Verizonu klesla o ~350 mil. USD |
 | 2 | Sina Weibo | březen 2020 | 538 mil. účtů | čínský Twitter, data prodávána na dark webu za ~1 800 Kč |
 | 3 | Marriott | 2014–2018 | 500 mil. zákazníků | útočníci v systému Starwood 4 roky, čísla pasů a karet |
-| 4 | Adult Friend Finder | říjen 2016 | 412,2 mil. účtů | 99 % hesel prolomeno kvůli slabému **SHA-1** |
+| 4 | Adult Friend Finder | říjen 2016 | 412,2 mil. účtů | 99 % hesel prolomeno kvůli slabému **[[hash\|SHA-1]]** |
 | 5 | MySpace | 2013 | 360 mil. účtů | prodáno na dark webu za 6 BTC |
 | 6 | NetEase | říjen 2015 | 235 mil. účtů | e-maily a hesla v plaintextu |
 | 7 | Zynga | září 2019 | 218 mil. účtů | hacker Gnosticplayers, hesla SHA-1 |
@@ -31,7 +31,7 @@ TryHackMe: **FGP-Data,hrozba,riziko**. Základní pojmy: co jsou data a informac
 | 12 | Equifax | 29. 7. 2017 | 147,9 mil. zákazníků | **neopravená zranitelnost** webové aplikace, špatná segmentace sítě |
 | 13 | eBay | květen 2014 | 145 mil. uživatelů | ukradené přihlašovací údaje 3 zaměstnanců |
 | 14 | Canva | květen 2019 | 137 mil. účtů | hesla bcrypt, Gnosticplayers |
-| 15 | Heartland Payment Systems | březen 2008 | 134 mil. karet | **SQL injection**, firma vyřazena z PCI DSS |
+| 15 | Heartland Payment Systems | březen 2008 | 134 mil. karet | **[[SQL injection]]**, firma vyřazena z [[PCI DSS]] |
 
 **Poučení:** slabé hashování hesel (SHA-1), neopravené zranitelnosti a ukradené účty zaměstnanců jsou nejčastější příčiny.
 
@@ -66,7 +66,7 @@ TryHackMe: **FGP-Data,hrozba,riziko**. Základní pojmy: co jsou data a informac
 | **Důvěrné** | zveřejnění organizaci poškodí |
 | **Vysoce důvěrné** | zveřejnění způsobí značné škody |
 
-- pomáhá plnit předpisy a standardy: **GDPR, HIPAA, PCI DSS, NIST, ISO 27001**
+- pomáhá plnit předpisy a standardy: **[[GDPR]], [[HIPAA]], PCI DSS, [[NIST]], [[ISO 27001]]**
 
 ### Životní cyklus dat
 
@@ -81,9 +81,9 @@ Zkráceně: data jsou **uložená**, **přenášená** nebo **používaná** –
 ### Ochrana dat
 
 - **Šifrování** – při přenosu i v klidu
-- **Kontrola přístupu** – role, oprávnění, **MFA**
+- **Kontrola přístupu** – role, oprávnění, **[[MFA]]**
 - **Bezpečnostní monitorování** – audit přístupů, **[[SIEM]]** pro detekci anomálií
-- **Zálohování a obnova** – plán obnovy po havárii (Disaster Recovery Plan)
+- **Zálohování a obnova** – plán obnovy po havárii ([[DRP|Disaster Recovery Plan]])
 
 Strategie: identifikovat a klasifikovat data → **hodnotit rizika** → bezpečnostní politika → školení lidí.
 
@@ -99,12 +99,12 @@ Strategie: identifikovat a klasifikovat data → **hodnotit rizika** → bezpeč
 
 | Pojem | Definice | Analogie s domem |
 | :-- | :-- | :-- |
-| **[[hrozba\|Hrozba]]** | potenciální událost nebo aktér, který může zneužít zranitelnost a ohrozit CIA (útok, lidská chyba, přírodní katastrofa) | někdo se vloupá a odnese věci |
+| **[[hrozba\|Hrozba]]** | potenciální událost nebo aktér, který může zneužít zranitelnost a ohrozit [[cia_triada\|CIA]] (útok, lidská chyba, přírodní katastrofa) | někdo se vloupá a odnese věci |
 | **[[zranitelnost\|Zranitelnost]]** | slabina nebo chyba v systému, aplikaci nebo procesu (chyba v SW, špatná konfigurace, návrh) | rozbitý zámek, otevřené okno |
 | **[[riziko\|Riziko]]** | pravděpodobnost, že hrozba zneužije zranitelnost, a jak velká bude škoda | čtvrť s vysokou kriminalitou, chybí alarm |
 
 - **riziko = pravděpodobnost × dopad**
-- příklad: nemocniční databáze má známou zranitelnost a vyšel na ni **exploit** → hrozba je reálná, je třeba zhodnotit riziko a naplánovat opravu
+- příklad: nemocniční databáze má známou zranitelnost a vyšel na ni **[[exploit]]** → hrozba je reálná, je třeba zhodnotit riziko a naplánovat opravu
 
 ## Otázky z místnosti
 
