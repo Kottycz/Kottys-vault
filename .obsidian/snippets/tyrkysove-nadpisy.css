@@ -1,19 +1,12 @@
-/* Tyrkysové hlavní nadpisy – platí pro světlý i tmavý režim a jakýkoli motiv */
+/* Matně tyrkysové největší nadpisy (H1 + název souboru) – světlý i tmavý režim */
 body {
-  --h1-color: #2ec4b6 !important;
-  --h2-color: #5fc9bf !important;
-  --inline-title-color: #2ec4b6 !important;
+  --h1-color: #5a9c96 !important;
+  --inline-title-color: #5a9c96 !important;
 }
 body .inline-title,
 body .markdown-rendered h1,
 body .markdown-source-view .HyperMD-header-1,
 body .markdown-source-view .cm-header-1,
 body .markdown-preview-view h1 {
-  color: #2ec4b6 !important;
-}
-body .markdown-rendered h2,
-body .markdown-source-view .HyperMD-header-2,
-body .markdown-source-view .cm-header-2,
-body .markdown-preview-view h2 {
-  color: #5fc9bf !important;
+  color: #5a9c96 !important;
 }
