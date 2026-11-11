@@ -18,6 +18,7 @@
 
 ## Příprava na testy
 - [[Bezruc_Slezske_pisne|Bezruč – Slezské písně (rozbor)]]
+- [[Moderna_smery_a_dila|Moderna a Česká moderna – směry, autoři, díla]]
 
 
 ## Gramatika
