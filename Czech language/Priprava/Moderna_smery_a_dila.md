@@ -51,26 +51,34 @@ Přelom 19. a 20. století. Odklon od společenských problémů ([[realismus|re
 **[[novoromantismus|Novoromantismus]]** – napětí mezi realitou a ideálem
 - Viktor Dyk – *Krysař*
 
-## Autor → dílo
+## Autor → dílo → směr
 
 ### Zahraniční
 
-| Autor | Směr | Dílo |
+| Autor | Dílo | Směr |
 | :-- | :-- | :-- |
-| Charles Baudelaire (1821–1867) | prokletí básníci, dekadence | *Květy zla* (1857), báseň *Zdechlina* |
-| Paul Verlaine (1844–1896) | prokletí básníci, symbolismus | *Moudrost*, *Písně beze slov* |
-| Jean Arthur Rimbaud (1854–1891) | prokletí básníci | *Opilý koráb* (1871) |
-| Oscar Wilde (1854–1900) | dekadence, dandysmus | *Obraz Doriana Graye*, *Pohádky pro dospělé* (*Šťastný princ*) |
-| Walt Whitman (1819–1892) | civilismus | *Stébla trávy* (volný verš) |
-| Jules Verne (1828–1905) | mimo modernu | *Pět neděl v balóně*, *Ze Země na Měsíc*, *Dva roky prázdnin*, *Dvacet tisíc mil pod mořem* |
+| Charles Baudelaire (1821–1867) | *Květy zla* (1857), báseň *Zdechlina* | prokletí básníci, dekadence |
+| Paul Verlaine (1844–1896) | *Moudrost*, *Písně beze slov* | prokletí básníci, symbolismus |
+| Jean Arthur Rimbaud (1854–1891) | *Opilý koráb* (1871) | prokletí básníci, symbolismus |
+| Oscar Wilde (1854–1900) | *Obraz Doriana Graye*, *Pohádky pro dospělé* (*Šťastný princ*) | dekadence (dandysmus) |
+| Walt Whitman (1819–1892) | *Stébla trávy* | civilismus (volný verš) |
+| Jules Verne (1828–1905) | *Pět neděl v balóně*, *Ze Země na Měsíc*, *Dva roky prázdnin*, *Dvacet tisíc mil pod mořem* | mimo modernu (vědecko-fantastický román) |
 
 ### Čeští
 
-| Autor | Směr | Dílo |
+| Autor | Dílo | Směr |
 | :-- | :-- | :-- |
-| Antonín Sova (1864–1928) | impresionismus, symbolismus | *Květy intimních nálad* (1891), *Z mého kraje* (1893), *Vybouřené smutky* (1897), *Ještě jednou se vrátíme* (1900) |
-| Otokar Březina (1868–1929) | dekadence → symbolismus | *Tajemné dálky* (1895), *Svítání na západě* (1896), *Větry od pólů* (1897), *Stavitelé chrámů* (1899), *Ruce* (1901) |
-| Petr Bezruč (1867–1958) | anarchismus | *Slezské písně* (1909) – [[Bezruc_Slezske_pisne\|rozbor]] |
-| S. K. Neumann (1875–1947) | dekadence, civilismus, vitalismus, anarchismus | *Satanova sláva mezi námi* (1897), *Kniha lesů, vod a strání* (1914), *Nové zpěvy* (1918) |
-| Viktor Dyk (1877–1931) | anarchismus, dekadence, novoromantismus | *A porta inferi* (1897), *Krysař* (1915), *Válečná tetralogie* (1915/22) |
-| Fráňa Šrámek (1877–1952) | anarchismus, vitalismus | *Života bído, přec tě mám rád* (1905), *Modrý a rudý* (1906), *Splav* (1916) |
+| Antonín Sova (1864–1928) | *Květy intimních nálad* (1891), *Z mého kraje* (1893) | impresionismus |
+| | *Vybouřené smutky* (1897), *Ještě jednou se vrátíme* (1900) | symbolismus |
+| Otokar Březina (1868–1929) | *Tajemné dálky* (1895), *Svítání na západě* (1896) | dekadence |
+| | *Větry od pólů* (1897), *Stavitelé chrámů* (1899), *Ruce* (1901) | symbolismus |
+| Petr Bezruč (1867–1958) | *Slezské písně* (1909) – [[Bezruc_Slezske_pisne\|rozbor]] | anarchismus |
+| S. K. Neumann (1875–1947) | *Satanova sláva mezi námi* (1897) | dekadence, anarchismus |
+| | *Kniha lesů, vod a strání* (1914) | vitalismus |
+| | *Nové zpěvy* (1918) | civilismus |
+| Viktor Dyk (1877–1931) | *A porta inferi* (1897) | dekadence, symbolismus, anarchismus |
+| | *Krysař* (1915) | novoromantismus, dekadence |
+| | *Válečná tetralogie* (1915/22) | politická poezie (1. světová válka) |
+| Fráňa Šrámek (1877–1952) | *Života bído, přec tě mám rád* (1905) | dekadence, buřičství |
+| | *Modrý a rudý* (1906) | anarchismus (antimilitarismus) |
+| | *Splav* (1916) | vitalismus |
