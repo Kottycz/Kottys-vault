@@ -66,3 +66,7 @@ Příklad rozdělení: čtyři podsítě `/27` přiřazeny lokálním [[LAN]] s�
 - Servery přístupné z internetu
 - Zprostředkující zařízení
 - Brána
+
+## Subnetting
+
+Postup a cvičení: [[Subnetting]], [[Subnetting - cvičení]].

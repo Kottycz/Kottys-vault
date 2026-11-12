@@ -4,7 +4,7 @@ aliases: [Process Concept, Pojem procesu]
 
 # Pojem procesu
 
-Staré počítače spouštěly vždy jen jeden program s plnou kontrolou nad systémem. Dnešní systémy nahrávají do paměti a spouští víc programů zároveň – to vyžaduje pevnější kontrolu a oddělení jednotlivých programů. Vznikl pojem **[[proces]]** = program v běhu, základní jednotka práce moderního časově sdíleného systému.
+ Vznikl pojem **[[proces]]** = program v běhu, základní jednotka práce moderního časově sdíleného systému.
 
 Systém se skládá ze **systémových procesů** (kód OS) a **uživatelských procesů** (kód uživatele) – všechny mohou běžet zdánlivě souběžně, protože se CPU mezi nimi přepíná.
 
@@ -56,15 +56,15 @@ Názvy stavů se liší systém od systému, ale samotné stavy se vyskytují v�
 
 ### Přechody mezi stavy
 
-| Přechod | Z → do | Význam |
-| :-- | :-- | :-- |
-| **admitted** | New → Ready | proces je vytvořen a zařazen do **ready queue** |
-| **ready queue** | Ready | **řada připravených procesů** – čekají na přidělení procesoru |
-| **scheduler dispatch** | Ready → Running | **plánovač** ([[plánování procesů\|scheduler]]) vybere proces z ready queue a **dispatcher** mu přidělí procesor |
-| **interrupt** | Running → Ready | **přerušení** (např. vyprší časové kvantum nebo přijde událost) – proces se vrátí do ready queue |
-| **I/O or event wait** | Running → Waiting | proces čeká na dokončení I/O operace nebo na událost (např. čtení z disku) a procesor nepotřebuje |
-| **I/O or event completion** | Waiting → Ready | čekání skončilo, proces se vrací do ready queue |
-| **exit** | Running → Terminated | proces **skončil** úkol, nebo byl **ukončen (kill)** |
+| Přechod                     | Z → do               | Význam                                                                                                           |
+| :-------------------------- | :------------------- | :--------------------------------------------------------------------------------------------------------------- |
+| **admitted**                | New → Ready          | proces je vytvořen a zařazen do **ready queue**                                                                  |
+| **ready queue**             | Ready                | **řada připravených procesů** – čekají na přidělení procesoru                                                    |
+| **scheduler dispatch**      | Ready → Running      | **plánovač** ([[plánování procesů\|scheduler]]) vybere proces z ready queue a **dispatcher** mu přidělí procesor |
+| **interrupt**               | Running → Ready      | **přerušení** (např. vyprší časové kvantum nebo přijde událost) – proces se vrátí do ready queue                 |
+| **I/O or event wait**       | Running → Waiting    | proces čeká na dokončení I/O operace nebo na událost (např. čtení z disku) a procesor nepotřebuje                |
+| **I/O or event completion** | Waiting → Ready      | čekání skončilo, proces se vrací do ready queue                                                                  |
+| **exit**                    | Running → Terminated | proces **skončil** úkol, nebo byl **ukončen (kill)**                                                             |
 
 Z **Running** tedy proces jde buď do **Terminated** (hotovo / kill), do **Waiting** (čeká na I/O), nebo zpět do **Ready** (interrupt).
 
@@ -90,35 +90,5 @@ PCB je jakási **karta procesu** – operační systém si v ní drží vše pot
 | **Accounting information** | spotřebovaný čas CPU, časové limity, čísla úloh (správce uloh)                         |
 | **etc.**                   | další údaje (např. správa paměti)                                                      |
 
-Při přepnutí CPU z jednoho procesu na jiný (**context switch**) se uloží PCB starého procesu a načte PCB nového – tím se obnoví přesně tam, kde proces skončil.
-
-**CPU Switch from Process to Process (Contex switch)**
-
-![[6c9fade4fee92377f108cb2f3ca3222d36175e575a2dc9e56a24d8e0da08025a.png]]
-
-**Context switch** = přepnutí procesoru z jednoho procesu na druhý (na obrázku **P0** a **P1**, uprostřed jejich **PCB0** a **PCB1**).
-
-1. **P0 běží** – procesor vykonává jeho instrukce
-2. přijde **přerušení** nebo **systémové volání** (např. vyprší čas, nebo proces čeká na disk)
-3. **uloží se stav P0 do PCB0** – program counter, registry, stav procesu
-4. **načte se stav P1 z PCB1** – procesor dostane zpět registry a program counter procesu P1
-5. **P1 běží**, P0 zatím čeká (idle)
-6. později se to stane obráceně: uloží se PCB1, načte PCB0 a P0 pokračuje přesně tam, kde skončil
-
-*Stručně: uložit PCB starého procesu, načíst PCB nového.*
-
-**Pozor:** během přepnutí se nepočítá nic užitečného, systém jen ukládá a načítá → je to **režie**, proto se nechce přepínat zbytečně často.
-
-## Vlákna (Threads)
-
-Model popsaný výše předpokládá, že proces vykonává jen **jedno vlákno instrukcí najednou** (jedno vlákno řízení = může dělat jen jednu věc – např. nemůže psát text a zároveň kontrolovat pravopis v rámci jednoho procesu). Většina moderních OS ale umožňuje procesu mít **víc vláken (threads)** a dělat tak víc věcí najednou – výhodné hlavně na vícejádrových systémech, kde vlákna běží skutečně paralelně.
-
-U systémů podporujících vlákna se PCB rozšiřuje o informace pro **každé vlákno zvlášť**.
-
-![[3c8ca1f9558e193bfa957004af203bfb507bc6bf595dd03ee744ac5c5b73e65e.jpg]]
-
-## Reprezentace procesu v Linuxu
-
-![[aab99856603b139593c8b43b1cb1f002496809c5a0f1a27b65bb5725115895df.PNG]]
 
 **Souvisí:** [[proces]], [[registr]], [[zásobník]], [[přerušení]], [[plánování procesů]]

@@ -74,7 +74,7 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 
 ### Předmět (Pt)
 
-[[předmět|Předmět]]: ptáme se **pouze pádovými otázkami kromě 1. a 5. pádu** (<u style="text-decoration-color: blue">Babička</u> <span style="text-decoration: underline wavy red">pekla</span> koláčky. – Pt/4)
+[[předmět|Předmět]]: ptáme se **pouze pádovými otázkami kromě 1. a 5. pádu** dáváme všem větným členům přednost (<u style="text-decoration-color: blue">Babička</u> <span style="text-decoration: underline wavy red">pekla</span> koláčky. – Pt/4)
 
 ### Příslovečné určení (PU)
 
