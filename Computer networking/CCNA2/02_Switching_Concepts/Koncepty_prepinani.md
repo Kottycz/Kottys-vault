@@ -1,65 +1,38 @@
 # Koncepty přepínání
 
-CCNA 2 (SRWE), modul 2. Navazuje na [[Ethernet_Switching]] z CCNA1. Viz [[switch]], [[MAC adresa]].
+CCNA 2 (SRWE), modul 2. Navazuje na [[Ethernet_Switching]] z CCNA1.
 
-## Vstup a výstup
+**Vstup** – Používá se k popisu portu, kudy rámec vstupuje do zařízení.
 
-- **Vstup** (ingress) – port, kudy rámec **vstupuje** do zařízení.
-- **Výstup** (egress) – port, kterým rámec **opouští** zařízení.
+**Výstup** – Používá se k popisu portu, který rámce použijí při opuštění zařízení.
 
-## Přepínací tabulka
+[[switch|LAN přepínač]] přesměrovává provoz na základě vstupního portu a cílové [[MAC adresa|MAC adresy]] ethernetového rámce. U LAN přepínače existuje pouze jedna hlavní přepínací tabulka, která popisuje striktní asociaci mezi MAC adresami a porty; proto ethernetový rámec s danou cílovou adresou vždy opouští stejný výstupní port, bez ohledu na vstupní port, do kterého vstupuje.
 
-[[switch|LAN přepínač]] přesměrovává provoz podle **vstupního portu** a **cílové MAC adresy** ethernetového rámce.
+Tato tabulka je uložena v paměti [[CAM]] (Content Addressable Memory), což je speciální typ paměti používaný ve vysokorychlostních vyhledávacích aplikacích. Z tohoto důvodu se tabulka MAC adres někdy nazývá také tabulka CAM.
 
-- Existuje jen **jedna hlavní přepínací tabulka** se striktní asociací MAC adresa ↔ port.
-- Rámec s danou cílovou adresou proto **vždy opouští stejný výstupní port**, bez ohledu na vstupní port.
-- Tabulka je v paměti **[[CAM]]** (Content Addressable Memory) – speciální paměť pro vysokorychlostní vyhledávání. Proto se tabulce MAC adres říká také **tabulka CAM**.
+Každý rámec, který vstoupí do přepínače, je kontrolován, zda neobsahuje nové informace. To se provádí prozkoumáním zdrojové MAC adresy rámce a čísla portu, přes který rámec vstoupil do přepínače:
 
-## Učení MAC adres
+- Pokud zdrojová MAC adresa v tabulce MAC adres neexistuje, přidá se do tabulky MAC adresa a číslo příchozího portu.
+- Pokud zdrojová MAC adresa existuje, přepínač aktualizuje časovač obnovení pro danou položku. Ve výchozím nastavení většina ethernetových přepínačů uchovává položku v tabulce po dobu pěti minut. Pokud zdrojová MAC adresa v tabulce existuje, ale na jiném portu, přepínač ji považuje za novou položku. Položka je nahrazena stejnou MAC adresou, ale s aktuálnějším číslem portu.
 
-Každý příchozí rámec se kontroluje, zda nenese novou informaci. Přepínač zkoumá **zdrojovou MAC adresu** a **číslo příchozího portu**:
+Pokud je cílová MAC adresa unicastová adresa, přepínač bude hledat shodu mezi cílovou MAC adresou rámce a položkou v tabulce MAC adres:
 
-- zdrojová MAC v tabulce **není** → přidá se MAC adresa + číslo portu,
-- zdrojová MAC v tabulce **je** → obnoví se **časovač** položky (výchozí doba uchování u většiny přepínačů: **5 minut**),
-- zdrojová MAC v tabulce je, ale na **jiném portu** → bere se jako nová položka, stará se **nahradí** stejnou MAC s aktuálním portem.
+- Pokud je cílová MAC adresa v tabulce, rámce bude přeposláno ven ze zadaného portu.
+- Pokud cílová MAC adresa v tabulce není, switch přepošle rámec na všechny porty kromě příchozího portu. Tomu se říká [[neznámý unicast]]. Pokud je cílová MAC adresa broadcast nebo multicast, rámec je také odeslán na všech portech kromě příchozího.
 
-## Přeposílání rámců
+Přepínače vrstvy 2 používají k přepínání rámců jednu ze dvou metod:
 
-Cílová MAC je **[[unicast]]**:
+- [[store-and-forward]] switching
+- [[cut-through]] switching
 
-- cílová MAC **je v tabulce** → rámec se pošle ven jen ze zadaného portu,
-- cílová MAC **není v tabulce** → rámec se pošle na **všechny porty kromě příchozího** = **[[neznámý unicast]]**.
+Ve starších ethernetových segmentech založených na rozbočovačích soupeřila síťová zařízení o sdílené médium. Segmenty sítě, které sdílejí stejnou šířku pásma mezi zařízeními, se nazývají [[kolizní doména|kolizní domény]]. Když se dvě nebo více zařízení v rámci stejné kolizní domény pokusí komunikovat současně, dojde ke kolizi.
 
-Cílová MAC je **[[broadcast]]** nebo **[[multicast]]** → rámec jde také na všechny porty kromě příchozího.
+## Broadcast Domains
 
-## Metody přepínání
+Soubor propojených přepínačů tvoří jednu [[broadcast doména|broadcast doménu]]. Broadcast doménu vrstvy 2 může rozdělit pouze zařízení síťové vrstvy, například router. Routery se používají k segmentaci broadcast domén, ale segmentují i kolizní doménu.
 
-Přepínače vrstvy 2 používají jednu ze dvou metod:
+Broadcast je někdy nezbytné pro počáteční lokalizaci jiných zařízení a síťových služeb, ale také snižuje efektivitu sítě. Šířka pásma sítě se využívá k šíření vysílání. Příliš mnoho broadcastů a vysoká zátěž sítě může vést k přetížení, které zpomaluje výkon sítě. Když jsou dva přepínače propojeny dohromady, doména broadcastů se zvětší.
 
-- **[[store-and-forward]] switching**
-- **[[cut-through]] switching**
+Přepínače LAN mají speciální vlastnosti, které jim pomáhají zmírnit přetížení sítě. Ve výchozím nastavení se propojené porty přepínačů pokoušejí navázat spojení v [[full-duplex|plném duplexu]], čímž eliminují kolizní domény. Každý plně duplexní port přepínače poskytuje plnou šířku pásma zařízení nebo zařízením, která jsou k tomuto portu připojena. Plně duplexní připojení dramaticky zvýšila výkon sítě LAN a jsou vyžadována pro rychlosti Ethernetu 1 Gb/s a vyšší.
 
-Detaily viz [[Ethernet_Switching]].
-
-## Kolizní domény
-
-Ve starších ethernetových segmentech s rozbočovači (huby) soutěžila zařízení o **sdílené médium**. Segmenty sdílející stejnou šířku pásma se nazývají **[[kolizní doména|kolizní domény]]**.
-
-Když se dvě nebo více zařízení ve stejné kolizní doméně pokusí vysílat současně, dojde ke **[[kolize|kolizi]]**.
-
-## Broadcast domény
-
-- Sada propojených přepínačů tvoří **jednu [[broadcast doména|broadcast doménu]]**.
-- Broadcast doménu vrstvy 2 může rozdělit jen zařízení **síťové vrstvy**, např. **[[router]]**.
-- Router segmentuje broadcast domény, ale i kolizní domény.
-- Propojením dvou přepínačů se broadcast doména **zvětší**.
-
-Broadcast je někdy nezbytný pro počáteční nalezení jiných zařízení a síťových služeb, ale **snižuje efektivitu sítě**: šířka pásma se využívá k šíření broadcastu. Příliš mnoho broadcastů a vysoká zátěž vedou k **přetížení**, které zpomaluje síť.
-
-## Zmírnění přetížení
-
-- Ve výchozím nastavení se propojené porty přepínačů snaží navázat spojení v **[[full-duplex|plném duplexu]]** → **eliminuje kolizní domény**.
-- Každý plně duplexní port dává připojenému zařízení **plnou šířku pásma**.
-- Plný duplex dramaticky zvyšuje výkon LAN a je **vyžadován od rychlosti 1 Gb/s** výš.
-
-**Souvisí:** [[Ethernet_Switching]], [[Porty_duplex_a_Auto_MDIX]], [[duplex]], [[CAM]], [[kolizní doména]], [[broadcast doména]]
+**Souvisí:** [[Ethernet_Switching]], [[Porty_duplex_a_Auto_MDIX]], [[duplex]], [[router]], [[kolize]]
