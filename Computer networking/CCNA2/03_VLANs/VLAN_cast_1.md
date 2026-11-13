@@ -53,3 +53,5 @@ Chcete-li obnovit tovární nastavení přepínače Catalyst, odpojte od přepí
 **Souvisí:** [[VLAN]], [[SVI]], [[Sprava_switche_SVI]], [[startup-config]], [[IOS]], [[Zakladni_konfigurace_zarizeni]], [[Ulozeni_konfiguraci]], [[Navigace_v_IOSu]], [[Ethernet_Switching]], [[Data_link]], [[Koncepty_prepinani]]
 
 **Předchozí:** [[Koncepty_prepinani]]
+
+**Další:** [[VLAN_cast_2]]
