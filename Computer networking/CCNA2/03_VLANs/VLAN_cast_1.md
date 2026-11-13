@@ -8,11 +8,11 @@ Sítě [[VLAN]] v přepínané síti umožňují uživatelům v různých odděl
 
 ## Typy VLAN
 
-- Default VLAN
-- Data VLAN
+- [[Default VLAN]]
+- [[Data VLAN]]
 - [[nativní VLAN|Native VLAN]]
-- Management VLAN
-- Voice VLAN
+- [[Management VLAN]]
+- [[Voice VLAN]]
 
 **[[VLAN trunk|VLAN Trunks]]** - VLAN trunky umožňují šíření veškerého VLAN provozu mezi přepínači. To umožňuje zařízením připojeným k různým přepínačům, ale ve stejné VLAN, komunikovat bez nutnosti použití [[router|routeru]].
 
