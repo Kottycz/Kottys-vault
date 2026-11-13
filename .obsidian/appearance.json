@@ -8,5 +8,6 @@
   "baseFontSize": 15,
   "baseFontSizeAction": true,
   "textFontFamily": "",
-  "interfaceFontFamily": ""
+  "interfaceFontFamily": "",
+  "showRibbon": true
 }

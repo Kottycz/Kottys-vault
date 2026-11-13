@@ -36,10 +36,14 @@
 ## Malá síť a diagnostika
 - [[Budovani_male_site]]
 
+## CCNA2
+- [[Basic_Device_Configuration]]
+- [[Koncepty_prepinani]]
+
 ## Bezpečnost
 - [[Zaklady_sitove_bezpecnosti]]
 
 
 ## Slovníček pojmů
 
-[[3-way handshake]] · [[ARP]] · [[Auto-MDIX]] · [[CDP]] · [[CSMA-CA]] · [[CSMA-CD]] · [[DAD]] · [[DHCP]] · [[DNS]] · [[DORA]] · [[EUI-64]] · [[FCS]] · [[FTP]] · [[GUA]] · [[HTTP]] · [[HTTPS]] · [[ICMP]] · [[IMAP]] · [[IP adresa]] · [[IPv4]] · [[IPv6]] · [[ISN]] · [[LAN]] · [[LLA]] · [[LLC]] · [[MAC adresa]] · [[MAC podvrstva]] · [[MSS]] · [[MTU]] · [[NA]] · [[NAT]] · [[NDP]] · [[NIC]] · [[NS]] · [[OSPF]] · [[OUI]] · [[PDU]] · [[POP3]] · [[QoS]] · [[RA]] · [[RS]] · [[SLAAC]] · [[SMTP]] · [[STP kabel]] · [[SVI]] · [[TCP]] · [[TTL]] · [[UDP]] · [[ULA]] · [[UTP]] · [[VLSM]] · [[WAN]] · [[anycast]] · [[broadcast]] · [[debug]] · [[délka prefixu]] · [[echo request]] · [[full-duplex]] · [[goodput]] · [[half-duplex]] · [[hextet]] · [[hop]] · [[ipconfig]] · [[latency]] · [[maska podsítě]] · [[modulární zařízení]] · [[multicast]] · [[peer-to-peer]] · [[ping]] · [[port]] · [[příkazy show]] · [[redundance]] · [[router]] · [[rozšířený ping]] · [[running-config]] · [[schéma IP adresování]] · [[single point of failure]] · [[sliding window]] · [[slow start]] · [[socket]] · [[startup-config]] · [[switch]] · [[škálování sítě]] · [[terminal monitor]] · [[throughput]] · [[traceroute]] · [[unicast]] · [[Computer networking/Slovnik/default gateway]] · [[zapouzdření]]
+[[3-way handshake]] · [[ARP]] · [[Auto-MDIX]] · [[CAM]] · [[CDP]] · [[CSMA-CA]] · [[CSMA-CD]] · [[DAD]] · [[DHCP]] · [[DNS]] · [[DORA]] · [[EUI-64]] · [[FCS]] · [[FTP]] · [[GUA]] · [[HTTP]] · [[HTTPS]] · [[ICMP]] · [[IMAP]] · [[IP adresa]] · [[IPv4]] · [[IPv6]] · [[ISN]] · [[LAN]] · [[LLA]] · [[LLC]] · [[MAC adresa]] · [[MAC podvrstva]] · [[MSS]] · [[MTU]] · [[NA]] · [[NAT]] · [[NDP]] · [[NIC]] · [[NS]] · [[OSPF]] · [[OUI]] · [[PDU]] · [[POP3]] · [[QoS]] · [[RA]] · [[RS]] · [[SLAAC]] · [[SMTP]] · [[STP kabel]] · [[SVI]] · [[TCP]] · [[TTL]] · [[UDP]] · [[ULA]] · [[UTP]] · [[VLSM]] · [[WAN]] · [[anycast]] · [[broadcast]] · [[broadcast doména]] · [[debug]] · [[délka prefixu]] · [[echo request]] · [[full-duplex]] · [[goodput]] · [[half-duplex]] · [[hextet]] · [[hop]] · [[ipconfig]] · [[kolizní doména]] · [[latency]] · [[maska podsítě]] · [[modulární zařízení]] · [[multicast]] · [[neznámý unicast]] · [[peer-to-peer]] · [[ping]] · [[port]] · [[příkazy show]] · [[redundance]] · [[router]] · [[rozšířený ping]] · [[running-config]] · [[schéma IP adresování]] · [[single point of failure]] · [[sliding window]] · [[slow start]] · [[socket]] · [[startup-config]] · [[switch]] · [[škálování sítě]] · [[terminal monitor]] · [[throughput]] · [[traceroute]] · [[unicast]] · [[Computer networking/Slovnik/default gateway]] · [[zapouzdření]]
