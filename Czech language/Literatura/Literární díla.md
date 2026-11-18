@@ -277,6 +277,7 @@ Všechna díla, která jsou v zápisech z češtiny. Kliknutím na dílo se dost
 
 - **Petr Bezruč** – *[[Bezruc_Slezske_pisne|Slezské písně]]*
   - *[[Bezruc_Slezske_pisne#1. Červený květ|Červený květ]]* · *[[Bezruc_Slezske_pisne#2. Jen jedenkrát|Jen jedenkrát]]* · *[[Bezruc_Slezske_pisne#3. Ostrava|Ostrava]]* · *[[Bezruc_Slezske_pisne#4. Kantor Halfar|Kantor Halfar]]* · *[[Bezruc_Slezske_pisne#5. Maryčka Magdonová|Maryčka Magdonová]]* · *[[Bezruc_Slezske_pisne#6. Bernard Žár|Bernard Žár]]* · *[[Bezruc_Slezske_pisne#7. 70 000|70 000]]*
+- **Viktor Dyk** – *[[Dyk_Krysar|Krysař]]* (novela, 1915) · *[[11_Ceska_moderna#Viktor Dyk (1877–1931)|A porta inferi]]*
 
 ---
 

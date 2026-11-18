@@ -59,7 +59,7 @@ Přelom 19. a 20. století. Odklon od společenských problémů ([[realismus|re
 | :-- | :-- | :-- |
 | Charles Baudelaire (1821–1867) | *Květy zla* (1857), báseň *Zdechlina* | prokletí básníci, dekadence |
 | Paul Verlaine (1844–1896) | *Moudrost*, *Písně beze slov* | prokletí básníci, symbolismus |
-| Jean Arthur Rimbaud (1854–1891) | *Opilý koráb* (1871) | prokletí básníci, symbolismus |
+| Jean Arthur Rimbaud (1854–1891) | *Opilý koráb* (1871) | prokletí básníci |
 | Oscar Wilde (1854–1900) | *Obraz Doriana Graye*, *Pohádky pro dospělé* (*Šťastný princ*) | dekadence (dandysmus) |
 | Walt Whitman (1819–1892) | *Stébla trávy* | civilismus (volný verš) |
 | Jules Verne (1828–1905) | *Pět neděl v balóně*, *Ze Země na Měsíc*, *Dva roky prázdnin*, *Dvacet tisíc mil pod mořem* | mimo modernu (vědecko-fantastický román) |
