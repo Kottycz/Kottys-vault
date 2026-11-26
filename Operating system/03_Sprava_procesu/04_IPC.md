@@ -4,16 +4,16 @@ aliases: [Interprocess Communication, IPC, Meziprocesová komunikace]
 
 # IPC – meziprocesová komunikace
 
-**[[proces|Procesy]]** běžící souběžně v systému jsou buď **nezávislé** (neovlivňují jiné procesy, nesdílí s nimi data), nebo **spolupracující** (ovlivňují se a sdílí data). Spolupracující procesy potřebují mechanismus **IPC (Interprocess Communication)** pro výměnu dat.
+**[[proces|Procesy]]** jsou buď **nezávislé** (nesdílí data), nebo **spolupracující** (ovlivňují se a sdílí data). Spolupracující potřebují na výměnu dat **IPC (Interprocess Communication)**.
 
 ![[cd59faeda78bbe801c104cde8df72454310b8e881b4434174a10af9523fe8ec4.png]]
 
 ## Proč procesy spolupracují
 
-- **Sdílení informací** – víc uživatelů může chtít pracovat se stejnými daty (sdílený soubor)
-- **Zrychlení výpočtu** – rozdělení úlohy na podúlohy běžící paralelně (funguje jen na víc jádrech CPU)
-- **Modularita** – rozdělení systému na samostatné procesy/vlákna
-- **Pohodlí** – i jeden uživatel dělá víc věcí zároveň (edituje, poslouchá hudbu, kompiluje)
+- **sdílení informací** – víc uživatelů pracuje se stejnými daty
+- **zrychlení výpočtu** – podúlohy běží paralelně (jen na víc jádrech)
+- **modularita** – systém rozdělený na procesy/vlákna
+- **pohodlí** – jeden uživatel dělá víc věcí najednou
 
 **Chrome Multiprocess Architecture**
 
@@ -21,114 +21,99 @@ aliases: [Interprocess Communication, IPC, Meziprocesová komunikace]
 
 ## Dva základní modely IPC
 
-| Model | Princip |
-| :-- | :-- |
-| **Sdílená paměť** | oblast paměti sdílená spolupracujícími procesy, komunikace čtením/zápisem dat |
-| **Message passing** | komunikace přes zprávy posílané mezi procesy |
-
-### Srovnání
-
-- **Message passing** – lepší pro malé objemy dat (žádné konflikty), snazší implementace v distribuovaném systému, ale pomalejší (typicky přes systémová volání → zásah jádra)
-- **Sdílená paměť** – rychlejší (jen počáteční systémové volání pro vytvoření oblasti, pak běžný přístup do paměti bez zásahu jádra), ale trpí problémy s koherencí cache na systémech s víc jádry
-
-Na systémech s víc procesorovými jádry proto novější výzkumy ukazují lepší výkon u message passing.
+| Model | Princip | + | − |
+| :-- | :-- | :-- | :-- |
+| **Sdílená paměť** | společná oblast paměti, procesy do ní čtou a zapisují | rychlá – systémové volání jen při vytvoření | problémy s koherencí cache na víc jádrech |
+| **Message passing** | procesy si posílají zprávy | bez konfliktů, snadné v distribuovaném systému, na víc jádrech dnes výkonnější | pomalejší – každá zpráva přes jádro |
 
 ## Sdílená paměť
 
-Procesy musí souhlasit se zrušením běžné ochrany paměti a vytvořit **sdílenou oblast** – ostatní procesy si ji připojí do svého adresního prostoru. Formát dat a jejich umístění určují **procesy samy**, ne OS. Procesy taky samy zodpovídají za to, že nezapisují na stejné místo současně.
+- procesy souhlasí se zrušením běžné ochrany paměti a připojí si **sdílenou oblast** do svého adresového prostoru
+- formát a umístění dat určují **procesy samy**, ne OS – a samy hlídají, aby nezapisovaly současně na stejné místo
 
 ### Producer–consumer problém
 
-Klasický vzor spolupracujících procesů – **producer** vyrábí data, **consumer** je spotřebovává (např. kompilátor produkuje assembler kód, který spotřebovává assembler). Řešení sdílenou pamětí potřebuje **buffer**:
+**Producer** data vyrábí, **consumer** je spotřebovává (např. kompilátor → assembler). Potřebují **buffer**:
 
-- **Neomezený buffer (unbounded)** – žádný praktický limit velikosti, consumer možná čeká na nová data, producer může vždy vyrábět
-- **Omezený buffer (bounded)** – pevná velikost, consumer čeká, když je buffer prázdný, producer čeká, když je plný
+- **neomezený** – producer může vyrábět vždy, consumer případně čeká na data
+- **omezený** – consumer čeká, když je prázdný; producer čeká, když je plný
 
 ## Message-passing systémy
 
-Umožňuje komunikaci a synchronizaci **bez sdílení adresního prostoru** – hodí se hlavně v distribuovaném prostředí (procesy na různých počítačích). Základní operace: **`send(message)`**, **`receive(message)`**.
-
-### Komunikační spoj (link)
-
-Fyzicky může jít o sdílenou paměť, hardwarovou sběrnici nebo síť. Logicky se řeší třemi otázkami:
-
-1. **Přímá vs. nepřímá komunikace**
-2. **Synchronní vs. asynchronní**
-3. **Automatické vs. explicitní bufferování**
+- komunikace a synchronizace **bez sdíleného adresového prostoru** – hlavně distribuované systémy
+- operace **`send(message)`** a **`receive(message)`**
+- komunikační spoj fyzicky: sdílená paměť, sběrnice, síť; logicky se řeší:
+  1. **přímá × nepřímá** komunikace
+  2. **synchronní × asynchronní**
+  3. **automatické × explicitní** bufferování
 
 ### Přímá komunikace (Direct)
 
-Procesy musí explicitně jmenovat druhou stranu: `send(P, message)`, `receive(Q, message)`.
-
-- Spoj vzniká automaticky mezi každou dvojicí procesů, které spolu chtějí komunikovat
-- Váže se přesně na jeden pár procesů, mezi dvojicí existuje přesně jeden spoj
-- Obvykle obousměrný
+- procesy jmenují druhou stranu: `send(P, message)`, `receive(Q, message)`
+- spoj vzniká automaticky, mezi dvojicí je právě jeden, obvykle obousměrný
 
 ### Nepřímá komunikace (Indirect)
 
-Zprávy se posílají do/z **poštovních schránek (mailbox, port)** s unikátním ID: `send(A, message)`, `receive(A, message)`.
-
-- Spoj vzniká, jen když oba procesy sdílí stejnou schránku
-- Jedna schránka může sloužit víc procesům, mezi dvojicí může existovat víc spojů (víc schránek)
-- Schránku může vlastnit **proces** (zanikne s ním) nebo **operační systém** (existuje nezávisle, OS umožňuje vytvoření/mazání schránky a předání vlastnictví)
-- Když víc procesů čte ze stejné schránky, o tom, kdo zprávu dostane, rozhoduje systém (max. 1 příjemce najednou, round-robin, náhodný výběr…)
+- přes **poštovní schránky (mailbox, port)** s ID: `send(A, message)`, `receive(A, message)`
+- spoj existuje jen mezi procesy se společnou schránkou; schránku může sdílet víc procesů, dvojice může mít víc schránek
+- schránku vlastní **proces** (zanikne s ním) nebo **OS** (existuje samostatně)
+- čte-li víc procesů, příjemce vybere systém (max. 1 najednou, round-robin, náhodně…)
 
 ### Synchronizace
 
 | Typ | Chování |
 | :-- | :-- |
-| **Blocking send** | odesílatel čeká, dokud zprávu nepřevezme příjemce/schránka |
-| **Nonblocking send** | odešle a pokračuje dál |
-| **Blocking receive** | příjemce čeká, dokud zpráva nedorazí |
-| **Nonblocking receive** | vrátí zprávu, nebo prázdno (null) |
+| **Blocking send** | odesílatel čeká, dokud zprávu někdo nepřevezme |
+| **Nonblocking send** | odešle a pokračuje |
+| **Blocking receive** | příjemce čeká na zprávu |
+| **Nonblocking receive** | vrátí zprávu nebo null |
 
-Když jsou **obě** operace blokující, jde o tzv. **rendezvous** – producer–consumer problém se s tím řeší triviálně.
+- obě blokující = **rendezvous** → producer–consumer se řeší triviálně
 
 ### Bufferování front zpráv
 
-- **Nulová kapacita** – žádné čekající zprávy, odesílatel musí čekat na příjemce
-- **Omezená kapacita** – fronta délky n, odesílatel čeká, jen když je fronta plná
-- **Neomezená kapacita** – odesílatel nikdy nečeká
+- **nulová kapacita** – odesílatel vždy čeká na příjemce
+- **omezená** (n zpráv) – čeká, jen když je fronta plná
+- **neomezená** – nikdy nečeká
 
 ## Client–server komunikace
 
 ### Socket
 
-**Koncový bod komunikace** – identifikovaný kombinací IP adresy a čísla portu (viz [[port]]). Server naslouchá na známém portu (Telnet 23, FTP 21, HTTP 80 – porty pod 1024 jsou "well-known"), klient dostane náhodný port nad 1024. Spojení = dvojice socketů (IP:port na obou stranách), musí být unikátní.
+- **koncový bod komunikace** = IP adresa + [[port]]
+- server poslouchá na známém portu (Telnet 23, FTP 21, HTTP 80; pod 1024 = well-known), klient dostane náhodný port nad 1024
+- spojení = unikátní dvojice socketů
 
 ![[3bc7980a3e77e12a449bdc09185ce81cb232c69b622f6c9a4a3c78bd1cd17091.png]]
 
 ### Remote Procedure Call (RPC)
 
-Abstrahuje volání procedury přes síť – **strukturované zprávy** (ne jen packety dat) adresované RPC démonu na portu vzdáleného systému. Zpráva obsahuje identifikátor funkce a parametry; výsledek se pošle zpátky samostatnou zprávou.
+- volání procedury přes síť
+- **strukturovaná zpráva** pro RPC démona na portu vzdáleného systému: ID funkce + parametry; výsledek přijde zpět zprávou
 
 ![[e0d27e89de4e6d9405057d3f24466becc2087626740885eccca9e932d00bb263.png]]
 
 ### Roury (Pipes)
 
-Jeden z prvních IPC mechanismů raného UNIXu – spojka mezi dvěma procesy.
-
-**Klíčové otázky při implementaci:** obousměrná vs. jednosměrná komunikace? half-duplex vs. full-duplex? nutný vztah rodič–potomek? funguje přes síť?
+Jeden z prvních IPC mechanismů UNIXu – spojka mezi dvěma procesy. Otázky: jedno- nebo obousměrná? half/full duplex? nutný vztah rodič–potomek? přes síť?
 
 #### Obyčejné roury (Ordinary Pipes)
 
-- Producer/consumer model – zápis na jeden konec, čtení z druhého
-- **Jednosměrné** (pro obousměrnou komunikaci potřeba dvě roury)
-- Vyžadují vztah **rodič–potomek**, existují jen po dobu jejich komunikace
-- Windows jim říká "anonymní roury"
+- zápis na jednom konci, čtení na druhém, **jednosměrné** (obousměrně = dvě roury)
+- jen mezi **rodičem a potomkem**, existují jen během komunikace
+- Windows: „anonymní roury“
 
 ![[448c2bdc94dd713f5d4ef0fb0176e13ab9ad0bfd2f62d27279e4f5462bb06a54.png]]
 
 #### Pojmenované roury (Named Pipes) – FIFO
 
-- **Obousměrné**, žádný vztah rodič–potomek není potřeba
-- Víc procesů může používat stejnou pojmenovanou rouru, existuje i po skončení komunikujících procesů
+- **obousměrné**, bez vztahu rodič–potomek, víc procesů, existují i po skončení procesů
 
 | | UNIX (FIFO) | Windows |
 | :-- | :-- | :-- |
-| Vytvoření | `mkfifo()` | `CreateNamedPipe()` |
-| Duplex | jen half-duplex (na obousměrnost 2 FIFO) | full-duplex |
-| Umístění | jen stejný stroj (síť → sockety) | i mezi různými stroji |
-| Data | jen bajtově orientovaná | bajtově i zprávově orientovaná |
+| vytvoření | `mkfifo()` | `CreateNamedPipe()` |
+| duplex | half-duplex | full-duplex |
+| umístění | jen stejný stroj | i mezi stroji |
+| data | bajtová | bajtová i zprávová |
 
 **Souvisí:** [[proces]], [[port]], [[socket]], [[systémové volání]], [[proces synchronizace]]

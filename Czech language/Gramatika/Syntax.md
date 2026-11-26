@@ -92,10 +92,15 @@ Předložka, spojka, částice a citoslovce se neurčuje jako samostatný větn�
 
 [[doplněk|Doplněk]]: ptáme se **jak (jméno + sloveso)?**; závisí na **dvou** větných členech! (<u style="text-decoration-color: blue">Děvčata</u> <span style="text-decoration: underline wavy red">tančila</span> bosa. – Jak <u style="text-decoration-color: blue">děvčata</u> <span style="text-decoration: underline wavy red">tančila</span>?)
 
-## Přívlastek volný a těsný, přístavek
+
+## Přístavek
 
 - **[[přístavek|Přístavek]]** – opakované označení téže skutečnosti, odděluje se čárkami (<u style="text-decoration-color: blue">Karel IV.</u>, otec vlasti, <span style="text-decoration: underline wavy red">založil</span> Karlovu univerzitu.)
-- **[[přívlastek|Přívlastek]] volný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; můžeme jej z věty vypustit, aniž by se změnil její smysl; oddělen z obou stran čárkami (<u style="text-decoration-color: blue">Noviny</u>, dodávané i do našich schránek, <span style="text-decoration: underline wavy red">se tisknou</span> během noci.)
-- **[[přívlastek|Přívlastek]] těsný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; nemůžeme ho z věty vypustit, protože by se její smysl změnil (<u style="text-decoration-color: blue">Studenti</u> dosahující vynikajících výsledků <span style="text-decoration: underline wavy red">bývají</span> na naší škole <span style="text-decoration: underline wavy red">odměněni</span>.)
+
+## Přívlastek volný a těsný
+
+
+- **[[přívlastek|Přívlastek]] volný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; můžeme jej z věty vypustit, aniž by se změnil její smysl; oddělen z obou stran čárkami (<u style="text-decoration-color: blue">Noviny</u>, **dodávané i do našich schránek**, <span style="text-decoration: underline wavy red">se tisknou</span> během noci.)
+- **[[přívlastek|Přívlastek]] těsný** – bohatě rozvitý přívlastek, jehož základem je přídavné jméno; nemůžeme ho z věty vypustit, protože by se její smysl změnil (<u style="text-decoration-color: blue">Studenti</u> **dosahující vynikajících výsledků** <span style="text-decoration: underline wavy red">bývají</span> na naší škole <span style="text-decoration: underline wavy red">odměněni</span>.)
 
 Cvičení: [[Syntax_cviceni]]

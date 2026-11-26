@@ -6,87 +6,73 @@ aliases: [Directory Structure, Adresářová struktura, File Sharing, File Syste
 
 ## Operace s adresářem
 
-Hledání souboru, vytvoření, smazání, výpis obsahu, přejmenování, průchod celou strukturou (např. pro zálohu).
+Hledání, vytvoření a smazání souboru, výpis obsahu, přejmenování, průchod celou strukturou (záloha).
 
 ## Typy adresářové struktury
 
 ### Jednoúrovňový adresář (Single-Level)
 
-Všechny soubory v jednom adresáři. Jednoduché, ale **jména musí být unikátní** pro celý systém – nepraktické u víc uživatelů nebo velkého počtu souborů.
+- všechny soubory v jednom adresáři
+- jednoduché, ale **jména musí být unikátní** v celém systému → nepraktické
 
 ### Dvouúrovňový adresář (Two-Level)
 
-Každý uživatel má vlastní **UFD** (User File Directory), index všech UFD je **MFD** (Master File Directory). Jména musí být unikátní jen v rámci jednoho UFD. Řeší kolize jmen, ale **izoluje uživatele** od sebe – pro přístup k cizímu souboru je nutná **cesta (path name)** typu `/uzivatel/soubor`.
-
-**Search path** – posloupnost adresářů, kde se hledá spustitelný soubor (nejdřív lokální UFD, pak systémový adresář).
+- každý uživatel má **UFD** (User File Directory), jejich index je **MFD** (Master File Directory)
+- jména unikátní jen v rámci UFD, ale uživatelé jsou **izolovaní** – k cizímu souboru přes **cestu** `/uzivatel/soubor`
+- **search path** – kde se hledá spustitelný soubor (vlastní UFD, pak systémový adresář)
 
 ### Stromová struktura (Tree-Structured)
 
-Generalizace dvouúrovňové na libovolnou hloubku – uživatelé si vytváří vlastní podadresáře. **Kořenový adresář**, každý soubor má unikátní cestu. Adresář je vlastně speciální soubor (bit v záznamu rozlišuje soubor/podadresář).
-
-- Každý proces má **aktuální adresář (current directory)**
-- **Absolutní cesta** – od kořene; **relativní cesta** – od aktuálního adresáře
-- Mazání neprázdného adresáře: buď zakázat (musí se smazat obsah nejdřív), nebo smazat rekurzivně i s obsahem (UNIX `rm -r`)
+- libovolná hloubka, vlastní podadresáře, **kořenový adresář**, každý soubor má unikátní cestu
+- adresář je speciální soubor (bit odliší soubor a podadresář)
+- každý proces má **aktuální adresář**; **absolutní** cesta od kořene, **relativní** od aktuálního adresáře
+- mazání neprázdného adresáře: zakázat, nebo smazat rekurzivně (`rm -r`)
 
 ### Acyklický graf (Acyclic-Graph)
 
-Umožňuje **sdílení** souborů/podadresářů mezi víc uživateli/adresáři zároveň (na rozdíl od stromu) – typicky pro týmovou spolupráci. Sdílený soubor **není totéž co kopie** – změna od jednoho uživatele je vidět i u druhého (existuje jen jeden skutečný soubor).
-
-**Implementace sdílení:**
-- **Link (odkaz)** – nový typ záznamu v adresáři, ukazuje (absolutní/relativní cestou) na skutečný soubor jinde
-- **Duplicitní záznam** – stejné info na dvou místech, ale hůř se udržuje konzistence
-
-**Problém s mazáním sdíleného souboru:** UNIX u hardlinků řeší **počítadlem referencí (reference count)** – přidání odkazu ho zvýší, smazání odkazu sníží; soubor se fyzicky smaže až při počtu 0. U symbolických odkazů zůstává "visící" odkaz (dangling link), který při použití prostě selže jako neplatné jméno.
+- **sdílení** souborů a podadresářů mezi víc adresáři (týmová práce)
+- sdílený soubor **není kopie** – existuje jen jeden, změny vidí všichni
+- implementace: **link** (záznam s cestou ke skutečnému souboru) nebo **duplicitní záznam** (hůř se udržuje konzistentní)
+- mazání: hardlinky mají **počítadlo referencí** – soubor se smaže až při 0; u symbolického odkazu zůstane „visící“ odkaz (dangling link), který prostě selže
 
 ### Obecný graf (General Graph)
 
-Když odkazy vytvoří **cyklus**, vzniká obecný graf – riziko nekonečné smyčky při procházení a problém s určením, kdy je soubor opravdu nedosažitelný (reference count nemusí spadnout na 0 kvůli cyklu odkazujícímu sám na sebe). Řeší se buď **garbage collection** (drahé, časově náročné), nebo jednodušeji – **odkazy (linky) se při procházení adresářové struktury přeskakují**, čímž se cyklům předchází.
+- odkazy vytvoří **cyklus** → riziko nekonečné smyčky a počítadlo referencí nemusí klesnout na 0
+- řešení: **garbage collection** (drahé), nebo **při procházení linky přeskakovat**
 
-## Mountování souborového systému (File-System Mounting)
+## Mountování souborového systému
 
-Souborový systém musí být před použitím **připojen (mounted)** – zadá se zařízení a **mount point** (obvykle prázdný adresář v existující struktuře). OS ověří, že zařízení obsahuje platný souborový systém (kontrola formátu adresáře), a poznamená si v adresářové struktuře, kde je nový systém připojen.
-
-- **UNIX/Linux** – lze připojit na libovolné místo ve stromu
-- **Windows** – historicky přiděluje **písmena disků** (C:, D:...), novější verze umí mountovat i do libovolného bodu stromu jako UNIX
-- **macOS** – automaticky mountuje pod `/Volumes`
+- FS se před použitím musí **připojit (mount)**: zařízení + **mount point** (obvykle prázdný adresář)
+- OS ověří, že zařízení má platný FS, a zapíše si, kde je připojený
+- **UNIX/Linux** – kamkoli do stromu
+- **Windows** – **písmena disků** (C:, D:), novější i do složky
+- **macOS** – automaticky pod `/Volumes`
 
 ## Sdílení souborů (File Sharing)
 
-### Víc uživatelů
-
-Systémy obvykle rozlišují tři úrovně vlastnictví: **owner** (vlastník, mění atributy a práva), **group** (skupina sdílející podobná práva), **universe** (všichni ostatní).
-
-### Vzdálené souborové systémy
-
-- Ruční přenos (FTP)
-- **DFS** (Distributed File System) – vzdálené adresáře vidět jako lokální (NFS, CIFS)
-- WWW – v podstatě obal nad přenosem souborů
-
-### Klient-server model
-
-Server zpřístupňuje soubory, klient k nim přistupuje po síti. **NFS** (UNIX) obvykle ověřuje jen podle síťové identity klienta (ID uživatele musí sedět na klientovi i serveru – nešifrované, snadno zneužitelné). Bezpečnější alternativy: šifrované klíče, **LDAP** (Lightweight Directory Access Protocol – dnešní standard pro distribuovanou správu identit, na něm stojí i Microsoft **Active Directory**).
-
-### Distribuované informační systémy
-
-- **DNS** – překlad jmen hostitelů na síťové adresy pro celý internet
-- **NIS** (Network Information Service, dřív "yellow pages") – centralizace uživatelských jmen, hesel; nešifrované, dnes zastaralé
-- **Active Directory / LDAP** – bezpečné jednotné přihlašování (single sign-on) napříč organizací
+- úrovně vlastnictví: **owner** (mění práva), **group**, **universe** (všichni ostatní)
+- **vzdálené FS:** ruční přenos (FTP), **DFS** – vzdálené složky jako lokální (NFS, CIFS), WWW
+- **klient-server:** server zpřístupní soubory, klient přes síť
+  - **NFS** ověřuje jen podle identity klienta (ID musí sedět, nešifrované, snadno zneužitelné)
+  - bezpečněji: šifrované klíče, **LDAP** – standard pro správu identit, stojí na něm i **Active Directory**
+- **distribuované informační systémy:**
+  - **DNS** – překlad jmen na adresy
+  - **NIS** („yellow pages“) – jména a hesla centrálně, nešifrované, zastaralé
+  - **Active Directory / LDAP** – bezpečné jednotné přihlášení (single sign-on)
 
 ## Ochrana (Protection)
 
-### Typy přístupu, které lze řídit
+**Řízené operace:** Read, Write, Execute, Append, Delete, List (+ odvozené: přejmenování, kopírování).
 
-Read, Write, Execute, Append, Delete, List (a odvozené operace jako přejmenování, kopírování).
+**Řízení přístupu:**
 
-### Řízení přístupu (Access Control)
+- **ACL** (Access Control List) – seznam uživatelů a jejich práv; flexibilní, ale může být dlouhý
+- **owner/group/universe** – UNIX **rwx** (3 bity × 3 kategorie = 9 bitů)
+- **kombinace** (Solaris) – rwx + volitelné ACL
 
-- **ACL** (Access Control List) – seznam konkrétních uživatelů a jejich oprávnění k souboru; flexibilní, ale může být dlouhý a paměťově náročný
-- **Zjednodušené schéma owner/group/universe** – např. UNIXová práva **rwx** (3 bity × 3 kategorie = 9 bitů na soubor)
-- Kombinace obou (Solaris) – základní owner/group/universe + volitelné ACL pro jemnější řízení
+**Jiné přístupy:**
 
-### Jiné přístupy k ochraně
-
-- **Heslo na soubor/adresář** – jednoduché, ale nepraktické (moc hesel k pamatování, nebo jedno heslo = "všechno, nebo nic")
-- Ochrana adresářových operací (vytvoření, smazání, výpis obsahu) je stejně důležitá jako ochrana samotných souborů
+- heslo na soubor/adresář – nepraktické (moc hesel, nebo „všechno, nebo nic“)
+- chránit se musí i operace s adresáři (vytvoření, smazání, výpis), nejen soubory
 
 **Souvisí:** [[04_File_Concept_Access]], [[06_File_System_Implementation]], [[proces]]

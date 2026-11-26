@@ -6,13 +6,10 @@ aliases: [CPU Scheduling, Plánování CPU]
 
 Plánování CPU je základ multiprogramovaných systémů – přepínáním procesoru mezi procesy dělá OS počítač produktivnější.
 
-## Základní koncept
-
-Na jednoprocesorovém systému běží vždy jen jeden proces, ostatní čekají. Cíl multiprogramování: **mít vždy nějaký proces běžící**, maximalizovat využití CPU. Proces se vykonává, dokud nemusí čekat (typicky na V/V) – bez multiprogramování by CPU v tu chvíli nečinně čekal. S multiprogramováním OS v takovém okamžiku přidělí CPU jinému procesu.
 
 ### Cyklus CPU-I/O burst
 
-Běh procesu se skládá ze střídání **CPU burst** (úsek počítání) a **I/O burst** (čekání na V/V) – proces mezi nimi přepíná, dokud nezavolá ukončení.
+Běh procesu se skládá ze střídání **CPU burst** (úsek počítání) a **I/O burst** (čekání na I/O) – proces mezi nimi přepíná, dokud nezavolá ukončení.
 
 - Rozložení délky CPU burstů je typicky **exponenciální** – hodně krátkých burstů, málo dlouhých
 - **I/O-bound proces** – hodně krátkých CPU burstů
@@ -20,7 +17,6 @@ Běh procesu se skládá ze střídání **CPU burst** (úsek počítání) a **
 
 Tohle rozložení ovlivňuje volbu vhodného plánovacího algoritmu.
 
-![[08be4e48cb4cd3ca98c03b8da7e030179eac900eddaa42278203575936a4e3b6.png]]
 
 **CPU Burst Histogram**
 
@@ -34,9 +30,9 @@ Kdykoli je CPU volné, OS musí vybrat proces z **ready queue** – to dělá **
 
 Rozhodnutí o plánování CPU nastává ve čtyřech situacích:
 
-1. Proces přejde z **running** do **waiting** (V/V požadavek, čeká na potomka)
+1. Proces přejde z **running** do **waiting** (I/0 požadavek, čeká na potomka)
 2. Proces přejde z **running** do **ready** (kvůli [[přerušení]])
-3. Proces přejde z **waiting** do **ready** (V/V dokončeno)
+3. Proces přejde z **waiting** do **ready** (I/0 dokončeno)
 4. Proces **skončí**
 
 Situace 1 a 4 jsou **nepreemptivní** (proces sám uvolní CPU); situace 2 a 3 jsou **preemptivní** (OS může proces násilně odebrat).
@@ -53,39 +49,49 @@ Musí být **co nejrychlejší**, protože se volá při každém přepnutí pro
 
 ## Kritéria plánování
 
-| Kritérium | Popis | Cíl |
-| :-- | :-- | :-- |
-| **CPU utilization** | jak moc je CPU vytížené (0–100 %, reálně 40–90 %) | maximalizovat |
-| **Throughput** | počet dokončených procesů za jednotku času | maximalizovat |
-| **Turnaround time** | čas od zadání do dokončení procesu (čekání v paměti + ready queue + běh na CPU + V/V) | minimalizovat |
-| **Waiting time** | součet času stráveného čekáním v ready queue | minimalizovat |
-| **Response time** | čas od zadání do **prvního** výstupu (u interaktivních systémů lepší metrika než turnaround time) | minimalizovat |
+| Kritérium           | Popis                                                                                 | Cíl           |
+| :------------------ | :------------------------------------------------------------------------------------ | :------------ |
+| **CPU utilization** | jak moc je CPU vytížené (0–100 %, reálně 40–90 %)                                     | maximalizovat |
+| **Throughput**      | počet dokončených procesů za jednotku času, které dokončí práci                       | maximalizovat |
+| **Turnaround time** | čas od zadání do dokončení procesu (čekání v paměti + ready queue + běh na CPU + I/O) | minimalizovat |
+| **Waiting time**    | součet času stráveného čekáním v ready queue                                          | minimalizovat |
+| **Response time**   | čas od zadání do **prvního** výsledku                                                 | minimalizovat |
 
 ## Plánovací algoritmy
 
 ### FCFS (First-Come, First-Served)
 
-Nejjednodušší algoritmus – kdo požádá o CPU první, dostane ho první. Implementace přes FIFO frontu. **Nevýhoda:** průměrná doba čekání bývá dost dlouhá (efekt "konvoje" – krátký proces čeká za dlouhým).
+FIFO fronta. **Nevýhoda:** průměrná doba čekání bývá dost dlouhá (efekt **"konvoje"** – krátký proces čeká za dlouhým).
 
 ![[ebf70f3b2129bca92d01a79246aa384286d351600b64f2127f5e5b8b6c2fd6aa.png]]
 
 ![[7fe082f9755095eb39c3ae5ec8e32f050879e5c96754e5f10121bcbecfe6d7d4.png]]
 
+
+
 ### SJF (Shortest Job First)
 
-Přesněji "shortest-next-CPU-burst" – CPU se přidělí procesu s **nejkratším příštím CPU burstem** (ne celkovou délkou procesu). Při shodě se rozhoduje podle FCFS.
+ Na CPU se přidělí **nejkratší proces první** (ne celkovou délkou procesu). Dává nejlepší výsledky, nejrychleji to řeší.
+
+**Nevýhoda** dlouhý se nemusí dostat na řadu, když budou furt přicházet kratší procesy "starvetion".
 
 ![[d5fa7138f11fbb733bd64da721ced656a0c211cc2b9cd0edaf5fc4b5e6c33150.png]]
 
 ![[8c032b1c6543694992b1070658599bb0d333376e5e1eae2c8906d59172d3e9e7.png]]
 
+
+
 ### PS (Priority Scheduling)
 
-SJF je speciální případ obecného plánování podle priority – CPU dostane proces s **nejvyšší prioritou**. Procesy se stejnou prioritou se řadí podle FCFS. SJF je vlastně priorita = převrácená hodnota očekávaného CPU burstu (delší burst = nižší priorita).
+SJF je speciální případ obecného plánování podle priority – CPU dostane proces s **nejvyšší prioritou**. Procesy se stejnou prioritou se řadí podle FCFS. SJF je vlastně priorita = převrácená hodnota očekávaného CPU burstu (**delší burst = nižší priorita**).
 
 ![[e9a1f868420b626f79b3ed61c36d377b025cd26b070fac41741fcc7a93e6209d.png]]
 
 ![[3ddd4b48b05248a9646bb6308bbbfe5e15c68c19f35b809bc6874624a325fae3.png]]
+
+
+
+
 
 ### RR (Round Robin)
 

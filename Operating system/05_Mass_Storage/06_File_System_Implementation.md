@@ -6,138 +6,123 @@ aliases: [File-System Implementation, Implementace souborového systému, MBR, G
 
 ## Struktura souborového systému (vrstvy)
 
-1. **I/O control** – ovladače zařízení a obsluha přerušení, překládá "přines blok 123" na hardwarové instrukce řadiče
-2. **Basic file system** – vydává obecné příkazy ovladači, spravuje buffery a [[cache]]
-3. **Logická vrstva souborového systému** – spravuje **metadata** (vše kromě samotného obsahu souborů), adresářovou strukturu, přes **[[FCB]]** (File Control Block)
+1. **I/O control** – ovladače a obsluha přerušení; překládá „přines blok 123“ na instrukce řadiče
+2. **Basic file system** – obecné příkazy ovladači, buffery a [[cache]]
+3. **Logická vrstva** – **metadata** (vše kromě obsahu souborů) a adresáře přes **[[FCB]]**
 
-Vrstvení minimalizuje duplicitu kódu, ale přidává režii.
+Vrstvy omezují duplicitu kódu, ale přidávají režii.
 
-### Běžné souborové systémy
-
-**UFS** (UNIX, na bázi Berkeley FFS), **FAT/FAT32/NTFS** (Windows), **ext3/ext4** (Linux, nejběžnější z 40+ podporovaných), **ISO 9660** (CD-ROM), **FUSE** (souborový systém v uživatelském, ne jaderném režimu), Google File System.
+**Běžné FS:** UFS (UNIX), FAT/FAT32/NTFS (Windows), ext3/ext4 (Linux), ISO 9660 (CD), FUSE (v uživatelském režimu), Google File System.
 
 ## FCB (File Control Block)
 
-Struktura obsahující metadata o jednom souboru – vlastnictví, oprávnění, umístění obsahu. V UNIXu se jmenuje **inode**.
+Metadata jednoho souboru – vlastník, oprávnění, umístění obsahu. V UNIXu **inode**.
 
 ## On-disk a in-memory struktury
 
-### Na disku
+**Na disku:**
 
-- **Boot control block** (na svazek) – info pro zavedení OS z tohoto svazku (v UFS "boot block", v NTFS "partition boot sector")
-- **Volume control block** (na svazek) – počet bloků, velikost bloku, počet/ukazatele volných bloků (v UFS "superblock", v NTFS master file table)
-- **Adresářová struktura** (na souborový systém) – jména souborů + odpovídající inode čísla
-- **FCB na soubor** – detaily o souboru
+- **boot control block** (na svazek) – info pro zavedení OS (UFS boot block, NTFS partition boot sector)
+- **volume control block** (na svazek) – počet a velikost bloků, volné bloky (UFS superblock, NTFS master file table)
+- **adresářová struktura** – jména souborů + čísla inode
+- **FCB** pro každý soubor
 
-### V paměti
+**V paměti:**
 
-- **Mount table** – info o připojených svazcích
-- **Cache adresářové struktury** – nedávno použité adresáře
-- **Systémová open-file table** – kopie FCB otevřených souborů
-- **Per-process open-file table** – ukazatel do systémové tabulky + info specifické pro proces
-- **Buffery** – dočasně drží bloky při čtení/zápisu
+- **mount table** – připojené svazky
+- **cache adresářů** – nedávno použité adresáře
+- **systémová open-file table** – kopie FCB otevřených souborů
+- **per-process open-file table** – ukazatel do systémové tabulky + info procesu
+- **buffery** – bloky při čtení a zápisu
 
-### Jak to funguje – vytvoření a otevření souboru
+**Vytvoření a otevření souboru:**
 
-1. `create()` – alokuje se nový FCB, aktualizuje se adresář na disku
-2. `open()` – nejdřív se zkontroluje systémová open-file table (soubor už může být otevřený jiným procesem); pokud ne, prohledá se (často cachovaná) adresářová struktura, FCB se zkopíruje do systémové tabulky, přidá se záznam do per-process tabulky s ukazatelem na ni
-3. Návratová hodnota `open()` (file descriptor / file handle) se používá pro všechny další V/V operace – šetří opakované hledání v adresáři
+1. `create()` – nový FCB, aktualizace adresáře
+2. `open()` – nejdřív systémová open-file table (soubor už může mít otevřený jiný proces); jinak hledání v adresáři, FCB do systémové tabulky a záznam do per-process tabulky
+3. `open()` vrátí **file descriptor / handle** – používá se pro další operace, adresář se znovu neprohledává
 
 ## Oddíly a mountování
 
-### Raw vs. "cooked"
-
-- **Raw oddíl** – bez souborového systému (swap prostor, některé databáze, RAID metadata)
-- **"Cooked" oddíl** – obsahuje souborový systém
-
-### Boot a Root partition
-
-**Boot partition** obsahuje zavaděč (bootstrap) v pevném formátu (souborový systém ještě není načtený, nejde ho interpretovat). **Root partition** obsahuje jádro OS, mountuje se při startu.
+- **raw oddíl** – bez souborového systému (swap, některé databáze, metadata RAID)
+- **„cooked“ oddíl** – se souborovým systémem
+- **boot partition** – zavaděč v pevném formátu (FS ještě není načtený)
+- **root partition** – jádro OS, mountuje se při startu
 
 ### MBR (Master Boot Record)
 
-Uložen na úplném začátku disku (LBA sektor 0). Skládá se ze dvou částí:
+Na začátku disku (LBA sektor 0), dvě části:
 
-- **Hlavní tabulka rozdělení disku (MPT)** – seznam max. **4 primárních oddílů** + umístění jejich boot sektorů. Jeden z oddílů může být označen jako **extended partition**, uvnitř které lze vytvořit libovolný počet logických oddílů.
-- **Hlavní spouštěcí kód (zavaděč)** – krátký kód, který BIOS nahraje do paměti a spustí; ten najde a spustí boot sektor aktivního oddílu
-
-**Limit MBR:** kvůli 32bitové adresaci sektorů nepodporuje disky větší než **2 TiB**.
+- **tabulka oddílů (MPT)** – max. **4 primární oddíly**; jeden může být **extended** s libovolným počtem logických oddílů
+- **zavaděč** – BIOS ho nahraje a spustí, ten spustí boot sektor aktivního oddílu
+- **limit:** 32bitová adresace → disky max **2 TiB**
 
 ### GPT (GUID Partition Table)
 
-Novější standard (součást **UEFI**), nahrazuje MBR – podporuje disky nad 2 TiB, prakticky neomezený počet oddílů (na rozdíl od 4 u MBR). Konverze MBR→GPT je snadná, pokud byl při formátování první oddíl zarovnaný (od Windows Vista běžné zarovnání na 1 MiB).
+- součást **UEFI**, nahrazuje MBR
+- disky nad 2 TiB, prakticky neomezený počet oddílů
+- převod z MBR je snadný, pokud je první oddíl zarovnaný (od Vista na 1 MiB)
 
 ## Virtual File System (VFS)
 
-Vrstva umožňující OS podporovat víc typů souborových systémů zároveň (lokální i síťové) přes jednotné rozhraní, objektově orientovaně.
+Jednotné rozhraní pro víc typů FS najednou (lokální i síťové):
 
-- **1. vrstva** – rozhraní systémových volání (`open, read, write, close`)
-- **2. vrstva – VFS** – odděluje obecné operace od konkrétní implementace; používá **vnode** (na rozdíl od inode jedinečný v rámci **celé sítě**, ne jen jednoho souborového systému) – umožňuje transparentní přístup k lokálním i síťovým (**[[NFS]]**) souborům
-- **3. vrstva** – konkrétní implementace daného typu souborového systému nebo síťového protokolu
+1. **rozhraní systémových volání** (`open, read, write, close`)
+2. **VFS** – odděluje obecné operace od implementace; používá **vnode** (jedinečný v celé síti, ne jen v jednom FS) → stejný přístup k lokálním i **[[NFS]]** souborům
+3. **konkrétní implementace** FS nebo síťového protokolu
 
-Linux VFS definuje 4 typy objektů: **inode** (soubor), **file** (otevřený soubor), **superblock** (celý souborový systém), **dentry** (položka adresáře) – každý má tabulku funkcí, takže VFS volá operace, aniž by věděl, o jaký konkrétní typ souboru jde.
+Linux VFS má 4 objekty: **inode** (soubor), **file** (otevřený soubor), **superblock** (celý FS), **dentry** (položka adresáře).
 
 ## Implementace adresáře
 
-- **Lineární seznam** – jednoduchý, ale **lineární vyhledávání** je pomalé; setříděný seznam umožní binární hledání, ale komplikuje vkládání/mazání
-- **Hašovací tabulka** – rychlé vyhledávání přes hašovací funkci jména souboru; komplikace: pevná velikost tabulky (nutnost reorganizace při zaplnění), řešení kolizí (řetězení)
+- **lineární seznam** – jednoduchý, ale pomalé hledání (setříděný → binární hledání, ale složitější vkládání)
+- **hašovací tabulka** – rychlé hledání; problém s pevnou velikostí a kolizemi (řetězení)
 
 ## Metody alokace místa na disku
 
 ### Souvislá alokace (Contiguous)
 
-Soubor zabírá **souvislý blok** disku (adresa začátku + délka). Výhody: minimální počet seeků, podporuje sekvenční i přímý přístup (blok i = b+i). Nevýhody: **externí fragmentace** (first/best/worst fit stejně jako u [[02_Hlavni_pamet|paměti]]), nutnost předem znát velikost souboru, kompakce je drahá (hodiny u velkých disků).
+- soubor = **souvislý úsek** (začátek + délka); blok i = b+i
+- **+** málo seeků, sekvenční i přímý přístup
+- **−** **externí fragmentace** (first/best/worst fit jako u [[02_Hlavni_pamet|paměti]]), velikost se musí znát předem, kompakce je drahá
 
 ### Spojová alokace (Linked)
 
-Soubor = [[spojový seznam]] bloků, roztroušených kdekoli na disku – adresář drží ukazatel na první a poslední blok. Žádná externí fragmentace, velikost netřeba předem znát. Nevýhody: **jen efektivní pro sekvenční přístup** (k i-tému bloku nutno projít i−1 předchozích), riziko poškozeného ukazatele (ztráta zbytku souboru), režie místa na ukazatele (řeší se seskupením bloků do **clusterů**).
-
-**FAT (File Allocation Table)** – varianta spojové alokace použitá v MS-DOS: tabulka na začátku svazku, indexovaná číslem bloku, každý záznam ukazuje na další blok souboru (0 = volný blok, speciální hodnota = konec souboru). Umožňuje efektivnější přímý přístup než klasická spojová alokace (čte se přímo z tabulky), pokud je FAT cachovaná v paměti.
+- soubor = [[spojový seznam]] bloků kdekoli na disku; adresář má ukazatel na první a poslední
+- **+** žádná externí fragmentace, velikost netřeba znát
+- **−** rozumné jen pro **sekvenční přístup** (k i-tému bloku přes i−1 předchozích), poškozený ukazatel = ztráta zbytku, místo na ukazatele (řeší **clustery**)
+- **FAT** – varianta z MS-DOS: tabulka indexovaná číslem bloku, záznam ukazuje na další blok (0 = volný, speciální hodnota = konec); když je v cache, je i přímý přístup rychlý
 
 ### Indexovaná alokace (Indexed)
 
-Každý soubor má **index blok** (pole adres bloků) – i-tý záznam = i-tý blok souboru. Podporuje přímý přístup bez externí fragmentace, ale plýtvá místem u malých souborů (celý index blok i pro soubor o 1-2 blocích).
-
-**Řešení pro velké soubory:**
-- **Spojovaný (linked) index** – index bloky se řetězí (poslední záznam = ukazatel na další index blok)
-- **Víceúrovňový index** – 1. úrovňový index ukazuje na 2. úrovňové indexy, ty na data
-- **Kombinované schéma (UNIX [[i-node|inode]])** – prvních ~12 ukazatelů přímo na data (**direct blocks**), pak ukazatele na **single/double/triple indirect block** pro velké soubory
-
-### Srovnání výkonu
+- každý soubor má **index blok** – i-tý záznam = adresa i-tého bloku
+- **+** přímý přístup, bez externí fragmentace
+- **−** u malých souborů plýtvá místem
+- velké soubory: **spojované** index bloky, **víceúrovňový** index, nebo **kombinace (UNIX [[i-node|inode]])** – ~12 přímých ukazatelů + single/double/triple indirect
 
 | | Souvislá | Spojová | Indexovaná |
 | :-- | :-- | :-- | :-- |
-| Sekvenční přístup | rychlý | rychlý | závisí na cachování indexu |
-| Přímý přístup | rychlý (1 čtení) | pomalý (i čtení) | rychlý, pokud je index v paměti |
-| Externí fragmentace | ano | ne | ne |
+| sekvenční přístup | rychlý | rychlý | podle cache indexu |
+| přímý přístup | rychlý (1 čtení) | pomalý (i čtení) | rychlý, je-li index v paměti |
+| externí fragmentace | ano | ne | ne |
 
-Některé systémy kombinují – malé soubory souvisle, velké přepnou na indexovanou alokaci.
+Některé systémy kombinují – malé soubory souvisle, velké indexovaně.
 
-## Správa volného místa (Free-Space Management)
+## Správa volného místa
 
-- **Bitová mapa (bit vector)** – 1 bit na blok (1 = volný, 0 = obsazený); jednoduché a efektivní hledání prvního volného bloku (bitové instrukce procesoru)
-- **Spojový seznam volných bloků** – ukazatel na první volný blok, každý volný blok ukazuje na další; pomalé procházení, ale používá se zřídka (stačí najít **jeden** volný blok, ne procházet celý seznam). FAT tuhle evidenci řeší přímo v alokační tabulce (0 = volný blok).
+- **bitová mapa** – 1 bit na blok (1 = volný); rychlé hledání prvního volného bloku
+- **spojový seznam volných bloků** – stačí najít jeden volný, celý se neprochází; FAT to řeší přímo v tabulce (0 = volný)
 
 ## Obnova po havárii (Recovery)
 
-### Kontrola konzistence (Consistency Checking)
-
-Nástroj (`fsck` na UNIXu) porovná adresářovou strukturu s daty na disku a opraví nesrovnalosti. Může trvat minuty až hodiny u velkých disků, může vyžadovat lidský zásah.
-
-### Log-structured (žurnálovací) souborové systémy
-
-Viz [[žurnálování]] – všechny změny metadat se nejdřív zapíšou sekvenčně do **logu (žurnálu)**, teprve pak se "přehrají" do skutečných struktur. Po havárii se dokončí nedokončené (ale committed) transakce, nedokončené (neuncommitted) se vrátí zpět. Výrazně rychlejší než syrová kontrola konzistence (sekvenční zápisy místo náhodných).
-
-### Zálohování a obnova (Backup and Restore)
-
-Typický cyklus:
-- **Den 1** – **plná záloha (full backup)** všech souborů
-- **Den 2, 3, …** – **přírůstková záloha (incremental backup)** jen souborů změněných od poslední zálohy
-
-Obnova = plná záloha + postupné přehrání přírůstkových záloh. Kompromis mezi objemem záloh a rychlostí/jednoduchostí obnovy.
+- **kontrola konzistence** (`fsck`) – porovná adresáře s daty na disku a opraví; u velkých disků minuty až hodiny
+- **žurnálovací FS** – viz [[žurnálování]]; změny metadat jdou nejdřív do **logu**, pak do struktur. Po havárii se dokončí potvrzené (committed) transakce a nepotvrzené se vrátí → mnohem rychlejší než fsck
+- **zálohování:**
+  - den 1 **plná záloha**
+  - další dny **přírůstková** (jen změny od poslední zálohy)
+  - obnova = plná + postupně přírůstkové
 
 ## NFS (Network File System)
 
-Sdílení souborů mezi nezávislými pracovními stanicemi na bázi **klient-server** vztahu – stroj může být zároveň klient i server. Sdílení ovlivňuje jen zúčastněné stroje, ne celou síť.
+Sdílení souborů mezi stanicemi na principu **klient-server** – stroj může být klient i server zároveň, týká se jen zúčastněných strojů.
 
 **Souvisí:** [[FCB]], [[i-node]], [[žurnálování]], [[cache]], [[spojový seznam]], [[hašovací tabulka]], [[04_File_Concept_Access]], [[05_Directory_Structures]]

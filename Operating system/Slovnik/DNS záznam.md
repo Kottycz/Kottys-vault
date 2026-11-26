@@ -27,6 +27,9 @@ tags: [slovnik]
 | **CNAME** | alias → jiné jméno | `ftp → srv2-fs.kotrba.cyberschool.internal` |
 | **SRV** | kde běží služba (např. řadič domény) | v zóně `_msdcs` |
 | **NS / SOA** | kdo je autoritou pro zónu | |
+| **MX** | poštovní server domény (s prioritou) | `frengp.cz MX 10 mail.frengp.cz` |
+| **TXT** | libovolný text – ověření domény, [[SPF-DKIM-DMARC\|SPF, DKIM, DMARC]] | |
+| **CAA** | která [[CA]] smí vydat certifikát | |
 
 - dynamicky se zapisují klienti sami (`ipconfig /registerdns`), statické záznamy zakládá správce (`Add-DnsServerResourceRecordA ... -CreatePtr`)
 

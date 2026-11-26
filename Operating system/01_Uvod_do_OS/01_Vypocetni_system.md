@@ -1,107 +1,91 @@
 # Výpočetní systém
 
-Výpočetní systém se skládá ze čtyř částí:
+Výpočetní systém má čtyři části:
 
-- **Hardware** – poskytuje základní výpočetní zdroje ([[CPU]], paměť, V/V zařízení)
-- **[[operační systém]]** – řídí a koordinuje využívání hardwaru mezi aplikacemi a uživateli
-- **Aplikační programy** – definují, jak se zdroje systému použijí k řešení úloh uživatele (textové editory, kompilátory, prohlížeče, hry…)
+- **Hardware** – základní výpočetní zdroje ([[CPU]], paměť, V/V zařízení)
+- **[[operační systém]]** – řídí a koordinuje využití hardwaru mezi aplikacemi a uživateli
+- **Aplikační programy** – určují, jak se zdroje použijí (editory, kompilátory, prohlížeče, hry…)
 - **Uživatelé** – lidé, stroje, jiné počítače
 
 ## CPU (procesor)
 
-**Procesor / CPU / mikroprocesor** je srdcem každého výpočetního systému. Načítá a vykonává instrukce uložené v paměti, provádí matematické a logické operace a řídí toky dat.
-
-Moderní mikroprocesor kombinuje všechny své části do jednoho integrovaného obvodu. Pracuje s binárními daty (nuly a jedničky), v praxi se ale čísla obvykle zapisují šestnáctkově (viz [[Ciselne_soustavy]]).
-
-Činnost procesoru řídí **systémové hodiny** – s každým hodinovým impulsem provede procesor operaci. Rychlost hodin (např. 100 MHz = 100 milionů impulsů/s) ale sama o sobě neurčuje výkon – různé procesory stihnou za jeden impuls různé množství práce.
+- **srdce** výpočetního systému – načítá a vykonává instrukce z paměti, počítá matematické a logické operace, řídí tok dat
+- moderní mikroprocesor = všechny části v jednom integrovaném obvodu
+- pracuje binárně, čísla se ale obvykle zapisují šestnáctkově (viz [[Ciselne_soustavy]])
+- řídí ho **systémové hodiny** – každý impuls = operace; frekvence (např. 100 MHz) ale sama neurčuje výkon, různé procesory stihnou za impuls různě práce
 
 ### CPU registry
 
-**[[registr|Registry]]** jsou interní paměť mikroprocesoru, slouží k ukládání dat a manipulaci s nimi. Velikost, počet a typ registrů závisí na typu procesoru (např. Intel má 32bitové, Alpha 64bitové registry).
+**[[registr|Registry]]** = interní paměť procesoru pro data; velikost a počet závisí na procesoru (Intel 32bit, Alpha 64bit).
 
-Speciální (vyhrazené) registry:
+Speciální registry:
 
-- **Ukazatel instrukcí (Program Counter, PC)** – adresa instrukce, která se provede v dalším kroku. Po každém načtení instrukce se automaticky zvýší.
-- **Ukazatel zásobníku (Stack Pointer, SP)** – ukazuje na vrchol zásobníku (paměti pracující na principu LIFO – poslední dovnitř, první ven).
-- **Stavový registr (Processor Status, PS)** – uchovává informace o momentálním stavu procesoru, včetně režimu činnosti (režim jádra / uživatelský režim).
+- **Program Counter (PC)** – adresa další instrukce, po načtení se sám zvýší
+- **Stack Pointer (SP)** – vrchol zásobníku (LIFO)
+- **Processor Status (PS)** – stav procesoru včetně režimu (jádro / uživatel)
 
 ## Sběrnice (BUS)
 
-Obvody na základní desce propojuje **sběrnice**, dělí se na tři logické celky:
+Propojuje obvody na základní desce:
 
-- **Adresová** – udává místo v paměti (adresu) pro datový přenos
-- **Datová** – obousměrná, slouží k přenosu dat mezi procesorem a pamětí
-- **Řídící** – přenáší časovací a řídicí signály pro celý systém
+- **adresová** – adresa v paměti pro přenos
+- **datová** – obousměrná, přenos dat mezi CPU a pamětí
+- **řídící** – časovací a řídicí signály
 
-Oblíbené sběrnice pro připojení periferií: ISA, PCI.
+Pro periferie: ISA, PCI.
 
 ## Paměť
 
-Systém má hierarchii pamětí s různou rychlostí a velikostí:
+Hierarchie od nejrychlejší:
 
-- **[[cache]]** – nejrychlejší, ale drahá paměť; dočasně ukládá obsah hlavní paměti. Procesory mívají malou interní cache a větší externí cache na desce.
-- **[[RAM]] / vnitřní paměť** – rychlá, používá se během výpočtu, po dokončení se uvolní
-- **[[ROM]]** – jen pro čtení, obsahuje neměnné programy (např. bootstrap)
-- **[[EEPROM]]** – jde přepsat, ale ne často (např. tovární firmware smartphonů)
-- **Vnější paměť** – disky, flash, cloud – stálé uložení dat a programů, které se zrovna nezpracovávají
+- **[[cache]]** – nejrychlejší a drahá, dočasná kopie hlavní paměti (malá v procesoru, větší na desce)
+- **[[RAM]]** – rychlá pracovní paměť během výpočtu
+- **[[ROM]]** – jen pro čtení, neměnné programy (bootstrap)
+- **[[EEPROM]]** – přepisovatelná, ale ne často (firmware)
+- **vnější paměť** – disky, flash, cloud – trvalé uložení
 
-### Volatilní vs. nevolatilní paměť
+- **volatilní** – bez napájení ztratí obsah (RAM)
+- **nevolatilní** – obsah zůstane ([[ROM]], [[HDD]], [[SSD]], NVRAM)
 
-- **Volatilní** – ztrácí obsah při odpojení napájení (RAM)
-- **Nevolatilní** – obsah zachová i bez napájení ([[ROM]], [[HDD]], [[SSD]], NVRAM)
-
-### Sekundární úložiště
-
-Hlavní paměť je malá a volatilní, proto systémy potřebují **sekundární úložiště**:
-
-- **[[HDD]]** (Hard Disk Drive) – nejběžnější, pro programy i data
-- **[[SSD]]** (Solid State Disk) – rychlejší než HDD, nevolatilní
+**Sekundární úložiště** – hlavní paměť je malá a volatilní, proto [[HDD]] (nejběžnější) a [[SSD]] (rychlejší).
 
 ## Řadiče (Controller)
 
-**[[řadič|Řadiče]]** ovládají periferie (grafické karty, disky…) pomocí čipu. Jsou to v podstatě také procesory – "inteligentní pomocníci" hlavního CPU. Mají vlastní registry, přes které je ovládá CPU.
-
-CPU musí mít pro každý řadič **softwarový ovladač zařízení**, který manipuluje s jeho registry.
-
-### DMA (Direct Memory Access)
-
-Při potřebě přenést větší objem dat přímo z/do systémové paměti (např. zápis na disk) se používá **[[DMA]]** – umožňuje hardwaru přímý přístup k systémové paměti pod dohledem CPU, bez zatěžování procesoru po celou dobu přenosu.
+- **[[řadič|Řadiče]]** ovládají periferie (grafika, disky) – jsou to vlastně „pomocné procesory“ s vlastními registry
+- CPU potřebuje pro každý řadič **ovladač zařízení**, který s registry pracuje
+- **[[DMA]]** – velké přenosy (zápis na disk) jdou přímo do paměti bez zatěžování CPU po celou dobu přenosu
 
 ## Start systému
 
-Aby počítač mohl začít fungovat (po zapnutí nebo restartu), potřebuje **[[bootstrap]] program** – jednoduchý program uložený ve [[firmware|firmwaru]] (ROM/EEPROM), který:
+**[[bootstrap]] program** ve [[firmware|firmwaru]] (ROM/EEPROM) po zapnutí:
 
-1. Inicializuje celý systém (registry CPU, řadiče, paměť)
-2. Najde jádro operačního systému a nahraje ho do paměti
-3. Předá mu řízení
+1. inicializuje systém (registry CPU, řadiče, paměť)
+2. najde jádro OS a nahraje ho do paměti
+3. předá mu řízení
 
-Po nahrání **[[kernel|jádra]]** začnou běžet i **systémové procesy / démoni** (na UNIXu první je proces `init`), a systém čeká na první událost.
+Po nahrání **[[kernel|jádra]]** se spustí **systémové procesy / démoni** (UNIX: první je `init`) a systém čeká na událost.
 
 ## Přerušení (Interrupt)
 
-Výskyt události signalizuje **[[přerušení]]** – od hardwaru (signál po sběrnici) nebo softwaru (systémové volání).
-
-Když je CPU přerušeno, zastaví svou činnost a skočí na pevně danou adresu, kde je obslužná rutina přerušení. Rychlé vyřízení zajišťuje **tabulka ukazatelů (vektor přerušení)** na obslužné rutiny, indexovaná číslem zařízení.
+- událost signalizuje **[[přerušení]]** – od hardwaru (signál po sběrnici) nebo softwaru (systémové volání)
+- CPU přeruší práci a skočí na obslužnou rutinu
+- rychlost zajišťuje **vektor přerušení** – tabulka adres rutin indexovaná číslem zařízení
 
 ## RTC (Real Time Clock)
 
-**RTC** je periferie, která poskytuje přesný čas a generuje pravidelné časové intervaly. Má vlastní baterii, takže funguje i po vypnutí počítače – proto PC "zná" správné datum a čas i po startu.
+- přesný čas a pravidelné intervaly
+- vlastní baterie → PC zná čas i po vypnutí
 
 ## Von Neumannova architektura
 
-Většina systémů používá jeden univerzální procesor, některé i speciální procesory navíc. **Multiprocesorové systémy** (paralelní, těsně vázané systémy) mají výhody:
+Většina systémů má jeden univerzální procesor. **Multiprocesorové systémy** (paralelní, těsně vázané):
 
-- vyšší propustnost
-- úspora z rozsahu
-- vyšší spolehlivost (odolnost vůči chybám)
-
-Dva typy:
-
-- **Asymetrický multiprocessing (ASMP)** – každý procesor má vyhrazený vlastní úkol
-- **Symetrický multiprocessing (SMP)** – kterýkoli proces může běžet na kterémkoli procesoru
+- vyšší propustnost, úspora z rozsahu, vyšší spolehlivost
+- **ASMP** (asymetrický) – každý procesor má svůj úkol
+- **SMP** (symetrický) – každý proces může běžet na kterémkoli procesoru
 
 ## Vstup/výstup (I/O)
 
-Velká část kódu operačního systému se věnuje právě správě V/V. Ke sběrnici je připojeno víc řadičů, každý ovládá jeden typ zařízení. Systém typicky má **ovladač zařízení** pro každý řadič, který poskytuje jednotné rozhraní.
-
-**Interrupt-driven I/O** – řadič po dokončení přenosu informuje ovladač přerušením. Pro velké objemy dat (disky) se používá **[[DMA]]**, aby se generoval jen jeden přerušení na celý blok dat místo jednoho na bajt.
+- velká část kódu OS je správa V/V; každý řadič má **ovladač** s jednotným rozhraním
+- **interrupt-driven I/O** – řadič po přenosu ohlásí konec přerušením
+- velké objemy (disky) přes **[[DMA]]** → jedno přerušení na celý blok, ne na každý bajt

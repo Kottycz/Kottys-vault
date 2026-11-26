@@ -1,7 +1,7 @@
 ---
 aliases: [Process Scheduling, Plánování procesů podrobně]
 ---
-
+ 
 # Plánování procesů (podrobně)
 
 Cíl **multiprogramování** – mít vždy nějaký proces běžící, maximalizovat využití CPU. Cíl **sdílení času (time sharing)** – přepínat procesor mezi procesy tak často, aby s nimi uživatel mohl interaktivně pracovat. **[[plánování procesů|Plánovač procesů]]** vybírá dostupný proces pro spuštění na CPU. Na jednoprocesorovém systému běží vždy nejvýš jeden proces, ostatní čekají.
@@ -10,7 +10,7 @@ Cíl **multiprogramování** – mít vždy nějaký proces běžící, maximali
 
 - **Job queue** – všechny procesy v systému
 - **Ready queue** – připravené a čekající na spuštění (obvykle jako [[spojový seznam]] – hlavička fronty ukazuje na první a poslední [[PCB]])
-- **Device queue** – fronta procesů čekajících na konkrétní V/V zařízení (každé zařízení má vlastní frontu)
+- **Device queue** – fronta procesů čekajících na konkrétní I/O zařízení (každé zařízení má vlastní frontu)
 
 ![[ca5ac492116f812ecf62ce379603b06045dac1b3fd4e0f24a1f91b860cbf1ecf.png]]
 
@@ -52,23 +52,11 @@ Dává CPu bound a I/O bound hnde za sebe a to řídí medium-term-sheduler
 
 Ukláda [[PCB]] stavy starého procesu (word) + načtení stavu nového (excel). Je to čistá režie ("pure overhead"). Typická rychlost je pár milisekund, což je pomalé oproti procesoru. Zabirá to čas procesoru přotože nic nedělá. Proto více kontex switchů nechcem.
 
+**Dispatcher** - vyhazuje boudy pryč
+
 
 ![[6c9fade4fee92377f108cb2f3ca3222d36175e575a2dc9e56a24d8e0da08025a.png]]
 
-## Multitasking na mobilních zařízeních
 
-### iOS
-
-Starší verze iOS neumožňovaly multitasking uživatelských aplikací – běžela jen jedna aplikace v popředí, ostatní byly pozastavené. Od **iOS 4** je omezený multitasking na pozadí, jen pro vybrané typy úloh:
-
-- jednorázová úloha konečné délky (dokončení stahování)
-- notifikace o události (nová zpráva)
-- dlouhoběžící úlohy na pozadí (přehrávač zvuku)
-
-Apple multitasking záměrně omezuje kvůli výdrži baterie a spotřebě paměti.
-
-### Android
-
-Nemá takové restrikce na typy aplikací běžících na pozadí. Aplikace potřebující zpracování na pozadí použije **službu (service)** – samostatnou komponentu bez uživatelského rozhraní, s malou pamětní stopou, která běží i po pozastavení hlavní aplikace (např. streamovací hudební přehrávač na pozadí dál posílá zvuk zvukovému ovladači).
 
 **Souvisí:** [[proces]], [[PCB]], [[plánování procesů]], [[přerušení]], [[spojový seznam]]

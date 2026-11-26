@@ -7,9 +7,11 @@ tags: [os]
 
 ## MS DOS A WINDOWS
 
-Řada **MS-DOS + Windows** zahrnuje operační systém DOS s grafickou nadstavbou Windows. Jedná se o verze od Windows 1 až do verze Windows 3.x Řada **Windows s DOS jádrem** vznikla úpravou původního samostatného operačního systému MS-DOS a jeho včleněním jako jádra do Windows, které se tímto staly samostatným operačním systémem. Tato řada zahrnuje **Windows 95, 98 a ME**.
+Tři řady Windows:
 
-- **Windows s NT jádrem** mají zcela přepracované jádro a přes značnou kompatibilitu se vlastně jedná o jiný typ operačního systému. Patří zde Windows NT 3.x, Windows NT 4.x, Windows 2000, Windows XP, Windows Vista, Windows 7, Windows 8, Windows 10, Windows NT Server, Windows 2000 Server, Windows 2008 Server, Windows 2012 Server, Windows 2016 Server.
+- **MS-DOS + Windows** – DOS s grafickou nadstavbou Windows (Windows 1 až 3.x)
+- **Windows s DOS jádrem** – DOS upravený a vložený jako jádro do Windows, které se tím staly samostatným OS (**Windows 95, 98, ME**)
+- **Windows s NT jádrem** – úplně přepracované jádro, vlastně jiný typ OS (NT 3.x, NT 4, 2000, XP, Vista, 7, 8, 10 a serverové verze)
 
 ### MS DOS+WINDOWS
 
@@ -17,42 +19,37 @@ tags: [os]
 
 #### MS-DOS
 
-MS-DOS je **jednoprocesorový, jednouživatelský, jednoúlohový** operační systém. Samotný DOS bez spuštěné nástavby Windows má velmi jednoduchou **vrstvenou strukturu**. Nejblíže hardwaru je **BIOS** a dále soubor **IO.sys**, který se stará o obsluhu periferií.hardwaru (například klávesnice, monitoru BIOS poskytuje programátorům základní ovládání hardwaru (například klávesnice, monitoru) přes hardwarová a softwarová přerušení.
+**Jednoprocesorový, jednouživatelský, jednoúlohový** OS s jednoduchou **vrstvenou strukturou** (zdola nahoru):
 
-Pokud programátor potřebuje komunikovat s určitým zařízením, vyvolá příslušné přerušení (k tomu jsou v programovacích jazycích speciální příkazy). Nad vrstvou ovládání hardware je vrstva samotného jádra systému představovaná souborem **MSDOS.SYS**. MS-DOS má tedy monolitické jádro složené z jediného souboru. Jádro poskytuje další softwarová přerušení, například pro přístup k souborům nebo práci s grafikou.
-
-Následující vrstva, tvořená souborem **COMMAND.COM** je textové rozhraní mezi uživatelem a systémem. Uživatel zadává příkazy a rozhraní na ně reaguje a vypisuje výsledky nebo chybová hlášení. Samotný COMMAND.COM obsahuje sadu **vnitřních příkazů**. Ostatní příkazy se nazývají **vnější příkazy** a jsou implementovány jako programy s příponou .exe nebo .com.
-
-- V podlední vrstvě pak běží programy představující vnější příkazy a patří sem také konfigurační soubory:
-  - **CONFIG.SYS** pro nastavení hardwaru (například spuštění ovladače monitoru s českou znakovou sadou)
-  - **AUTOEXEC.BAT** pro nastavení softwaru (například spuštění sekvence vnitřních a vnějších příkazů a spuštění programu po startu systému.
+- **BIOS** – základní ovládání hardwaru (klávesnice, monitor) přes hardwarová a softwarová přerušení; programátor vyvolá přerušení a tím komunikuje se zařízením
+- **IO.sys** – obsluha periferií
+- **MSDOS.SYS** – jádro (monolitické, jeden soubor); poskytuje další přerušení, např. přístup k souborům a grafice
+- **COMMAND.COM** – textové rozhraní mezi uživatelem a systémem
+  - obsahuje **vnitřní příkazy**
+  - **vnější příkazy** jsou samostatné programy `.exe` / `.com`
+- poslední vrstva – programy (vnější příkazy) a konfigurační soubory:
+  - **CONFIG.SYS** – nastavení hardwaru (např. ovladač monitoru s českou znakovou sadou)
+  - **AUTOEXEC.BAT** – nastavení softwaru (sekvence příkazů a programy po startu)
 
 ![[b96b2145b05ea27abbe84df81c1455504e1c10d0235a5d0eacb19775ab295e96.png]]
 
 #### MS-DOS + WINDOWS
 
-Když v MS-DOS 6.22 spustíme windows 3.x v **rozšířeném módu**, struktura celého systému se v horní části změní. Na obrázku je spodní část trochu shrnura (BIOS, MSDOS.SYS). K nim je přidán soubor **WIN.COM**, který slouží ke spuštění celých Windows a dále ovladače. Windows přidávají **multitasking**, 16bitové knihovny a ve verzi Windows 3.11 for Workgroups základní podporu sítě peer-to-peer.
+Spuštěním Windows 3.x v **rozšířeném módu** se změní horní část struktury:
 
-Zatímco MS-DOS pracuje v **reálném módu**, kdy lze využít paměť pouze do 1MB. Windows 3.x pracují v **rozšířeném módu**, dostupném až od procesorů i386, kde lze kromě rozšířené paměti využívat také chráněný mód procesoru pro ochranu paměti. Řadiče (ovladače, drivery) ovládají I/O zařízení pro Windows. Jsou spouštěny v souboru SYSTÉM.INI.
+- **WIN.COM** spouští Windows; Windows přidávají **multitasking**, 16bitové knihovny a od 3.11 for Workgroups základní síť peer-to-peer
+- MS-DOS běží v **reálném módu** (paměť jen do 1 MB), Windows 3.x v **rozšířeném módu** (od i386) – rozšířená paměť a chráněný mód pro ochranu paměti
+- ovladače I/O zařízení se spouští v souboru **SYSTEM.INI**
+- **DOS EXTENDER** (**Win386.exe**) – podpora rozšířené paměti; obsahuje **VMM** (Virtual Machine Manager) pro souběh s DOS programy
+- **VxD** – řadiče virtuálních zařízení, které VMM potřebuje pro I/O DOS programů
+- **jádro Windows** (jádrem OS zůstává MSDOS.SYS) – správce prostředků, **3 soubory**:
+  - **KRNL386.EXE** – správa paměti a procesů
+  - **GDI.EXE** – grafický výstup (kurzor, ikony, písmo, tiskárna)
+  - **USER.EXE** – prvky rozhraní mimo GDI (menu, okna, tlačítka)
+- konfigurační soubory **.INI**: **WIN.INI** (software a uživatel), **SYSTEM.INI** (hardware)
+- rozhraní k uživateli: **PROGMAN.EXE** (správce programů), **SHELL**, část **API** (knihovny `.DLL`)
 
-- **DOS EXTENDER** je modul pro podporu využití rozšířené paměti (Extended Memory). Je představován souborem **Win386.exe**.
-
-Součástí tohoto souboru je také **Správce virtuálních zařízení (VMM = Virtual Machine Manager)**, který ovládá možnosti Windows pro souběh s programy DOS.
-
-- **Řadiče virtuálních zařízení (VxD)** jsou řadiče, které VMM potřebuje pro manipulaci s I/O zařízeními pro programy DOS v rozšířeném módu.
-- V další vrstvě je jádro Windows (jádrem OS zústává MSDOS.SYS), které funguje jako správce prostředků vzhledem k programům běžícím pod Windows (i DOS programům spuštěným z Windows). Skládá se ze **3 souborů**:
-  - **KRNL386.EXE** – správce paměti, správce procesů
-  - **GDI.EXE** – grafické rozhraní (kurzor, ikony, písmo, …), cokoli co souvisí se základními funkcemi pro grafický výstup na obrazovku, tiskárnu, apod.
-  - **USER.EXE** – prvky uživatelského rozhraní, které nepatří do GDI (menu, okna, tlačítka, …)
-- V další vrstvě najdeme konfigurační soubory s příponou **.INI**.
-  - **WIN.INI** – konfigurace software a uživatelské nastavení.
-  - **SYSTÉM.INI** – konfigurace hardware.
-
-Následuje vrstva, která je rozhraním mezi uživatelem, programy a samotným systémem. Soubor **PROGMAN.EXE** je správce programů, **SHELL** je grafické a textové rozhraní mezi uživatelem a systémem. Zde bychom také mohli zařadit část **API** rozhraní (Application Programming Interface) reprezentovaného dynamicky linkovanými knihovnami.
-
-Většina knihoven má příponu .DLL, některé mají příponu .exe, přípona knihoven fontů závisí na typu fontů (např. ttf pro true type fonty). ==DOS programy== nevědí nic o existenci jádra windows a ini souborů, proto horní „Windows“ vrstvy nevyužívají. DOS programy jsou napsány pro jednouživatelský, jednoúlohový systém DOS, bez jakýchkoliv ohledů na možnost sdílení prostředků s jinými procesy.
-
-Proto je nutné je separovat do ==„virtuálních počítačů“==, které programům vytvoří iluzi výlučné existence v systému a znemožní jim zásahy do prostředků jiných procesů.
+==DOS programy== o jádru Windows ani .INI nevědí a počítají s tím, že jsou v systému samy → běží odděleně ve ==„virtuálních počítačích“==, které jim vytvoří iluzi výlučnosti a zabrání zásahům do cizích prostředků.
 
 ![[f7c37e99e742f1abb550cfa42045d9e78f1cf51a6f67a674ec336870b12a2066.png]]
 
@@ -62,23 +59,24 @@ Proto je nutné je separovat do ==„virtuálních počítačů“==, které pro
 
 #### Struktura Windows 9.x/Me
 
-Od verze 4.x (Windows 95) jsou Windows již plnohodnotným operačním systémem se samostatným jádrem. Je to **32birový systém** (ale některé knihovny zůstávají 16bitové). Spodní vrstva (BIOS a ovladače) slouží k přístupu systému k zařízením.
+Od Windows 95 plnohodnotný OS se samostatným jádrem, **32bitový** (některé knihovny ještě 16bitové).
 
-- Následující vrstva se také vztahuje k hardwaru, ale již na abstraktnější úrovni. Skládá se z následujících modulů:
-  - **VMM** – Virtual Machine Manager, vytváří a udržuje prostředí virtuálních počítačů.
-  - **IFSM** – Installable File Systems Manager, spravuje různé typy souborových systémů, FAT16, VFAT, FAT32, CDFS, UDF, atd. Přes IFSM se komunikuje s paměťovými zařízeními typu mass storage (blokové zařízení).
-  - **Správce konfigurace** – spravuje ovladače hardware, včetně funkce Plug&Play.
-- Jádro se skládá ze **tří modulů**, každý z nich má dvě dynamicky linkované knihovny (jednu pro 16bitové aplikace s příponou .exe, druhou pro 32bitové aplikace s příponou .dll:
-  - **KERNEL** – multithreading, multitasking, správa paměti,
-  - **GDI** (Graphics Device Interface) – rozhraní grafických zařízení (obrazovka, tiskárna, plotter, …), grafický výstup, správce tisku, spooler.
-  - **USER** – uživatelské rozhraní, vstupy z klávesnice, myši, výstupy do GUI, okna, menu, ikony.
-  - **REGISTR (Windows Registry)** – centrální konfigurační databáze systému. Najdeme zde většinu z toho, co v předchozích verzích bylo v .INI souborech (ty jsou i v této verzi zachovány z důvodů zpětné kompatibility). Registr je uložen v souborech SYSTÉM.DAT a USER.DAT
+- spodní vrstva – **BIOS a ovladače**
+- vrstva nad hardwarem (abstraktnější):
+  - **VMM** – vytváří a udržuje virtuální počítače
+  - **IFSM** – správa souborových systémů (FAT16, VFAT, FAT32, CDFS, UDF); přes něj se komunikuje s blokovými zařízeními
+  - **Správce konfigurace** – ovladače hardwaru, Plug&Play
+- **jádro – 3 moduly**, každý má knihovnu pro 16bit (`.exe`) a 32bit (`.dll`) aplikace:
+  - **KERNEL** – multithreading, multitasking, správa paměti
+  - **GDI** – grafická zařízení, grafický výstup, správce tisku, spooler
+  - **USER** – uživatelské rozhraní, klávesnice, myš, okna, menu, ikony
+- **REGISTR** – centrální konfigurační databáze (nahrazuje .INI, ty zůstaly kvůli kompatibilitě); soubory **SYSTEM.DAT** a **USER.DAT**
 
 **Jak běží procesy:**
 
-- **Win32 aplikace** běží všechny ve společném virtuálním stroji, každá ve svém vlastním paměťovém prostoru.
-- **Win16 aplikace** běží ve společném virtuálním stroji a sdílejí jeden společný paměťový prostor.
-- **DOS aplikace** beží každá ve svém vlastním virtuálním stroji, v něm má svůj vlastní paměťový prostor.
+- **Win32** – společný virtuální stroj, každá aplikace vlastní paměťový prostor
+- **Win16** – společný virtuální stroj i společný paměťový prostor
+- **DOS** – každá aplikace vlastní virtuální stroj i paměťový prostor
 
 ![[a9bbf97ede353be060e830390328614ac762f786dce243b503388c26629110ff.png]]
 
@@ -88,169 +86,133 @@ Od verze 4.x (Windows 95) jsou Windows již plnohodnotným operačním systémem
 
 #### WINDOWS S NT JÁDREM DO VERZE XP
 
-Jádro systému **Windows NT (New Technology)** vznikalo nezávisle na systému MS-DOS. Už při jeho návrhu bylo projektováno pro typické použití tohoto systému jako serveru nebo klienta v síti (Windows NT Server, Windows NT Workstation). Hlavním hlediskem při návrhu NT je ==stabilita a možnost zabezpečení==.
+**NT (New Technology)** vznikalo nezávisle na DOSu, od začátku pro server a klienta v síti. Hlavní cíl: ==stabilita a zabezpečení==. Inspirace UNIXem.
 
-- Na celém konceptu je vidět inspirace UNIX systémy.
+- hlavní architekt přišel od firmy **DEC** (Digital), kde navrhoval **OpenVMS**
+- NT je **víceprocesorový (SMP), víceuživatelský, víceúlohový, síťový** OS
+- základní rozdělení: ==REŽIM JÁDRA== a ==UŽIVATELSKÝ REŽIM==
 
-Hlavním architektem NT byl XXXXXXX, architekt UNIX systému OPEN VMS, kterého Microsoft „přetáhl“ ze společnosti DIGITAL (DEC = Digital Equipment Corporation, která v té době byla technologickým leadrem například v oblasti mikroprocesorů, se svými 64bitovými procesory Alpha. Digital byl později pohlcen společností COMPAQ a ta společností Hewlett Packard). Windows NT jsou **víceprocesorový (SMP – symetrický multiprocessing), víceuživatelský, víceúlohový, síťový** operační systém.
+**Součásti:**
 
-- Zjednodušení struktura systému je na obrázku.
+- **HAL** (Hardware Abstraction Layer) – rozhraní mezi hardwarem a zbytkem jádra
+  - komunikuje s konkrétní platformou a vyšším vrstvám dává jednotné rozhraní
+  - ovladače mluví s hardwarem jen přes HAL
+  - soubor **HAL.DLL** – pro jinou platformu stačí ho vyměnit
+- **KERNEL** (tvrdé jádro) a exekutiva – soubor **NTOSKRNL.EXE**
+  - jeden soubor = monolitické jádro
+  - obsluha přerušení, správa procesorů a procesů
+  - další části se linkují z `.DLL` a `.SYS` = modulární struktura
+- **proces SYSTEM** – obraz toho, co běží v jádru (kontejner pro vlákna jádra)
+- **ovladače** – obecné moduly jádra: přístup k zařízením a sběrnicím, ale i filtry dat (komprese, šifrování)
+- **IFSM** – správa souborových systémů (NTFS, FAT32, UDF), využívá ho správce I/O a cache
+- **správce konfigurace** – Plug&Play a HotPlug, hlídá připojování zařízení
+- **win32k.sys** – správa oken a grafiky běží v režimu jádra kvůli rychlosti
+  - ==nevýhoda==: chyba v GUI může shodit systém (má přístup do paměti jádra), GUI se těžko vyměňuje
+  - proto od Windows Server 2008 instalace **SERVER CORE** bez GUI
+  - grafiku reprezentuje GDI, GDI+ a knihovny gdi*.dll
+- **bezpečnostní subsystém** – **LSASS** ověřuje lokálně přihlášené uživatele a podle **SAM** v registru určuje oprávnění
+- **SCM** (Service Control Manager, **services.exe**) – řídí služby; služby běží v uživatelském prostoru s vyššími oprávněními, bez vazby na uživatele
+- komunikace s jádrem přes API:
+  - **dokumentované** – USER32.DLL, GDI32.DLL…
+  - **nedokumentované** – **NTDLL.DLL**, už přímo spouští systémová volání
+- **podsystémy prostředí** – běh aplikací, které nejsou přímo pro NT (Win32 pro starší Windows a DOS, OS/2, POSIX); spouští se až s aplikací
+  - DOS programy běží přes **ntvdm.exe** (NT Virtual DOS Machine)
 
-Důležité je především rozdělení do dvou základních režimů – ==REŽIM JÁDRA== (privilegovaný režim) a ==UŽIVATELSKÝ REŽIM==.
+**NT kombinuje víc architektur:**
 
-- **HAL** – Hardware Abstraction Layer – vrstva abstrakce hardware je rozhraní mezi hardwarem a zbytkem jádra systému a zajišťuje „nezávislost“ na hardwarové platformě.
-  - Na jedné straně zajišťuje komunikaci s konkrétní ardwarovou platformou a na druhé straně unifikované rozraní pro další vrstvy operačního systému.
-  - Ovladače komunikují s hardwarem pouze sprostředkovaně přes tuto vrstvu.
-  - Načítá se ze souboru **HAL.DLL** a je oddělena od ostatních částí systému – právě z důvodu přenositelnosti mezi hardwarovými platformami (stačí vyměnit soubor HAL.DLL).
-- **KERNEL** (tvrdé jádro) a exekutiva jsou fyzicky uloženy v souboru **NTOSKRNL.EXE**.
-  - Jediný soubor, tedy monolitické jádro.
-  - Kernel zachytává a obsluhuje přerušení, provádí správu procesorů, procesů, a podobně.
-  - Ostatní součásti jádra jsou k jádru linkovány z dynamických knihoven (soubory .DLL) nebo modulů (soubory .SYS) – tedy modulární struktura jádra.
-- **HLAVNÍ SYSTÉMOVÝ PROCES** – v aplikaci pro správu procesů je vidět pod názvem **SYSTEM**, je obrazem toho co běží v jádru. Jedná se o kontejner pro prováděcí vlákna jádra.
-- **OVLADAČE** nesouvisejí jen se zařízeními, jsou obecné, jedná se o moduly jádra, které mohou sloužit jak pro přístup k zařízením, sběrnicím a podobně, ale mohou to být také filtry, přes které procházejí data (komprimace, šifrování, třídění, …).
-
-Nad ovladači souborovýc systémů je systém pro jejich správu **IFSM**, který zajišťuje přístup k předem určeným souborovým systémům (NTFS, FAT32, UDF, atd.). Je využíván správcem I/O a vyrovnávací paměti.
-
-- **SPRÁVCE KONFIGURACE** například zajišťuje funkce Plug&Play a HotPlug. Neustále sleduje stav sběrnice a hlídá připojování zařízení, u nových provádí instalační proceduru.
-- Moduly pro správu oken a grafiky beží v režimu jádra, z důvodu urychlení práce aplikací. Tato část jádra se načítá ze souboru **win32k.sys**.
-  - ==Nevýhodou== umístění grafického rozhraní do režimu jádra je bezpečnostní riziko, riziko porušení stability systému v případě chybových stavů tohoto modulu (pracuje v režimu jádra = má přístup do paměti systémových procesů).
-  - Další nevýhodou je náročnost výměny grafického rozhraní za alternativní.
-  - Ve Windows Server od verze 2008 je možnost instalovat systém bez GUI a bez dalších součástí, které GUI vyžadují – instalace **SERVER CORE**.
-  - Grafické rozhraní je reprezentováno modulem GDI, GDI+ a dynamicky linkovanými knihovnami gdi*.dll
-- **Bezpečnostní subsystém** souvisí především s modulem **LSASS** (Local Security Authority SubSystem). Provádí autentizaci uživatelů, kteří se přilašují lokálně a podle databáze v klíči registru **SAM** určují přístupová oprávnění.
-- **SCM** (Service Control Manager), správce služeb, načítaný ze souboru **services.exe**, zajišťuje běh služeb a komunikaci s nimi. Samostné služby běží v uživatelském prostoru, ale s vyššími oprávněními a bez vazby na konkrétního uživatele (v kontextu nějakého systémového účtu).
-- Komunikace procesů s jádrem probíhá pomocí volání funkcí nebo procedur dokumentovaných rozhraní (**dokumentovaná API**) nebo nedokumentovaných rozhraní (**nedokumentovaná API**), které pak spustí systémová volání v režimu jádra, která jsou jádrem obsloužena.
-  - Dokumentovaná rozhraní jsou objekty v systémových knihovnách **USER32.DLL, GDI32.DLL** a další.
-  - Nedokumentované API je v souboru **NTDLL.DLL** a může již přímo spouštět systémová volání.
-- **Podsystémy prostředí** jsou rozhraní zajišťující správný běh různých typů procesů.
-  - Běží v nich aplikace, které nemusí být kompatibilní s Windows NT.
-  - Jedná se o podsystém pro aplikace psané pro starší verze Windows a DOS (WIN32), podsystém pro OS/2, POSIX, atd.
-  - Tyto podsystémy jsou spouštěny až při spuštění aplikace patřící danému podsystému.
-
-Součástí podsystému Win32/Windows je mechanismus virtuálních počítačů. Běh virtuálních počítačů je spuštěn aplikací v souboru **ntvdm.exe** (NT Virtual DOS Machine).
-
-**Jak je vidět z obrázku, Windows NT kombinují více různých architektur pro své různé části:**
-
-1. Jádro je generováno z jediného souboru NTOSKRNL.EXE, je ==MONOLITICKÉ==.
-2. ==VRSTVENÁ== architektura se uplatňuje v rozdělení na uživatelský režim a režim jádra.
-3. ==MODULÁRNÍ== architektura se uplatňuje v připojování uzavřených modulů, které poskytují služby přes nadefinované rozhraní a komunikace probíhá volně mezi různými moduly (správce procesů, správce paměti, I/O, správce ovladačů).
-4. Architektura ==KLIENT-SERVER== se uplatňuje v API, což je sada dynamicky linkovaných knihoven, které se chovají jako servery (poskytují služby) pro procesy z vyšších vrstev systému (klienti), kteří přes knihovnu NTDLL.DLL tyto služby využívají.
+1. ==MONOLITICKÁ== – jádro z jediného souboru NTOSKRNL.EXE
+2. ==VRSTVENÁ== – rozdělení na uživatelský režim a režim jádra
+3. ==MODULÁRNÍ== – moduly s definovaným rozhraním (správce procesů, paměti, I/O…)
+4. ==KLIENT-SERVER== – knihovny API se chovají jako servery pro procesy, které je volají přes NTDLL.DLL
 
 **Jak běží procesy:**
 
-- **Win32 aplikace** beží všechny ve společném virtuálním stroji, každá má svůj vlastní paměťový prostor.
-- **DOS a Win16 aplikace** mají každá svůj vlastní virtuální stroj a v rámci tohoto stroje svůj vlastní paměťový prostor.
-- **32bitové aplikace** běží v prostředí **WoW64** (Windows On Windows), které je překládá na 64bitové.
+- **Win32** – společný virtuální stroj, každá vlastní paměťový prostor
+- **DOS a Win16** – každá vlastní virtuální stroj i paměťový prostor
+- **32bitové aplikace** na 64bit systému běží přes **WoW64** (Windows On Windows)
 
 ![[7a5868e2d6cee0f142c894d07987cb5c13f8eb0a76a2fa97a97857d9e8bc8e34.png]]
 
 #### WINDOWS S NT JÁDREM OD VERZE VISTA A SERVER 2008
 
-**Popíšeme jen rozdíly oproti předchozí verzi:**
+Rozdíly oproti předchozí verzi:
 
-- Modulární, zcela přepracované jádro
-- IPv6
-- Podpora sítě přesunita do režimu jádra
-
-Část implementace GUI přesunuto do uživatelského režimu.
-
-- Samostatný modul pro národní prostředí.
-
-Ostatní moduly (= i opravné balíčky) jsou nezávislé na národním prostředí.
-
-- Podpora **UEFI** - od Vista SP1
-
-Grafické prostředí na **WPF** (Windows Presentation Foundation) - Grafický podsystém inspirovaný X-Windows ze světa UNIXu.
-
-- **DWM** - Desktop Windows Manager - správce oken.
-- **ASLR** - Adress Space Load Randomisation - DLL knihovny se do paměti nahrávají na náhodné adresy (bezpečnostní opatření).
-- **MinWin** (od Windows 7) - co nejmenší základní jádro a vše ostatní, co běží v režimu jádra jsou dynamicky připojované moduly - rychlejší start systému (po načtení tvrdého jádra je již možné pracovat a ostatní části systému se načítají paralelně).
-- **XP Mode** - pro spouštění starších aplikací.
-
-Od Windows 8 **METRO APPS** a nový grafický subsystém **WinRT API** Od Windows 10 **UNIVERSAL APPS** a nový grafický subsystém **Universal Windows Platform**.
-
-- **Windows Subsystem for Linux** - součást jádra, umožňuje spouštět LINUX aplikace.
-
-Nástroj **NASTAVENÍ** - postupně nahradí Ovládací Panely.
+- modulární, přepracované jádro; **IPv6**; síť přesunuta do režimu jádra
+- část GUI přesunuta do uživatelského režimu
+- samostatný modul pro národní prostředí (ostatní moduly i opravy jsou na něm nezávislé)
+- podpora **UEFI** (od Vista SP1)
+- grafika na **WPF** (inspirace X-Window), **DWM** – správce oken
+- **ASLR** – DLL knihovny se nahrávají na náhodné adresy (bezpečnost)
+- **MinWin** (od Windows 7) – co nejmenší jádro, zbytek se dynamicky načítá paralelně → rychlejší start
+- **XP Mode** – pro starší aplikace
+- Windows 8: **Metro Apps** a **WinRT API**; Windows 10: **Universal Apps** a **UWP**
+- **Windows Subsystem for Linux** – spouštění Linux aplikací
+- **Nastavení** postupně nahrazuje Ovládací panely
 
 ![[2f34431b2a441078a128af8fcad834bddb0367c56095d0d5670abb2f0ab4838d.png]]
 
 #### WINDOWS NT PODROBNĚJI
 
-Většina pokročilých funkcí Windows NT (souborové systémy, síťová komunikace, správa paměti a procesů) běží v ==režimu jádra==. Systém pro svoji plnohodnotnou činnost vyžaduje běh pouze několika málo procesů, které zajišťují správu služeb či dovolují přihlášení uživatele přes grafické rozhraní. Všechny součásti jádra a ovladače zařízení sdílí stejný virtuální adresový prostor.
+Většina pokročilých funkcí (souborové systémy, síť, správa paměti a procesů) běží v ==režimu jádra==. Všechny součásti jádra a ovladače sdílí **stejný virtuální adresový prostor**. V uživatelském režimu stačí jen pár procesů (služby, přihlášení).
 
 ![[f3d80ef1d0e5b94e8105a044d1a1c5b6b4fedb341055c596da4a85211a76e2c8.png]]
 
 ##### HAL
 
-Windows jsou psány tak, aby nebylo obtížné upravit celý systém pro běh na dalších platformách – například na nových procesorech či základních deskách.
-
-- **Přenositelnost** patří mezi důvody, proč je celé jádro naprogramováno převážně v jazyce **C**, kterému někteří přezdívají „přenositelný Assembler“.
-
-Pouze velmi malou část kódu psali vývojáři v Assembleru, jazyku striktně závislém na konkrétním procesoru či rodině procesorů. Pro přenesení Windows na novu architekturu tedy stačí přepsat některé části jádra a systémových knihoven DLL, které zapouzdřují mechanismy, jejichž implementace závisí na konkrétním druhu procesoru (přepínání kontextu vláken, obsluha stránkovacích tabulek, systémová volání). Jedním z cílů při navrhování nového operačního systému bezesporu je usnadnit programátorům psaní aplikací a ovladačů.
-
-Programátoři běžných aplikací by například neměli řešit odlišnosti různých typů procesorů. To platí i o většině ovladačů jádra. Z tohoto důvodu se architektura Windows dělí do několika vrstev. Každá vrstva v sobě skrývá některé specifické vlastnosti a problémy a vrstvám vyšší úrovně poskytuje obecná rozhraní.
-
-- **HAL** se v architektuře Windows nachází na ==nejnižší úrovni== a jejím úkolem je odstínit ostatní části operačního systému a aplikace od specifik hardware, jako jsou různé modely procesorů.
-
-Odtud také pochází název **Vrstva abstrakce hardware (Hardware Abstraction Layer)**. Vyšším vrstvám poskytuje například rutiny pro komunikaci s periferními zařízeními. Kód HAL se nachází v souboru **hal.dll** v systémovém adresáři.
+- cíl: snadno přenést Windows na jiný hardware → jádro je psané hlavně v **C**, jen malá část v Assembleru
+- pro novou architekturu stačí přepsat části závislé na procesoru (přepínání kontextu, stránkovací tabulky, systémová volání)
+- architektura je ve **vrstvách** – každá skrývá svá specifika a vyšším dává obecné rozhraní
+- **HAL** je na ==nejnižší úrovni==, odstíní zbytek systému od hardwaru (různé procesory), poskytuje rutiny pro komunikaci se zařízeními; soubor **hal.dll**
 
 ##### TVRDÉ JÁDRO
 
-Nad HAL se nachází tenká vrstva, jež implementuje relativně jednoduché mechanismy, kterých využívají vyšší vrstvy jádra operačního systému pro stavbu složitějších struktur. Kód tvrdého jádra je pomocí vrstvy HAL odstíněn od většiny specifik hardware, a tudíž zde Assembleru najdete jen málo.
+Tenká vrstva nad HAL s jednoduchými mechanismy, ze kterých vyšší vrstvy staví složitější:
 
-- **Mezi mechanismy implementované v této součásti patří:**
-  - Algoritmus **plánování vláken** na procesoru.
-  - Odložené volání procedur (**Deferred Procedure Call – DPC**).
-  - Základní **synchronizační primitiva** jako událost (event), spinlock, semafor či pushlock.
-  - Práce s hardwarovými přerušeními.
-  - Část obsluhy systémových volání.
+- **plánování vláken** na procesoru
+- odložené volání procedur (**DPC**)
+- **synchronizační primitiva** (event, spinlock, semafor, pushlock)
+- práce s hardwarovými přerušeními
+- část obsluhy systémových volání
 
 ##### OVLADAČE
 
-Ovladače umožňují správci vstupně/výstupních zařízení, který spolu s dalšími komponentami tvoří vrstvu označovanou jako **exekutiva**, komunikovat s různými typy hardware. Jedná se o spustitelné soubory formátu **PE** a jejich jméno většinou obsahuje koncovku **.sys**.
+- umožňují správci I/O komunikovat s hardwarem
+- soubory formátu **PE** s koncovkou **.sys**
 
 ##### EXEKUTIVA
 
-Exekutiva využívá tvrdého jádra k realizaci mnohem složitějších mechanismů, kterých mohou přes systémová volání nepřímo využívat obyčejné aplikace běžící v uživatelském režimu. Obsahuje ještě méně platformně specifického kódu než tvrdé jádro. Exekutiva se skládá z několika navzájem oddělených částí (viz obráze).
-
-Ačkoliv se všechny nachází ve stejném adresovém prostoru, a tudíž by například správce objektů mohl přímo manipulovat s interními datovými strukturami, které náleží správci paměti, komunikují spolu pomocí ==přesně definovaných rozhraní==. Každá komponenta dává k dispozici sadu rutin, které může volat libovolný kód běžící v režimu jádra. Názvy některých funkcí a způsob realizace některých mechanismů připomínají techniky používané v objektově orientovaném programování.
+- staví na tvrdém jádru složitější mechanismy, které aplikace využívají nepřímo přes systémová volání
+- skládá se z oddělených částí ve stejném adresovém prostoru, které spolu mluví jen přes ==přesně definovaná rozhraní== (podobné OOP)
 
 ![[9e2aa9d42dc408a203173254ffa7efc8c348b36d0fa0f236426088e9a24e938f.png]]
 
 ###### SPRÁVCE OBJEKTŮ (OBJECT MANAGER)
 
-- **Správce objektů (Object Manager)** umožňuje vývojářům psát kód jádra podobně, jako by programovali v jazyce podporujícím konstrukty OOP.
-
-Správce objektů například umožňuje jednotným způsobem objekty (otevřené soubory, klíče registru, paměťově mapované soubory) vytvářet a odstraňovat a obsahuje jednotný mechanismus řízení přístupu. Zjednodušeně lze říci, že správce objektů v sobě zapouzdřuje všechny principy, které platí pro většinu druhů objektů (při odstraňování objektu dochází k uvolnění paměti nezávisle na jeho typu, při vytváření nového objektu zase dochází k alokaci paměti, ať už se jedná o otevřený soubor, nebo klíč registru).
+- jednotně vytváří a ruší objekty (otevřené soubory, klíče registru, mapované soubory) a řídí k nim přístup
+- zapouzdřuje to, co platí pro všechny druhy objektů (alokace a uvolnění paměti)
 
 ###### SPRÁVCE PAMĚTI (MEMORY MANAGER)
 
-- **Správce paměti (Memory Manager)** se stará o všechny činnosti, které nějak souvisí s virtuální a fyzickou pamětí.
-
-Přiděluje volné rámce fyzické paměti, zajišťuje správné mapování mezi virtuálními a fyzickými adresami a obsluhuje výpadky stránky. Vyřizování požadavků na přidělování a uvolňování bloků virtuální paměti o proměnlivé velikosti patří též do jeho kompetencí. Dále obsahuje bezpečnostní mechanismy jako **ASLR** (Address Space Layout Randomization).
+- přiděluje rámce fyzické paměti, mapuje virtuální adresy na fyzické, obsluhuje výpadky stránky
+- přiděluje a uvolňuje bloky virtuální paměti
+- bezpečnost: **ASLR**
 
 ###### SPRÁVCE PROCESŮ (PROCESS MANAGER)
 
-- **Správce procesů (Process Manager)** má na starosti spouštění, běh a ukončení procesů a vláken.
-
-Umožňuje ostatním součástím systému a běžným aplikacím zjistit informace o právě běžících procesech, měnit jejich prioritu, násilně je ukončovat a provádět další zajímavé akce.
+- spouštění, běh a ukončení procesů a vláken
+- informace o procesech, změna priority, násilné ukončení
 
 ###### SPRÁVCE VSTUPNĚ/VÝSTUPNÍCH ZAŘÍZENÍ (I/O MANAGER)
 
-- **Správce vstupně/výstupních zařízení (I/O Manager)** zajišťuje většinu funkcí kolem ovladačů jádra a zařízení, ať už fyzických nebo virtuálních.
-
-Díky této součástí může jádro za běhu načítat nové ovladače do svého paměťového prostoru a uvolňovat ty, které aktuálně nepotřebuje. Správce vstupně/výstupních zařízení též dovoluje ovladačům komunikovat mezi sebou. Komunikace probíhá přes objekty zvané zařízení (device), které si pro jednoduchost můžete představit jako kanály nebo roury mezi jednotlivými ovladači.
+- funkce kolem ovladačů a zařízení (fyzických i virtuálních)
+- za běhu načítá a uvolňuje ovladače
+- ovladače spolu komunikují přes objekty **zařízení (device)** – jako kanály mezi nimi
 
 ###### SPRÁVCE KONFIGURACÍ (CONFIGURATION MANAGER)
 
-Windows patří mezi operační systémy, jejichž cílem je plnit co největší množství různorodých úkolů a přizpůsobit své chování co nejvíce požadavkům uživatele. Nastavení různých aspektů systému musí být někde uloženo a systém k němu musí mít snadný přístup. A způsob ukládání a práce s konfiguracemi je parketa pro součást exekutivy s názvem **správce konfigurací (Configuration Manager)**.
-
-Na rozdíl od operačních systémů založených na Unixu, které většinu nastavení ukládají do textových souborů, Windows své konfigurace ukládá v ==binární podobě== – do tzv. **registru**. Registr funguje jako malá databáze, rychle se v něm vyhledává a manipuluje s jednotlivými položkami. Na rozdíl od textových souborů, dobře čitelných pro obyčejného člověka, pro prohlížení obsahu registru potřebujete speciální programy. Jedním z nich je **Editor registru (regedit.exe)**.
-
-Vývojáři Windows se pro binární formu ukládání konfigurací rozhodli pravděpodobně z toho důvodu, že textové soubory se hůře a pomaleji počítačově zpracovávají a zabírají více místa. Logická struktura registru je téměř totožná s adresářovou strukturou na pevném disku. Adresáře se v této terminologii registru nazývají ==klíče== a souborům se říká ==hodnoty==.
-
-Každý klíč může obsahovat libovolné množství dalších klíčů (podadresářů) a hodnot (souborů). Pouze hodnoty mohou obsahovat data.
+- ukládá nastavení systému do **registru** – na rozdíl od Unixu (textové soubory) v ==binární podobě==
+- registr = malá databáze, rychlé hledání, méně místa; prohlíží se **regeditem**
+- struktura jako adresáře: ==klíče== (= adresáře) a ==hodnoty== (= soubory); data mají jen hodnoty
 
 **EDITOR REGISTRU**
 
@@ -258,48 +220,43 @@ Každý klíč může obsahovat libovolné množství dalších klíčů (podadr
 
 ###### BEZPEČNOSTNÍ MODEL
 
-Operační systém také musí zajistit, aby každý mohl provádět jen operace, na které má dostatečná oprávnění. To je úkolem **bezpečnostního modelu (security model)**, který umožňuje pro každého uživatele nastavit, jaké činnosti smí a nesmí provádět. Díky bezpečnostnímu modelu může administrátor systému určit, k jakým objektům mají jednotliví uživatelé přístup.
-
-Množina objektů přitom není omezena jenom na soubory a klíče registru; oprávnění lze nastavit i u procesů, vláken, nebo třeba synchronizačních primitiv. Bezpečnostní model Windows dále definuje sadu oprávnění, které uživatel potřebuje, aby mohl vykonávat určitou činnost. Do této kategorie patří například oprávnění vytvořit stránkovací soubor či povolení načíst ovladač do jádra.
+- každý smí dělat jen to, na co má oprávnění; admin určuje, k jakým objektům mají uživatelé přístup
+- oprávnění jde nastavit nejen u souborů a klíčů registru, ale i u procesů, vláken, synchronizačních primitiv
+- definuje i oprávnění k činnostem (vytvořit stránkovací soubor, načíst ovladač do jádra)
 
 ##### SUBSYSTÉMY
 
-Nad ntdll.dll se nachází vrstva knihoven, která tvoří součást prostředí pro obyčejné aplikace – tzv. **subsystému**. Rozhraní exportované touto vrstvou je již dobře dokumentováno, což znamená, že i v budoucích verzích Windows bude pravděpodobně fungovat stejně a maximálně jej Microsoft rozšíří. Vývojáři jej mohou používat ve svých aplikacích. Windows obsahuje **dva subsystémy** – ==Windows== a ==POSIX==.
-
-Každý z nich dává programátorům aplikací k dispozici trochu odlišnou množinu funkcí obsažených v ntdll.dll. Například POSIX umožňuje vytvářet nové procesy pomocí rutiny **fork**, dobře známé z prostředí Unixu. Subsystém Windows takový způsob vytváření procesů neposkytuje. Nutnost implementovat POSIX také donutila vývojáře zavést do souborového systému NTFS **hardlinky**.
+- vrstva knihoven nad **ntdll.dll** = prostředí pro aplikace; rozhraní je **dokumentované** a stabilní
+- Windows mají **dva subsystémy**: ==Windows== a ==POSIX==
+- POSIX umí vytvářet procesy přes **fork** (z Unixu), Windows ne; kvůli POSIXu má NTFS **hardlinky**
 
 ###### POSIX
 
-- **POSIX** je zkratka z anglického sousloví portable operating system interface based on Unix (přenositelná systémová rozhraní založená na Unixu) a označuje sadu mezinárodních standardů, které popisují aplikační rozhraní v operačních systémech založených na Unixu.
-
-Pokud by výrobci operačních systémů tyto standardy implementovali, rozhraní různých operačních systémů by byla definována stejně a stejně by se také chovala, což by ušetřilo práci programátorům aplikací, kteří by neměli tolik problémů s přenositelností na jiné platformy. Z historických důvodů Windows původně ze všech těchto standardů implementovaly pouze **POSIX 1**. Windows Vista a Windows Server 2008 s sebou přináší implementaci standardů POSIX v podobně **SUA** (Subsystem for Unix–based Application – subsystém pro aplikace založené na operačním systému Unix).
-
-Tato rozšířená varianta subsystému POSIX implementuje kolem **2 000 funkcí** různých unixových aplikačních rozhraní a obsahuje kolem **tří set unixových programů**. Subsystém SUA je dostupný na Windows Server 2008 a v Ultimate a Enterprise edicích Windows Vista. Na rozdíl od subsystému Windows, bez kterého celý operační systém nemůže fungovat, ==POSIX se spouští jenom tehdy==, pokud si uživatel přeje spustit proces určený pro tento subsystém. Konfigurace obou subsystémů je uložena v registru pod klíčem
-
-`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Subsystems` jehož obsah vidíte na obrázku 2.6. Z obrázku je patrné, že hlavním procesem subsystému POSIX je **psxss.exe**, který se nachází v systémovém adresáři. Také vidíte, že hlavní proces subsystému Windows nese název **csrss.exe** a že subsystémy mají i komponentu běžící v režimu jádra. Jedná se o ovladač **win32k.sys**, který se stará o správu grafického uživatelského rozhraní a grafiky vůbec.
-
-Na tomto místě může vyvstat otázka, proč každý subsystém nemá svůj vlastní ovladač jádra. Důvodem je vysoká duplicita kódu. Vývojáři Windows se rozhodli tomuto nebezpečí předejít, a proto subsystém POSIX využívá funkcí (a knihoven DLL) poskytovaných subsystémem Windows včetně ovladače win32k.sys. Situaci znázorňuje obrázek 2.7. Kdyby tomu tak nebylo, musely by existovat dvě sady knihoven DLL a dva různé ovladače pro obsluhu grafického uživatelského rozhraní.
-
-Kód obou sad knihoven a ovladačů by však byl na mnoha místech totožný, což je v programování nežádoucí, protože dochází ke zvýšení rizika vzniku chyb.
+- **Portable Operating System Interface** – standardy rozhraní unixových systémů, aby šly programy snadno přenášet
+- Windows původně jen **POSIX 1**; od Vista / Server 2008 **SUA** (Subsystem for Unix-based Applications) – cca **2 000 funkcí** a **300 unixových programů**
+- ==POSIX se spouští jen==, když je potřeba; subsystém Windows běží vždy
+- konfigurace: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Subsystems`
+- hlavní proces POSIXu **psxss.exe**, Windows **csrss.exe**; v jádru oba používají **win32k.sys**
+- POSIX nemá vlastní ovladač ani knihovny – používá ty od subsystému Windows (jinak by byl kód zbytečně dvakrát a víc chyb)
 
 ###### WINDOWS
 
-- Struktura subsystému Windows je složitější než v případě POSIXu. **Skládá se z následujících komponent:**
-  - Hlavní proces subsystému **csrss.exe** a knihovny DLL, které používá.
-  - Ovladač jádra **win32k.sys** a drivery grafické karty a videa.
-  - Vrstva knihoven DLL zajišťující překlad volání dokumentovaných funkcí Windows API na volání nativních (a často nedokumentovaných) rutin z knihovny **ntdll.dll**, která je zodpovědná za volání jádra. Mezi tyto knihovny patří kernel32.dll, user32.dll, gid32.dll či advapi32.dll.
+**Komponenty:**
 
-Mezi úkoly hlavního procesu subsystému patří vykreslování oken konzolových aplikací a podpora 16bitových programů určených původně pro operační systém MS–DOS. Csrss.exe také dostane oznámení, kdykoliv dojde k spuštění nového či ukončení již běžícího procesu nebo vlákna. Ve svém adresovém prostoru si uchovává vlastní kopii seznamu všech běžících procesů a vláken, aby pro ně mohl vyřizovat požadavky, jež mohou vzniknout při volání některých funkcí Windows API. V dobách předcházejících Windows NT 4 do hlavního procesu subsystému patřily i moduly, které se starají o grafické uživatelské rozhraní a grafické kreslení vůbec.
+- hlavní proces **csrss.exe** a jeho knihovny
+- ovladač **win32k.sys** a ovladače grafiky
+- knihovny, které překládají dokumentované Windows API na nativní volání **ntdll.dll**: kernel32.dll, user32.dll, gdi32.dll, advapi32.dll
 
-Vývojáři se tímto uspořádáním pravděpodobně chtěli přiblížit elegantní struktuře operačních systémů založených na mikrojádru. Taková struktura však vyžadovala velmi častá systémová volání a přepínání kontextu procesů. Ovladače grafické karty a obrazovky totiž běžely v režimu jádra, takže pokud nějaká aplikace chtěla například překreslit okno, bylo nutné přepnout kontext na hlavní proces subsystému, kde sídlil správce grafického uživatelského rozhraní, a následně se přepnout do režimu jádra, aby ten mohl doručit požadavek na překreslení ovladači grafické karty.
+**csrss.exe:**
+- vykresluje okna konzolových aplikací, podporuje 16bitové DOS programy
+- dozví se o každém spuštění a ukončení procesu nebo vlákna a drží si jejich seznam
 
-Systémová volání a přepínání kontextu mezi procesy patří mezi časově náročné operace, což mělo negativní dopad na výkon systému jako celku. Situace se výrazně nezlepšila ani po provedení mnoha optimalizací (byl upraven plánovač procesů a csrss.exe dokonce mohl číst některé oblasti paměti jádra, aby se ušetřilo kopírování). Vývojáři proto ve Windows NT 4 přesunuli správce grafického uživatelského rozhraní a ostatní grafické funkce do ovladače **win32k.sys**, čímž se snížil počet systémových volání a přepínání procesů.
-
-Jak již víte, jádro systému sdílí společný paměťový prostor a může komunikovat s ovladači grafické karty bez použití systémových volání. Ovladač win32k.sys se tedy stará o grafické uživatelské rozhraní; spravuje okna, tlačítka, textová pole, obsluhuje myš a klávesnici. Umožňuje také kreslení různých grafických útvarů, jako jsou body, přímky či křivky.
-
-Ovladač se postará, aby se požadavky na vykreslování dostaly k správným ovladačům grafiky, tudíž aplikace, jež využívají GUI, vůbec nemusí (a většinou ani nepotřebují) vědět, jakou grafickou kartou počítač disponuje a jak se s ní zachází. Win32k.sys se chová podobně jako **HAL** – smazává rozdíly mezi různými kusy hardware. Bránu k ovladači win32k.sys tvoří knihovny **gdi32.dll** a **user32.dll**. První z nich obsahuje rutiny pro kreslení různých grafických útvarů (body, čáry, křivky) a druhá exportuje funkce pro práci s prvky uživatelského rozhraní, jako jsou okna, menu či ikony.
-
-Mezi velmi důležité knihovny DLL také patří **kernel32.dll**, jenž exportuje vybrané části exekutivy (práce s procesy a vlákny, správa paměti, synchronizace), a **advapi32.dll**, která obsahuje rozhraní pro práci se službami a bezpečnostním modelem.
+**Proč je GUI v jádru (win32k.sys):**
+- před NT 4 bylo GUI v csrss.exe (snaha o mikrojádro) → každé překreslení okna = přepnutí kontextu do csrss + systémové volání → pomalé
+- od NT 4 je GUI v **win32k.sys** → méně přepínání a systémových volání
+- win32k.sys spravuje okna, tlačítka, myš, klávesnici, kreslení; jako **HAL** skrývá rozdíly mezi grafickými kartami
+- brána k němu: **gdi32.dll** (kreslení bodů, čar, křivek) a **user32.dll** (okna, menu, ikony)
+- **kernel32.dll** – procesy, vlákna, paměť, synchronizace; **advapi32.dll** – služby a bezpečnost
 
 ###### REGISTR
 
@@ -309,95 +266,59 @@ Mezi velmi důležité knihovny DLL také patří **kernel32.dll**, jenž export
 
 ![[c11b1667ac0d818a31e5bfa6372be9fdfb5f043b53b8e35baab1965861a41c8c.png]]
 
-**PRO HACKERY**
-
-> [!warning] Pro hackery
-> - Správce úloh vám nedovolí systémové procesy násilně ukončit. Pokud se o to pokusíte, program zareaguje hláškou „Přístup odepřen“.
-> - Zajímavá je zde metoda, jakou Správce úloh rozhoduje, zda cílový proces je systémový.
-> - Až do Windows Vista totiž nejsou tyto procesy chráněny žádným bezpečnostním mechanismem, který by bránil jinému procesu, jenž disponuje administrátorským oprávněním, je ukončit.
-> - Správce úloh má v sobě „natvrdo“ zakódovány názvy procesů, které považuje za systémové.
-> - Tohoto faktu mohou snadno zneužít tvůrci malware.
-> - Zkuste si například pojmenovat nějaký program winlogon.exe, spustit jej a následně se jej pokuste násilně ukončit pomocí Správce úloh.
-
 ##### SYSTÉMOVÉ PROCESY
 
-Windows patří mezi **monolitické** operační systémy, které se vyznačují velmi velkým a složitým jádrem, jež disponuje řadou pokročilých funkcí. Přesto běh systému závisí na několika procesech, jejichž ukončení (ať je způsobeno úmyslně, nebo v důsledku softwarové chyby) znamená ==restartování počítače==. Tyto kritické procesy se obvykle nazývají jako **systémové**.
-
-Seznam právě běžících procesů můžete vidět v programu Správce úloh, který spustíte například pomocí známé klávesové zkratky **Ctrl+Alt+Del**.
+I když je Windows **monolitický**, závisí na pár procesech, jejichž ukončení znamená ==restart počítače== – tzv. **systémové procesy**. Vidíš je ve Správci úloh (**Ctrl+Alt+Del**).
 
 ![[5b8c434a0c98691cdd501acd37e872fb463bc7fc902d8806f0388a7862242934.png]]
 
-###### PRO HACKERY
-
 > [!warning] Pro hackery
-> - Správce úloh vám nedovolí systémové procesy násilně ukončit. Pokud se o to pokusíte, program zareaguje hláškou „Přístup odepřen“.
-> - Zajímavá je zde metoda, jakou Správce úloh rozhoduje, zda cílový proces je systémový.
-> - Až do Windows Vista totiž nejsou tyto procesy chráněny žádným bezpečnostním mechanismem, který by bránil jinému procesu, jenž disponuje administrátorským oprávněním, je ukončit.
-> - Správce úloh má v sobě „natvrdo“ zakódovány názvy procesů, které považuje za systémové.
-> - Tohoto faktu mohou snadno zneužít tvůrci malware.
-> - Zkuste si například pojmenovat nějaký program winlogon.exe, spustit jej a následně se jej pokuste násilně ukončit pomocí Správce úloh.
+> - Správce úloh nedovolí systémový proces ukončit („Přístup odepřen“).
+> - Do Windows Vista ale tyto procesy nic nechránilo – Správce úloh má jen **natvrdo zakódované názvy** systémových procesů.
+> - Toho může zneužít malware: pojmenuj program `winlogon.exe` a zkus ho ve Správci úloh ukončit.
 
-###### NEČINNÉ PROCESY (SYSTEM IDLE PROCESSES
+###### NEČINNÉ PROCESY (SYSTEM IDLE PROCESS)
 
-- **Nečinné procesy (System Idle Processes)**
-
-Jedná se pouze o **pseudoproces**, který nevykonává žádnou činnost v uživatelském režimu. Na disku nenajdete žádný soubor, který by obsahoval jeho kód a data, ani žádné knihovny DLL, jenž by využíval. Úkolem Nečinných procesů je spotřebovávat čas procesoru, když žádná součást operačního systému ani žádná aplikace nemá co na práci.
-
-Jádro vytvoří tento proces během raných fází inicializace operačního systému.
-
-- ==PID== Nečinných procesů je vždy roven ==nule==.
+- **pseudoproces** – nemá soubor na disku ani DLL
+- spotřebovává čas procesoru, když nikdo nemá co dělat
+- vytvoří ho jádro na začátku startu
+- ==PID== je vždy ==0==
 
 ###### PROCES SYSTEM
 
-- **Proces System**
+- nemá kód v uživatelském režimu ani `.exe`, ale běží v něm **pracovní vlákna (worker threads)** jádra
+- čekají, až jim jádro nebo ovladač zadá práci – časově náročnou nebo takovou, kterou nejde udělat hned (dokončení obsluhy hardwaru, zápis „špinavých“ stránek na disk)
+- pevné **PID** ==4== (před Windows 2000 bylo ==1==)
 
-Proces System také nevykonává žádný kód v uživatelském režimu, a tudíž nepoužívá žádné knihovny DLL a nenajdete žádný soubor s příponou .exe, který by jej reprezentoval. Už ale nejde čistě o pseudoproces; v jeho kontextu běží skupina vláken známá pod označením **pracovní vlákna (worker threads)**. Jádro tato vlákna vytvoří během bootovacího procesu a jejich úkolem je vykonávat činnosti, jenž jim někdo zadá.
+###### SPRÁVCE RELACÍ (SESSION MANAGER, SMSS.EXE)
 
-Pracovní vlákna stráví většinu času čekáním, až jim nějaká součást jádra (nebo ovladač) určí, co mají vykonat. Jakmile práci dokončí, čekají na další zadání. Jádro využije služeb pracovních vláken ve chvíli, kdy potřebuje vykonat úkol, který je časově náročný (a tudíž by mohl brzdit výkon systému, kdyby nebyl proveden asynchronně), nebo nemůže být splněn za aktuálních podmínek. V takovém případě jádro předá úkol na bedra této speciální skupině vláken.
+- ==první proces== v uživatelském režimu, dokončí inicializaci systému
+- vytváří **relace** – oddělené prostory uživatelů (každý může mít jinak namapované disky), číslují se
+- **relace 0** (konzolová) – systémové procesy, služby a první přihlášený uživatel
+- pro každou relaci spustí **winlogon.exe** (pro relaci 0 **wininit.exe**) a inicializuje **csrss.exe**
+- hlídá csrss.exe a všechny winlogony – když některý spadne → modrá obrazovka `STATUS_CRITICAL_SYSTEM_PROCESS_DIED`
 
-Vlákna většinou dokončují zpracování požadavků od hardware, které nebylo možné provést při obsluze přerušení. Dále je využívá například správce paměti pro zapisování „špinavých“ (dirty) stránek z vyrovnávací paměti na disk. Spolu s Nečinnými procesy je System jediným procesem s pevně daným číslem **PID**.
+###### PROCESY PODÍLEJÍCÍ SE NA PŘIHLÁŠENÍ (WINLOGON.EXE, LSASS.EXE)
 
-Toto číslo má v jeho případě od Windows 2000 hodnotu ==4==. V předcházejících verzích neslo hodnotu ==1==.
+**winlogon.exe** – grafické přihlášení uživatele:
 
-###### SPRÁVCE RELACÍ (SESSION MANAGER)
+- metody ověření jsou v samostatných DLL (nejčastěji jméno a heslo)
+- ==ochrana proti keyloggerům==: před přihlášením se může vyžadovat **Ctrl+Alt+Del**; tuhle kombinaci zachytí a pohltí okno **SAS Window**, takže keylogger (pokud není v jádru nebo ve winlogonu) nepozná, kdy se zadává heslo
+- zadané údaje pošle **lsass.exe** k ověření
+- běží i po přihlášení – zajišťuje odhlášení a reaguje na Ctrl+Alt+Del (dialog nebo rovnou Správce úloh)
 
-- **Správce relací (Session Manager, Smss.exe)**
+**lsass.exe** – ověří jméno a heslo a vytvoří **token** (objekt, kterým uživatel prokazuje oprávnění):
 
-Smss.exe je spuštěn v poslední fázi startu jádra a jedná se o ==první proces==, který vykonává kód v uživatelském režimu. Provede poslední fázi inicializace operačního systému, který je pak připraven na přihlášení uživatelů. Jak název napovídá, hlavním úkolem tohoto procesu je vytváření **relací**.
+- admin se zapnutým **UAC** dostane ==dva tokeny==:
+  - plný se všemi oprávněními
+  - omezený – používá se pro běžné aplikace a inicializaci prostředí
+- program, který potřebuje admin práva, se může zeptat (UAC) a pak dostane plný token
 
-Relaci si můžete představit jako ohradu, ze které ten, kdo je v ní uzavřen, nevidí ven a zároveň nikdo nevidí dovnitř. Tyto ohrady se využívají pro oddělení prostoru jednotlivých uživatelů. Díky nim například každý uživatel může mít namapované disky pod jinými písmeny.
+**Inicializace prostředí po přihlášení:**
 
-- Jednotlivé relace se označují číslem.
-
-Smss.exe nejprve vytvoří **relaci 0**, která se též označuje jako **konzolová relace**. V rámci ní běží systémové procesy, služby a všechny procesy uživatele, který se přihlásí jako první. Pro každého dalšího uživatele vytvoří správce další relaci. Pro každou novou relaci správce spustí jednu kopii procesu **winlogon.exe**.
-
-Smss.exe je též zodpovědný za inicializaci hlavního procesu subsystému Windows – **csrss.exe**. Pro relaci 0 se místo Winlogonu spouští **wininit.exe**. Jakmile dokončí svoji práci, správce relací navždy hlídá hlavní proces subsystému Windows a všechny kopie programu winlogon.exe. Pokud zjistí, že některý z těchto procesů byl neočekávaně ukončen, vyvolá modrou obrazovku smrti s kódem `STATUS_CRITICAL_SYSTEM_ PROCESS_DIED`
-
-###### PROCESY PODÍLEJÍCÍ SE NA PŘIHLÁŠENÍ UŽIVATELE (WINLOGON.EXE, LSASS.EXE)
-
-- **Procesy podílející se na přihlašování uživatele (winlogon.exe, LSASS.exe)**
-
-Úkolem procesu **winlogon.exe** je umožnit uživateli přihlášení pomocí grafického uživatelského rozhraní. Může autentizovat uživatele různými způsoby, nejčastěji se ale stále používá zadání uživatelského jména (login) a hesla. Jednotlivé metody autentizace jsou implementovány v oddělených knihovnách DLL. Winlogon v sobě má zabudovanou jednoduchou metodu ==ochrany proti programům==, které se snaží zachytit údaje, jež uživatel zadal při pokusu o přihlášení.
-
-Většinou se jedná o tzv. **keyloggery** – programy, které zaznamenávají stisky jednotlivých kláves. Aby takový program nemohl přesně určit, kdy uživatel zadává přihlašovací údaje, může být Winlogon nastaven takovým způsobem, že před zobrazením přihlašovací obrazovky (viz obrázek) je třeba stisknout speciální kombinaci kláves. Obrazovku, která uživatele vyzývá k stisku této kombinace kláves, vidíte na obrázku; její podoba se může mírně lišit v závislosti na verzi operačního systému.
-
-Jako výchozí kombinace je nastaven známý „trojhmat“ **Ctrl+Alt+Del**. Trik spočívá v tom, že jakmile Winlogon zjistí, že tato kombinace byla stisknuta, tuto informaci pohltí a zobrazí okno, kam uživatel vyplní přihlašovací údaje. Přesněji, o stisku aktivační kombinace se dozví okno s názvem **SAS Window**, které je též zodpovědné za její pohlcení.
-
-Pokud tedy keylogger neoperuje v samotném jádře systému nebo neinfiltroval do adresového prostoru procesu winlogon.exe (například v podobě knihovny DLL), nemůže stisk aktivační kombinace přímo detekovat, a tedy přesně zjistit, kdy uživatel zadává přihlašovací údaje. Jakmile uživatel zadá login a heslo, Winlogon tyto údaje odešle procesu **lsass.exe**, kde proběhne jejich ověření. Pokud vše dopadne dobře (uživatel zadal správné jméno a heslo), lsass.exe zjistí, jakými oprávněními uživatel disponuje, a vytvoří tzv. **token**. Jedná se o objekt, kterým se pak uživatel prokazuje, potřebuje-li doložit, že má oprávnění k provedení určité operace.
-
-- Pokud má uživatel administrátorská práva a je-li zapnut mechanismus **UAC** (User Account Control), lsass.exe vytvoří ==tokeny dva==.
-  - První z nich v sobě obsahuje všechna oprávnění, kterými uživatel disponuje.
-  - Druhý obsahuje jenom vybraná z nich.
-  - S pomocí druhého tokenu pak Winlogon vytvoří procesy, které provedou inicializaci prostředí.
-  - Token s omezenými právy se použije, kdykoliv uživatel spustí nějakou aplikaci, jež nevyžaduje administrátorská práva.
-
-Pokud se uživatel pokusí spustit program vyžadující oprávnění administrátora, UAC se může dotázat (záleží na nastavení systému), zda chce daný program, který vyžaduje administrátorská práva, a tudíž by mohl být pro systém nebezpečný, spustit. Pokud dá uživatel spuštění zelenou, použije se pro daný program token, který obsahuje všechna uživatelova oprávnění. Winlogon zůstává aktivní i po úspěšném přihlášení uživatele.
-
-Kromě toho, že je jeho povinností zajistit i odhlášení, stále čeká na onu aktivační klávesovou kombinaci a v případě, že zjistí její stisknutí, zobrazí dialog, který vidíte na obrázku. Winlogon také může být nakonfigurován tak, že spustí rovnou Správce úloh. Jakmile Winlogon obdrží tokeny od LSASS, může být zahájena inicializace pracovního prostředí uživatele. Tato činnost již nespadá do pravomocí tohoto procesu, ale do kompetence procesů, jejichž názvy jsou uvedeny v hodnotě **Userinit** v klíči
-
-`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\Current Version\Winlogon`. Winlogon přečte obsah této hodnoty a pokusí se všechny nalezené procesy spustit. Inicializace pracovního prostředí spočívá v podstatě jen ve spuštění startovacích skriptů a předání řízení shellu, jehož název **userinit.exe** nalezne pod hodnotou **Shell** ve stejném klíči, jako Winlogon hledal hodnotu Userinit.
-
-Výchozím shellem pro všechny uživatele je **Průzkumník Windows (explorer.exe)**, který zodpovídá za zobrazení pracovní plochy a umožňuje uživateli mimo jiné procházet adresářovou strukturu a spouštět další programy.
+- winlogon spustí procesy z hodnoty **Userinit** v `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon`
+- **userinit.exe** spustí přihlašovací skripty a předá řízení shellu z hodnoty **Shell**
+- výchozí shell = **Průzkumník (explorer.exe)** – plocha, procházení složek, spouštění programů
 
 **PŘIHLAŠOVACÍ OBRAZOVKA**
 
@@ -411,37 +332,35 @@ Výchozím shellem pro všechny uživatele je **Průzkumník Windows (explorer.e
 
 ![[6b7fa5477c79daf85ca99990fb51da73f92a81756e818fab611f9e75495e6e35.png]]
 
-**PRO HACKERY**
-
 > [!warning] Pro hackery
-> - Jediný proces, který by se měl za všech okolností starat o inicializaci pracovního prostředí uživatele, je userinit.exe v systémovém adresáři.
-> - Pokud hodnota obsahuje i názvy dalších procesů, jedná se pravděpodobně o malware.
+> - V hodnotě Userinit má být jen `userinit.exe` ze systémové složky.
+> - Jsou-li tam další procesy, jde pravděpodobně o malware.
 
-###### PROCESY PRO PODBORU SLUŽEB (SERVICES.EXE., SVCHOST.EXE)
+###### PROCESY PRO PODPORU SLUŽEB (SERVICES.EXE, SVCHOST.EXE)
 
-- **Procesy pro podporu služeb (services.exe, svchost.exe)**
-
-Mnoho součástí Windows je implementováno jako **služby** – programy běžící na pozadí, které ve většině případů nepotřebují (a ani nevyhledávají) interakci s uživatelem a jejichž běh nezávisí na tom, zda je přihlášen či nikoliv. Interně systém Windows mezi služby řadí i ovladače jádra, ačkoliv ty nepatří mezi entity, o které se správce služeb (Service Control Manager – SCM), reprezentovaný procesem services.exe, příliš stará. Jeho hlavním úkolem je instalovat, spouštět a zastavovat služby určené pro běh v uživatelském režimu a posílat jim další druhy příkazů.
-
-Službu tvoří obyčejný spustitelný soubor formátu **PE** s příponou .exe, který navíc obsahuje speciální kód pro komunikaci se správcem. Na rozdíl od normálních aplikací, více služeb může sdílet virtuální adresový prostor jednoho procesu. Vše záleží na nastavení konkrétní entity. Kód služeb, které nemají vlastní proces, je vykonáván v kontextu instancí procesu **svchost.exe**, který je pro jejich „hostování“ přímo určen.
-
-Pro pohodlnou kontrolu služeb je připravena aplikace **services.msc**, která nejen zobrazí seznam všech nainstalovaných služeb a jejich aktuální stav, ale umožňuji s nimi i manipulovat. Uživatelské rozhraní tohoto programu vidíte na obrázku. Konfigurace všech služeb se nachází v registru pod klíčem `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services`.
+- **služby** = programy na pozadí bez interakce s uživatelem, běží i bez přihlášení
+- **SCM** (**services.exe**) je instaluje, spouští, zastavuje a posílá jim příkazy (ovladače jádra řadí mezi služby, ale moc se o ně nestará)
+- služba = soubor **PE** `.exe` s kódem pro komunikaci se SCM
+- víc služeb může sdílet jeden proces → **svchost.exe** je „hostí“
+- správa: **services.msc**; konfigurace v `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services`
 
 **SLUŽBY**
 
 ![[c32c8077b73ebb39e9aa65ef86428af4063793647be2aa29e64c35e442aa2a34.png]]
 
-**NASTAVEN´SLUŽBY TCPIP V REGISTRU**
+**NASTAVENÍ SLUŽBY TCPIP V REGISTRU**
 
-Hodnoty **Description** a **DisplayName** mají pouze informativní charakter. Jejich obsah zobrazuje snap-in services.msc ve sloupcích Název a Popis. Pokud je hodnota DisplayName prázdná, nebo vůbec neexistuje, utilita zobrazí ve sloupci Název interní jméno. Položka **ErrorControl** určuje, jak se má správce zachovat, když při spouštění služby dojde k chybě. Možné hodnoty a popis chování správce naleznete v tabulce Hodnota **ImagePath** v sobě uchovává název souboru služby. Pokud není hodnota přítomna, SCM předpokládá, že soubor služby se nachází v systémovém adresáři a jmenuje se X.exe, nebo X.sys, kde X je interní název služby.
+| Hodnota | Význam |
+| :-- | :-- |
+| **Description**, **DisplayName** | jen informativní, sloupce Název a Popis v services.msc |
+| **ErrorControl** | co udělat při chybě spuštění |
+| **ImagePath** | soubor služby (bez ní `X.exe` / `X.sys` v systémové složce) |
+| **Start** | kdy se služba spustí |
+| **Type** | služba v uživatelském režimu, nebo ovladač jádra |
+| **Tag** | pořadí ovladače ve skupině |
 
-Podle hodnoty **Start** se SCM rozhodne, kdy může být služba spuštěna. Položka **Type** určuje, zda se jedná o službu běžící v uživatelském režimu, nebo o ovladač jádra. Možné hodnoty vidíte v tabulce. Způsob a čas spuštění služby lze tedy ovlivnit hodnotou položky Start v jejím registrovém klíči.
-
-Toto nastavení lze zjemnit přiřazením služby do určité **skupiny**. Výčet všech dostupných skupin včetně pořadí, v jakém budou procházeny při spouštění jednotlivých služeb, se nachází v klíči `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\ServiceGroupOrder`. Pro ovladače je možné určit i pořadí spouštění jednotlivých entit ve skupině. Slouží k tomu hodnota **Tag**. Pořadí spouštění jednotlivých entit v jedné skupině na základě jejich tagu je uloženo v klíči
-
-`HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\GroupOrderList` Některé služby mohou svoji činnost vykonávat pouze za předpokladu, že běží služby jiné. Například služba Zvuk systému Windows je závislá na službách Koncové vytváření služby Windows Audio, Vzdálené volání procedur a Služba Plánovač multimédií. Pokud nějaká z nich není aktivní, nelze spustit ani Zvuk Systému Windows.
-
-Služby mohou být závislé nejen na jiných službách, ale i na celých skupinách. Systém může spustit službu závislou na skupině, pokud je alespoň jedna entita z této skupiny aktivní.
+- služby jde řadit do **skupin**; pořadí skupin je v `...\Control\ServiceGroupOrder`, pořadí ve skupině podle tagu v `...\Control\GroupOrderList`
+- **závislosti** – služba běží jen, když běží služby (nebo aspoň jedna ze skupiny), na kterých závisí; např. Zvuk systému Windows potřebuje Windows Audio, RPC a Plánovač multimédií
 
 ![[e361a865ed678a5f0ca967900c5c712b551514c20f55a79028e4a2cbbaea60a8.png]]
 
@@ -459,10 +378,10 @@ Služby mohou být závislé nejen na jiných službách, ale i na celých skupi
 
 #### SERVEROVÉ EDICE
 
-Serverové edice používají totéž jádro jako desktopové edice a jsou k dispozici další nástroje (**DHCP server, DNS Server, Active Directory**, ...).
+Stejné jádro jako desktopové edice + další nástroje (**DHCP server, DNS Server, Active Directory**…).
 
 ![[6ec1a6fb8def4315e0d84f3de39c75061b414bed4ab5b82fa28a5114fd34da0e.png]]
 
 ---
 
-**Struktura OS:** [[01_STRUKTURA_OPERAČNÍCH_SYSTÉMŮ (1)|Architektury OS]] · [[01a_Windows|Windows]] · [[01b_Unix|UNIX]] · [[01c_Linux|Linux]] · [[01d_Apple|Apple]] · [[01e_Android|Android]]
+**Struktura OS:** [[01_STRUKTURA_OPERAČNÍCH_SYSTÉMŮ|Architektury OS]] · [[01a_Windows|Windows]] · [[01b_Unix|UNIX]] · [[01c_Linux|Linux]] · [[01d_Apple|Apple]] · [[01e_Android|Android]]

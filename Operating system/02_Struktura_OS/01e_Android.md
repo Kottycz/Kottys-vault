@@ -39,4 +39,4 @@ The **libc** library is similar to the standard C library but is much smaller an
 
 ---
 
-**Struktura OS:** [[01_STRUKTURA_OPERAČNÍCH_SYSTÉMŮ (1)|Architektury OS]] · [[01a_Windows|Windows]] · [[01b_Unix|UNIX]] · [[01c_Linux|Linux]] · [[01d_Apple|Apple]] · [[01e_Android|Android]]
+**Struktura OS:** [[01_STRUKTURA_OPERAČNÍCH_SYSTÉMŮ|Architektury OS]] · [[01a_Windows|Windows]] · [[01b_Unix|UNIX]] · [[01c_Linux|Linux]] · [[01d_Apple|Apple]] · [[01e_Android|Android]]
