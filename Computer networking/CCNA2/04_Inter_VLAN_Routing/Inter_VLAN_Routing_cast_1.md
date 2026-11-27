@@ -41,6 +41,38 @@ no shutdown
 
 [[Overovani_primo_pripojenych_siti|Verifikační příkazy]]: `show ip route`, `show ip interface brief`, `show interfaces`, `show interfaces trunk`
 
+## Z hodiny – tabule
+
+![[inter-vlan-tabule.png]]
+
+### Vlevo: Router-on-a-Stick
+
+- nahoře **[[router]] R**, šipka nahoru = cesta ven do dalších sítí,
+- na jednom fyzickém rozhraní routeru jsou tři **[[subinterface|podrozhraní]]** (SUB-IF) pro VLAN1, VLAN2 a VLAN3,
+- z R vede **[[VLAN trunk|trunk]] (T)** do switche S1, z S1 další trunk do S2,
+- na S1: PC1 (zakroužkované) ve VLAN1, další porty ve VLAN1 a VLAN2,
+- na S2: dvě PC ve VLAN1, jedno PC (zakroužkované) ve VLAN2.
+
+**Nakreslená cesta** z PC1 (VLAN1, na S1) do zakroužkovaného PC ve VLAN2 na S2:
+
+```
+PC1 → S1 → trunk nahoru → R (přijde na podrozhraní VLAN1)
+  → R přesměruje na podrozhraní VLAN2
+  → stejný trunk dolů → S1 → trunk → S2 → PC ve VLAN2
+```
+
+Pointa: provoz mezi dvěma VLAN musí **až na router a zpátky po stejném kabelu**, i když jsou obě PC fyzicky kousek od sebe. Proto je trunk k routeru úzké hrdlo.
+
+### Vpravo: přepínač vrstvy 3 (S-L3)
+
+- jeden [[přepínač vrstvy 3|switch]], který umí L3 (směrování) i L2 (přepínání) – proto na tabuli „S-L3 (L2)",
+- uvnitř má rozhraní pro VLAN1 a VLAN2 ([[SVI]]),
+- porty dole jsou rozdělené do VLAN1 (PC1) a VLAN2 (PC2),
+- provoz mezi VLAN se přesměruje **přímo uvnitř switche**, nikam ven na router nejde.
+
+> [!warning] Nejisté
+> Pravá část byla na tabuli nedokreslená. Jisté je: nadpis „S-L3 (L2)", box S-L3, porty dole rozdělené na VLAN1 (PC1) a VLAN2 (PC2) a nad boxem čárami vyvedené popisky VLAN (podobně jako podrozhraní u routeru). Že jde o **SVI**, je výklad podle učiva, na tabuli to slovo nebylo. Význam „(L2)" a jeden popisek vlevo od boxu nejsou jisté – ověřit u učitele.
+
 **Souvisí:** [[Inter-VLAN routing]], [[Router-on-a-Stick]], [[subinterface]], [[přepínač vrstvy 3]], [[SVI]], [[VLAN]], [[VLAN trunk]], [[802.1Q]], [[nativní VLAN]], [[router]], [[směrovací tabulka]], [[příkazy show]], [[default gateway]], [[Sprava_switche_SVI]]
 
 **Předchozí:** [[VLAN_cast_2]]
