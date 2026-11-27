@@ -52,4 +52,32 @@ FIN → ACK → FIN → ACK
 
 Útočník pošle spoustu SYN a nikdy neodpoví na SYN-ACK. Server drží polootevřená spojení a vyčerpá si prostředky (typ DoS útoku). Obrana: SYN cookies, limity.
 
+### Jak to vypadá ve Wiresharku
+
+Filtr `tcp.flags.syn == 1` ukáže první dvě zprávy. Wireshark ukazuje **relativní** sekvenční čísla, takže SYN má Seq=0, SYN-ACK má Seq=0 a Ack=1, poslední ACK má Seq=1 a Ack=1. Skutečná čísla jsou náhodná ([[ISN]]).
+
+```
+Klient → Server   [SYN]      Seq=0
+Server → Klient   [SYN, ACK] Seq=0 Ack=1
+Klient → Server   [ACK]      Seq=1 Ack=1
+```
+
+### Stavy TCP spojení
+
+| Stav | Kdo | Význam |
+| :-- | :-- | :-- |
+| LISTEN | server | čeká na SYN na otevřeném [[port|portu]] |
+| SYN-SENT | klient | poslal SYN, čeká na SYN-ACK |
+| SYN-RECEIVED | server | poslal SYN-ACK, čeká na ACK |
+| ESTABLISHED | oba | spojení navázané, posílají se data |
+| TIME-WAIT | ten, kdo zavíral | chvíli čeká, aby zachytil zpožděné pakety |
+
+Stavy uvidíš na PC příkazem `netstat -an`.
+
+### Když handshake nevyjde
+
+- **port je zavřený** → server odpoví příznakem **RST** (reset), spojení se hned odmítne,
+- **nepřijde nic** → paket zahodil [[firewall]] nebo cíl neexistuje, klient SYN po čase zopakuje a pak to vzdá (timeout),
+- [[UDP]] žádný handshake nemá, proto je rychlejší, ale nespolehlivý.
+
 **Souvisí:** [[TCP]], [[ISN]], [[MSS]], [[sliding window]]

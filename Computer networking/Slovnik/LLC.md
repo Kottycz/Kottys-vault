@@ -39,4 +39,13 @@ Definuje ho **[[IEEE]] 802.2**, zatímco MAC podvrstva je specifická pro techno
 
 V běžném Ethernetu se místo LLC hlavičky používá přímo pole [[EtherType]] v rámci, které protokol vyšší vrstvy označí (0x0800 = IPv4, 0x86DD = IPv6, 0x0806 = ARP). LLC hlavička se tak často vůbec nepoužívá – zůstává hlavně jako teoretický model.
 
+### Proč dvě podvrstvy
+
+Díky rozdělení je horní část (LLC) **stejná pro všechny technologie** (Ethernet, Wi-Fi), mění se jen spodní [[MAC podvrstva]]. Síťová vrstva tak nemusí řešit, po čem data jdou.
+
+### LLC v rámci
+
+- v klasickém [[Ethernet|Ethernetu II]] (který se používá pro IP) se LLC hlavička neposílá, druh protokolu určí pole [[EtherType]],
+- LLC hlavičku (standard 802.2) mají rámce 802.3 s polem „délka" a třeba [[STP protokol|STP]] zprávy. Ve Wiresharku je u nich vidět vrstva „Logical-Link Control".
+
 **Souvisí:** [[MAC podvrstva]], [[MAC adresa]], [[PDU]], [[NIC]], [[EtherType]], [[IEEE]]

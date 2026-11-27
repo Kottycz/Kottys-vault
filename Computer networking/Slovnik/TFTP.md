@@ -42,4 +42,26 @@ Používá se tam, kde je potřeba jednoduchý klient, který se vejde do malé 
 
 Přestože jede nad nespolehlivým UDP, řeší si potvrzování sám – každý blok dat potvrzuje příjemce vlastní ACK zprávou.
 
+### Záloha a obnova přes TFTP
+
+```
+R1# copy running-config tftp:
+Address or name of remote host []? 192.168.1.100
+Destination filename [r1-confg]? r1-zaloha.cfg
+
+R1# copy tftp: running-config
+```
+
+Na PC musí běžet TFTP server (např. Tftpd64) a mezi zařízením a PC musí fungovat ping.
+
+### Omezení
+
+- soubory se posílají po blocích **512 B**, každý blok se potvrzuje, takže je TFTP pomalé,
+- bez přihlášení a bez šifrování → jen v uzavřené síti pro správu,
+- neumí vypsat obsah adresáře, musíš znát přesný název souboru.
+
+### Bezpečnější alternativa
+
+SCP nebo [[SFTP]] přes SSH (`copy running-config scp:`).
+
 **Souvisí:** [[FTP]], [[UDP]], [[port]], [[running-config]], [[startup-config]]

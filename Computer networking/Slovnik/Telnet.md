@@ -44,4 +44,28 @@ V reálné síti Telnet **vždy vypnout** a povolit jen SSH:
 Router(config-line)# transport input ssh
 ```
 
+### Ukázka, proč je nebezpečný
+
+Ve [[Wireshark|Wiresharku]] stačí na zachyceném Telnet provozu dát „Follow TCP Stream" a vidíš jméno i heslo v čitelné podobě, včetně všech příkazů. U [[SSH]] je tam jen šifrovaný nesmysl.
+
+### Telnet jako testovací nástroj
+
+Telnet klient se dá použít k ověření, jestli je na serveru otevřený [[port]]:
+
+```
+C:\> telnet mail.skola.cz 25
+220 mail.skola.cz ESMTP
+```
+
+Když se připojí, port je otevřený a služba běží. Dnes se k tomu spíš používá `Test-NetConnection server -Port 25` (PowerShell).
+
+### Vypnutí Telnetu na Cisco
+
+```
+R1(config)# line vty 0 4
+R1(config-line)# transport input ssh
+```
+
+Tím se na VTY linkách povolí jen SSH, Telnet se odmítne.
+
 **Souvisí:** [[SSH]], [[TCP]], [[port]], [[running-config]]

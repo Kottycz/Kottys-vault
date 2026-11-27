@@ -45,4 +45,14 @@ Běžný uživatel víc stahuje (video, web) než odesílá, takže se kapacita 
 
 DSL se dnes postupně nahrazuje optikou, ale v místech bez optické infrastruktury se pořád používá.
 
+### Části DSL přípojky
+
+- **DSL modem** u zákazníka – převádí data na signál pro telefonní linku,
+- **splitter / mikrofiltr** – oddělí telefonní hovory od dat, aby se navzájem nerušily,
+- **DSLAM** u poskytovatele – sbírá linky od mnoha zákazníků a připojuje je do sítě [[ISP]].
+
+### Vzdálenost
+
+Signál po měděné lince slábne ([[útlum]]). Čím dál je zákazník od ústředny, tím nižší rychlost. ADSL funguje do zhruba 5 km, VDSL2 dává vysoké rychlosti jen na krátké vzdálenosti (stovky metrů), proto se kombinuje s optikou dovedenou až do ulice.
+
 **Souvisí:** [[ISP]], [[WAN]], [[optické vlákno]], [[latency]], [[šířka pásma]]

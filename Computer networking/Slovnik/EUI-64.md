@@ -51,4 +51,28 @@ Protože je ID odvozeno z MAC adresy, **adresa zařízení se nemění, i když 
 
 Proto se dnes místo EUI-64 běžně používají **náhodně generovaná ID** (privacy extensions), která se navíc čas od času mění. EUI-64 se ale pořád učí a používá u síťových prvků.
 
+### Příklad krok za krokem
+
+MAC adresa `00:1A:2B:3C:4D:5E`, prefix `2001:db8:acad:1::/64`:
+
+```
+1. rozdělit MAC na půlky:    001A2B | 3C4D5E
+2. vložit doprostřed FFFE:   001A2B FFFE 3C4D5E
+3. překlopit 7. bit:          00 = 0000 0000 → 0000 0010 = 02
+   → ID rozhraní:            021A:2BFF:FE3C:4D5E
+4. spojit s prefixem:         2001:db8:acad:1:21a:2bff:fe3c:4d5e
+```
+
+### Na Cisco
+
+```
+R1(config-if)# ipv6 address 2001:db8:acad:1::/64 eui-64
+```
+
+Router si ID rozhraní dopočítá sám z MAC adresy rozhraní. Výsledek uvidíš v `show ipv6 interface brief`.
+
+### Kde se použije automaticky
+
+Při [[SLAAC]] si zařízení může ID rozhraní vytvořit přes EUI-64 (Cisco routery) nebo náhodně (Windows a další systémy kvůli soukromí). Router si EUI-64 použije i pro svou [[LLA|link-local adresu]], pokud ji nenastavíš ručně.
+
 **Souvisí:** [[MAC adresa]], [[IPv6]], [[SLAAC]], [[LLA]], [[OUI]], [[hextet]]

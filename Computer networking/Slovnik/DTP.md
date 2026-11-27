@@ -18,4 +18,31 @@ tags: [slovnik]
 - trunk do zařízení bez DTP: `switchport mode trunk` + `switchport nonegotiate` (switch nebude posílat rámce DTP),
 - kontrola: `show dtp interfaces`.
 
+### Režimy portu
+
+| Režim | Chování |
+| :-- | :-- |
+| `switchport mode access` | nikdy trunk |
+| `switchport mode trunk` | vždy trunk, posílá DTP |
+| `switchport mode dynamic desirable` | aktivně se snaží trunk vyjednat |
+| `switchport mode dynamic auto` | trunk udělá, jen když o něj soused požádá |
+| `switchport nonegotiate` | vypne posílání DTP |
+
+Výchozí režim u Cisco 2960 je **dynamic auto**.
+
+### Výsledek kombinací
+
+| | dynamic auto | dynamic desirable | trunk | access |
+| :-- | :-- | :-- | :-- | :-- |
+| **dynamic auto** | access | trunk | trunk | access |
+| **dynamic desirable** | trunk | trunk | trunk | access |
+| **trunk** | trunk | trunk | trunk | nefunkční |
+| **access** | access | access | nefunkční | access |
+
+Pozor: **auto + auto = access**. Dva nové switche spojené kabelem trunk samy neudělají.
+
+### Bezpečnost
+
+Útočník může z PC poslat DTP zprávy, vyjednat trunk a vidět provoz všech VLAN. Proto se na portech k uživatelům nastaví `switchport mode access` a na trunku `switchport nonegotiate`.
+
 **Souvisí:** [[VLAN trunk]], [[VLAN]], [[switch]], [[802.1Q]], [[příkazy show]]

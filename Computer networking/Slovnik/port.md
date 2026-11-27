@@ -53,4 +53,23 @@ Klient si vezme náhodný dynamický port, server naslouchá na známém. Odpov�
 
 Když je v cestě [[NAT]], zvenku nelze oslovit vnitřní zařízení. Port forwarding nastaví pravidlo "co přijde na veřejný port X, pošli na vnitřní IP:port Y" – používá se např. pro herní servery.
 
+### Na které vrstvě
+
+Port je pojem **transportní vrstvy** (vrstva 4). Kombinace **IP adresa + port** se nazývá [[socket]] a jednoznačně určuje aplikaci na konkrétním zařízení.
+
+### Jak zjistit otevřené porty
+
+| Kde | Příkaz |
+| :-- | :-- |
+| Windows | `netstat -an`, `netstat -ano` (i s číslem procesu) |
+| Linux | `ss -tulpn` |
+| z jiného PC | skener portů (nmap) |
+
+### Port na switchi vs. port v TCP/UDP
+
+Pozor na dvojí význam:
+
+- **fyzický port** – zásuvka na switchi nebo routeru (Fa0/1, G0/0/0), vrstva 1–2,
+- **logický port** – číslo aplikace v [[TCP]]/[[UDP]], vrstva 4.
+
 **Souvisí:** [[socket]], [[TCP]], [[UDP]], [[IP adresa]], [[NAT]]

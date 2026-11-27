@@ -52,4 +52,27 @@ Proto se ve firmách často používá DHCPv6 (kvůli evidenci), doma stačí SL
 
 SLAAC vyžaduje **prefix /64** – zbylých 64 bitů musí zbýt na ID rozhraní.
 
+### Ukázka – co si PC vytvoří
+
+Router posílá RA s prefixem `2001:db8:acad:1::/64`. PC si vytvoří:
+
+```
+2001:db8:acad:1:a1b2:c3d4:e5f6:7890   ← GUA (prefix + náhodné ID)
+fe80::a1b2:c3d4:e5f6:7890             ← LLA
+```
+
+Výchozí bránou bude **link-local adresa routeru** (zdrojová adresa RA), ne jeho GUA.
+
+### Dočasné adresy
+
+Windows si kromě stálé adresy vytváří i **dočasné** (temporary) adresy, které se pravidelně mění. Pro odchozí spojení se používají ty, aby se uživatel nedal sledovat podle stálé adresy. V `ipconfig` je uvidíš jako „Temporary IPv6 Address".
+
+### Ověření
+
+| Kde | Příkaz |
+| :-- | :-- |
+| Windows | `ipconfig` (IPv6 adresa, Default Gateway `fe80::…`) |
+| Cisco router | `show ipv6 interface g0/0/0` (posílá RA?) |
+| Cisco – kdo je v síti | `show ipv6 neighbors` |
+
 **Souvisí:** [[IPv6]], [[RA]], [[RS]], [[NDP]], [[EUI-64]], [[DAD]], [[LLA]], [[GUA]]

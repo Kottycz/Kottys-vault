@@ -56,4 +56,22 @@ SSL je **starý název** – dnes se všude používá TLS, ale hovorově se po�
 
 Způsob, jak upgradovat už navázané nešifrované spojení na šifrované (běžné u [[SMTP]] na portu 587). Nejde o jiný protokol, jen o příkaz "od teď šifrujeme".
 
+### Certifikát a důvěra
+
+Server pošle certifikát podepsaný **certifikační autoritou (CA)**. Prohlížeč a systém mají seznam důvěryhodných CA. Když podpis sedí a jméno v certifikátu odpovídá adrese webu, spojení je ověřené. Jinak prohlížeč varuje.
+
+### TLS 1.3 vs. 1.2
+
+| | TLS 1.2 | TLS 1.3 |
+| :-- | :-- | :-- |
+| handshake | 2 výměny tam a zpět | 1 výměna (rychlejší) |
+| staré slabé šifry | ještě povolené | odstraněné |
+| výměna klíčů | i bez forward secrecy | vždy s forward secrecy |
+
+**Forward secrecy** = i kdyby později unikl soukromý klíč serveru, staré nahrané relace nejdou rozšifrovat.
+
+### TLS a další protokoly
+
+TLS nepoužívá jen web: [[HTTPS]] (443), IMAPS (993), SMTP se STARTTLS, LDAPS, VPN (některé typy).
+
 **Souvisí:** [[HTTPS]], [[HTTP]], [[SMTP]], [[IMAP]], [[POP3]], [[FTP]], [[TCP]]

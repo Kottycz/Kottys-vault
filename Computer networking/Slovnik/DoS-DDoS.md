@@ -29,4 +29,21 @@ tags: [slovnik]
 
 [[firewall|Firewally]] se **stavovou inspekcí paketů** ([[SPI]]) umí rozpoznávat a filtrovat některé typy DoS útoků, plná ochrana proti DDoS ale často vyžaduje specializované služby (scrubbing centra, CDN).
 
+### Typy útoků
+
+| Útok | Jak funguje |
+| :-- | :-- |
+| SYN flood | spousta SYN bez dokončení [[3-way handshake|handshaku]], server drží polootevřená spojení, dokud mu nedojde paměť |
+| ICMP / ping flood | zahlcení [[ping|pingy]] |
+| UDP flood | spousta [[UDP]] paketů na náhodné porty |
+| amplifikace | útočník pošle malý dotaz (např. [[DNS]]) s podvrženou IP oběti, server pošle oběti mnohem větší odpověď |
+
+### Botnet
+
+DDoS se dělá přes **botnet** – tisíce nakažených zařízení (počítače, kamery, routery), které útočník ovládá na dálku a najednou je pošle útočit na jeden cíl.
+
+### Příznaky
+
+Služba je najednou velmi pomalá nebo nedostupná, linka je plně vytížená, v logu je obrovské množství spojení z mnoha adres.
+
 **Souvisí:** [[firewall]], [[SPI]], [[MITM]]

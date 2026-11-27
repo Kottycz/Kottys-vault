@@ -64,4 +64,22 @@ Nejsou směrovatelné na internetu, používají se v lokálních sítích (pře
 
 32 bitů = asi 4,3 miliardy adres, což už nestačí. Řeší se [[NAT|NATem]] a přechodem na [[IPv6]].
 
+### IPv4 hlavička – důležitá pole
+
+| Pole | Velikost | K čemu |
+| :-- | :-- | :-- |
+| Version | 4 b | 4 |
+| [[DSCP]] | 6 b | priorita ([[QoS]]) |
+| Total Length | 16 b | velikost paketu |
+| [[TTL]] | 8 b | kolik routerů ještě smí paket projít |
+| Protocol | 8 b | co je uvnitř: 1 [[ICMP]], 6 [[TCP]], 17 [[UDP]] |
+| Header Checksum | 16 b | kontrola hlavičky |
+| Source / Destination Address | 32 b + 32 b | zdrojová a cílová IP |
+
+Hlavička má minimálně **20 bajtů**.
+
+### Fragmentace
+
+Když je paket větší než [[MTU]] další linky, router ho může rozdělit na menší kousky (fragmenty). Skládá je až cílový host. V [[IPv6]] routery nefragmentují.
+
 **Souvisí:** [[IP adresa]], [[maska podsítě]], [[délka prefixu]], [[NAT]], [[IPv6]], [[VLSM]], [[broadcast]]

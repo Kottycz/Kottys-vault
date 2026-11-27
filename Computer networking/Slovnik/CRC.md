@@ -49,4 +49,24 @@ CRC chrání před šumem na lince, ne před útočníkem.
 
 Vysoký počet CRC chyb na portu (`show interfaces`) znamená problém s kabelem, konektorem, rušením nebo duplexem.
 
+### CRC chyby v praxi
+
+V `show interfaces` je řádek s **CRC** chybami. Každá znamená rámec, u kterého nesedí kontrolní součet a který se zahodil. Nejčastější příčiny:
+
+- vadný nebo špatně zakončený kabel,
+- [[EMI|elektromagnetické rušení]] (kabel vedle elektrických rozvodů),
+- [[duplex]] mismatch (na straně s full-duplex se objevují CRC chyby a [[runt|runty]]),
+- vadný port nebo síťová karta.
+
+### Postup při CRC chybách
+
+1. `show interfaces` – roste počet CRC chyb?
+2. zkontrolovat duplex a rychlost na obou koncích,
+3. vyměnit kabel, zkusit jiný port,
+4. `clear counters` a sledovat, jestli chyby znovu rostou.
+
+### Velikost
+
+Ethernet používá **CRC-32**, výsledek má 4 bajty a je v poli [[FCS]] na konci rámce.
+
 **Souvisí:** [[FCS]], [[zapouzdření]], [[NIC]], [[switch]], [[UTP]]

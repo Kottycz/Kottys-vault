@@ -45,4 +45,22 @@ VoIP tedy nepotřebuje velkou kapacitu, ale **stabilní** spojení – proto se 
 
 Dřív měla firma zvlášť telefonní a zvlášť datovou síť. Dnes jede hlas, video i data po **jedné infrastruktuře** – levnější na provoz, ale vyžaduje dobře nastavené QoS.
 
+### Kodeky
+
+| Kodek | Přenosová rychlost | Kvalita |
+| :-- | :-- | :-- |
+| G.711 | 64 kb/s | jako klasický telefon, bez komprese |
+| G.729 | 8 kb/s | komprese, šetří linku |
+| Opus | proměnná | moderní, používají ho aplikace (Teams, WhatsApp) |
+
+K samotnému kodeku se přidají hlavičky IP/UDP/RTP, takže hovor G.711 zabere na lince kolem 80–90 kb/s v každém směru.
+
+### Požadavky na síť
+
+Jednosměrné zpoždění do **150 ms**, jitter do **30 ms**, ztráty do **1 %**. Proto se hlas dává do [[Voice VLAN]] a prioritizuje přes [[QoS]].
+
+### Napájení telefonů
+
+IP telefony se napájí přes [[PoE]] ze switche. Při výpadku proudu fungují, jen když má switch záložní napájení (UPS).
+
 **Souvisí:** [[UDP]], [[QoS]], [[DSCP]], [[latency]], [[LAN]]

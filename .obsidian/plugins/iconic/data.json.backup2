@@ -28,7 +28,24 @@
   },
   "appIcons": {},
   "tabIcons": {},
-  "fileIcons": {},
+  "fileIcons": {
+    "Operating system/02_Struktura_OS/01_STRUKTURA_OPERAČNÍCH_SYSTÉMŮ.md": {
+      "icon": "lucide-circle-alert",
+      "color": "red"
+    },
+    "Operating system/03_Sprava_procesu/01_Process_Concept.md": {
+      "icon": "lucide-circle-alert",
+      "color": "red"
+    },
+    "Operating system/03_Sprava_procesu/02_Process_Scheduling.md": {
+      "icon": "lucide-circle-alert",
+      "color": "red"
+    },
+    "Operating system/03_Sprava_procesu/06_CPU_Scheduling.md": {
+      "color": "red",
+      "icon": "lucide-circle-alert"
+    }
+  },
   "bookmarkIcons": {},
   "tagIcons": {},
   "propertyIcons": {},

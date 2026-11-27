@@ -51,4 +51,25 @@ Vždy pamatuj na −2 (adresa sítě + [[broadcast]]).
 
 Aby VLSM fungovalo, musí směrovací protokol posílat spolu s adresou i [[maska podsítě|masku]] – tzv. **classless** protokoly ([[OSPF]], EIGRP, RIPv2). Staré classful protokoly (RIPv1) to neumí.
 
+### Postup na příkladu
+
+Síť `192.168.10.0/24`, potřeby: A = 60 hostů, B = 25, C = 10, spoj router–router = 2.
+
+| Podsíť | Hostů | Prefix | Síť | Broadcast |
+| :-- | :-- | :-- | :-- | :-- |
+| A | 60 | /26 (62) | 192.168.10.0 | .63 |
+| B | 25 | /27 (30) | 192.168.10.64 | .95 |
+| C | 10 | /28 (14) | 192.168.10.96 | .111 |
+| spoj | 2 | /30 (2) | 192.168.10.112 | .115 |
+
+Každá další podsíť začíná hned za broadcastem předchozí. Volné zůstává `.116` až `.255`.
+
+### Proč od největší
+
+Když začneš od nejmenší, větší podsíť pak nemusí začínat na své hranici (adresa sítě /26 musí být násobek 64). Od největší se bloky vždy zarovnají.
+
+### Procvičení
+
+Viz [[Subnetting]] a [[Subnetting - cvičení]] (příklad 8).
+
 **Souvisí:** [[maska podsítě]], [[délka prefixu]], [[IPv4]], [[broadcast]], [[OSPF]]

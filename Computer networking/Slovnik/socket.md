@@ -47,4 +47,20 @@ V programování je socket **rozhraní operačního systému** pro síťovou kom
 
 `LISTEN` (čeká na spojení), `ESTABLISHED` (spojeno), `TIME_WAIT` (po ukončení chvíli drží), a další – vidíš je právě ve výstupu `netstat`.
 
+### Jak server rozliší klienty
+
+Webový server poslouchá na jednom socketu `203.0.113.10:443`, ale obsluhuje tisíce klientů. Každé spojení je odlišené **dvojicí socketů**:
+
+```
+192.168.1.5:50123  ↔  203.0.113.10:443
+192.168.1.5:50124  ↔  203.0.113.10:443   ← jiná záložka prohlížeče
+10.0.0.7:61000     ↔  203.0.113.10:443   ← jiný klient
+```
+
+Klient dostane od systému náhodný **dynamický port** (49152–65535), takže dvě spojení ze stejného PC se nepletou.
+
+### Socket a NAT
+
+[[NAT]] (PAT) přepisuje zdrojový socket: soukromou IP i port nahradí veřejnou IP a jiným portem a pamatuje si, který vnitřní socket patří ke kterému vnějšímu.
+
 **Souvisí:** [[port]], [[IP adresa]], [[TCP]], [[UDP]]

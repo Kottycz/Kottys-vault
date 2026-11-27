@@ -54,4 +54,25 @@ Wi-Fi je [[half-duplex]] – zařízení nemůže vysílat a poslouchat zárove�
 | Bezpečnost | signál slyší okolí | fyzický přístup ke kabelu |
 | Mobilita | vysoká | žádná |
 
+### Generace Wi-Fi
+
+| Generace | Standard | Pásma | Max. teoretická rychlost |
+| :-- | :-- | :-- | :-- |
+| Wi-Fi 4 | 802.11n | 2,4 / 5 GHz | 600 Mb/s |
+| Wi-Fi 5 | 802.11ac | 5 GHz | ~3,5 Gb/s |
+| Wi-Fi 6 / 6E | 802.11ax | 2,4 / 5 / (6) GHz | ~9,6 Gb/s |
+| Wi-Fi 7 | 802.11be | 2,4 / 5 / 6 GHz | desítky Gb/s |
+
+Reálná rychlost je mnohem nižší a dělí se mezi všechna zařízení v dosahu AP.
+
+### Ad hoc vs. infrastructure
+
+- **infrastructure** – klienti se připojují k [[AP]] (běžný režim),
+- **ad hoc** – zařízení se spojí přímo mezi sebou bez AP,
+- **tethering / hotspot** – telefon funguje jako AP a sdílí mobilní data.
+
+### Řízený provoz ve firmě
+
+Ve větších sítích AP řídí **WLC** (Wireless LAN Controller): jedna konfigurace pro všechna AP, plynulý roaming mezi AP, automatické nastavení kanálů a výkonu.
+
 **Souvisí:** [[LAN]], [[CSMA-CA]], [[half-duplex]], [[IEEE]], [[MAC adresa]], [[NIC]]

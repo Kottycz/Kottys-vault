@@ -35,4 +35,17 @@ Prakticky všechna běžná komunikace: prohlížení webu ([[HTTP]]), e-mail, s
 
 [[IPv6]] zná unicast, multicast a anycast – **broadcast v něm neexistuje** (nahradil ho cílený multicast).
 
+### Unicast na vrstvě 2 a 3
+
+| Vrstva | Unicast adresa |
+| :-- | :-- |
+| 2 | [[MAC adresa]] konkrétní karty, nejnižší bit prvního oktetu = 0 |
+| 3 | [[IP adresa]] konkrétního rozhraní |
+
+Paket z PC na server přes internet má po celou cestu **stejnou unicast IP** cíle, ale cílová MAC se na každém routeru mění na MAC dalšího skoku.
+
+### Neznámý unicast
+
+Když switch cílovou MAC nezná, rozešle unicast rámec všem jako broadcast – viz [[neznámý unicast]].
+
 **Souvisí:** [[broadcast]], [[multicast]], [[anycast]], [[MAC adresa]], [[IP adresa]]

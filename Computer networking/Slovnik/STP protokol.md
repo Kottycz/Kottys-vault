@@ -52,4 +52,37 @@ Na portech ke koncovým zařízením se zapíná **PortFast** – port přejde r
 - **STP protokol** = Spanning Tree Protocol (tohle)
 - **[[STP kabel]]** = Shielded Twisted Pair (stíněný kabel)
 
+### Volba root bridge
+
+1. každý switch má **Bridge ID** = priorita (výchozí **32768**) + VLAN + [[MAC adresa]],
+2. **nejnižší Bridge ID** vyhraje a stane se root bridge,
+3. při stejné prioritě rozhodne nejnižší MAC (často nejstarší switch, což není ideální).
+
+Root bridge se proto nastavuje ručně:
+
+```
+S1(config)# spanning-tree vlan 1 root primary
+S1(config)# spanning-tree vlan 1 priority 4096
+```
+
+### Role portů
+
+| Role | Význam |
+| :-- | :-- |
+| root port | na každém switchi (kromě root) port s nejlevnější cestou k root bridge |
+| designated port | na každém segmentu port, který přeposílá směrem od rootu |
+| alternate / blocked | záložní port, blokuje, aby nevznikla smyčka |
+
+### Stavy portu (klasický STP)
+
+Blocking → Listening (15 s) → Learning (15 s) → Forwarding. Proto trvá klasickému STP naběhnutí portu kolem **30–50 s**. RSTP to zvládne za pár sekund.
+
+### BPDU Guard
+
+Na portech s PortFast se zapíná **BPDU Guard**: když na port přijde BPDU (někdo připojil switch), port se vypne (err-disabled). Chrání před smyčkou z nechtěně připojeného switche.
+
+### Ověření
+
+`show spanning-tree` – kdo je root, role a stav portů.
+
 **Souvisí:** [[switch]], [[broadcast]], [[VLAN]], [[STP kabel]]

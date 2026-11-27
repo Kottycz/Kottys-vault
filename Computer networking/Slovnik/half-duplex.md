@@ -43,4 +43,19 @@ Když má jedna strana linky full-duplex a druhá half-duplex, síť sice funguj
 
 Řešení: nechat autonegotiation zapnutou na obou stranách, nebo nastavit ručně **obě** stejně.
 
+### Proč to dnes ještě znát
+
+- staré huby a některá průmyslová zařízení jedou jen half-duplex,
+- [[WLAN|Wi-Fi]] je ve své podstatě half-duplex, na jednom kanálu vysílá vždy jen jeden ([[CSMA-CA]]),
+- když selže [[auto-negotiation]], port na 10/100 Mb/s spadne do half-duplex a vznikne mismatch.
+
+### Jak half-duplex poznat
+
+```
+S1# show interfaces fa0/1
+  Half-duplex, 10Mb/s
+```
+
+V `show interfaces status` je u portu `a-half`. Na half-duplex lince jsou kolize normální, ale jejich velký počet znamená přetížení.
+
 **Souvisí:** [[full-duplex]], [[CSMA-CD]], [[CSMA-CA]], [[switch]]

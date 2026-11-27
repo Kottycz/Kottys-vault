@@ -47,4 +47,16 @@ Databáze OUI je veřejná – existují online vyhledávače, kde po zadání M
 
 [[EUI-64]] u [[IPv6]] bere MAC adresu, vloží doprostřed `FFFE` a překlopí U/L bit – z OUI se tak stane součást ID rozhraní.
 
+### Známá OUI
+
+Výrobce zjistíš podle prvních šesti hex znaků MAC adresy. Některé výrobce mají přidělených mnoho OUI (Cisco jich má stovky), takže se nedají nazpaměť, vyhledávají se v databázi IEEE.
+
+### OUI a soukromí
+
+Podle OUI jde z MAC adresy poznat výrobce zařízení (Apple, Samsung, Cisco). Proto telefony ve Wi-Fi sítích používají **náhodné MAC adresy**, které OUI nemají a mají nastavený bit „lokálně spravovaná".
+
+### Ve Wiresharku
+
+Wireshark u MAC adres rovnou ukazuje výrobce, např. `Cisco_3a:07:bc` místo `00:60:2f:3a:07:bc`. První část nahradí jménem podle OUI.
+
 **Souvisí:** [[MAC adresa]], [[NIC]], [[EUI-64]], [[unicast]], [[multicast]]

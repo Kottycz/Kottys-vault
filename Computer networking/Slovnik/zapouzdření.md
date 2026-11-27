@@ -49,4 +49,25 @@ Každá vrstva "vidí" jen svou hlavičku – obsah nad ní je pro ni jen data.
 
 [[router|Router]] rámec **dekapsuluje** na paket, rozhodne kam dál, a zabalí ho do **nového rámce** s jinými MAC adresami. IP adresy se přitom nemění – proto MAC adresy platí jen pro jeden úsek cesty, IP pro celou.
 
+### Příklad: otevření webové stránky
+
+```
+Data:    GET /index.html
+Segment: [TCP hlavička: zdroj. port 50123, cíl. port 80] + data
+Paket:   [IP hlavička: 192.168.1.5 → 203.0.113.10] + segment
+Rámec:   [Ethernet: MAC PC → MAC brány] + paket + [FCS]
+Bity:    1010110…
+```
+
+Cílová MAC je MAC **brány**, ne serveru – server je v jiné síti.
+
+### Na switchi vs. na routeru
+
+- **switch** – rozbalí jen rámec (vrstva 2), podívá se na MAC a pošle rámec dál beze změny,
+- **router** – rozbalí rámec až na paket (vrstva 3), sníží TTL, podle IP rozhodne a zabalí paket do **nového rámce** s novými MAC adresami.
+
+### Ve Wiresharku
+
+V detailu paketu vidíš zapouzdření přesně: Frame → Ethernet II → Internet Protocol → Transmission Control Protocol → Hypertext Transfer Protocol.
+
 **Souvisí:** [[PDU]], [[MTU]], [[MAC adresa]], [[IP adresa]], [[FCS]]

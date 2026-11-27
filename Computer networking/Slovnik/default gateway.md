@@ -47,4 +47,30 @@ Brána musí být **ve stejné podsíti** jako zařízení, jinak ji nelze oslov
 
 Když je brána špatně, [[ping]] uvnitř sítě funguje, ale mimo síť ne – typický příznak chybné konfigurace.
 
+### Brána na switchi
+
+Switch vrstvy 2 nesměruje, ale potřebuje bránu, aby byl **spravovatelný z jiné sítě** (SSH z PC admina v jiné VLAN):
+
+```
+S1(config)# ip default-gateway 192.168.99.1
+```
+
+Na data rámce uživatelů to nemá vliv, týká se jen provozu samotného switche.
+
+### Brána na routeru
+
+Router místo brány používá **výchozí cestu** (default route), tzv. gateway of last resort:
+
+```
+R1(config)# ip route 0.0.0.0 0.0.0.0 203.0.113.1
+```
+
+V `show ip route` je pak označená `S*`.
+
+### Pravidla
+
+- brána musí být **ve stejné podsíti** jako zařízení,
+- obvykle se dává první (`.1`) nebo poslední použitelná adresa podsítě,
+- když brána vypadne, celá síť ztratí spojení ven. Řeší se to **FHRP** (např. HSRP), kde dva routery sdílí jednu virtuální IP brány.
+
 **Souvisí:** [[router]], [[IP adresa]], [[maska podsítě]], [[DHCP]], [[ARP]]

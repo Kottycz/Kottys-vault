@@ -41,4 +41,16 @@ Když se v síti objeví smyčka (kabel zapojený "do kruhu"), broadcast může 
 
 [[IPv6]] **broadcast vůbec nemá**. Nahradil ho cílený [[multicast]] – místo obtěžování všech se zpráva pošle jen relevantní skupině (např. "všechny routery" = `ff02::2`).
 
+### Router a broadcast
+
+- [[router]] **nepřeposílá** broadcasty do jiných sítí, tím ohraničuje [[broadcast doména|broadcast doménu]],
+- přeposílání **directed broadcastu** (např. `192.168.1.255` z jiné sítě) je na Cisco routerech ve výchozím stavu vypnuté (`no ip directed-broadcast`). Dřív se toho zneužívalo k útoku Smurf, kdy útočník poslal ping na broadcast adresu cizí sítě a odpovědi zahltily oběť,
+- výjimka: `ip helper-address` přepošle [[DHCP]] broadcast na konkrétní server jako unicast.
+
+### Jak broadcasty omezit
+
+- rozdělit síť na menší podsítě nebo [[VLAN]],
+- na switchi zapnout **storm-control**, který zahazuje broadcasty nad nastavený limit,
+- zabránit smyčkám pomocí [[STP protokol|STP]].
+
 **Souvisí:** [[unicast]], [[multicast]], [[anycast]], [[switch]], [[router]], [[maska podsítě]], [[ARP]], [[DHCP]]

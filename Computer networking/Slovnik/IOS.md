@@ -50,4 +50,30 @@ end     → rovnou do privilegovaného režimu (nebo Ctrl+Z)
 | **NVRAM** | [[startup-config]] (přežije restart) |
 | **ROM** | bootovací instrukce |
 
+### Soubor IOS a jeho jméno
+
+Jméno souboru prozradí platformu a verzi, např. `c2960-lanbasek9-mz.150-2.SE.bin`:
+
+- `c2960` – pro switch Catalyst 2960,
+- `lanbasek9` – sada funkcí, `k9` = podpora šifrování (nutné pro [[SSH]]),
+- `150-2.SE` – verze 15.0(2)SE.
+
+### Nápověda v IOS
+
+| Co | Jak |
+| :-- | :-- |
+| seznam příkazů | `?` |
+| dokončení příkazu | Tab |
+| možnosti příkazu | `show ?` |
+| historie | šipka nahoru, `show history` |
+| zkrácené příkazy | `conf t`, `sh run`, `int g0/0` |
+
+### Chybové hlášky
+
+| Hláška | Význam |
+| :-- | :-- |
+| `% Ambiguous command` | zkratka sedí na víc příkazů, napiš víc písmen |
+| `% Incomplete command` | chybí parametr |
+| `% Invalid input detected at '^' marker` | chyba v místě, kam ukazuje `^` |
+
 **Souvisí:** [[running-config]], [[startup-config]], [[router]], [[switch]], [[SVI]], [[SSH]]

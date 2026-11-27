@@ -49,4 +49,31 @@ Když někdo blokuje ICMP, tohle přestane fungovat → vzniká **black hole**: 
 
 MTU 9000 B v datových centrech – míň režie na stejný objem dat, ale musí to podporovat **všechna** zařízení po cestě.
 
+### MTU na Cisco
+
+```
+R1(config-if)# ip mtu 1400
+R1# show interfaces g0/0/0
+  MTU 1500 bytes, BW 1000000 Kbit/sec
+```
+
+Na obou koncích linky má být **stejné MTU**. U [[OSPF]] se sousedé při nesouladu MTU nedostanou do stavu Full (zaseknou se v ExStart/Exchange).
+
+### Test MTU pingem
+
+Na Windows se dá zjistit, jak velký paket projde bez fragmentace:
+
+```
+C:\> ping 8.8.8.8 -f -l 1472
+```
+
+- `-f` – zakáže fragmentaci (Don't Fragment),
+- `-l 1472` – velikost dat. 1472 + 8 ([[ICMP]]) + 20 (IP) = **1500**.
+
+Když je paket moc velký, odpověď je „Packet needs to be fragmented but DF set".
+
+### MTU v IPv6
+
+Minimální MTU v [[IPv6]] je **1280 B** – každá linka musí přenést aspoň tolik. Routery v IPv6 nefragmentují, velikost si hlídá odesílatel.
+
 **Souvisí:** [[MSS]], [[PDU]], [[zapouzdření]], [[ICMP]], [[goodput]], [[FCS]]

@@ -24,4 +24,26 @@ tags: [slovnik]
 | **access** | získání přístupu (hesla, [[MITM]]) |
 | **DoS** | zahlcení služby ([[DoS-DDoS]]) |
 
+### Nástroje a metody
+
+| Metoda | Co útočník zjistí |
+| :-- | :-- |
+| dotazy na internetu (whois, DNS) | adresy, jména serverů, kontakty |
+| ping sweep | které IP adresy jsou živé |
+| sken portů | jaké služby na zařízení běží |
+| zjištění verze služeb | zranitelné verze softwaru |
+| sociální inženýrství | jména, struktura firmy |
+
+### Obrana
+
+- blokovat zbytečné ICMP z internetu na hranici sítě,
+- zavřít nepoužívané porty a vypnout nepotřebné služby,
+- neukazovat verze softwaru v bannerech,
+- [[IPS]], který rozpozná skenování,
+- logovat a sledovat neobvyklé dotazy.
+
+### Fáze útoku
+
+Průzkum → získání přístupu → udržení přístupu → útok (krádež dat, [[DoS-DDoS|DoS]]). Kdo zachytí průzkum, může útok zastavit dřív, než začne.
+
 **Souvisí:** [[DoS-DDoS]], [[MITM]], [[brute force]]

@@ -41,4 +41,24 @@ Poskytovatelé si vyměňují provoz v propojovacích uzlech – v ČR je to **N
 | **Agregace** | kolik zákazníků sdílí jednu kapacitu (1:20 = rychlost není garantovaná) |
 | **Symetrie** | stejná rychlost nahoru i dolů (u optiky ano, u DSL ne) |
 
+### Typy připojení
+
+| Typ | Médium | Poznámka |
+| :-- | :-- | :-- |
+| [[DSL]] | telefonní linka | asymetrické, závisí na vzdálenosti |
+| kabelové | koaxiál kabelové TV | sdílené mezi sousedy |
+| optika (FTTH) | [[optické vlákno]] až domů | nejrychlejší |
+| bezdrátové / mobilní | rádiové vlny, 4G/5G | dostupné všude |
+| satelitní | satelit | velká [[latency|latence]] (u geostacionárních) |
+
+### Co ISP přidělí
+
+- veřejnou IP adresu (nebo jen adresu za jeho [[NAT]]em, tzv. CGNAT),
+- adresy [[DNS]] serverů,
+- u IPv6 celý prefix (např. `/56` nebo `/48`) pro tvoje podsítě.
+
+### Redundance
+
+Firma, která nesmí přijít o internet, má linky od **dvou různých ISP**. Výpadek jednoho poskytovatele ji neodřízne.
+
 **Souvisí:** [[WAN]], [[LAN]], [[BGP]], [[NAT]], [[IP adresa]], [[router]]

@@ -51,4 +51,24 @@ Tři časy = tři měření pro každý hop (kvůli přesnosti).
 - **[[ping]]** – *je cíl dostupný?* (jen výsledek)
 - **traceroute** – *kudy k němu vede cesta a kde vázne?* (celá trasa)
 
+### Varianty příkazu
+
+| Systém | Příkaz | Co posílá |
+| :-- | :-- | :-- |
+| Windows | `tracert 8.8.8.8` | [[ICMP]] Echo Request |
+| Linux | `traceroute 8.8.8.8` | [[UDP]] na vysoké porty |
+| Cisco | `traceroute 8.8.8.8` | UDP |
+
+Proto může tracert na Windows projít a traceroute z Linuxu ne (nebo naopak) – firewall někde propouští jen jeden typ.
+
+### Užitečné přepínače (Windows)
+
+- `tracert -d 8.8.8.8` – nepřekládá IP na jména, je mnohem rychlejší,
+- `tracert -h 15` – maximálně 15 skoků,
+- `pathping 8.8.8.8` – kombinace tracert a ping, ukáže ztráty na každém skoku.
+
+### Čtení výsledku
+
+Když latence prudce vyskočí na jednom skoku a **zůstane** vysoká i na dalších, problém je na tom skoku (nebo je to dlouhá linka, třeba přes oceán). Když vyskočí jen na jednom skoku a dál je zase nízká, router jen odpovídá pomalu na ICMP, provoz přes něj jde normálně.
+
 **Souvisí:** [[ping]], [[TTL]], [[ICMP]], [[router]], [[latency]], [[hop]]

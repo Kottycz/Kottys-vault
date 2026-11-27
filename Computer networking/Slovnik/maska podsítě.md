@@ -57,4 +57,20 @@ Podle masky zařízení pozná, jestli je cíl **ve stejné síti** (pošle rám
 
 Menší podsítě = méně [[broadcast|broadcastů]], lepší bezpečnost (oddělení oddělení) a přehlednější správa. Když potřebuješ různě velké podsítě, použiješ [[VLSM]].
 
+### Wildcard maska
+
+V ACL a [[OSPF]] se používá **wildcard** – obrácená maska. Spočítá se jako 255.255.255.255 minus maska:
+
+| Maska | Wildcard |
+| :-- | :-- |
+| 255.255.255.0 | 0.0.0.255 |
+| 255.255.255.252 | 0.0.0.3 |
+| 255.255.0.0 | 0.0.255.255 |
+
+V masce 1 = síťový bit, ve wildcardu 0 = bit se musí shodovat.
+
+### Častá chyba
+
+Maska musí mít jedničky **souvisle zleva**. `255.255.0.255` není platná maska. Na PC a routeru musí být ve stejné podsíti **stejná maska**, jinak se zařízení navzájem považují za cizí síť.
+
 **Souvisí:** [[délka prefixu]], [[IPv4]], [[VLSM]], [[IP adresa]], [[default gateway]], [[broadcast]]

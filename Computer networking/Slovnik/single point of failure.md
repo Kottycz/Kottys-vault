@@ -26,4 +26,20 @@ Každý takový bod se **zdvojí** nebo se připraví záloha – viz [[redundan
 
 Typická **hvězda** má bod selhání ve středu (centrální switch). Proto se u důležitých sítí hvězda doplňuje o záložní spoje.
 
+### Jak SPOF najít
+
+Projdi cestu provozu od uživatele k serveru nebo do internetu a u každého prvku se zeptej: „Co se stane, když tohle vypadne?" Když odpověď zní „nikdo se nikam nedostane", je to SPOF.
+
+| Prvek | Řešení |
+| :-- | :-- |
+| jeden switch v jádru | dva switche, propojené redundantně |
+| jedna brána | dva routery s HSRP |
+| jedno připojení k internetu | dva [[ISP]] |
+| jeden napájecí zdroj | druhý zdroj, [[RPS]], UPS |
+| jeden server | cluster, zálohy |
+
+### Cena vs. riziko
+
+Odstranit všechny SPOF je drahé. Firma se rozhodne podle toho, kolik ji stojí výpadek. Banka redundanci potřebuje všude, malá kancelář často snese pár hodin bez internetu.
+
 **Souvisí:** [[redundance]], [[topologie]], [[škálování sítě]], [[switch]], [[router]]

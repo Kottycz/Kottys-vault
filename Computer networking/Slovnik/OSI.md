@@ -43,4 +43,18 @@ tags: [slovnik]
 
 V praxi se mluví oběma – např. "vrstva 3" (podle OSI), ale používají se protokoly z TCP/IP.
 
+### Na které vrstvě je které zařízení
+
+| Vrstva | Zařízení | Adresa / PDU |
+| :-- | :-- | :-- |
+| 1 fyzická | kabel, hub, opakovač | bity |
+| 2 linková | [[switch]], [[NIC]], [[AP]] | [[MAC adresa]], rámec |
+| 3 síťová | [[router]], [[přepínač vrstvy 3]] | [[IP adresa]], paket |
+| 4 transportní | [[firewall]] (stavový) | [[port]], segment |
+| 7 aplikační | proxy, servery | data |
+
+### Hledání chyby podle vrstev
+
+Postupuje se **zdola nahoru**: svítí link (1)? Je port ve správné VLAN a vidím MAC (2)? Mám správnou IP a bránu, funguje ping (3)? Je otevřený port (4)? Běží služba (7)?
+
 **Souvisí:** [[ISO]], [[IEEE]], [[IETF]], [[PDU]], [[zapouzdření]]

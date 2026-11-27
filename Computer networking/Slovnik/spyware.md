@@ -21,4 +21,21 @@ tags: [slovnik]
 
 **Spyware vs. adware:** oba sbírají informace o uživateli, adware je ale hlavně kvůli reklamě (viz [[adware]]).
 
+### Druhy spywaru
+
+| Druh | Co dělá |
+| :-- | :-- |
+| keylogger | zaznamenává stisknuté klávesy (hesla, zprávy) |
+| infostealer | krade uložená hesla a cookies z prohlížeče |
+| stalkerware | sleduje polohu, zprávy a hovory na telefonu |
+| tracking | sleduje chování na webu pro reklamu ([[adware]]) |
+
+### Jak ho poznat
+
+Zpomalení zařízení, neznámé procesy, neobvyklý odchozí provoz, rychle vybíjená baterie u telefonu, nová rozšíření prohlížeče. Často se ale neprojeví nijak, proto je nebezpečný.
+
+### Obrana
+
+Antivirus s ochranou proti spywaru, aktualizace, instalace jen z oficiálních obchodů, dvoufázové ověření (ukradené heslo samo nestačí), sledování oprávnění aplikací v telefonu.
+
 **Souvisí:** [[malware]], [[adware]], [[trojský kůň]], [[virus]]

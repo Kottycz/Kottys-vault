@@ -47,4 +47,17 @@ tags: [slovnik]
 - **Výkon** – zařízení obsluhuje ostatní i při vlastní práci
 - **Zálohování** – data jsou roztroušená všude
 
+### Peer-to-peer aplikace vs. síť
+
+- **P2P síť** – pár počítačů v kanceláři, které si sdílí složky a tiskárnu bez serveru,
+- **P2P aplikace** – program, kde si klienti posílají data přímo mezi sebou, i když síť jinak funguje klient-server (BitTorrent, některé hlasové a video hovory).
+
+### Kdy P2P síť stačí
+
+Malá kancelář nebo domácnost s několika zařízeními. Od zhruba 10 a více zařízení je správa P2P nepřehledná (každý počítač má vlastní účty a oprávnění) a vyplatí se server.
+
+### Bezpečnostní riziko
+
+P2P aplikace otevírají spojení na mnoho neznámých počítačů. Přes sdílené soubory se šíří [[malware]] a může dojít k úniku dat, proto je firmy často blokují.
+
 **Souvisí:** [[LAN]], [[socket]], [[port]]

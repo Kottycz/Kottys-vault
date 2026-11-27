@@ -42,4 +42,28 @@ Multicast je efektivnější – dotaz nevyruší celou síť, ale jen zařízen
 
 Stejně jako ARP nemá NDP ověřování – lze ho zneužít (podvržená RA, NA spoofing). Obrana: **RA Guard**, **SEND** (Secure Neighbor Discovery), ND inspection na [[switch|switchích]].
 
+### Neighbor cache
+
+Obdoba [[ARP]] tabulky v IPv6. Ukládá dvojice IPv6 adresa ↔ MAC adresa sousedů.
+
+| Kde | Příkaz |
+| :-- | :-- |
+| Windows | `netsh interface ipv6 show neighbors` |
+| Linux | `ip -6 neigh` |
+| Cisco | `show ipv6 neighbors` |
+
+### Pátá zpráva: Redirect
+
+Kromě RS, RA, NS a NA má NDP ještě **Redirect** (ICMPv6 typ 137). Router jí řekne hostiteli: „k tomuhle cíli máš lepší cestu přes jiný router ve stejné síti".
+
+### Čísla zpráv (ICMPv6 typ)
+
+| Zpráva | Typ |
+| :-- | :-- |
+| [[RS]] | 133 |
+| [[RA]] | 134 |
+| [[NS]] | 135 |
+| [[NA]] | 136 |
+| Redirect | 137 |
+
 **Souvisí:** [[IPv6]], [[ARP]], [[RS]], [[RA]], [[NS]], [[DAD]], [[SLAAC]], [[ICMP]]

@@ -45,4 +45,21 @@ BGP je postavený na důvěře – když někdo omylem (nebo schválně) inzeruj
 
 Obrana: **RPKI** (kryptografické ověření, kdo smí inzerovat který rozsah).
 
+### Technické vlastnosti
+
+- běží nad [[TCP]] na portu **179** (sousedé si spojení navazují ručně nakonfigurovaní, ne automaticky),
+- typ **path vector** – u každé cesty si pamatuje seznam AS, přes které vede (**AS_PATH**). Když v cestě vidí svoje AS číslo, cestu zahodí → nevzniknou smyčky,
+- nevybírá nejrychlejší cestu, ale podle **politik** (smlouvy a ceny mezi poskytovateli).
+
+### eBGP vs. iBGP
+
+| | eBGP | iBGP |
+| :-- | :-- | :-- |
+| mezi | různými AS | routery uvnitř stejného AS |
+| [[router|AD]] | 20 | 200 |
+
+### Kdo ho používá
+
+[[ISP|Poskytovatelé internetu]], velké firmy připojené k víc ISP najednou, cloudy. V malé firmě nebo škole se nepoužívá, tam stačí výchozí cesta k ISP.
+
 **Souvisí:** [[OSPF]], [[router]], [[TCP]], [[IP adresa]], [[WAN]]

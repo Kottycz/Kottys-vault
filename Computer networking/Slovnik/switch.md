@@ -47,4 +47,36 @@ Switch umí logicky rozdělit porty do **VLAN** – oddělených virtuálních s
 
 Pro správu switche přes IP se nastavuje virtuální rozhraní [[SVI]].
 
+### Typy switchů
+
+| Typ | Vlastnosti |
+| :-- | :-- |
+| nespravovaný | bez konfigurace, jen přeposílá rámce, domácnost |
+| spravovaný | VLAN, STP, port security, SSH, firmy |
+| [[přepínač vrstvy 3]] | navíc směruje mezi VLAN |
+| PoE switch | napájí telefony, AP, kamery ([[PoE]]) |
+
+### Výchozí stav Cisco switche
+
+- všechny porty jsou zapnuté a ve VLAN 1,
+- žádná IP adresa (aby byl spravovatelný, potřebuje [[SVI]]),
+- auto rychlost a duplex,
+- STP zapnutý.
+
+Proto Cisco switch po vybalení hned funguje jako obyčejný switch.
+
+### Základní zabezpečení
+
+```
+S1(config)# hostname S1
+S1(config)# enable secret Cisco123
+S1(config)# interface range fa0/10 - 24
+S1(config-if-range)# shutdown
+S1(config)# interface fa0/1
+S1(config-if)# switchport port-security
+S1(config-if)# switchport port-security maximum 2
+```
+
+Nepoužívané porty vypnout, na portech k uživatelům **port security** (omezení počtu MAC adres).
+
 **Souvisí:** [[router]], [[MAC adresa]], [[FCS]], [[full-duplex]], [[broadcast]], [[SVI]], [[CSMA-CD]]

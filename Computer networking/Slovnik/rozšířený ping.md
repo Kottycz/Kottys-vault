@@ -48,4 +48,31 @@ Běžný ping z routeru jde ze **zdrojové adresy odchozího rozhraní**. Rozš�
 
 Ping je užitečný pro rychlé zjištění, zda se jedná o problém s připojením na vrstvě 3. Neidentifikuje ale, **kde** se problém podél cesty nachází – na to je [[traceroute]].
 
+### Ukázka
+
+```
+R1# ping
+Protocol [ip]:
+Target IP address: 192.168.2.10
+Repeat count [5]: 100
+Datagram size [100]: 1500
+Timeout in seconds [2]:
+Extended commands [n]: y
+Source address or interface: 192.168.1.1
+Set DF bit in IP header? [no]: yes
+...
+```
+
+Enter potvrdí výchozí hodnotu v hranatých závorkách.
+
+### Typické použití
+
+- **zdrojová adresa** – ping z LAN rozhraní routeru ověří, že vzdálená síť zná cestu zpátky do tvé LAN (ne jen ke spojovací lince),
+- **velký paket s DF bitem** – zjistí problém s [[MTU]] na cestě,
+- **mnoho opakování** – zachytí občasné výpadky a ztráty.
+
+### Rychlá varianta
+
+Bez interaktivních otázek: `ping 192.168.2.10 source g0/0/0 repeat 100 size 1500`.
+
 **Souvisí:** [[ping]], [[echo request]], [[IOS]], [[traceroute]], [[MTU]], [[Budovani_male_site]]

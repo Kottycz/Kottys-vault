@@ -50,4 +50,21 @@ Naučené dvojice IPv6 ↔ MAC se ukládají do **neighbor cache** (obdoba ARP t
 - Linux: `ip -6 neigh`
 - Windows: `netsh interface ipv6 show neighbors`
 
+### Ve Wiresharku
+
+NS je **ICMPv6 typ 135**. Filtr `icmpv6.type == 135`. Ve zprávě je pole „Target Address" (koho hledáš) a volba „Source link-layer address" (MAC tazatele, aby cíl nemusel zpátky hledat).
+
+### NS jako kontrola, že soused žije
+
+Když záznam v neighbor cache zestárne (stav STALE), zařízení před použitím pošle NS **unicastem** přímo sousedovi. Když odpoví NA, záznam se obnoví. Tohle se nazývá **Neighbor Unreachability Detection (NUD)**.
+
+### Stavy záznamu v neighbor cache
+
+| Stav | Význam |
+| :-- | :-- |
+| INCOMPLETE | NS odeslána, čeká se na odpověď |
+| REACHABLE | soused nedávno potvrzený |
+| STALE | záznam zestárl, při použití se ověří |
+| DELAY / PROBE | probíhá ověřování |
+
 **Souvisí:** [[NDP]], [[ARP]], [[DAD]], [[IPv6]], [[MAC adresa]], [[multicast]]

@@ -56,4 +56,23 @@ Když zařízení zná IP a potřebuje MAC, použije [[ARP]] (u [[IPv6]] je to [
 - Windows: `ipconfig /all`
 - Linux: `ip link` nebo `ifconfig`
 
+### Unicast, multicast a broadcast MAC
+
+- [[broadcast]]: `FF:FF:FF:FF:FF:FF`,
+- [[multicast]]: první oktet má nejnižší bit = 1 (např. IPv4 multicast `01:00:5E:…`, IPv6 multicast `33:33:…`),
+- [[unicast]]: nejnižší bit prvního oktetu = 0.
+
+### Lokálně spravovaná adresa
+
+Druhý nejnižší bit prvního oktetu (U/L bit) říká, jestli adresu přidělil výrobce (0), nebo byla nastavená ručně / softwarem (1). Telefony dnes kvůli soukromí používají ve Wi-Fi **náhodné MAC adresy** a mají tenhle bit nastavený.
+
+### Zjištění MAC
+
+| Kde | Příkaz |
+| :-- | :-- |
+| Windows | `ipconfig /all`, `getmac` |
+| Linux | `ip link` |
+| Cisco | `show interfaces` (řádek „address is") |
+| switch – kdo je na portu | `show mac address-table` |
+
 **Souvisí:** [[NIC]], [[OUI]], [[ARP]], [[switch]], [[IP adresa]], [[broadcast]], [[EUI-64]]

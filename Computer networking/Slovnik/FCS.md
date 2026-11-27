@@ -50,4 +50,18 @@ Vysoký počet FCS chyb na portu obvykle znamená:
 
 Zobrazení na Cisco: `show interfaces` → řádek s CRC errors.
 
+### FCS a chyby v show interfaces
+
+Rámec se špatným FCS se zahodí a v `show interfaces` se započítá jako **CRC** chyba (mezi input errors). Rostoucí počet CRC chyb ukazuje na fyzický problém: vadný kabel, rušení ([[EMI]]), špatný konektor nebo [[duplex]] mismatch.
+
+### Kdo FCS kontroluje
+
+- switch se [[store-and-forward]] zkontroluje FCS **před odesláním** a vadný rámec zahodí,
+- switch s [[cut-through]] (fast-forward) pošle rámec dál dřív, než FCS dočte, vadný rámec zahodí až příjemce,
+- každé zařízení, které rámec mění (přidá [[802.1Q]] tag, router přebalí paket do nového rámce), musí FCS spočítat **znovu**.
+
+### Proč se chyba neopravuje na vrstvě 2
+
+[[Ethernet]] chybný rámec jen zahodí a nikomu nic neřekne. O znovuposlání se postará vyšší vrstva, typicky [[TCP]], které si všimne chybějících dat a pošle je znovu. U [[UDP]] se data prostě ztratí.
+
 **Souvisí:** [[NIC]], [[switch]], [[zapouzdření]], [[PDU]], [[MAC adresa]]

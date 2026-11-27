@@ -43,4 +43,23 @@ STP má v sítích **dva úplně různé významy**:
 
 Který je který, se pozná z kontextu.
 
+### Uzemnění
+
+Stínění chrání jen tehdy, když je **správně uzemněné** na obou koncích (přes stíněné konektory a uzemněný patch panel). Neuzemněné stínění může fungovat jako anténa a rušení ještě zhoršit.
+
+### Značení typů
+
+| Značení | Význam |
+| :-- | :-- |
+| U/UTP | bez stínění |
+| F/UTP | celkové stínění fólií, páry nestíněné |
+| U/FTP | každý pár stíněný fólií |
+| S/FTP | celkové stínění opletem + každý pár fólií |
+
+První část = stínění celého kabelu, druhá = stínění párů (F = fólie, S = oplet, U = žádné).
+
+### Kdy vybrat STP
+
+Výroba s motory a svářečkami, vedení vedle silových kabelů, rychlosti 10 Gb/s a víc na delší vzdálenosti (Cat 6a/7 bývají stíněné).
+
 **Souvisí:** [[UTP]], [[switch]], [[NIC]]

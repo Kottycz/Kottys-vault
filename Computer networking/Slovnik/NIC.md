@@ -47,4 +47,20 @@ Zobrazení: `ipconfig /all` (Windows), `ip link` (Linux)
 
 Zařízení může mít víc síťových karet – server jich mívá několik (redundance, oddělené sítě), [[router]] má minimálně dvě (jedna do LAN, jedna do WAN). Každá je v jiné síti a má vlastní [[IP adresa|IP adresu]].
 
+### Jak zjistit stav karty
+
+| Kde | Příkaz |
+| :-- | :-- |
+| Windows | `ipconfig /all`, Správce zařízení, `Get-NetAdapter` (PowerShell) |
+| Linux | `ip link`, `ethtool eth0` (rychlost, duplex) |
+| Cisco | `show interfaces` |
+
+### Na jaké vrstvě
+
+NIC pracuje na **vrstvě 1 a 2** [[OSI]]: převádí bity na signál v kabelu nebo rádiu (vrstva 1) a sestavuje a kontroluje rámce s MAC adresami (vrstva 2).
+
+### Wake-on-LAN
+
+Některé karty umí probudit vypnutý počítač, když přijmou speciální „magic packet" s jejich MAC adresou. Používá se pro vzdálenou správu.
+
 **Souvisí:** [[MAC adresa]], [[OUI]], [[full-duplex]], [[MTU]], [[FCS]], [[UTP]]

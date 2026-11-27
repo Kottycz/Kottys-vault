@@ -47,4 +47,22 @@ Využívá [[TTL]]: pošle paket s TTL=1 (první router ho zahodí a pošle Time
 
 ICMP může útočníkovi prozradit strukturu sítě (kdo existuje, kudy vede cesta), proto ho některé [[firewall|firewally]] blokují. Pak `ping` nefunguje, i když zařízení běží.
 
+### ICMP zprávy destination unreachable
+
+| Kód | Význam |
+| :-- | :-- |
+| 0 | síť nedosažitelná |
+| 1 | host nedosažitelný |
+| 3 | port nedosažitelný |
+
+Zprávu posílá [[router]] (nebo cílový host), který paket nemohl doručit. Na Cisco se v `ping` projeví jako **U**.
+
+### ICMPv6 je důležitější
+
+V [[IPv6]] ICMP nedělá jen diagnostiku. Zprávy [[NDP]] ([[RS]], [[RA]], [[NS]], [[NA]]) jsou ICMPv6 a nahrazují [[ARP]] i část [[DHCP]]. Kdo v IPv6 síti zablokuje celé ICMPv6, síť přestane fungovat.
+
+### Time exceeded
+
+Typ 11. Router ho pošle, když paketu klesne [[TTL]] na 0. Právě na tom stojí [[traceroute]].
+
 **Souvisí:** [[ping]], [[traceroute]], [[TTL]], [[NDP]], [[IPv4]], [[IPv6]], [[firewall]]

@@ -47,4 +47,32 @@ Adres je tolik, že **každé zařízení může mít vlastní veřejnou GUA** �
 
 Typicky zároveň GUA (pro internet) i [[LLA]] (pro komunikaci v segmentu) – to je v IPv6 normální.
 
+### Konfigurace na Cisco routeru
+
+```
+R1(config)# ipv6 unicast-routing
+R1(config)# interface g0/0/0
+R1(config-if)# ipv6 address 2001:db8:acad:1::1/64
+R1(config-if)# no shutdown
+```
+
+`ipv6 unicast-routing` zapne směrování IPv6 a router začne posílat [[RA]] zprávy, ze kterých si klienti udělají vlastní GUA přes [[SLAAC]].
+
+### Rozdělení prefixu
+
+Typické přidělení od [[ISP]]:
+
+```
+2001:db8:acad::/48         ← global routing prefix (od ISP)
+2001:db8:acad:0001::/64    ← subnet ID (1. podsíť)
+2001:db8:acad:0002::/64    ← 2. podsíť
+...                          16 bitů subnet ID = 65 536 podsítí
+```
+
+Rozhraní má vždy `/64`, zbylých **64 bitů je ID rozhraní**.
+
+### Dokumentační prefix
+
+`2001:db8::/32` je vyhrazený pro **příklady a dokumentaci** (v učebnicích, v Cisco kurzu). Na internetu se nesměruje.
+
 **Souvisí:** [[IPv6]], [[ULA]], [[LLA]], [[SLAAC]], [[délka prefixu]], [[NAT]]

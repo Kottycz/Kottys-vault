@@ -29,4 +29,19 @@ Starší **bezstavové** firewally (jen filtrování paketů podle IP/portu) pos
 
 SPI může zahrnovat i schopnost rozpoznávat a filtrovat specifické typy útoků, jako je [[DoS-DDoS|DoS]].
 
+### Tabulka stavů
+
+Stavový firewall si pro každé spojení zapisuje:
+
+| Zdroj | Cíl | Protokol | Stav |
+| :-- | :-- | :-- | :-- |
+| 192.168.1.5:50123 | 142.250.1.1:443 | TCP | ESTABLISHED |
+| 192.168.1.7:53001 | 8.8.8.8:53 | UDP | čeká na odpověď |
+
+Paket zvenku se pustí dovnitř, jen když k němu v tabulce existuje odpovídající záznam (odpověď na vnitřní požadavek).
+
+### Příklad útoku, který SPI zastaví
+
+Útočník pošle zvenku TCP paket s příznakem ACK, jako by šlo o odpověď. Bezstavový filtr by ho pustil („ACK = odpověď"), SPI ho zahodí, protože k němu nepatří žádné navázané spojení.
+
 **Souvisí:** [[firewall]], [[DoS-DDoS]], [[TCP]]

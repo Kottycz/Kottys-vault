@@ -36,4 +36,23 @@ S1(config-if)# speed 100
 - [[Optické vlákno|Optické porty]] jsou vždy full-duplex s pevnou rychlostí.
 - Best practice: u známých zařízení (servery, switche, routery) nastavit **ručně na obou koncích**.
 
+### Jak poznat mismatch v show interfaces
+
+| Strana | Co roste |
+| :-- | :-- |
+| half-duplex strana | **late collisions**, collisions |
+| full-duplex strana | **CRC** chyby, [[runt|runty]] |
+
+Zároveň linka funguje, ale je velmi pomalá a ztrácí pakety, hlavně při větším provozu.
+
+### Ověření
+
+```
+S1# show interfaces fa0/1 | include duplex
+  Full-duplex, 100Mb/s, media type is 10/100BaseTX
+S1# show interfaces status
+```
+
+Při kontrole vždy porovnej **oba konce** linky.
+
 **Souvisí:** [[full-duplex]], [[half-duplex]], [[auto-negotiation]], [[kolize]], [[late collision]], [[Auto-MDIX]], [[Ethernet]]

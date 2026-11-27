@@ -45,4 +45,26 @@ Když je linka plná, pakety čekají ve frontě nebo se zahazují. Bez QoS se t
 
 Firemní sítě, sítě poskytovatelů, domácí routery (často "Smart QoS" nebo "prioritizace zařízení"). QoS ale **nezvýší kapacitu linky** – jen spravedlivěji rozdělí to, co je k dispozici.
 
+### Doporučené hodnoty pro hlas
+
+| Parametr | Pro kvalitní hovor |
+| :-- | :-- |
+| [[latency|zpoždění]] jednosměrně | do 150 ms |
+| jitter | do 30 ms |
+| ztráta paketů | do 1 % |
+
+Video a hlas jsou citlivé na zpoždění, e-mail nebo stahování souborů ne.
+
+### Fronty
+
+Když je linka plná, pakety čekají ve frontě. QoS rozhoduje, kdo jde dřív:
+
+- **priority queue** – hlas jde vždy první,
+- **weighted fair queuing** – každá třída dostane svůj podíl šířky pásma,
+- **FIFO** – bez QoS, kdo dřív přijde, ten dřív odejde.
+
+### Označování
+
+Provoz se označí co nejblíž zdroji (IP telefon, přístupový switch) pomocí [[DSCP]] (vrstva 3) nebo CoS (vrstva 2, [[802.1Q]] tag) a další zařízení pak podle značky rozhodují.
+
 **Souvisí:** [[latency]], [[throughput]], [[router]], [[UDP]]

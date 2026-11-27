@@ -64,4 +64,23 @@ Switch# copy running-config tftp:
 | **Flash** | IOS (operační systém) | ano |
 | **ROM** | bootovací instrukce | ano |
 
+### Kde je uložená
+
+| Zařízení | Paměť | Soubor |
+| :-- | :-- | :-- |
+| router | NVRAM | startup-config |
+| switch (Catalyst) | [[flash]] | `config.text` |
+
+### Co se stane bez startup-config
+
+Nové nebo vymazané zařízení nemá startup-config a po startu nabídne **Setup mode** („Would you like to enter the initial configuration dialog? [yes/no]"). Odpovíš `no` a konfiguruješ ručně.
+
+### Postup při změnách
+
+1. změnit konfiguraci (running-config),
+2. ověřit, že vše funguje,
+3. teprve pak uložit (`copy running-config startup-config` nebo `wr`).
+
+Když se něco pokazí a ještě není uloženo, `reload` bez uložení vrátí zařízení do posledního uloženého stavu.
+
 **Souvisí:** [[running-config]], [[SVI]], [[switch]], [[router]]

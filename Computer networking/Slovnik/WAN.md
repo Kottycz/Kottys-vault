@@ -42,4 +42,21 @@ Na hranici stojí [[router]] – jeho **WAN port** míří k poskytovateli, **LA
 - **CPE** – zařízení u zákazníka (modem, router od poskytovatele)
 - **Poslední míle** – úsek od sítě poskytovatele k zákazníkovi
 
+### WAN vs. internet
+
+Internet je největší WAN na světě, ale firma může mít i **soukromou WAN** – pronajaté linky od poskytovatele jen mezi svými pobočkami (MPLS, pronajatý okruh). Dnes se často místo nich používá internet + [[VPN]] (levnější) nebo SD-WAN.
+
+### Topologie WAN
+
+| Topologie | Popis |
+| :-- | :-- |
+| point-to-point | jedna linka mezi dvěma místy |
+| hub-and-spoke | pobočky připojené jen k centrále |
+| full mesh | každé místo propojené s každým, drahé, ale odolné |
+| dual-homed | připojení ke dvěma poskytovatelům |
+
+### Kde končí odpovědnost
+
+**Demarcation point** (demarc) je místo, kde končí zařízení poskytovatele a začíná zákazníkovo. Problém před demarcem řeší [[ISP]], za ním zákazník.
+
 **Souvisí:** [[LAN]], [[router]], [[NAT]], [[latency]], [[throughput]]

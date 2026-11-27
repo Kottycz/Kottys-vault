@@ -60,4 +60,28 @@ DNS dotaz i odpověď jsou malé a vejdou se do jednoho datagramu. Navazovat [[T
 
 Klasické DNS jde po síti nešifrovaně – kdokoliv vidí, na jaké weby se připojuješ, a útočník může odpověď podvrhnout. Řeší to **DNSSEC** (podepsané odpovědi), **DoH** (DNS over [[HTTPS]]) a **DoT** (DNS over TLS).
 
+### Rekurzivní a iterativní dotaz
+
+- **rekurzivní** – PC se zeptá svého DNS serveru a chce **hotovou odpověď**. Server se postará o zbytek,
+- **iterativní** – DNS server se ptá postupně: kořenový server → server pro `.cz` → server pro `seznam.cz`. Každý mu řekne jen „zeptej se tamhle".
+
+### Cache a TTL
+
+Každý záznam má **TTL** – jak dlouho si ho smí PC i servery pamatovat. Proto se změna DNS záznamu neprojeví hned všude. Na Windows smažeš cache příkazem `ipconfig /flushdns`, zobrazíš `ipconfig /displaydns`.
+
+### nslookup
+
+```
+C:\> nslookup www.cisco.com
+Server:  dns.google
+Address: 8.8.8.8
+```
+
+Ukáže, který DNS server odpověděl a jakou IP vrátil. Viz [[nslookup]].
+
+### DNS na Cisco
+
+- `ip name-server 8.8.8.8` – router se bude ptát tohoto serveru,
+- `no ip domain-lookup` – vypne překlad jmen. Bez toho se překlep v příkazu (např. `shwo`) bere jako jméno počítače a router se ho dlouho snaží přeložit.
+
 **Souvisí:** [[IP adresa]], [[UDP]], [[TTL]], [[DHCP]]

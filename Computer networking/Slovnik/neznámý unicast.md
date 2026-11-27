@@ -15,4 +15,19 @@ tags: [slovnik]
 - stejně se chovají [[broadcast]] a [[multicast]] (také jdou na všechny porty kromě příchozího),
 - jakmile cíl odpoví, switch se z jeho zdrojové MAC naučí port a další rámce jdou už jen tam.
 
+### Kdy se to stává
+
+- po startu switche je tabulka MAC adres prázdná, všechny první rámce jsou neznámý unicast,
+- po vypršení záznamu (výchozích 5 minut bez provozu od zařízení),
+- když se zařízení přesune na jiný port a ještě nic neposlalo,
+- při útoku MAC flooding, když je tabulka [[CAM]] plná.
+
+### Proč to vadí
+
+Neznámý unicast se chová jako [[broadcast]]: zatěžuje všechny porty a data vidí i zařízení, kterým nepatří. Při velkém množství to snižuje výkon a bezpečnost.
+
+### Ochrana
+
+Na portech s pevně připojeným zařízením se dá rozesílání neznámého unicastu blokovat: `switchport block unicast`. Port security omezí počet MAC adres na portu, takže MAC flooding nefunguje.
+
 **Souvisí:** [[CAM]], [[switch]], [[unicast]], [[broadcast]], [[multicast]], [[Koncepty_prepinani]]

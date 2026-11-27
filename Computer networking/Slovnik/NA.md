@@ -40,4 +40,21 @@ Při [[DAD]] je NA **špatná zpráva** – když se zařízení ptá NS na adre
 
 Podobně jako ARP spoofing existuje **NA spoofing** – útočník odpoví "ta adresa jsem já" a odkloní provoz na sebe. Obrana: ND inspection, SEND.
 
+### Adresy ve zprávě
+
+- jako odpověď na NS jde NA **unicastem** přímo tazateli,
+- **nevyžádaná** NA (zařízení změnilo MAC adresu nebo oznamuje novou adresu) jde na multicast `FF02::1` všem.
+
+### Příznaky
+
+| Příznak | Význam |
+| :-- | :-- |
+| R (Router) | odesílatel je router |
+| S (Solicited) | odpověď na NS |
+| O (Override) | přepiš starý záznam v neighbor cache |
+
+### Ve Wiresharku
+
+NA je zpráva **ICMPv6 typu 136**. Filtr: `icmpv6.type == 136`. Ve zprávě je volba „Target link-layer address" s MAC adresou.
+
 **Souvisí:** [[NS]], [[NDP]], [[DAD]], [[ARP]], [[IPv6]], [[MAC adresa]]

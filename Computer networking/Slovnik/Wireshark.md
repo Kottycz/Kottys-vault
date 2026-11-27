@@ -31,4 +31,29 @@ tags: [slovnik]
 - **Follow TCP Stream** – složí celý rozhovor do čitelného textu,
 - uložení do `.pcapng`.
 
+### Nejpoužívanější filtry
+
+| Filtr | Co ukáže |
+| :-- | :-- |
+| `ip.addr == 192.168.1.10` | provoz z/na adresu |
+| `tcp.port == 80` | provoz na port 80 |
+| `icmp` | ping a ICMP zprávy |
+| `arp` | ARP |
+| `dns` | DNS dotazy a odpovědi |
+| `dhcp` | DHCP (DORA) |
+| `tcp.flags.syn == 1` | navazování TCP spojení |
+| `!(arp or dns)` | vše kromě ARP a DNS |
+
+### Tři části okna
+
+1. **seznam paketů** – čas, zdroj, cíl, protokol, info,
+2. **detail paketu** – rozbalené vrstvy (Ethernet → IP → TCP → aplikace),
+3. **bajty** – surová data v hex.
+
+V detailu paketu přesně uvidíš [[zapouzdření]] – každá vrstva je zvlášť.
+
+### Na co si dát pozor
+
+Zachytávat provoz v cizí síti bez svolení je nelegální. Ve škole a doma jen na vlastních zařízeních nebo se souhlasem správce.
+
 **Souvisí:** [[sniffer]], [[Telnet]], [[SSH]], [[TCP]], [[MITM]]

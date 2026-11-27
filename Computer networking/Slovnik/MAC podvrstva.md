@@ -45,4 +45,20 @@ Přímo v hardwaru [[NIC|síťové karty]] (a v [[switch|switchi]]). Proto je MA
 - **EtherType** – jaký protokol je uvnitř (0x0800 = [[IPv4]])
 - **Minimálně 46 B dat** – kratší data se doplní výplní (padding)
 
+### Řízení přístupu k médiu
+
+| Médium | Metoda |
+| :-- | :-- |
+| klasický Ethernet s huby (half-duplex) | [[CSMA-CD]] |
+| Wi-Fi | [[CSMA-CA]] |
+| switch, full-duplex | žádná metoda není potřeba, každý má vlastní linku |
+
+### Adresování
+
+MAC podvrstva přidává do rámce zdrojovou a cílovou [[MAC adresa|MAC adresu]]. MAC adresy platí jen v **místní síti**, na každém routeru se rámec rozbalí a pro další úsek se sestaví nový s novými MAC adresami.
+
+### Standardy
+
+MAC podvrstva je pro každou technologii jiná: 802.3 Ethernet, 802.11 Wi-Fi, 802.15 Bluetooth / [[ZigBee]].
+
 **Souvisí:** [[LLC]], [[MAC adresa]], [[FCS]], [[CSMA-CD]], [[CSMA-CA]], [[NIC]]

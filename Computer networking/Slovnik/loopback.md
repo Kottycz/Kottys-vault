@@ -45,4 +45,19 @@ Router(config-if)# ip address 1.1.1.1 255.255.255.255
 
 Na rozdíl od fyzického portu **nikdy nespadne** – proto se používá jako stabilní identifikátor routeru ve směrovacích protokolech ([[OSPF]], [[BGP]]) a pro správu.
 
+### Loopback rozhraní na routeru – konfigurace
+
+```
+R1(config)# interface loopback 0
+R1(config-if)# ip address 1.1.1.1 255.255.255.255
+```
+
+- maska bývá `/32` (jedna adresa),
+- loopback **nemá kabel**, nejde shodit odpojením, je up/up, dokud běží router,
+- používá se jako [[OSPF]] Router ID, pro správu (SSH na loopback dosažitelný přes kteroukoliv linku) a v labech k simulaci dalších sítí.
+
+### Ping na 127.0.0.1
+
+`ping 127.0.0.1` otestuje, že funguje TCP/IP v operačním systému. Neověří síťovou kartu ani kabel, paket kartu vůbec neopustí. Postup hledání chyby: loopback → vlastní IP → brána → vzdálený host.
+
 **Souvisí:** [[IPv4]], [[IPv6]], [[ping]], [[IP adresa]], [[OSPF]], [[default gateway]]

@@ -47,4 +47,26 @@ Oddělená zóna pro servery dostupné z internetu (web, mail). Když někdo nap
 - **IPS** – detekuje a rovnou blokuje
 - **Proxy** – zprostředkovává spojení, umí filtrovat obsah
 
+### Stavový firewall
+
+**Stavový** (stateful) firewall si pamatuje navázaná spojení. Když PC uvnitř otevře spojení na web, firewall si zapíše „PC 192.168.1.5:50123 → server:443" a odpovědi ze serveru pustí dovnitř, i když jinak je provoz zvenku zakázaný. Nemusíš tak psát pravidlo pro každou odpověď zvlášť.
+
+### ACL na Cisco routeru
+
+Nejjednodušší filtr na routeru je **ACL** (access control list):
+
+```
+R1(config)# access-list 10 permit 192.168.10.0 0.0.0.255
+R1(config)# interface g0/0/1
+R1(config-if)# ip access-group 10 out
+```
+
+- ACL se čte **shora dolů**, použije se první pravidlo, které sedí,
+- na konci každého ACL je **neviditelné „deny any"**, co není povolené, je zakázané,
+- standardní ACL filtruje jen podle zdrojové IP, rozšířené i podle cíle, protokolu a [[port|portu]].
+
+### Firewall v PC
+
+Windows Defender Firewall a podobné filtrují provoz přímo na počítači. Doplňují síťový firewall, nenahrazují ho.
+
 **Souvisí:** [[NAT]], [[router]], [[port]], [[IP adresa]], [[VPN]]

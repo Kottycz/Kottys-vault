@@ -41,4 +41,29 @@ Domácí "Wi-Fi router" kombinuje víc zařízení v jedné krabičce: [[router]
 
 AP se dává co nejvýš a doprostřed pokrývané plochy. Signál tlumí zdi (hlavně železobeton), zrcadla a voda. V pásmu 2,4 GHz se sousední AP nesmí překrývat kanály – proto se volí kanály 1, 6 a 11.
 
+### Pásma a kanály
+
+| | 2,4 GHz | 5 GHz |
+| :-- | :-- | :-- |
+| dosah | větší, lépe projde zdmi | menší |
+| rychlost | nižší | vyšší |
+| kanály bez překryvu | jen **1, 6, 11** | mnoho |
+| rušení | velké (sousedé, mikrovlnky, Bluetooth) | menší |
+
+Sousední AP mají být na kanálech, které se nepřekrývají, jinak se ruší.
+
+### Zabezpečení
+
+- **WPA2-Personal / WPA3-Personal** – jedno heslo pro všechny (domácnost),
+- **WPA2-Enterprise / WPA3-Enterprise** – každý uživatel má vlastní přihlášení přes [[AAA|RADIUS]] server (firmy, školy),
+- **WEP a WPA** jsou prolomené, nepoužívat,
+- skrytí SSID ani filtrování MAC adres nejsou skutečná ochrana, dají se obejít.
+
+### Když Wi-Fi nefunguje
+
+1. je klient ve správném SSID a zadal správné heslo,
+2. dostal IP adresu z [[DHCP]] (ne `169.254.x.x`),
+3. je síla signálu dostatečná, není AP přetížený,
+4. neruší se AP se sousedním na stejném kanálu.
+
 **Souvisí:** [[WLAN]], [[LAN]], [[switch]], [[CSMA-CA]], [[MAC adresa]], [[IEEE]]

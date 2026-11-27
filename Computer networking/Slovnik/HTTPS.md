@@ -45,4 +45,19 @@ Skrývá ale konkrétní URL, obsah stránky, hesla a odeslaná data.
 
 SSL je starší, dnes už nebezpečný a nepoužívaný protokol. Název "SSL" se ale pořád používá hovorově pro TLS (např. "SSL certifikát" = ve skutečnosti TLS).
 
+### Jak poznat HTTPS v prohlížeči
+
+- adresa začíná `https://`,
+- u adresy je ikona zámku, kliknutím zobrazíš certifikát (kdo ho vydal, pro jakou doménu, do kdy platí),
+- varování o neplatném certifikátu = buď chyba na webu, nebo někdo provoz zachytává ([[MITM]]). Nepokračovat.
+
+### Šifrování: dva druhy klíčů
+
+- **asymetrické** (veřejný a soukromý klíč, [[RSA]] nebo ECDHE) – jen na začátku, k bezpečné domluvě společného klíče,
+- **symetrické** (např. AES) – jedním společným klíčem se pak šifrují všechna data, protože je to mnohem rychlejší.
+
+### HTTPS a firewall
+
+Firewall vidí, že komunikuješ s IP serveru na portu 443, a ze jména v certifikátu i na jaký web. Obsah stránek ale nevidí. Firmy proto někdy HTTPS na hranici sítě rozšifrovávají (SSL inspection), na firemní PC k tomu instalují vlastní certifikát.
+
 **Souvisí:** [[HTTP]], [[TCP]], [[port]]

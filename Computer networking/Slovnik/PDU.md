@@ -43,4 +43,23 @@ Při příjmu se to naopak postupně rozbaluje (dekapsulace) – každá vrstva 
 
 (shora dolů, jak data sestupují k drátu)
 
+### Jak PDU projde sítí
+
+```
+PC          switch         router         server
+data         —              —             data
+segment      —              —             segment
+paket        —             paket          paket
+rámec       rámec          rámec          rámec
+bity        bity           bity           bity
+```
+
+- switch pracuje s rámcem, paket uvnitř neotvírá,
+- router rámec rozbalí, podívá se do paketu, rozhodne o cestě a zabalí paket do **nového rámce** pro další linku,
+- data a segment zůstávají od zdroje k cíli stejné.
+
+### Segment vs. datagram
+
+U [[TCP]] se PDU transportní vrstvy jmenuje **segment**, u [[UDP]] se často říká **datagram**.
+
 **Souvisí:** [[zapouzdření]], [[TCP]], [[UDP]], [[IP adresa]], [[MAC adresa]], [[MTU]], [[OSI]]

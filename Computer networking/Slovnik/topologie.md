@@ -37,4 +37,22 @@ Nejsou totéž. Klasický Ethernet s hubem byl **fyzicky hvězda**, ale **logick
 
 Víc cest k cíli znamená, že při výpadku jedné se provoz přesměruje jinudy. U [[switch|switchů]] ale redundantní cesty vytvářejí smyčky – proto je potřeba [[STP protokol]].
 
+### Diagramy v Cisco
+
+| Druh diagramu | Co ukazuje |
+| :-- | :-- |
+| **fyzický** | kde zařízení fyzicky jsou (budova, místnost, rack) a jak vedou kabely |
+| **logický** | adresy, podsítě, VLAN, názvy rozhraní |
+
+V labech dostaneš obvykle logický diagram + tabulku adresování.
+
+### Star vs. extended star
+
+- **star** (hvězda) – všechna zařízení připojená k jednomu centrálnímu switchi,
+- **extended star** – víc hvězd propojených dalším switchem. Nejběžnější topologie LAN. Výpadek centrálního switche ale odřízne celou větev ([[single point of failure]]).
+
+### Topologie a STP
+
+Když se do topologie přidají redundantní linky (mesh), vzniknou smyčky. Na vrstvě 2 je řeší [[STP protokol|STP]] – logicky z mesh udělá strom.
+
 **Souvisí:** [[LAN]], [[WAN]], [[switch]], [[router]], [[STP protokol]]

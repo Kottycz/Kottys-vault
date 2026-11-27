@@ -29,4 +29,26 @@ Model OSI je ISO norma, proto se často píše dohromady jako **ISO/OSI model**.
 
 Zkratka ISO navíc neodpovídá anglickému názvu – je odvozena z řeckého *isos* (stejný), aby byla stejná ve všech jazycích.
 
+### Model OSI
+
+Model [[OSI]] (Open Systems Interconnection) vydala ISO v roce 1984 jako normu **ISO/IEC 7498**. Sedm vrstev:
+
+| Č. | Vrstva | Příklad |
+| :-- | :-- | :-- |
+| 7 | aplikační | HTTP, DNS |
+| 6 | prezentační | šifrování, kódování |
+| 5 | relační | řízení relace |
+| 4 | transportní | TCP, UDP |
+| 3 | síťová | IP, router |
+| 2 | linková | Ethernet, switch |
+| 1 | fyzická | kabel, signál |
+
+### Proč OSI, když se používá TCP/IP
+
+V praxi běží protokoly [[TCP]]/IP od [[IETF]]. Model OSI zůstal jako **referenční model** – společný jazyk, když se mluví o vrstvách („problém na vrstvě 2" znamená switch, MAC, VLAN).
+
+### Jiné normy ISO
+
+ISO nedělá jen sítě: ISO 9001 (řízení kvality), ISO 27001 (bezpečnost informací). Zkratka ISO není zkratka anglického názvu, vychází z řeckého „isos" = stejný.
+
 **Souvisí:** [[OSI]], [[IEEE]], [[IETF]], [[RFC]]

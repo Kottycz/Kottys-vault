@@ -48,4 +48,32 @@ switch: boot
 
 Formátování flash, instalace nového IOS, změna BOOT, **obnova ztraceného hesla**.
 
+### Proměnná BOOT
+
+Kde hledat IOS určuje proměnná **BOOT**. Nastaví se příkazem:
+
+```
+S1(config)# boot system flash:/c2960-lanbasek9-mz.150-2.SE.bin
+```
+
+Když není nastavená, switch zkusí načíst první spustitelný soubor, který ve [[flash]] najde.
+
+### Obnova hesla na switchi
+
+1. vypnout switch, držet tlačítko **Mode** a zapnout → boot loader,
+2. `flash_init`, pak přejmenovat konfiguraci (`rename flash:config.text flash:config.old`),
+3. `boot` → switch naběhne bez konfigurace, bez hesla,
+4. vrátit soubor, načíst ho do running-config, nastavit nové heslo a uložit.
+
+### Router: ROMMON
+
+Router má obdobu boot loaderu jménem **ROMMON** (prompt `rommon 1 >`). Obnova hesla:
+
+```
+rommon 1 > confreg 0x2142
+rommon 2 > reset
+```
+
+Registr `0x2142` řekne routeru, ať při startu ignoruje [[startup-config]]. Po nastavení nového hesla se registr vrátí na `0x2102` (`config-register 0x2102`).
+
 **Souvisí:** [[IOS]], [[POST]], [[flash]], [[switch]], [[running-config]], [[startup-config]]

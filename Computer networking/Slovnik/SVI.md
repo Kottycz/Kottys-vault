@@ -45,4 +45,27 @@ Když SVI nejde nahodit, tohle bývá příčina.
 
 Výchozí VLAN 1 se z bezpečnostních důvodů **pro správu nepoužívá** – bývá aktivní na všech portech. V praxi se vytvoří samostatná management VLAN.
 
+### Ověření stavu
+
+```
+S1# show ip interface brief
+Vlan1     unassigned     YES unset  administratively down down
+Vlan99    192.168.99.11  YES manual up                    up
+```
+
+| Stav | Příčina |
+| :-- | :-- |
+| administratively down | chybí `no shutdown` |
+| up / down | VLAN neexistuje nebo v ní není žádný aktivní port |
+| up / up | vše v pořádku |
+
+### SVI na L3 switchi
+
+Na [[přepínač vrstvy 3|přepínači vrstvy 3]] s `ip routing` slouží SVI jako **brána** pro VLAN a switch mezi nimi směruje. Na L2 switchi slouží SVI jen ke **správě**.
+
+### Kolik SVI
+
+- L2 switch: jedno SVI pro správu (víc nemá smysl, nesměruje),
+- L3 switch: jedno SVI pro každou VLAN, mezi kterými se má směrovat.
+
 **Souvisí:** [[switch]], [[IP adresa]], [[default gateway]], [[router]], [[running-config]]

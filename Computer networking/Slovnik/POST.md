@@ -24,4 +24,19 @@ tags: [slovnik]
 4. inicializace [[flash]]
 5. načtení [[IOS]]
 
+### Co POST testuje
+
+- procesor (CPU),
+- paměť RAM,
+- systémovou desku a flash.
+
+### Co když POST selže
+
+- switch: LED **SYST** svítí **oranžově** a switch nenaběhne. Většinou je potřeba hardware vyměnit,
+- PC: počítač pípá (různé kombinace pípnutí = různá chyba) nebo ukáže chybový kód.
+
+### POST není jen u Cisca
+
+POST dělá každý počítač po zapnutí (BIOS/UEFI). Princip je stejný: nejdřív ověřit hardware, pak spustit zavaděč ([[boot loader]]) a ten načte operační systém.
+
 **Souvisí:** [[boot loader]], [[IOS]], [[flash]], [[switch]]

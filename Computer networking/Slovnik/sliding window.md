@@ -46,4 +46,26 @@ Snadno se to plete:
 
 Odesílatel se řídí **menším** z obou limitů.
 
+### Ukázka
+
+Příjemce oznámí okno **3000 B**, segmenty mají 1000 B:
+
+```
+odešlu 1, 2, 3          ← okno plné, čekám
+přijde ACK za 1         ← okno se posune
+odešlu 4
+přijde ACK za 2 a 3
+odešlu 5, 6
+```
+
+Odesílatel nečeká na potvrzení každého segmentu zvlášť. Smí mít „ve vzduchu" tolik nepotvrzených dat, kolik je okno.
+
+### Okno nula
+
+Když příjemce nestíhá (plný buffer), pošle **window = 0**. Odesílatel přestane posílat a jen občas zkusí malou sondu (window probe), jestli už se místo uvolnilo.
+
+### Ve Wiresharku
+
+V každém TCP segmentu je pole **Window size value**. Wireshark upozorní na `TCP ZeroWindow` a `TCP Window Full`. To ukazuje, že zpomaluje příjemce, ne síť.
+
 **Souvisí:** [[TCP]], [[slow start]], [[MSS]], [[3-way handshake]]

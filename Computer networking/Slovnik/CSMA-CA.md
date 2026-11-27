@@ -46,4 +46,21 @@ Oba tedy můžou začít vysílat zároveň → kolize na AP.
 
 Kvůli backoffu, potvrzování a režii je reálná rychlost Wi-Fi výrazně nižší než deklarovaná – a čím víc zařízení na jednom kanálu, tím horší je [[throughput]] pro každého.
 
+### RTS/CTS
+
+Volitelné řešení problému skrytého uzlu:
+
+1. stanice pošle krátkou zprávu **RTS** (Request To Send) – „chci vysílat",
+2. [[AP]] odpoví **CTS** (Clear To Send) – „vysílej". CTS slyší všichni v dosahu AP, i ti, kdo neslyší původní stanici,
+3. ostatní si nastaví **NAV** (Network Allocation Vector) – časovač, po který nebudou vysílat,
+4. stanice pošle data, AP potvrdí **ACK**.
+
+### Potvrzování
+
+Na rozdíl od Ethernetu se ve Wi-Fi **každý unicastový rámec potvrzuje** (ACK). Vysílající nevidí kolizi, takže jediný způsob, jak zjistit, že rámec došel, je potvrzení. Když ACK nepřijde, rámec se pošle znovu.
+
+### Proč je Wi-Fi pomalejší, než slibuje
+
+Čekání před vysíláním, náhodné odklady, potvrzování a sdílené médium (vysílat může vždy jen jeden) znamenají, že reálná propustnost je zhruba poloviční než rychlost uvedená na krabici.
+
 **Souvisí:** [[CSMA-CD]], [[half-duplex]], [[throughput]], [[LAN]]

@@ -32,4 +32,24 @@ tags: [slovnik]
 
 Konkrétní rozdělení si každá síť vybírá sama – důležité je, aby **existovalo a bylo zdokumentované** (viz dokumentace sítě ve [[škálování sítě|škálování]]).
 
+### Doporučené konvence
+
+- **brána** = první použitelná adresa (`.1`),
+- **síťová zařízení** (switche, AP) = nízké adresy hned za bránou,
+- **servery a tiskárny** = statické adresy z vyhrazeného bloku,
+- **DHCP pro uživatele** = zbytek rozsahu, statické adresy vyloučit (`ip dhcp excluded-address`),
+- vše zapsat do dokumentace (tabulka: zařízení – rozhraní – IP – maska – brána).
+
+### Tabulka adresování (jak ji píšou v labech)
+
+| Zařízení | Rozhraní | IP adresa | Maska | Brána |
+| :-- | :-- | :-- | :-- | :-- |
+| R1 | G0/0/0 | 192.168.1.1 | 255.255.255.0 | — |
+| S1 | VLAN 1 | 192.168.1.2 | 255.255.255.0 | 192.168.1.1 |
+| PC-A | NIC | 192.168.1.10 | 255.255.255.0 | 192.168.1.1 |
+
+### Plánování podsítí
+
+U víc podsítí se adresní prostor rozdělí pomocí [[VLSM]] od největší podsítě po nejmenší. Viz [[Subnetting]].
+
 **Souvisí:** [[IP adresa]], [[IPv4]], [[maska podsítě]], [[DHCP]], [[škálování sítě]], [[Budovani_male_site]]

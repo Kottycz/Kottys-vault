@@ -56,4 +56,30 @@ Kde to selže, tam je problém.
 
 Když ping neprojde, **neznamená to nutně, že zařízení nefunguje** – spousta firewallů ICMP blokuje z bezpečnostních důvodů.
 
+### Ping z Cisco routeru – výstup
+
+```
+R1# ping 192.168.2.10
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.2.10, timeout is 2 seconds:
+.!!!!
+Success rate is 80 percent (4/5), round-trip min/avg/max = 1/1/2 ms
+```
+
+| Znak | Význam |
+| :-- | :-- |
+| `!` | odpověď přišla |
+| `.` | vypršel čas |
+| `U` | cíl nedosažitelný (ICMP unreachable) |
+
+První `.` je obvykle kvůli [[ARP]], router teprve zjišťuje MAC adresu.
+
+### Ping a TTL
+
+Z TTL v odpovědi se dá odhadnout systém cíle: Windows začíná na **128**, Linux a většina zařízení na **64**, Cisco na **255**. Odečteš skoky po cestě.
+
+### Když ping nefunguje, ale služba ano
+
+Mnoho [[firewall|firewallů]] (i Windows Defender) ICMP blokuje. Neúspěšný ping proto neznamená vždy, že cíl neexistuje. Ověř to jinak, např. přes `Test-NetConnection server -Port 443`.
+
 **Souvisí:** [[ICMP]], [[traceroute]], [[TTL]], [[latency]], [[default gateway]], [[loopback]], [[echo request]], [[rozšířený ping]]

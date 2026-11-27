@@ -26,4 +26,26 @@ tags: [slovnik]
 | kontrola chyb | ano (CRC) | ne |
 | latence | vyšší | nízká |
 
+### Proč je nutné při různých rychlostech
+
+Když rámec přijde po linkě 1 Gb/s a má odejít linkou 100 Mb/s, switch ho nemůže posílat průběžně, protože by výstup nestíhal. Musí ho celý uložit do **bufferu** a odeslat pomaleji. To je store-and-forward.
+
+### Latence podle velikosti rámce
+
+Switch musí počkat, než dorazí celý rámec, takže zpoždění roste s velikostí:
+
+| Rámec | Doba příjmu na 1 Gb/s |
+| :-- | :-- |
+| 64 B | ~0,5 µs |
+| 1518 B | ~12 µs |
+
+Pro běžnou kancelářskou síť je to zanedbatelné. Proto je store-and-forward výchozí metoda Cisco switchů.
+
+### Buffering
+
+| Typ | Popis |
+| :-- | :-- |
+| port-based | každý port má vlastní frontu, rámec může čekat kvůli jinému rámci před ním |
+| shared memory | společná paměť pro všechny porty, pružnější, používají ji moderní switche |
+
 **Souvisí:** [[cut-through]], [[switch]], [[FCS]], [[CRC]]

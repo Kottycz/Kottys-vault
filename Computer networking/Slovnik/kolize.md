@@ -25,4 +25,16 @@ tags: [slovnik]
 
 Zkontrolovat [[duplex]] na obou koncích (nesoulad je nejčastější příčina), kabel a jeho délku.
 
+### Kolizní doména
+
+Kolize vznikají jen uvnitř jedné [[kolizní doména|kolizní domény]]. Switch má každý port jako samostatnou kolizní doménu, při full-duplex kolize úplně mizí. Hub má všechny porty v jedné kolizní doméně.
+
+### Kolik kolizí je moc
+
+Na half-duplex lince jsou kolize běžné, ale když jich je víc než pár procent z odeslaných rámců, linka je přetížená. Na full-duplex lince musí být kolizí **nula**.
+
+### Příkaz na vynulování
+
+`clear counters fa0/1` vynuluje počítadla rozhraní. Pak sleduješ, jestli kolize znovu přibývají. Bez vynulování vidíš čísla klidně za několik týdnů.
+
 **Souvisí:** [[late collision]], [[CSMA-CD]], [[half-duplex]], [[full-duplex]], [[runt]], [[duplex]]

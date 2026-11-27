@@ -17,4 +17,23 @@ tags: [slovnik]
 - učí se ze **zdrojové MAC** příchozích rámců, položka vyprší po **5 minutách** bez provozu (výchozí),
 - není-li cíl v tabulce, jde rámec všude kromě příchozího portu ([[neznámý unicast]]).
 
+### Příkazy
+
+| Příkaz | Co dělá |
+| :-- | :-- |
+| `show mac address-table` | celá tabulka (VLAN, MAC, typ, port) |
+| `show mac address-table dynamic` | jen naučené záznamy |
+| `show mac address-table interface fa0/1` | MAC adresy na jednom portu |
+| `clear mac address-table dynamic` | smaže naučené záznamy |
+| `mac address-table aging-time 600` | změní dobu platnosti (výchozí 300 s) |
+
+### Typy záznamů
+
+- **DYNAMIC** – naučené z provozu, po 5 minutách bez provozu zmizí,
+- **STATIC** – zadané ručně nebo přes port security, nevyprší.
+
+### Útok MAC flooding
+
+Útočník zahltí switch tisíci falešných zdrojových MAC adres. Tabulka CAM má omezenou velikost, a když se zaplní, switch nové cíle nezná a **rozesílá rámce na všechny porty jako hub**. Útočník pak vidí provoz ostatních. Obrana: **port security** (omezení počtu MAC adres na port).
+
 **Souvisí:** [[switch]], [[MAC adresa]], [[neznámý unicast]], [[Koncepty_prepinani]]

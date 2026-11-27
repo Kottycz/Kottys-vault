@@ -52,4 +52,25 @@ U streamování videa naopak latence tolik nevadí – buffer ji schová.
 
 **Kolísání latence** – když jednou přijde paket za 20 ms a podruhé za 80 ms. U hovorů a her vadí víc než vyšší, ale stabilní latence. Řeší se [[QoS]].
 
+### Jak latenci změřit
+
+- [[ping]] ukáže **RTT** (cesta tam a zpátky) v ms,
+- [[traceroute]] ukáže latenci k jednotlivým routerům na cestě, takže vidíš, kde roste.
+
+```
+C:\> ping 8.8.8.8
+Reply from 8.8.8.8: bytes=32 time=14ms TTL=117
+```
+
+### Zpoždění na jednotlivých místech
+
+| Druh zpoždění | Kdy roste |
+| :-- | :-- |
+| šíření (propagation) | velká vzdálenost, satelit |
+| serializace | pomalá linka, velký paket |
+| zpracování | přetížený router |
+| fronta (queuing) | zahlcená linka |
+
+Proti frontám pomáhá [[QoS]], které pošle hlas a video přednostně.
+
 **Souvisí:** [[throughput]], [[goodput]], [[ping]], [[QoS]], [[traceroute]]

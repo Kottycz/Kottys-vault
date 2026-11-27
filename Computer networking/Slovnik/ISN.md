@@ -44,4 +44,16 @@ Historicky to byl reálný problém (Mitnickův útok v roce 1994), dnešní sys
 
 Hlavním smyslem [[3-way handshake]] je právě **synchronizace ISN** obou stran – proto se ten příznak jmenuje **SYN** (synchronize).
 
+### Ve Wiresharku
+
+Wireshark ve výchozím stavu ukazuje **relativní** sekvenční čísla (začínají od 0), aby se dala číst. Skutečné ISN uvidíš v detailu paketu jako „Sequence Number (raw)".
+
+### Útok bez náhodného ISN
+
+Kdyby šlo ISN uhodnout, útočník by mohl podvrhnout pakety do cizího spojení (TCP session hijacking) – poslat paket se správným sekvenčním číslem a podvrženou zdrojovou IP. Proto se ISN generuje náhodně.
+
+### ISN obou stran
+
+Každá strana má **vlastní** ISN. Klient ho pošle v SYN, server v SYN-ACK. Sekvenční čísla klienta a serveru jsou na sobě nezávislá.
+
 **Souvisí:** [[TCP]], [[3-way handshake]], [[sliding window]]

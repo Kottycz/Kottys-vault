@@ -55,4 +55,24 @@ Site-to-site VPN je levnější náhrada pronajatých okruhů.
 - Přidává [[latency|latenci]] a snižuje [[throughput]]
 - Kvůli režii tunelu má menší [[MTU]] (proto někdy problémy s načítáním stránek – řeší se MSS clampingem)
 
+### Site-to-site vs. remote access
+
+| | Site-to-site | Remote access |
+| :-- | :-- | :-- |
+| spojuje | dvě sítě (pobočka – centrála) | jednoho uživatele se sítí firmy |
+| kdo tunel vytváří | routery nebo firewally | klient na PC (AnyConnect, WireGuard, OpenVPN) |
+| uživatel to pozná | ne, je to transparentní | ano, musí se připojit |
+
+### IPsec
+
+Nejčastější protokol pro site-to-site VPN. Zajišťuje:
+
+- **důvěrnost** – šifrování (AES),
+- **integritu** – kontrola, že data nikdo nezměnil (hash),
+- **ověření** – obě strany prokážou, kým jsou (sdílený klíč nebo certifikát).
+
+### Split tunneling
+
+Při remote access VPN jde buď **všechen** provoz přes firmu (full tunnel), nebo jen provoz do firemní sítě a zbytek přímo do internetu (split tunnel). Split tunnel šetří linku firmy, full tunnel je bezpečnější.
+
 **Souvisí:** [[WAN]], [[TLS]], [[MTU]], [[MSS]], [[NAT]]

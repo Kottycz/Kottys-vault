@@ -37,4 +37,30 @@ Plýtvalo se adresami. Firma se 300 počítači nedostala třídu C (254 adres j
 - Privátní rozsahy pořád odpovídají třídám: 10.0.0.0/8 (A), 172.16.0.0/12 (B), 192.168.0.0/16 (C)
 - Termíny "céčková síť" apod. se pořád hovorově používají
 
+### Třída podle prvních bitů
+
+Třída se pozná podle **prvních bitů prvního oktetu**:
+
+| Třída | Začátek v binárce | První oktet | Výchozí maska |
+| :-- | :-- | :-- | :-- |
+| A | `0…` | 0–127 | /8 |
+| B | `10…` | 128–191 | /16 |
+| C | `110…` | 192–223 | /24 |
+| D | `1110…` | 224–239 | žádná, [[multicast]] |
+| E | `1111…` | 240–255 | žádná, experimentální |
+
+### Počty sítí a hostů
+
+| Třída | Sítí | Hostů v síti |
+| :-- | :-- | :-- |
+| A | 126 (0 a 127 vyhrazené) | 16 777 214 |
+| B | 16 384 | 65 534 |
+| C | 2 097 152 | 254 |
+
+Tady je vidět plýtvání: firma s 300 počítači potřebovala víc než třídu C, tak dostala třídu B a 65 000 adres ležel ladem.
+
+### Classful směrovací protokoly
+
+Staré protokoly (RIPv1) neposílaly s cestou masku, maska se odvodila z třídy. Proto s nimi nešlo použít [[VLSM]] a nespojité podsítě.
+
 **Souvisí:** [[IPv4]], [[maska podsítě]], [[délka prefixu]], [[VLSM]], [[multicast]]

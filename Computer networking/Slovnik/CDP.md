@@ -44,4 +44,23 @@ Vypíše přímo připojená zařízení – jejich název, typ, kterým rozhran
 
 CDP je ve výchozím stavu zapnuté a prozrazuje informace o zařízení (typ, verze IOS, adresy), proto se na rozhraních směřujících ven často vypíná.
 
+### Jak často a kam
+
+- CDP zprávy se posílají každých **60 s** (`cdp timer`),
+- soused je v tabulce platný **180 s** (holdtime). Když přestane posílat, po 3 minutách zmizí,
+- posílají se na [[multicast]] MAC adresu `01:00:0C:CC:CC:CC`, router je dál nepřeposílá, takže vidíš jen **přímé sousedy**.
+
+### LLDP – otevřená alternativa
+
+**LLDP** (Link Layer Discovery Protocol, [[IEEE]] 802.1AB) dělá to samé co CDP, ale funguje u všech výrobců. Na Cisco je ve výchozím stavu vypnutý:
+
+```
+S1(config)# lldp run
+S1# show lldp neighbors
+```
+
+### Použití při kreslení topologie
+
+Když nemáš schéma sítě, připojíš se na jeden switch, `show cdp neighbors detail` ti ukáže sousedy a jejich IP adresy, připojíš se na ně a pokračuješ. Tak se dá zmapovat celá síť.
+
 **Souvisí:** [[IOS]], [[příkazy show]], [[router]], [[switch]], [[topologie]], [[Budovani_male_site]]

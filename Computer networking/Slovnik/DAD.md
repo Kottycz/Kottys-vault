@@ -35,4 +35,21 @@ V IPv4 je to volitelné (některé systémy dělají „gratuitous [[ARP]]"), v 
 
 Zařízení adresu nepoužije. U link-local adresy odvozené z [[MAC adresa|MAC]] to znamená, že IPv6 na tom rozhraní vůbec nenaběhne – většinou jde o duplicitní MAC adresu (typicky chyba ve virtualizaci).
 
+### Adresy v DAD zprávě
+
+Zařízení pošle [[NS]] (Neighbor Solicitation):
+
+- **zdrojová adresa** `::` (nespecifikovaná, protože vlastní adresu ještě nemá potvrzenou),
+- **cílová adresa** = **solicited-node multicast** adresa zkoušené IP, tvar `FF02::1:FFxx:xxxx`, kde `xx:xxxx` je posledních 24 bitů adresy.
+
+Díky solicited-node multicastu zprávu zpracuje jen zařízení, které by mohlo mít stejnou adresu, ne všichni v síti.
+
+### Stav tentative
+
+Než DAD skončí, je adresa ve stavu **tentative** (zkušební) a nesmí se používat pro komunikaci. Až když nikdo neodpoví, stane se platnou.
+
+### Na Cisco
+
+`show ipv6 interface g0/0/0` ukáže, kolik DAD pokusů se dělá. Když se najde duplicita, objeví se hláška `%IPV6-4-DUPLICATE` a adresa se nepoužije.
+
 **Souvisí:** [[NDP]], [[NS]], [[NA]], [[SLAAC]], [[IPv6]], [[LLA]], [[ARP]]

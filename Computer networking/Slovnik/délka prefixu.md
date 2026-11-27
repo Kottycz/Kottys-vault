@@ -43,4 +43,27 @@ Dřív se sítě dělily na pevné **třídy** (A = /8, B = /16, C = /24), což 
 
 Standardní délka prefixu pro jednu síť je **/64** – zbylých 64 bitů je ID rozhraní (což potřebuje [[SLAAC]] a [[EUI-64]]). Poskytovatel typicky přiděluje /48 nebo /56, ze kterých si organizace nadělí jednotlivé /64 sítě.
 
+### Počet adres podle prefixu
+
+Počet adres = 2^(32 − prefix), použitelných hostů = 2^(32 − prefix) − 2.
+
+| Prefix | Adres | Hostů | Typické použití |
+| :-- | :-- | :-- | :-- |
+| /24 | 256 | 254 | běžná LAN |
+| /27 | 32 | 30 | menší oddělení |
+| /30 | 4 | 2 | spoj router–router |
+| /31 | 2 | 2 | spoj router–router bez plýtvání (RFC 3021) |
+| /32 | 1 | 1 | jedna konkrétní adresa ([[loopback]], cesta na jeden host) |
+
+### Delší vs. kratší prefix
+
+- **delší prefix** (větší číslo) = menší síť, víc bitů pro síť,
+- **kratší prefix** = větší síť.
+
+Router při hledání cesty použije **nejdelší shodu** (longest match): když zná `10.0.0.0/8` i `10.1.1.0/24`, paket pro `10.1.1.5` pošle podle `/24`, protože je přesnější.
+
+### Viz
+
+Cvičení na výpočty: [[Subnetting]], [[Subnetting - cvičení]].
+
 **Souvisí:** [[maska podsítě]], [[VLSM]], [[IPv4]], [[IPv6]], [[IP adresa]]

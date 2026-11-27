@@ -52,4 +52,28 @@ Bez multicastu by musel zdroj poslat stejná data zvlášť každému ([[unicast
 
 Zařízení oznámí zájem protokolem **IGMP** (IPv4) nebo **MLD** (IPv6). Switche umí naslouchat těmto zprávám (IGMP snooping) a posílat multicast jen na relevantní porty.
 
+### Multicast na vrstvě 2
+
+IPv4 multicast adresa se převede na MAC adresu tvaru `01:00:5E:xx:xx:xx` (posledních 23 bitů z IP). Switch bez dalších funkcí posílá multicast **jako broadcast** na všechny porty. Funkce **IGMP snooping** na switchi sleduje, kdo se ke skupině přihlásil, a posílá multicast jen na ty porty.
+
+### IPv6 multicast
+
+[[IPv6]] nemá broadcast, používá jen multicast. Adresy začínají `FF`:
+
+| Adresa | Komu |
+| :-- | :-- |
+| `FF02::1` | všem zařízením v segmentu (obdoba broadcastu) |
+| `FF02::2` | všem routerům v segmentu |
+| `FF02::1:FFxx:xxxx` | solicited-node (používá [[NS]] a [[DAD]]) |
+
+### Multicast a směrovací protokoly
+
+| Protokol | Adresa |
+| :-- | :-- |
+| [[OSPF]] | 224.0.0.5, 224.0.0.6 |
+| [[EIGRP]] | 224.0.0.10 |
+| RIPv2 | 224.0.0.9 |
+
+Rozsah `224.0.0.0/24` je **link-local**, routery ho nepřeposílají do jiných sítí.
+
 **Souvisí:** [[unicast]], [[broadcast]], [[anycast]], [[IPv6]], [[NDP]], [[OSPF]]

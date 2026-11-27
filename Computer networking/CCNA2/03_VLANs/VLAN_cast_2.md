@@ -55,3 +55,5 @@ show dtp interfaces
 **Souvisí:** [[VLAN]], [[VLAN trunk]], [[DTP]], [[nativní VLAN]], [[802.1Q]], [[Data_link]], [[Sprava_switche_SVI]], [[Zakladni_konfigurace_zarizeni]], [[Navigace_v_IOSu]], [[příkazy show]], [[Koncepty_prepinani]]
 
 **Předchozí:** [[VLAN_cast_1]]
+
+**Další:** [[Inter_VLAN_Routing_cast_1]]

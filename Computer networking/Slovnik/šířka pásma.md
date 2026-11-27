@@ -47,4 +47,22 @@ Goodput       880 Mb/s   ← bez hlaviček a retransmisí
 
 Celková rychlost spojení je dána **nejpomalejším úsekem** cesty. Gigabitová síť doma nepomůže, když má připojení od [[ISP|poskytovatele]] 50 Mb/s.
 
+### Převody jednotek
+
+| Jednotka | Hodnota |
+| :-- | :-- |
+| 1 kb/s | 1 000 b/s |
+| 1 Mb/s | 1 000 000 b/s |
+| 1 Gb/s | 1 000 000 000 b/s |
+
+Pozor: v sítích se násobí **1000**, ne 1024.
+
+### Příklad výpočtu
+
+Soubor 1 GB (= 8 Gb) přes linku 100 Mb/s: 8 000 Mb / 100 Mb/s = **80 sekund** v ideálním případě. Reálně déle, protože [[throughput]] a [[goodput]] jsou nižší než šířka pásma.
+
+### Šířka pásma na Cisco
+
+`show interfaces` ukazuje u rozhraní `BW 1000000 Kbit/sec`. Tuhle hodnotu používají směrovací protokoly ([[OSPF]], [[EIGRP]]) k výpočtu metriky. Příkaz `bandwidth` ji mění jen pro výpočty, skutečnou rychlost linky nezmění.
+
 **Souvisí:** [[throughput]], [[goodput]], [[latency]], [[QoS]], [[optické vlákno]]

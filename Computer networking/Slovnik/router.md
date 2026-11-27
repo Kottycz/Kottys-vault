@@ -51,4 +51,36 @@ Krabička od poskytovatele obvykle kombinuje víc zařízení: router + switch +
 - **WAN port** – k poskytovateli ([[ISP]])
 - Každé rozhraní má vlastní IP adresu a je v jiné síti
 
+### Jak router rozhoduje
+
+1. přijme rámec, zkontroluje [[FCS]] a vybalí paket,
+2. sníží [[TTL]] o 1 (když je 0, paket zahodí a pošle ICMP time exceeded),
+3. hledá cílovou IP ve [[směrovací tabulka|směrovací tabulce]] – vybere **nejdelší shodu** prefixu,
+4. když shodu nenajde a nemá výchozí cestu, paket zahodí,
+5. zabalí paket do nového rámce pro výstupní rozhraní (nové MAC adresy) a pošle.
+
+### Zdroje cest
+
+| Kód v `show ip route` | Zdroj | AD |
+| :-- | :-- | :-- |
+| C | přímo připojená síť | 0 |
+| L | vlastní adresa rozhraní (local) | 0 |
+| S | statická cesta | 1 |
+| D | [[EIGRP]] | 90 |
+| O | [[OSPF]] | 110 |
+| R | RIP | 120 |
+
+### Základní konfigurace
+
+```
+Router(config)# hostname R1
+R1(config)# enable secret Cisco123
+R1(config)# interface g0/0/0
+R1(config-if)# ip address 192.168.1.1 255.255.255.0
+R1(config-if)# description LAN
+R1(config-if)# no shutdown
+```
+
+Rozhraní routeru jsou ve výchozím stavu **vypnutá** (na rozdíl od switche), proto je potřeba `no shutdown`.
+
 **Souvisí:** [[switch]], [[IP adresa]], [[default gateway]], [[OSPF]], [[NAT]], [[TTL]], [[broadcast]]

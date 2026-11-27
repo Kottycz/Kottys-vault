@@ -43,4 +43,23 @@ Kdokoliv v síti může poslat podvrženou RA a prohlásit se za router – prov
 
 Obrana: **RA Guard** na [[switch|switchi]] – propouští RA jen z portů, kde je opravdu router.
 
+### Kdy se RA posílá
+
+- pravidelně každých pár minut (Cisco výchozí cca 200 s) na `FF02::1`,
+- okamžitě jako odpověď na [[RS]].
+
+Router posílá RA, jen když má zapnuté `ipv6 unicast-routing`.
+
+### Vypnutí RA na rozhraní
+
+```
+R1(config-if)# ipv6 nd ra suppress
+```
+
+Používá se na rozhraních, kde nejsou klienti (spoje mezi routery).
+
+### Ochrana proti falešným RA
+
+Na switchi funkce **RA Guard** – RA zprávy pustí jen z portů, kde je opravdu router. Z portů k uživatelům je zahodí.
+
 **Souvisí:** [[RS]], [[NDP]], [[SLAAC]], [[IPv6]], [[LLA]], [[default gateway]], [[router]]

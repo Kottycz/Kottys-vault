@@ -38,4 +38,20 @@ Navzdory názvu **to není zabezpečená verze [[FTP]]** – je to úplně jiný
 
 Starší a jednodušší způsob kopírování přes SSH – umí jen kopírovat soubory, bez výpisu adresáře. SFTP je univerzálnější.
 
+### Použití z příkazového řádku
+
+```
+C:\> sftp admin@192.168.1.100
+sftp> ls
+sftp> get zaloha.cfg
+sftp> put novy.txt
+sftp> bye
+```
+
+Grafičtí klienti: WinSCP, FileZilla (umí FTP i SFTP).
+
+### Na Cisco
+
+Router může fungovat jako SCP server (`ip scp server enable`) a soubory (IOS, konfigurace) se pak kopírují šifrovaně přes SSH místo nešifrovaného [[TFTP]].
+
 **Souvisí:** [[SSH]], [[FTP]], [[TFTP]], [[TLS]], [[TCP]], [[port]]

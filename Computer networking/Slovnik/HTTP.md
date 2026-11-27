@@ -55,4 +55,27 @@ Klient                        Server
 
 HTTP posílá všechno v čitelné podobě – kdokoliv po cestě (např. na [[switch|switchi]] nebo Wi-Fi) může číst i měnit obsah. Proto se dnes používá [[HTTPS]].
 
+### Jak vypadá požadavek a odpověď
+
+```
+GET /index.html HTTP/1.1
+Host: www.skola.cz
+User-Agent: Mozilla/5.0
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html>…
+```
+
+Požadavek = metoda, cesta, verze a hlavičky. Odpověď = stavový kód, hlavičky a obsah.
+
+### Bezstavovost a cookies
+
+HTTP je **bezstavové**: server si sám nepamatuje, že jsi předtím poslal jiný požadavek. Aby web věděl, že jsi přihlášený, posílá prohlížeči **cookie** a prohlížeč ji přikládá ke každému dalšímu požadavku.
+
+### HTTP na síťových zařízeních
+
+Cisco zařízení můžou mít webové rozhraní pro správu. Nešifrované HTTP se vypíná (`no ip http server`) a když je web potřeba, použije se `ip http secure-server` ([[HTTPS]]).
+
 **Souvisí:** [[HTTPS]], [[TCP]], [[port]], [[DNS]]

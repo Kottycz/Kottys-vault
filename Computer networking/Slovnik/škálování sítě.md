@@ -32,4 +32,23 @@ Podle analýzy provozu se pozná, **kde** je síť přetížená a kam je potře
 - plánované [[schéma IP adresování|schéma adres]] s rezervou
 - [[redundance]], aby růst nezvyšoval riziko výpadku ([[single point of failure]])
 
+### Hierarchický model
+
+Síť se staví ve vrstvách, aby se dala rozšiřovat:
+
+| Vrstva | Úkol |
+| :-- | :-- |
+| **přístupová** (access) | připojení uživatelů, [[VLAN]], [[PoE]] |
+| **distribuční** | směrování mezi VLAN, filtrace, redundance |
+| **jádro** (core) | co nejrychlejší přenos mezi částmi sítě |
+
+Přidání nové budovy = nový přístupový switch připojený k distribuci, zbytek sítě se nemění. Menší sítě používají **collapsed core** (distribuce a jádro v jednom).
+
+### Na co myslet při návrhu
+
+- adresní plán s rezervou ([[VLSM]], dost velké podsítě),
+- [[modulární zařízení]] nebo stohovatelné switche v jádru,
+- směrovací protokol, který zvládne růst ([[OSPF]] s oblastmi),
+- dokumentace, aby se v rostoucí síti dalo vyznat.
+
 **Souvisí:** [[modulární zařízení]], [[redundance]], [[schéma IP adresování]], [[topologie]], [[Budovani_male_site]]

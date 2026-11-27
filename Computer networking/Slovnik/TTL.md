@@ -48,4 +48,20 @@ V [[IPv6]] se stejné pole jmenuje **Hop Limit** – je to přesnější, proto�
 
 Pozor, zkratka se používá i jinde – např. u [[DNS]] záznamů TTL říká, **jak dlouho se smí odpověď držet v cache** (v sekundách).
 
+### TTL v odpovědi pingu
+
+```
+Reply from 8.8.8.8: bytes=32 time=14ms TTL=117
+```
+
+Server odpověděl s TTL 117. Windows posílá pakety s počátečním TTL 128, Linux 64, Cisco 255. Nejbližší vyšší hodnota je 128, takže paket po cestě prošel přibližně 128 − 117 = **11 routery**.
+
+### Smyčka ve směrování
+
+Když se dva routery navzájem posílají paket (chyba v konfiguraci), paket by kroužil donekonečna. TTL zajistí, že po maximálně 255 skocích zmizí. V traceroute se smyčka pozná tak, že se stejné adresy opakují dokola.
+
+### TTL a switch
+
+[[switch|Switch]] TTL nemění, pracuje jen s rámci na vrstvě 2. TTL snižuje jen zařízení vrstvy 3 ([[router]], [[přepínač vrstvy 3]]).
+
 **Souvisí:** [[ping]], [[traceroute]], [[ICMP]], [[router]], [[IPv6]], [[DNS]]

@@ -34,4 +34,33 @@ How many bits in the modulus [512]: 1024
 
 Starší IOS defaultně podporují v1 i v2, **v1 má známé slabiny**. Vynutit v2: `ip ssh version 2`.
 
+### Délka klíče
+
+| Délka | Hodnocení |
+| :-- | :-- |
+| 512 bitů | prolomitelné, nepoužívat |
+| 768 bitů | minimum, které Cisco vyžaduje pro SSH verze 2 |
+| 1024 bitů | běžně v labech, dnes už slabé |
+| 2048 bitů | doporučené minimum |
+| 4096 bitů | velmi bezpečné, pomalejší generování |
+
+### Celá konfigurace SSH
+
+```
+R1(config)# hostname R1
+R1(config)# ip domain-name skola.local
+R1(config)# crypto key generate rsa general-keys modulus 2048
+R1(config)# username admin secret Cisco123
+R1(config)# ip ssh version 2
+R1(config)# line vty 0 4
+R1(config-line)# transport input ssh
+R1(config-line)# login local
+```
+
+Bez **hostname** (jiného než výchozí) a **domain-name** klíč nejde vygenerovat, protože se jméno klíče skládá z obou.
+
+### Ověření
+
+`show ip ssh` (verze a stav), `show crypto key mypubkey rsa` (veřejný klíč), `show ssh` (připojení uživatelé).
+
 **Souvisí:** [[SSH]], [[PuTTY]], [[TLS]], [[VTY]], [[IOS]]

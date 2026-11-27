@@ -43,4 +43,25 @@ TCP ztrátu paketu (chybějící ACK nebo tři duplicitní ACK) interpretuje jak
 
 Skutečná rychlost = menší z obou.
 
+### Číselný příklad
+
+Začíná se oknem zahlcení (cwnd) několika segmentů a po každém potvrzeném kole se zdvojnásobí:
+
+```
+kolo 1:  1 segment
+kolo 2:  2 segmenty
+kolo 3:  4 segmenty
+kolo 4:  8 segmentů   ← roste exponenciálně
+...      dosáhne prahu (ssthresh) → dál roste jen o 1 za kolo
+```
+
+### Co se stane při ztrátě
+
+- ztráta zjištěná vypršením časovače → okno spadne na začátek a slow start jede znovu,
+- ztráta zjištěná třemi duplicitními [[ACK]] → okno se jen zmenší na polovinu (fast recovery), protože síť zjevně ještě něco propouští.
+
+### Proč je první stahování pomalejší
+
+Každé nové TCP spojení začíná pomalu. Proto se u webu snaží držet jedno spojení otevřené pro víc požadavků (keep-alive), místo aby se pro každý obrázek otevíralo nové.
+
 **Souvisí:** [[TCP]], [[sliding window]], [[throughput]], [[latency]]

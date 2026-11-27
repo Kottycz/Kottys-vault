@@ -45,4 +45,22 @@ DSCP je jen **značka** – sama o sobě nic nedělá. Musí ji respektovat vše
 
 Zbylé 2 bity slouží k **oznámení zahlcení** – router může paket označit "síť je vytížená" místo toho, aby ho zahodil. [[TCP]] pak zpomalí sám od sebe, bez ztráty dat.
 
+### Třídy AF
+
+Hodnoty **AFxy** (Assured Forwarding):
+
+- `x` = třída 1–4 (vyšší = důležitější provoz),
+- `y` = pravděpodobnost zahození 1–3 (vyšší = při zahlcení se zahodí dřív),
+- hodnota DSCP = 8·x + 2·y. Např. AF41 = 34, AF31 = 26, AF21 = 18.
+
+### DSCP vs. CoS
+
+| | CoS | DSCP |
+| :-- | :-- | :-- |
+| vrstva | 2 ([[802.1Q]] tag, pole PCP) | 3 (IP hlavička) |
+| bitů | 3 (hodnoty 0–7) | 6 (hodnoty 0–63) |
+| přežije router | ne, tag na routeru zmizí | ano, jde s paketem až k cíli |
+
+IP telefon obvykle označí hlas **CoS 5** a **DSCP EF (46)**.
+
 **Souvisí:** [[QoS]], [[IPv4]], [[latency]], [[router]], [[TCP]]

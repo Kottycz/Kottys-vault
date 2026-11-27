@@ -47,4 +47,34 @@ Adresa se nepřiděluje natrvalo, ale **na dobu zapůjčení** (lease time, nap�
 
 U [[IPv6]] existuje **DHCPv6**, ale často se místo něj používá [[SLAAC]] – zařízení si adresu vytvoří samo podle informací z [[RA]].
 
+### DHCP server na Cisco routeru
+
+```
+R1(config)# ip dhcp excluded-address 192.168.10.1 192.168.10.10
+R1(config)# ip dhcp pool LAN10
+R1(dhcp-config)# network 192.168.10.0 255.255.255.0
+R1(dhcp-config)# default-router 192.168.10.1
+R1(dhcp-config)# dns-server 8.8.8.8
+R1(dhcp-config)# domain-name skola.local
+```
+
+- `excluded-address` – adresy, které DHCP nerozdá (brána, servery, tiskárny),
+- `network` – z jakého rozsahu se rozdává,
+- `default-router` – jakou [[default gateway|bránu]] klient dostane.
+
+### Ověření
+
+| Kde | Příkaz |
+| :-- | :-- |
+| router | `show ip dhcp binding` (kdo dostal jakou IP), `show ip dhcp pool` |
+| Windows | `ipconfig /all`, `ipconfig /release`, `ipconfig /renew` |
+
+### DHCP server v jiné síti
+
+DHCP Discover je [[broadcast]] a router ho nepřepošle. Když je server v jiné síti, nastaví se na rozhraní routeru do LAN `ip helper-address <IP serveru>`. Router pak broadcast přepošle serveru jako unicast.
+
+### Když DHCP selže
+
+Windows si přidělí adresu **APIPA** `169.254.x.x`. S ní se nedostaneš mimo vlastní segment. Když ji uvidíš v `ipconfig`, hledej problém s DHCP serverem nebo kabelem.
+
 **Souvisí:** [[DORA]], [[IP adresa]], [[maska podsítě]], [[default gateway]], [[broadcast]], [[SLAAC]], [[UDP]]

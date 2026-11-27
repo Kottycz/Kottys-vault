@@ -56,4 +56,29 @@ Bez hostname a domain-name nejdou vygenerovat klíče – SSH pak nenaběhne.
 
 Navzdory podobným názvům to jsou dvě úplně různé věci.
 
+### Ověření a připojení
+
+| Kde | Příkaz |
+| :-- | :-- |
+| Cisco – stav SSH | `show ip ssh` |
+| Cisco – kdo je připojený | `show ssh`, `show users` |
+| Windows / Linux – připojení | `ssh admin@192.168.1.1` |
+| z Cisco na Cisco | `ssh -l admin 192.168.1.2` |
+
+### Otisk klíče
+
+Při prvním připojení se klient zeptá, jestli věří **otisku klíče** serveru (fingerprint) a uloží si ho. Když se příště otisk změní, klient varuje – buď se na zařízení přegenerovaly klíče, nebo jde o útok ([[MITM]]).
+
+### Omezení přístupu
+
+```
+R1(config)# ip ssh time-out 60
+R1(config)# ip ssh authentication-retries 2
+R1(config)# access-list 5 permit 192.168.99.0 0.0.0.255
+R1(config)# line vty 0 4
+R1(config-line)# access-class 5 in
+```
+
+`access-class` na VTY pustí SSH jen ze sítě adminů.
+
 **Souvisí:** [[Telnet]], [[TCP]], [[port]], [[FTP]], [[TLS]], [[running-config]]

@@ -35,4 +35,27 @@ Ping je **nejúčinnější způsob**, jak rychle otestovat konektivitu **vrstvy
 
 Neznamená to nutně, že zařízení nefunguje – cíl může echo request blokovat ([[firewall]]).
 
+### Struktura zprávy
+
+| Pole | Význam |
+| :-- | :-- |
+| Type | 8 = request, 0 = reply |
+| Code | 0 |
+| Checksum | kontrolní součet |
+| Identifier | odliší pingy z různých programů |
+| Sequence | pořadí, podle něj se pozná, která odpověď patří ke kterému dotazu |
+| Data | výplň, odpověď ji vrátí beze změny |
+
+### U IPv6
+
+ICMPv6 má echo request **typ 128** a echo reply **typ 129**.
+
+### Výsledky na Cisco
+
+| Znak | Význam |
+| :-- | :-- |
+| `!` | přišla echo reply |
+| `.` | vypršel čas, odpověď nepřišla |
+| `U` | cíl nedosažitelný (přišla ICMP zpráva destination unreachable) |
+
 **Souvisí:** [[ICMP]], [[ping]], [[rozšířený ping]], [[latency]], [[firewall]]

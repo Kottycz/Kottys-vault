@@ -50,4 +50,32 @@ VLANy jsou oddělené sítě, takže mezi nimi musí směrovat vrstva 3:
 
 Výchozí VLAN, do které patří všechny porty. Z bezpečnostních důvodů se **nepoužívá** pro provoz ani správu – vytvoří se vlastní.
 
+### Rozsahy VLAN
+
+| Rozsah | Význam |
+| :-- | :-- |
+| 1 | výchozí VLAN, nejde smazat |
+| 2–1001 | normální rozsah, ukládá se do `vlan.dat` |
+| 1002–1005 | vyhrazené pro staré technologie (Token Ring, FDDI) |
+| 1006–4094 | rozšířený rozsah |
+
+### Základní příkazy
+
+```
+S1(config)# vlan 10
+S1(config-vlan)# name Kancelare
+S1(config)# interface fa0/5
+S1(config-if)# switchport mode access
+S1(config-if)# switchport access vlan 10
+S1# show vlan brief
+```
+
+### Typy VLAN
+
+[[Default VLAN]], [[Data VLAN]], [[nativní VLAN]], [[Management VLAN]], [[Voice VLAN]]. Podrobně viz [[VLAN_cast_1]] a [[VLAN_cast_2]].
+
+### Smazání VLAN – pozor
+
+Když smažeš VLAN (`no vlan 10`), porty v ní **zůstanou přiřazené** k neexistující VLAN a přestanou fungovat. Nejdřív je přesuň do jiné VLAN.
+
 **Souvisí:** [[switch]], [[broadcast]], [[SVI]], [[router]], [[IEEE]], [[LAN]]

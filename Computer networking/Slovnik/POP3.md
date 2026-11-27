@@ -43,4 +43,16 @@ Dnes většina lidí používá víc zařízení (mobil + počítač), proto se 
 
 Základní POP3 posílá heslo i obsah **nešifrovaně**. Používej POP3S (port 995) nebo STARTTLS.
 
+### Průběh relace
+
+1. klient se připojí na port 110 (nebo 995),
+2. přihlásí se (`USER`, `PASS`),
+3. stáhne zprávy (`LIST`, `RETR`),
+4. označí je ke smazání (`DELE`),
+5. `QUIT` – server označené zprávy smaže.
+
+### Proč dnes převládá IMAP
+
+Uživatelé mají e-mail na mobilu, notebooku i ve webovém rozhraní. POP3 zprávy stáhne na jedno zařízení a ze serveru smaže, takže na ostatních chybí. [[IMAP]] drží vše na serveru a synchronizuje stav.
+
 **Souvisí:** [[IMAP]], [[SMTP]], [[TCP]], [[port]]

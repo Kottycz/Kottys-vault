@@ -40,4 +40,25 @@ Právě IANA rozhoduje, které aplikaci patří který port v rozsahu 1024–491
 
 IANA dnes funguje pod organizací **ICANN**, která spravuje jmenný systém internetu ([[DNS]]).
 
+### Co IANA přidělila, co se učíš
+
+| Číslo | Příklad |
+| :-- | :-- |
+| [[port|porty]] | 22 SSH, 53 DNS, 80 HTTP, 443 HTTPS |
+| privátní rozsahy IPv4 | 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 |
+| čísla protokolů v IP hlavičce | 1 ICMP, 6 TCP, 17 UDP |
+| [[EtherType]] hodnoty spravuje [[IEEE]], ne IANA | — |
+
+### Rozsahy portů
+
+| Rozsah | Název | Příklad |
+| :-- | :-- | :-- |
+| 0–1023 | well-known (systémové) | 80 HTTP |
+| 1024–49151 | registrované | 3389 RDP |
+| 49152–65535 | dynamické / privátní | náhodný port klienta |
+
+### Vyčerpání IPv4
+
+V roce 2011 IANA rozdala regionálním registrům poslední volné bloky IPv4 adres. Od té doby se nové IPv4 adresy získávají těžko, proto [[NAT]] a přechod na [[IPv6]].
+
 **Souvisí:** [[port]], [[IP adresa]], [[DNS]], [[IETF]]

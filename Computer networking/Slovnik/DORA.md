@@ -38,4 +38,25 @@ V polovině doby lease se klient pokusí adresu obnovit – pošle rovnou **REQU
 
 DHCP jede přes broadcast, který [[router]] nepropustí. Když je server v jiné podsíti, nastaví se na routeru **DHCP relay** (`ip helper-address`) – ten broadcast zachytí a přepošle serveru jako [[unicast]].
 
+### Adresy a porty zpráv
+
+| Zpráva | Od | Komu | Porty |
+| :-- | :-- | :-- | :-- |
+| Discover | 0.0.0.0 | 255.255.255.255 (broadcast) | 68 → 67 |
+| Offer | server | broadcast nebo unicast klientovi | 67 → 68 |
+| Request | 0.0.0.0 | 255.255.255.255 (broadcast) | 68 → 67 |
+| Acknowledge | server | broadcast nebo unicast klientovi | 67 → 68 |
+
+Request jde zase broadcastem, aby se dozvěděli i ostatní DHCP servery, že jejich nabídku klient nevzal.
+
+### Další DHCP zprávy
+
+- **DHCPNAK** – server odmítne požadavek (např. klient chce adresu z jiné sítě),
+- **DHCPDECLINE** – klient zjistí, že nabídnutá adresa už je v síti použitá,
+- **DHCPRELEASE** – klient adresu vrací (`ipconfig /release`).
+
+### Ve Wiresharku
+
+Filtr `dhcp` (ve starších verzích `bootp`) ukáže všechny čtyři zprávy. Při `ipconfig /renew` uvidíš jen Request a Acknowledge, protože klient už server zná.
+
 **Souvisí:** [[DHCP]], [[broadcast]], [[IP adresa]], [[default gateway]], [[maska podsítě]], [[ACK]]

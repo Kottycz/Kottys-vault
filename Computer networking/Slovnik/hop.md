@@ -31,4 +31,24 @@ Díky tomu se dá najít **bod na cestě, kde se problém nachází** – ten ho
 
 Čím víc hopů, tím delší trasa. Počet hopů se používá i jako **metrika** u některých směrovacích protokolů (kratší cesta = méně hopů).
 
+### Hop a metrika směrování
+
+Některé směrovací protokoly vybírají cestu podle počtu hopů:
+
+- **RIP** – metrika = počet hopů, maximum **15**, 16 = nedosažitelné. Proto se nehodí do velkých sítí,
+- [[OSPF]] a [[EIGRP]] počet hopů nepoužívají, rozhoduje šířka pásma, takže zvolí delší cestu přes rychlé linky.
+
+### Next hop
+
+V [[směrovací tabulka|směrovací tabulce]] je u každé cesty **next hop** – IP adresa dalšího routeru, kterému se paket pošle. Router zná jen další krok, ne celou cestu.
+
+```
+S  10.0.0.0/8 [1/0] via 192.168.1.2
+                         └─ next hop
+```
+
+### Switch hop není
+
+[[switch|Switch]] (vrstva 2) neuberá [[TTL]] a v [[traceroute]] se neobjeví. Hop je jen zařízení vrstvy 3.
+
 **Souvisí:** [[traceroute]], [[TTL]], [[router]], [[ping]]

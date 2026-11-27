@@ -66,4 +66,28 @@ Standardní [[délka prefixu]] pro síť je **/64**.
 
 Před použitím si zařízení ověří, že adresu nemá nikdo jiný, pomocí [[DAD]].
 
+### Zkracování adresy
+
+1. v každém [[hextet|hextetu]] vynechat úvodní nuly: `0db8` → `db8`,
+2. jednu (nejdelší) skupinu po sobě jdoucích nulových hextetů nahradit `::`
+
+```
+2001:0db8:0000:0000:0000:ff00:0042:8329
+2001:db8::ff00:42:8329
+```
+
+### IPv6 hlavička
+
+Pevná délka **40 bajtů**, jednodušší než IPv4: nemá checksum (kontrolu dělá vrstva 2 a 4), routery nefragmentují. Místo [[TTL]] má pole **Hop Limit** (stejný význam).
+
+### Základní konfigurace routeru
+
+```
+R1(config)# ipv6 unicast-routing
+R1(config-if)# ipv6 address 2001:db8:acad:1::1/64
+R1(config-if)# ipv6 address fe80::1 link-local
+```
+
+Ověření: `show ipv6 interface brief`, `show ipv6 route`.
+
 **Souvisí:** [[IPv4]], [[hextet]], [[GUA]], [[ULA]], [[LLA]], [[SLAAC]], [[NDP]], [[EUI-64]], [[DAD]]

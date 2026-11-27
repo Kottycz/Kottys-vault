@@ -40,4 +40,25 @@ Prakticky vždy, když čteš poštu z víc zařízení (mobil, notebook, web). 
 
 Protože pošta zůstává na serveru, je omezená **kapacitou schránky** – při zaplnění přestanou chodit nové zprávy. A pokud server o data přijde, přijdeš o ně taky (pokud nemáš zálohu).
 
+### Porty
+
+| Port | Protokol | Šifrování |
+| :-- | :-- | :-- |
+| 143 | IMAP | ne (nebo STARTTLS) |
+| 993 | IMAPS | [[TLS]] |
+| 110 / 995 | [[POP3]] / POP3S | ne / ano |
+| 25 / 587 / 465 | [[SMTP]] | odesílání, různé varianty |
+
+### Celý tok e-mailu
+
+1. klient pošle e-mail svému serveru přes **SMTP**,
+2. server ho přes SMTP předá serveru příjemce,
+3. příjemce si ho přečte přes **IMAP** (nebo POP3).
+
+IMAP a POP3 slouží jen ke **čtení**, odesílá se vždy přes SMTP.
+
+### Složky a stavy
+
+IMAP drží na serveru i složky (Doručené, Odeslané, vlastní složky) a příznaky (přečteno, označeno). Proto vidíš stejný stav na mobilu i v počítači.
+
 **Souvisí:** [[POP3]], [[SMTP]], [[TCP]], [[port]]

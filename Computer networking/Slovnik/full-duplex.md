@@ -44,4 +44,23 @@ Zařízení si při připojení automaticky domluví rychlost (10/100/1000 Mb/s)
 
 Proto se doporučuje nechat autonegotiation zapnutou na obou stranách.
 
+### Podmínky pro full-duplex
+
+- každé zařízení musí mít **vlastní port** na switchi (žádný hub),
+- oba konce linky musí být nastavené na full-duplex (nebo oba na auto),
+- na kabelu musí být oddělené páry pro vysílání a příjem (u gigabitu se to řeší elektronikou, jedou všechny páry oběma směry).
+
+### Rychlost
+
+Full-duplex teoreticky zdvojnásobuje kapacitu: 100 Mb/s linka zvládne 100 Mb/s tam a zároveň 100 Mb/s zpátky. Někdy se proto uvádí „200 Mb/s agregovaně".
+
+### Ověření
+
+```
+S1# show interfaces fa0/1
+  Full-duplex, 100Mb/s, media type is 10/100BaseTX
+```
+
+Na full-duplex lince musí být počítadlo **collisions** na nule. Kolize tam znamenají chybu, nejspíš [[duplex]] mismatch.
+
 **Souvisí:** [[half-duplex]], [[switch]], [[CSMA-CD]], [[UTP]], [[Auto-MDIX]]

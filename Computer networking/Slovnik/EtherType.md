@@ -43,4 +43,19 @@ Protože maximální délka dat je 1500 B, nedojde k záměně. V praxi se dnes 
 
 Bez tohoto pole by síťová karta nevěděla, jestli má obsah rámce předat IPv4 stacku, IPv6 stacku nebo ARP modulu – všechny běží zároveň nad stejným Ethernetem.
 
+### Další hodnoty
+
+| Hodnota | Protokol |
+| :-- | :-- |
+| `0x0800` | [[IPv4]] |
+| `0x0806` | [[ARP]] |
+| `0x86DD` | [[IPv6]] |
+| `0x8100` | [[802.1Q]] VLAN tag |
+| `0x88CC` | LLDP |
+| `0x8847` | MPLS |
+
+### Ve Wiresharku
+
+Filtr podle EtherType: `eth.type == 0x0806` ukáže jen ARP. V detailu rámce je pole pod názvem **Type**.
+
 **Souvisí:** [[MAC podvrstva]], [[LLC]], [[zapouzdření]], [[IPv4]], [[IPv6]], [[ARP]]

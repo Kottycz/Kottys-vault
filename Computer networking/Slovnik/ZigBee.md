@@ -25,4 +25,27 @@ tags: [slovnik]
 | Bluetooth | sluchátka, myš (krátký dosah) |
 | WiFi | připojení k internetu ([[WLAN]]) |
 
+### Typy zařízení v síti
+
+| Zařízení | Úloha |
+| :-- | :-- |
+| **koordinátor** | zakládá síť, jeden v každé síti (často chytrá brána / hub) |
+| **router** | přeposílá zprávy dál, napájený ze sítě (chytrá zásuvka, žárovka) |
+| **koncové zařízení** | jen posílá a přijímá, na baterii, většinu času spí (senzor dveří) |
+
+### Parametry
+
+- pásmo **2,4 GHz** (v některých zemích i 868 / 915 MHz),
+- rychlost do **250 kb/s**,
+- dosah jednotky až desítky metrů, mesh síť ho prodlužuje.
+
+### ZigBee vs. Wi-Fi vs. Bluetooth
+
+| | ZigBee | [[WLAN|Wi-Fi]] | Bluetooth |
+| :-- | :-- | :-- | :-- |
+| spotřeba | velmi nízká | vysoká | nízká |
+| rychlost | nízká | vysoká | střední |
+| topologie | mesh | hvězda (AP) | point-to-point / malá síť |
+| použití | senzory, chytrá domácnost | internet, video | sluchátka, periferie |
+
 **Souvisí:** [[WLAN]], [[IEEE]]

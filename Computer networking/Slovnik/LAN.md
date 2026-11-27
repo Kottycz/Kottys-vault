@@ -45,4 +45,23 @@ tags: [slovnik]
 
 Celá LAN (přesněji jeden segment / VLAN) tvoří jednu **broadcastovou doménu** – [[broadcast]] se dostane ke všem. [[router|Router]] ji ohraničuje.
 
+### Části typické LAN
+
+- **koncová zařízení** – PC, tiskárny, telefony,
+- **přístupové switche** – k nim se připojují koncová zařízení,
+- **[[AP]]** – bezdrátový přístup ([[WLAN]]),
+- **[[router]]** – připojení LAN k internetu nebo k dalším sítím.
+
+### Rozdělení velké LAN
+
+Velkou LAN je potřeba rozdělit na menší části, aby se omezil [[broadcast]] a zvýšila bezpečnost:
+
+- logicky pomocí [[VLAN]],
+- adresně pomocí podsítí,
+- mezi VLAN se pak směruje přes [[Inter-VLAN routing]].
+
+### Hierarchický návrh
+
+Větší LAN se navrhují ve třech vrstvách: **přístupová** (access, k uživatelům), **distribuční** (propojení přístupových switchů, směrování mezi VLAN) a **jádro** (core, rychlá páteř).
+
 **Souvisí:** [[WAN]], [[switch]], [[router]], [[broadcast]], [[peer-to-peer]]

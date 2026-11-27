@@ -46,4 +46,23 @@ Příkazy lze zkracovat, dokud jsou jednoznačné: `sh run` = `show running-conf
 
 Na počítači s Windows odpovídá `ipconfig /all` – viz [[ipconfig]].
 
+### Filtrování výstupu
+
+Dlouhý výstup se dá zúžit za svislou čárou:
+
+| Filtr | Příklad | Co ukáže |
+| :-- | :-- | :-- |
+| `include` | `show running-config \| include hostname` | jen řádky s textem |
+| `exclude` | `show ip interface brief \| exclude unassigned` | řádky bez textu |
+| `begin` | `show running-config \| begin interface` | od prvního výskytu dál |
+| `section` | `show running-config \| section ospf` | celou sekci konfigurace |
+
+### Ovládání dlouhého výstupu
+
+Při `--More--`: **mezerník** = další stránka, **Enter** = další řádek, jiná klávesa = konec. `terminal length 0` vypne stránkování úplně.
+
+### Show v konfiguračním režimu
+
+V `(config)#` režimu show nefunguje přímo, musí se před něj dát `do`: `R1(config)# do show ip interface brief`.
+
 **Souvisí:** [[IOS]], [[running-config]], [[ARP]], [[router]], [[ipconfig]], [[CDP]], [[Budovani_male_site]]

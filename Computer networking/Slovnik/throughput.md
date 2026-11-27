@@ -44,4 +44,21 @@ Goodput     880 Mb/s   ← co z toho jsou tvoje data
 
 Přenosem velkého souboru nebo nástroji jako iperf, speedtest. Výsledek vždy závisí na protokolu, vzdálenosti a vytížení sítě.
 
+### Co throughput snižuje
+
+| Příčina | Proč |
+| :-- | :-- |
+| režie protokolů | hlavičky, potvrzování ([[goodput]]) |
+| [[latency|latence]] | TCP čeká na potvrzení |
+| chyby a ztráty | data se posílají znovu |
+| sdílené médium | Wi-Fi, half-duplex |
+| nejpomalejší linka na cestě | celá cesta je jen tak rychlá jako její nejslabší místo |
+| výkon zařízení | přetížený router, pomalý disk serveru |
+
+### Měření
+
+- **iperf3** – změří throughput mezi dvěma PC v síti (`iperf3 -s` na serveru, `iperf3 -c IP` na klientovi),
+- speedtest – throughput k internetu,
+- `show interfaces` – aktuální provoz na rozhraní (input/output rate).
+
 **Souvisí:** [[goodput]], [[latency]], [[QoS]], [[sliding window]], [[full-duplex]]

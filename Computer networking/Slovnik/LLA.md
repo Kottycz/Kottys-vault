@@ -50,4 +50,27 @@ ping fe80::1%12          (Windows, číslo rozhraní)
 
 `169.254.x.x` – **APIPA**. Rozdíl je, že APIPA se použije jen když **selže [[DHCP]]** (je to nouzové řešení), zatímco LLA v IPv6 je normální a vždy přítomná.
 
+### Ruční nastavení na routeru
+
+```
+R1(config-if)# ipv6 address fe80::1 link-local
+```
+
+Na všech rozhraních routeru může být stejná LLA `fe80::1`, protože platí jen v rámci jednoho segmentu. Klienti pak mají jako bránu jednoduchou adresu `fe80::1` místo dlouhé EUI-64.
+
+### Ověření
+
+```
+R1# show ipv6 interface brief
+GigabitEthernet0/0/0   [up/up]
+    FE80::1
+    2001:DB8:ACAD:1::1
+```
+
+První adresa je vždy LLA, pod ní [[GUA]].
+
+### Ping na link-local
+
+Na Windows se k LLA musí přidat číslo rozhraní (zóna): `ping fe80::1%12`. Systém jinak neví, na které síťové kartě má hledat, protože stejné fe80 adresy můžou existovat na víc kartách.
+
 **Souvisí:** [[IPv6]], [[GUA]], [[ULA]], [[NDP]], [[EUI-64]], [[default gateway]], [[SLAAC]]

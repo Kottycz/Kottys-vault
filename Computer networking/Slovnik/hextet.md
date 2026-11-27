@@ -60,4 +60,26 @@ Jednu souvislou skupinu nulových hextetů lze nahradit `::`:
 | `0000:0000:0000:0000:0000:0000:0000:0001` | `::1` (loopback) |
 | `0000:0000:0000:0000:0000:0000:0000:0000` | `::` (neurčená) |
 
+### Převod hextetu do binárky
+
+Každý hex znak = 4 bity, hextet = 4 znaky = 16 bitů:
+
+```
+hextet:  2   0   0   1
+binárně: 0010 0000 0000 0001
+```
+
+To se hodí při určení prefixu, který končí uprostřed hextetu (např. `/52`).
+
+### Kde končí prefix
+
+- `/64` = první **4** hextety jsou síť, zbylé 4 jsou ID rozhraní,
+- `/48` = první **3** hextety,
+- každý hextet = 16 bitů, takže prefix dělený 16 ti řekne, kolik hextetů je síťových.
+
+### Časté chyby
+
+- zkratka `::` jen **jednou** v adrese (jinak by nešlo poznat, kolik nul kam patří),
+- odstraňují se jen **úvodní** nuly v hextetu, ne koncové: `0db8` → `db8`, ale `d800` zůstane `d800`.
+
 **Souvisí:** [[IPv6]], [[délka prefixu]], [[GUA]], [[LLA]], [[EUI-64]]

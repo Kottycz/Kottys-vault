@@ -42,4 +42,41 @@ Na každé nakonfigurované rozhraní s adresou, které je up/up, vzniknou **dva
 - **statické** trasy – ručně,
 - **dynamické** protokoly ([[OSPF]], [[EIGRP]], [[BGP]]).
 
+### Ukázka výpisu
+
+```
+R1# show ip route
+Gateway of last resort is 203.0.113.1 to network 0.0.0.0
+
+S*    0.0.0.0/0 [1/0] via 203.0.113.1
+      192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.1.0/24 is directly connected, GigabitEthernet0/0/0
+L        192.168.1.1/32 is directly connected, GigabitEthernet0/0/0
+O     10.10.10.0/24 [110/2] via 192.168.12.2, 00:05:12, GigabitEthernet0/0/1
+```
+
+Čtení řádku s OSPF:
+
+| Část | Význam |
+| :-- | :-- |
+| `O` | naučeno přes [[OSPF]] |
+| `10.10.10.0/24` | cílová síť |
+| `[110/2]` | AD 110 / metrika 2 |
+| `via 192.168.12.2` | next hop |
+| `00:05:12` | jak dlouho cesta existuje |
+| `GigabitEthernet0/0/1` | výstupní rozhraní |
+
+### Statická cesta
+
+```
+R1(config)# ip route 10.20.0.0 255.255.0.0 192.168.12.2
+R1(config)# ip route 0.0.0.0 0.0.0.0 203.0.113.1
+```
+
+Druhý řádek je **výchozí cesta** – kam poslat vše, co router nezná.
+
+### IPv6
+
+`show ipv6 route`, statická cesta `ipv6 route 2001:db8:b::/64 2001:db8:12::2`.
+
 **Souvisí:** [[router]], [[IPv4]], [[IPv6]], [[délka prefixu]], [[default gateway]], [[příkazy show]]

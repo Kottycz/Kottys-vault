@@ -48,4 +48,17 @@ Uživatel nic nepozná – používá jednu adresu, ale obslouží ho jiný stro
 | [[multicast]] | přihlášené skupině |
 | **anycast** | nejbližšímu z několika stejných |
 
+### Příklad: kořenové DNS servery
+
+Kořenových [[DNS]] serverů je 13 jmen (A až M), ale fyzicky jich běží stovky po celém světě. Každý z těch 13 je anycast adresa, takže dotaz z Prahy skončí na nejbližší instanci v Evropě, ne v USA.
+
+### Anycast v IPv6
+
+- [[IPv6]] má anycast přímo v návrhu, adresa se nijak neliší od [[unicast|unicastu]], jen ji má víc zařízení,
+- **subnet-router anycast** – adresa podsítě s nulovým ID rozhraní (např. `2001:db8:acad:1::`). Odpoví na ni kterýkoliv [[router]] v té podsíti.
+
+### Proč pozor u TCP
+
+Anycast vybírá cíl podle směrování. Když se během spojení změní cesta, další pakety můžou dorazit na **jiný server**, který o spojení neví. Proto se anycast hodí hlavně pro krátké dotazy ([[DNS]] přes [[UDP]]) a pro CDN, kde se to řeší chytřeji.
+
 **Souvisí:** [[unicast]], [[multicast]], [[broadcast]], [[IPv6]], [[DNS]], [[latency]]

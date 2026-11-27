@@ -30,4 +30,22 @@ tags: [slovnik]
 - **blikající oranžová** = PoE vypnuto kvůli chybě,
 - **oranžová** = PoE na portu zakázáno.
 
+### Standardy
+
+| Standard | Název | Max. výkon na portu switche |
+| :-- | :-- | :-- |
+| 802.3af | PoE | 15,4 W |
+| 802.3at | PoE+ | 30 W |
+| 802.3bt | PoE++ | 60 W / 90 W |
+
+Na zařízení dojde o něco méně, část výkonu se ztratí v kabelu.
+
+### Co se napájí přes PoE
+
+IP telefony, [[AP|Wi-Fi access pointy]], IP kamery, malé switche, osvětlení. Výhoda: stačí jeden kabel, není potřeba zásuvka u každého zařízení, a když má switch záložní napájení, fungují i telefony při výpadku proudu.
+
+### Rozpočet výkonu
+
+Switch má omezený celkový výkon pro PoE (PoE budget). Když se připojí moc zařízení, některá nedostanou napájení. Ověření na Cisco: `show power inline`.
+
 **Souvisí:** [[LED switche]], [[SYST]], [[switch]], [[AP]], [[Ethernet]]

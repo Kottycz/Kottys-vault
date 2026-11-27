@@ -47,4 +47,21 @@ ULA se **nepřekládá [[NAT|NATem]]** jako privátní IPv4. Když má zařízen
 | **ULA** | fc00::/7 | jen uvnitř organizace |
 | [[LLA]] | fe80::/10 | jen v jednom segmentu |
 
+### Vytvoření ULA prefixu
+
+```
+fd + 40 bitů náhodné Global ID + 16 bitů Subnet ID + 64 bitů ID rozhraní
+fd12:3456:789a:0001::/64
+```
+
+Global ID má být **náhodné** (ne `fd00::`), aby při spojení dvou firem nevznikl konflikt adres.
+
+### ULA vedle GUA
+
+Zařízení může mít ULA i [[GUA]] zároveň. Pro komunikaci uvnitř firmy použije ULA (funguje i bez internetu, adresy se nemění při změně [[ISP]]), ven jde přes GUA.
+
+### Rozsah
+
+Celý blok je `fc00::/7`, ale používá se jen polovina **`fd00::/8`** (lokálně přidělené). `fc00::/8` je rezervovaná a nepoužívá se.
+
 **Souvisí:** [[IPv6]], [[GUA]], [[LLA]], [[NAT]], [[délka prefixu]]

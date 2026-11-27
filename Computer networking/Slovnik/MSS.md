@@ -45,4 +45,23 @@ Když se MSS nastaví správně, TCP nikdy nevytvoří segment, který by se mus
 
 Přes [[VPN]] nebo PPPoE je MTU menší, což někdy dělá problémy (stránky se nenačtou celé). [[router|Routery]] proto umí **MSS clamping** – přepíší MSS v procházejících SYN paketech na nižší hodnotu, aby segmenty prošly.
 
+### Příklad výpočtu
+
+```
+MTU Ethernetu          1500 B
+− IP hlavička (IPv4)   − 20 B
+− TCP hlavička         − 20 B
+= MSS                  1460 B
+```
+
+U [[IPv6]] je IP hlavička 40 B, MSS je proto **1440 B**.
+
+### MSS ve Wiresharku
+
+MSS se posílá jako **volba (option) v SYN** a SYN-ACK při [[3-way handshake]]. Ve Wiresharku je v detailu SYN paketu: `Options: Maximum segment size: 1460 bytes`. Každá strana řekne, kolik umí přijmout, a použije se menší hodnota.
+
+### Kdy je MSS menší
+
+Přes [[VPN]] nebo PPPoE se k paketu přidávají další hlavičky, takže na data zbývá méně. Router pak MSS v SYN zmenší (`ip tcp adjust-mss 1360`), aby se pakety vešly a nemusely se fragmentovat.
+
 **Souvisí:** [[MTU]], [[TCP]], [[3-way handshake]], [[goodput]], [[VPN]]

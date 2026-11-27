@@ -30,4 +30,21 @@ FastEthernet0/18 is up, line protocol is up (connected)
 | **down / down** | kabel nezapojen, jiný problém rozhraní, druhá strana vypnutá |
 | **administratively down** | rozhraní ručně vypnuto příkazem `shutdown` |
 
+### Kde keepalive potkáš
+
+| Kde | K čemu |
+| :-- | :-- |
+| rozhraní routeru (Ethernet, sériové linky) | ověření, že linka funguje, výchozí interval 10 s |
+| [[TCP]] keepalive | ověření, že druhá strana spojení ještě žije, i když se dlouho neposílají data |
+| [[OSPF]], [[EIGRP]] Hello | sousedé si dávají vědět, že žijí |
+
+### V show interfaces
+
+```
+R1# show interfaces g0/0/0
+  Keepalive set (10 sec)
+```
+
+Když na sériové lince keepalive nepřichází, line protocol spadne na **down** i při fyzicky zapojeném kabelu.
+
 **Souvisí:** [[příkazy show]], [[Ethernet]], [[IOS]], [[kolize]]

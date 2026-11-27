@@ -43,4 +43,15 @@ CSMA/CD je tedy dnes už jen **historie**, stále se ale učí, protože vysvět
 | Přístup | detekuje kolizi *po* vzniku | snaží se jí *předejít* |
 | Proč jinak | na drátě lze kolizi slyšet | v rádiu nelze vysílat a poslouchat zároveň |
 
+### Jam signál a backoff
+
+1. když vysílající zjistí kolizi, pošle **jam signál** (32 bitů), aby kolizi zaznamenali všichni,
+2. pak každý počká **náhodnou dobu** (backoff) a zkusí to znovu,
+3. při každé další kolizi se rozsah náhodného čekání zdvojnásobí (**binary exponential backoff**),
+4. po **16** neúspěšných pokusech se rámec zahodí.
+
+### Proč minimální rámec 64 bajtů
+
+Vysílající musí kolizi zjistit, **dokud ještě vysílá**. Doba, kterou signál potřebuje na cestu tam a zpátky přes celou síť, se nazývá **slot time** = 512 bitů. Rámec proto musí mít aspoň 512 bitů = **64 bajtů**. Kratší rámce jsou [[runt|runty]] a zahazují se. Kolize po prvních 64 bajtech je [[late collision]] a značí chybu.
+
 **Souvisí:** [[CSMA-CA]], [[switch]], [[full-duplex]], [[half-duplex]]

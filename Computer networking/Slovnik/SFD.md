@@ -36,4 +36,17 @@ Rámec musí mít **aspoň 64 bajtů** (bez preambule). Kratší data se doplní
 
 Rámce kratší než 64 B se nazývají **runts** a zahazují se jako vadné.
 
+### Preambule + SFD v bitech
+
+```
+Preambule: 10101010 10101010 ... (7 bajtů)
+SFD:       10101011              (1 bajt)
+```
+
+Preambule je střídání 1 a 0, podle kterého si přijímač **synchronizuje hodiny**. SFD končí dvěma jedničkami `11` – tím přijímač pozná, že preambule skončila a hned za ní začíná cílová MAC adresa.
+
+### Ve Wiresharku
+
+Preambuli a SFD Wireshark **neukazuje**, síťová karta je odstraní dřív, než rámec předá systému. Wireshark proto začíná rovnou cílovou MAC adresou.
+
 **Souvisí:** [[FCS]], [[MAC podvrstva]], [[zapouzdření]], [[CSMA-CD]], [[MTU]]

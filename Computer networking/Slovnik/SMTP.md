@@ -39,4 +39,29 @@ Původní SMTP neměl žádné ověřování – kdokoliv mohl poslat e-mail jm�
 - **STARTTLS** – šifrování spojení
 - **SPF, DKIM, DMARC** – DNS záznamy, které ověřují, že server smí posílat za danou doménu (obrana proti podvržení odesílatele)
 
+### Jak vypadá SMTP relace
+
+```
+S: 220 mail.skola.cz ESMTP
+C: HELO pc.skola.cz
+C: MAIL FROM:<jan@skola.cz>
+C: RCPT TO:<petr@seznam.cz>
+C: DATA
+C: Subject: Test
+C: Ahoj.
+C: .
+S: 250 OK
+C: QUIT
+```
+
+Server odpovídá číselnými kódy: 2xx = OK, 4xx = dočasná chyba (zkus později), 5xx = trvalá chyba (třeba neexistující adresa).
+
+### Ochrana proti spamu
+
+- **SPF** – záznam v [[DNS]], které servery smí posílat poštu za doménu,
+- **DKIM** – digitální podpis e-mailu,
+- **DMARC** – co dělat se zprávou, která neprojde SPF nebo DKIM.
+
+Bez nich se dá snadno podvrhnout odesílatel.
+
 **Souvisí:** [[POP3]], [[IMAP]], [[DNS]], [[TCP]], [[port]]

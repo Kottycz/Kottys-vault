@@ -23,4 +23,27 @@ tags: [slovnik]
 
 - při překročení chybovosti se switch přepne na [[store-and-forward]]
 
+### Dvě varianty
+
+| | Fast-forward | Fragment-free |
+| :-- | :-- | :-- |
+| kdy pošle rámec dál | hned po cílové MAC adrese (prvních 6 B za preambulí) | po prvních **64 bajtech** |
+| latence | nejnižší | o trochu vyšší |
+| kontrola | žádná | odfiltruje fragmenty po kolizi ([[runt|runty]]) |
+
+Fragment-free využívá toho, že většina chyb z kolizí nastane v prvních 64 bajtech rámce.
+
+### Srovnání se store-and-forward
+
+| | Cut-through | [[store-and-forward]] |
+| :-- | :-- | :-- |
+| čeká na celý rámec | ne | ano |
+| kontrola [[FCS]] | ne | ano |
+| latence | nízká, stejná pro malé i velké rámce | roste s velikostí rámce |
+| poškozené rámce | pošle dál | zahodí |
+
+### Kde se používá
+
+V datových centrech a u výpočetních clusterů, kde rozhodují mikrosekundy. Některé switche umí **adaptivní režim**: jedou cut-through, a když přibude chybných rámců, přepnou se na store-and-forward.
+
 **Souvisí:** [[store-and-forward]], [[switch]], [[latency]]

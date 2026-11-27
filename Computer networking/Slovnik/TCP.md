@@ -55,4 +55,28 @@ Všude, kde nesmí chybět ani bajt: [[HTTP]]/[[HTTPS]] (web), [[FTP]] (přenos 
 | Rychlost | pomalejší | rychlejší |
 | Typické užití | web, e-mail, soubory | streaming, hry, [[DNS]], VoIP |
 
+### Příznaky v hlavičce
+
+| Příznak | Význam |
+| :-- | :-- |
+| SYN | navázání spojení |
+| ACK | potvrzení |
+| FIN | slušné ukončení |
+| RST | okamžité ukončení / odmítnutí |
+| PSH | předej data aplikaci hned |
+| URG | naléhavá data |
+
+### Spolehlivost v bodech
+
+1. **navázání spojení** – [[3-way handshake]],
+2. **číslování** – každý bajt má sekvenční číslo, data se poskládají ve správném pořadí,
+3. **potvrzování** – [[ACK]], ztracená data se pošlou znovu,
+4. **řízení toku** – [[sliding window]],
+5. **řízení zahlcení** – [[slow start]],
+6. **ukončení** – FIN / ACK z obou stran.
+
+### Ve Wiresharku
+
+Filtr `tcp.stream eq 0` ukáže celé jedno spojení. Pravým tlačítkem „Follow → TCP Stream" uvidíš data spojení poskládaná dohromady (u nešifrovaného provozu čitelná).
+
 **Souvisí:** [[UDP]], [[3-way handshake]], [[sliding window]], [[slow start]], [[port]], [[socket]], [[MSS]], [[ISN]]

@@ -47,4 +47,23 @@ Proto je goodput u velkých souborů vyšší než u mnoha malých paketů – r
 
 Když měříš rychlost stahování a nesedí ti to s tím, co slibuje poskytovatel – část kapacity vždy sežere režie.
 
+### Proč je goodput vždy menší
+
+Každá vrstva přidá svou hlavičku. U běžného [[TCP]] segmentu po [[Ethernet|Ethernetu]] s 1460 B dat:
+
+| Režie | Bajty |
+| :-- | :-- |
+| ethernetová hlavička + FCS | 18 |
+| IP hlavička | 20 |
+| TCP hlavička | 20 |
+| užitečná data | 1460 |
+
+Z 1518 B rámce je užitečných 1460 B, tedy asi 96 %. K tomu se přidá preambule a mezera mezi rámci, potvrzení ([[ACK]]), opakované posílání ztracených segmentů a čekání na handshake. Reálný goodput je proto znatelně nižší.
+
+### Jak ho zlepšit
+
+- méně chyb na lince = méně opakovaného posílání,
+- větší rámce (jumbo) = menší podíl hlaviček,
+- menší [[latency|latence]] = rychlejší potvrzování.
+
 **Souvisí:** [[throughput]], [[MTU]], [[MSS]], [[latency]], [[TCP]], [[šířka pásma]]

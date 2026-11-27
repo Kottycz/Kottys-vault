@@ -32,4 +32,25 @@ Proces je otevřený – zapojit se může kdokoliv, není potřeba členství a
 | **[[ISO]]** | referenční model | [[OSI]] |
 | **[[IANA]]** | přidělování čísel | [[port|porty]], IP rozsahy |
 
+### Kdo vydává co
+
+| Organizace | Na jaké vrstvě | Příklad |
+| :-- | :-- | :-- |
+| [[IEEE]] | 1 a 2 (fyzická, linková) | Ethernet, Wi-Fi |
+| IETF | 3 a výš | IP, TCP, UDP, HTTP, DNS |
+| [[ISO]] | model | model [[OSI]] |
+| [[IANA]] | čísla | porty, adresy |
+
+### Důležitá RFC
+
+| RFC | Obsah |
+| :-- | :-- |
+| 791 | [[IPv4]] |
+| 793 (dnes 9293) | [[TCP]] |
+| 768 | [[UDP]] |
+| 1918 | privátní IPv4 adresy |
+| 8200 | [[IPv6]] |
+
+Viz [[RFC]].
+
 **Souvisí:** [[RFC]], [[IEEE]], [[ISO]], [[IANA]], [[OSI]]

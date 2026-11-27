@@ -32,4 +32,22 @@ Když jsou mezi switchi dvě cesty, vznikne v síti smyčka. Aby smyčka síť n
 
 Redundance **stojí peníze** – další zařízení, kabeláž, správa. U malé sítě se proto zdvojují jen nejdůležitější části.
 
+### Redundance na různých vrstvách
+
+| Vrstva | Řešení |
+| :-- | :-- |
+| linky mezi switchi | víc linek, [[STP protokol|STP]] hlídá smyčky, nebo EtherChannel (svazek linek) |
+| brána | FHRP (HSRP, VRRP) – dva routery sdílí jednu IP brány |
+| připojení k internetu | dva [[ISP]] |
+| napájení | dva zdroje, [[RPS]], UPS |
+| servery | cluster, zálohy |
+
+### EtherChannel
+
+Několik fyzických linek mezi dvěma switchi se spojí do **jedné logické**. Sečte se šířka pásma a výpadek jedné linky nic nepřeruší. STP je bere jako jednu linku, takže je neblokuje.
+
+### HSRP v kostce
+
+Dva routery mají vlastní IP adresy a sdílí **virtuální IP** a virtuální MAC. PC mají jako bránu virtuální IP. Aktivní router provoz obsluhuje, záložní čeká, a když aktivní vypadne, převezme virtuální IP.
+
 **Souvisí:** [[single point of failure]], [[škálování sítě]], [[STP protokol]], [[switch]], [[router]]

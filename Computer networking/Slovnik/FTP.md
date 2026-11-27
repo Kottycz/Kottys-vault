@@ -39,4 +39,28 @@ Klasické FTP posílá **jméno, heslo i obsah souborů nešifrovaně**. Kdokoli
 
 Veřejné servery umožňují přihlášení jménem `anonymous` – používalo se pro distribuci softwaru, dnes už spíš historie.
 
+### Příkazy FTP klienta
+
+| Příkaz | Co dělá |
+| :-- | :-- |
+| `ftp 192.168.1.10` | připojení k serveru |
+| `ls` / `dir` | výpis souborů |
+| `get soubor` | stáhnout |
+| `put soubor` | nahrát |
+| `binary` | přenos v binárním režimu (programy, obrázky) |
+| `bye` | konec |
+
+### FTP vs. SFTP vs. TFTP
+
+| | FTP | [[SFTP]] | [[TFTP]] |
+| :-- | :-- | :-- | :-- |
+| transport | [[TCP]] 20/21 | TCP 22 (přes [[SSH]]) | [[UDP]] 69 |
+| šifrování | ne | ano | ne |
+| přihlášení | jméno a heslo | jméno a heslo / klíč | žádné |
+| použití | starší přenosy souborů | bezpečný přenos souborů | IOS a konfigurace síťových zařízení |
+
+### FTPS
+
+**FTPS** je klasické FTP zabezpečené pomocí [[TLS]]. Neplést se SFTP, které je úplně jiný protokol postavený na SSH.
+
 **Souvisí:** [[TCP]], [[port]], [[NAT]], [[UDP]]

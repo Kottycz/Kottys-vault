@@ -53,4 +53,23 @@ Tam, kde je rychlost důležitější než dokonalost:
 
 U streamu je lepší přeskočit jeden vzorek zvuku než čekat na jeho doručení a zaseknout přehrávání. Pokud aplikace přece jen potřebuje spolehlivost, může si ji dodělat sama nad UDP (dělá to např. QUIC/HTTP/3).
 
+### Porty známých UDP služeb
+
+| Služba | Port |
+| :-- | :-- |
+| [[DNS]] | 53 |
+| [[DHCP]] | 67 (server), 68 (klient) |
+| [[TFTP]] | 69 |
+| SNMP | 161, 162 |
+| Syslog | 514 |
+| NTP | 123 |
+
+### Kdo hlídá spolehlivost
+
+UDP nic nepotvrzuje. Když aplikace spolehlivost potřebuje, musí si ji zajistit sama: [[TFTP]] potvrzuje každý blok, [[DNS]] dotaz po timeoutu pošle znovu. Nový protokol **QUIC** (základ HTTP/3) běží nad UDP a spolehlivost i šifrování řeší sám.
+
+### UDP a firewall
+
+Protože UDP nemá spojení, stavový firewall si pro něj „spojení" vymýšlí: odpověď pustí, když přijde ze správné adresy a portu do krátké doby po odeslání dotazu.
+
 **Souvisí:** [[TCP]], [[port]], [[socket]], [[PDU]], [[latency]]

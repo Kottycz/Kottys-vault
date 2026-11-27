@@ -60,4 +60,26 @@ Switch# reload
 
 Zařízení nastartuje s tovární konfigurací.
 
+### Porovnání running a startup
+
+| | running-config | [[startup-config]] |
+| :-- | :-- | :-- |
+| paměť | RAM | NVRAM (router), flash (switch) |
+| po restartu | zmizí | zůstane |
+| změny | projeví se hned | jen po uložení |
+
+### Záloha konfigurace
+
+```
+R1# copy running-config tftp:
+Address or name of remote host []? 192.168.1.100
+Destination filename [r1-confg]?
+```
+
+Nebo jednoduše `show running-config`, výpis zkopírovat z terminálu do textového souboru.
+
+### Hesla v konfiguraci
+
+Hesla zadaná přes `password` jsou v running-config čitelná. Příkaz `service password-encryption` je zašifruje slabou šifrou (typ 7), aby nebyla vidět přes rameno. Pro enable heslo se používá `enable secret` (silný hash).
+
 **Souvisí:** [[startup-config]], [[SVI]], [[switch]], [[router]]

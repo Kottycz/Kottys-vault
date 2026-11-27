@@ -41,4 +41,12 @@ Ne každé RFC je platný standard – můžou být ve stavu Proposed Standard, 
 
 Tradičně 1. dubna vychází žertovné RFC – např. RFC 1149 "přenos IP paketů poštovními holuby".
 
+### Jak se RFC číst
+
+Na `rfc-editor.org` najdeš každé RFC podle čísla. Klíčová slova **MUST**, **SHOULD**, **MAY** (velkými písmeny) mají přesný význam: MUST = povinné, SHOULD = doporučené, MAY = volitelné (definuje to RFC 2119).
+
+### RFC se nemění
+
+Vydané RFC se už nikdy neupravuje. Když se protokol změní, vyjde **nové RFC** s novým číslem a staré označí jako zastaralé (obsoleted). Např. původní [[TCP]] RFC 793 nahradilo RFC 9293.
+
 **Souvisí:** [[IETF]], [[IEEE]], [[ISO]], [[IANA]]

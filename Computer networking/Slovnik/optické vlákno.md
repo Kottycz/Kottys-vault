@@ -44,4 +44,28 @@ U MMF se světlo odráží pod víc úhly (víc "vidů"), což omezuje dosah. SM
 - **Datacentra** – propojení switchů a serverů
 - **Podmořské kabely** mezi kontinenty
 
+### Konektory
+
+| Konektor | Popis |
+| :-- | :-- |
+| **SC** | čtvercový, zacvakává se, starší standard |
+| **LC** | malý, dnes nejběžnější (do SFP modulů) |
+| **ST** | kulatý s bajonetem, starší |
+
+Optika obvykle používá **dvě vlákna** – jedno pro vysílání, druhé pro příjem.
+
+### Single-mode vs. multimode
+
+| | Single-mode (SMF) | Multimode (MMF) |
+| :-- | :-- | :-- |
+| jádro | velmi tenké (~9 µm) | silnější (50–62,5 µm) |
+| zdroj světla | laser | LED nebo levný laser |
+| dosah | desítky km | stovky metrů |
+| cena | vyšší | nižší |
+| barva pláště (typicky) | žlutá | oranžová nebo tyrkysová |
+
+### Bezpečnost práce
+
+Nedívat se do konce vlákna nebo do portu – laserové světlo je neviditelné a může poškodit zrak. Úlomky skla z vláken jsou ostré a špatně se hledají.
+
 **Souvisí:** [[UTP]], [[EMI]], [[throughput]], [[WAN]], [[ISP]]

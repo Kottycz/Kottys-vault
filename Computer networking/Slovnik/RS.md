@@ -44,4 +44,16 @@ Z prefixu v odpovědi si zařízení složí adresu pomocí [[SLAAC]], ověří 
 
 Zhruba odpovídá DHCP Discover – taky se jím zařízení ptá "je tu někdo, kdo mi dá adresu?". Rozdíl je, že RS se ptá jen routerů (multicast), zatímco DHCP Discover jde [[broadcast|broadcastem]] všem.
 
+### Ve Wiresharku
+
+RS je **ICMPv6 typ 133**. Filtr `icmpv6.type == 133`. Uvidíš ji po připojení PC do sítě nebo po `ipconfig /renew6`.
+
+### Když na RS nikdo neodpoví
+
+Když v segmentu není router s `ipv6 unicast-routing`, nepřijde žádná [[RA]]. Zařízení pak má jen [[LLA|link-local adresu]] a s jinými sítěmi přes IPv6 nekomunikuje.
+
+### Kolikrát se posílá
+
+Zařízení pošle RS obvykle **až 3×** s několikasekundovým odstupem. Když odpověď nepřijde, čeká na pravidelnou RA.
+
 **Souvisí:** [[RA]], [[NDP]], [[SLAAC]], [[IPv6]], [[LLA]], [[multicast]]

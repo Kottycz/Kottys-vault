@@ -46,4 +46,30 @@ Kde přesně je hranice, určuje [[maska podsítě]] (IPv4) nebo [[délka prefix
 | Stejná síť | 192.168.1.110 | 192.168.1.9 | přímo |
 | Vzdálená síť | 192.168.1.110 | 172.16.1.99 | přes [[default gateway]] |
 
+### Jak zařízení pozná, jestli je cíl ve stejné síti
+
+Provede **AND** své IP adresy s maskou a totéž s cílovou IP. Když vyjde stejná adresa sítě, cíl je lokální a pošle mu rámec přímo (zjistí jeho MAC přes [[ARP]]). Když ne, pošle rámec na [[default gateway|výchozí bránu]].
+
+```
+moje IP   192.168.1.10  AND 255.255.255.0 = 192.168.1.0
+cíl       192.168.1.77  AND 255.255.255.0 = 192.168.1.0  → stejná síť
+cíl       10.0.0.5      AND 255.255.255.0 = 10.0.0.0     → jiná síť, jde na bránu
+```
+
+### Typy adres podle komunikace
+
+- [[unicast]] – jednomu zařízení,
+- [[broadcast]] – všem v síti (jen IPv4),
+- [[multicast]] – skupině,
+- [[anycast]] – nejbližšímu ze skupiny (hlavně IPv6).
+
+### Nastavení na Cisco
+
+```
+R1(config-if)# ip address 192.168.1.1 255.255.255.0
+R1(config-if)# no shutdown
+```
+
+Ověření: `show ip interface brief`.
+
 **Souvisí:** [[IPv4]], [[IPv6]], [[maska podsítě]], [[délka prefixu]], [[MAC adresa]], [[NAT]], [[DHCP]], [[default gateway]]

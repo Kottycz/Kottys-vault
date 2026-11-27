@@ -37,4 +37,22 @@ R1# show ipv6 interface brief
 - Na [[switch]]i Catalyst 2960 s IOS 15.0 je pro IPv6 nutné `sdm prefer dual-ipv4-and-ipv6 default` a restart.
 - Switch IPv6 [[default gateway]] nenastavuje – získá ji z [[RA]].
 
+### Přechod z IPv4 na IPv6
+
+| Metoda | Princip |
+| :-- | :-- |
+| **dual-stack** | IPv4 i IPv6 běží vedle sebe |
+| **tunelování** | IPv6 pakety se zabalí do IPv4 a projdou přes IPv4 síť |
+| **překlad (NAT64)** | zařízení jen s IPv6 komunikuje se zařízením jen s IPv4 přes překladač |
+
+Dual-stack je doporučený způsob, protože nic nepřekládá a nic nebalí.
+
+### Který protokol se použije
+
+Když má cíl IPv4 i IPv6 adresu, operační systém ve výchozím stavu dá přednost **IPv6**.
+
+### Na routeru nezapomenout
+
+Aby router IPv6 pakety mezi sítěmi směroval, musí mít zapnuté `ipv6 unicast-routing`. Bez toho má rozhraní IPv6 adresy, ale pakety mezi sítěmi nepřeposílá.
+
 **Souvisí:** [[IPv4]], [[IPv6]], [[router]], [[SVI]], [[RA]], [[směrovací tabulka]]

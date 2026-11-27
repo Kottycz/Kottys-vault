@@ -49,4 +49,22 @@ no debug all
 
 nebo `undebug all`.
 
+### Užitečné doplňky
+
+| Příkaz | K čemu |
+| :-- | :-- |
+| `show debugging` | které debugy jsou zapnuté |
+| `undebug all` / `no debug all` | vypne všechny debugy najednou |
+| `service timestamps debug datetime msec` | ke každé zprávě přidá čas s milisekundami |
+| `logging synchronous` (na lince) | debug zprávy nepřeruší rozepsaný příkaz |
+
+### Bezpečný postup
+
+1. nejdřív si připravit `undebug all`, abys ho mohl hned zadat,
+2. zapnout co nejužší debug (`debug ip icmp`, ne `debug all`),
+3. vyvolat problém (např. ping),
+4. přečíst zprávy a debug hned vypnout.
+
+Na zatíženém produkčním routeru může široký debug úplně zahltit CPU a router přestane reagovat.
+
 **Souvisí:** [[IOS]], [[terminal monitor]], [[ICMP]], [[ping]], [[příkazy show]], [[Budovani_male_site]]
